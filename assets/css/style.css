@@ -583,7 +583,7 @@ body {
 }
 
 .social-link {
-  background-color: var(--oxford-blue-3);
+  background-color: #000000;
   padding: 14px;
   border-radius: var(--radius-circle);
   transition: var(--transition);
