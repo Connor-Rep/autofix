@@ -565,7 +565,7 @@ body {
   #FOOTER
 \*-----------------------------------*/
 
-.footer { color: var(--cadet-blue-creyola); }
+.footer { color: var(--black); }
 
 .footer .shape { display: none; }
 
@@ -623,7 +623,7 @@ body {
 }
 
 .footer-bottom {
-  background-color: var(--oxford-blue-1);
+  background-color: var(--eerie-black);
   padding-block: 20px;
 }
 
