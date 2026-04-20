@@ -295,7 +295,7 @@ body {
   scroll-snap-align: start;
 }
 
-.has-scrollbar::-webkit-scrollbar { height: 16px; }
+.has-scrollbar::-webkit-scrollbar { height: 8px; }
 
 .has-scrollbar::-webkit-scrollbar-track {
   background-color: var(--eerie-black);
@@ -305,7 +305,7 @@ body {
 .has-scrollbar::-webkit-scrollbar-thumb {
   background-color: var(--international-orange-engineering);
   border-radius: 20px;
-  border: 3px solid var(--eerie-black);
+  border: 1px solid var(--eerie-black);
 }
 
 .has-scrollbar::-webkit-scrollbar-button { width: 15%; }
