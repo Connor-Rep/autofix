@@ -516,7 +516,7 @@ body {
 .work-card { position: relative; }
 
 .work-card .card-content {
-  background-color: var(--white);
+  background-color: var(--black);
   max-width: 90%;
   padding: 30px 10px;
   margin-block-start: -60px;
