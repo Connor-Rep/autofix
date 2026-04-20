@@ -298,14 +298,14 @@ body {
 .has-scrollbar::-webkit-scrollbar { height: 16px; }
 
 .has-scrollbar::-webkit-scrollbar-track {
-  background-color: var(--pastel-pink);
+  background-color: var(--eerie-black);
   border-radius: 20px;
 }
 
 .has-scrollbar::-webkit-scrollbar-thumb {
   background-color: var(--international-orange-engineering);
   border-radius: 20px;
-  border: 3px solid var(--pastel-pink);
+  border: 3px solid var(--eerie-black);
 }
 
 .has-scrollbar::-webkit-scrollbar-button { width: 15%; }
