@@ -247,7 +247,7 @@ body {
 
 .btn:is(:hover, :focus-visible) {
   transform: translateY(-5px);
-  background-color: var(--oxford-blue-3);
+  background-color: var(--eerie-black);
   border-color: var(--white);
 }
 
