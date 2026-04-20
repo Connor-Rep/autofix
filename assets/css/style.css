@@ -490,7 +490,7 @@ body {
 }
 
 .about-item {
-  background-color: var(--black);
+  background-color: #000000;
   padding: 40px 20px;
   transition: var(--transition);
 }
@@ -568,7 +568,7 @@ body {
 
 .footer .shape { display: none; }
 
-.footer-top { background-color: var(--space-cadet); }
+.footer-top { background-color: var(--eerie-black); }
 
 .footer-top .container {
   display: grid;
@@ -622,7 +622,7 @@ body {
 }
 
 .footer-bottom {
-  background-color: var(--eerie-black);
+  background-color: #000000;
   padding-block: 20px;
 }
 
