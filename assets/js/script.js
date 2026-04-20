@@ -21,14 +21,14 @@ toggleBtn.addEventListener("click", function () {
     mtnItems.forEach(item => item.classList.add("hidden"));
     dtlItems.forEach(item => item.classList.remove("hidden"));
     
-    btnText.textContent = "Show Maintenance";
+    btnText.textContent = "Show Maintenance Memberships";
     toggleBtn.setAttribute("data-state", "detailing");
   } else {
     // Switch to Maintenance view
     dtlItems.forEach(item => item.classList.add("hidden"));
     mtnItems.forEach(item => item.classList.remove("hidden"));
     
-    btnText.textContent = "Show Detailing";
+    btnText.textContent = "Show Detailing Memberships";
     toggleBtn.setAttribute("data-state", "maintenance");
   }
 });
