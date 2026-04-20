@@ -308,7 +308,7 @@ body {
   border: 3px solid var(--eerie-black);
 }
 
-.has-scrollbar::-webkit-scrollbar-button { width: 30%; }
+.has-scrollbar::-webkit-scrollbar-button { width: 5%; }
 
 
 
