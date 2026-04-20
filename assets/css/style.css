@@ -734,7 +734,7 @@ body {
    * WORK
    */
 
-  .scrollbar-item { min-width: calc(50% - 5px); }
+  .scrollbar-item { min-width: calc(50% - 2px); }
 
 
 
