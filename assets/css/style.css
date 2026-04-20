@@ -124,8 +124,8 @@ html {
 }
 
 body {
-  background-color: var(--black);
-  color: var(--sonic-silver);
+  background-color: var(--white);
+  color: var(--black);
   font-size: 1.6rem;
   line-height: 1.5;
 }
