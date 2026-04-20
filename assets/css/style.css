@@ -308,7 +308,7 @@ body {
   border: 3px solid var(--eerie-black);
 }
 
-.has-scrollbar::-webkit-scrollbar-button { width: 5%; }
+.has-scrollbar::-webkit-scrollbar-button { width: 15%; }
 
 
 
@@ -734,7 +734,7 @@ body {
    * WORK
    */
 
-  .scrollbar-item { min-width: calc(50% - 15px); }
+  .scrollbar-item { min-width: calc(50% - 5px); }
 
 
 
