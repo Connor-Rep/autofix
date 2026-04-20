@@ -219,7 +219,7 @@ body {
 }
 
 .h3 {
-  color: var(--eerie-black);
+  color: var(--white);
   font-weight: var(--fw-600);
   line-height: 1.2;
 }
