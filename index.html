@@ -336,124 +336,67 @@
         - #WORK
       -->
 
-      <section class="section work" aria-labelledby="work-label">
-        <div class="container">
 
-          <p class="section-subtitle :dark" id="work-label">Membership</p>
 
-          <h2 class="h2 section-title">Our Membership Options</h2>
 
-          <ul class="has-scrollbar">
 
-            <li class="scrollbar-item">
-              <div class="work-card">
 
-                <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-                  <img src="./assets/images/work-1.jpg" width="350" height="406" loading="lazy" alt="Book Here"
-                    class="img-cover">
-                </figure>
 
-                <div class="card-content">
-                  <p class="card-subtitle">Maintenance</p>
+      <section class="section work" aria-labelledby="work-label" id="membership">
+  <div class="container">
 
-                  <h3 class="h3 card-title">Full Annual Service</h3>
+    <p class="section-subtitle :dark" id="work-label">Membership</p>
 
-                  <a href="#" class="card-btn">
-                    <span class="material-symbols-rounded">arrow_forward</span>
-                  </a>
-                </div>
+    <h2 class="h2 section-title">Our Membership Options</h2>
 
-              </div>
-            </li>
+    <div style="display: flex; justify-content: center; margin-block-end: 30px;">
+      <button class="btn btn-primary" id="membership-toggle" data-state="maintenance">
+        <span class="span">Show Detailing</span>
+      </button>
+    </div>
 
-            <li class="scrollbar-item">
-              <div class="work-card">
+    <ul class="has-scrollbar" id="membership-list">
 
-                <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-                  <img src="./assets/images/work-2.jpg" width="350" height="406" loading="lazy" alt="Book Here"
-                    class="img-cover">
-                </figure>
-
-                <div class="card-content">
-                  <p class="card-subtitle">Maintenance</p>
-
-                  <h3 class="h3 card-title">Brake Disc & Pad Replacement</h3>
-
-                  <a href="#" class="card-btn">
-                    <span class="material-symbols-rounded">arrow_forward</span>
-                  </a>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="scrollbar-item">
-              <div class="work-card">
-
-                <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-                  <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" alt="Book Here"
-                    class="img-cover">
-                </figure>
-
-                <div class="card-content">
-                  <p class="card-subtitle">Detailing</p>
-
-                  <h3 class="h3 card-title">Full Interior Clean</h3>
-
-                  <a href="#" class="card-btn">
-                    <span class="material-symbols-rounded">arrow_forward</span>
-                  </a>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="scrollbar-item">
-              <div class="work-card">
-
-                <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-                  <img src="./assets/images/work-2.jpg" width="350" height="406" loading="lazy" alt="Book Here"
-                    class="img-cover">
-                </figure>
-
-                <div class="card-content">
-                  <p class="card-subtitle">Maintenance</p>
-
-                  <h3 class="h3 card-title">something</h3>
-
-                  <a href="#" class="card-btn">
-                    <span class="material-symbols-rounded">arrow_forward</span>
-                  </a>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="scrollbar-item">
-              <div class="work-card">
-
-                <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-                  <img src="./assets/images/work-2.jpg" width="350" height="406" loading="lazy" alt="Book Here"
-                    class="img-cover">
-                </figure>
-
-                <div class="card-content">
-                  <p class="card-subtitle">Maintenance</p>
-
-                  <h3 class="h3 card-title">Braket</h3>
-
-                  <a href="#" class="card-btn">
-                    <span class="material-symbols-rounded">arrow_forward</span>
-                  </a>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
+      <li class="scrollbar-item maintenance-item">
+        <div class="work-card">
+          <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
+            <img src="./assets/images/work-1.jpg" width="350" height="406" loading="lazy" alt="Book Here" class="img-cover">
+          </figure>
+          <div class="card-content">
+            <p class="card-subtitle">Maintenance</p>
+            <h3 class="h3 card-title">Full Annual Service</h3>
+            <a href="#" class="card-btn"><span class="material-symbols-rounded">arrow_forward</span></a>
+          </div>
         </div>
-      </section>
+      </li>
+
+      <li class="scrollbar-item detailing-item hidden">
+        <div class="work-card">
+          <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
+            <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" alt="Book Here" class="img-cover">
+          </figure>
+          <div class="card-content">
+            <p class="card-subtitle">Detailing</p>
+            <h3 class="h3 card-title">Full Interior Clean</h3>
+            <a href="#" class="card-btn"><span class="material-symbols-rounded">arrow_forward</span></a>
+          </div>
+        </div>
+      </li>
+      
+      </ul>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+      
+
+     
 
     </article>
   </main>
