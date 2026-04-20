@@ -513,6 +513,14 @@ body {
   #WORK
 \*-----------------------------------*/
 
+
+/* Custom Toggle Utility */
+.scrollbar-item.hidden {
+  display: none;
+}
+
+
+
 .work .container { padding-inline: 0; }
 
 .work .section-title { margin-block-end: 24px; }
