@@ -5,7 +5,7 @@
 /**
  * copyright 2022 codewithsadee
  */
-
+ --eerie-black
 
 
 
@@ -470,7 +470,7 @@ body {
 \*-----------------------------------*/
 
 .about {
-  background-color: var(--space-cadet);
+  background-color: var(--eerie-black);
   color: var(--white);
   text-align: center;
 }
@@ -491,7 +491,7 @@ body {
 }
 
 .about-item {
-  background-color: var(--oxford-blue-2);
+  background-color: var(--black);
   padding: 40px 20px;
   transition: var(--transition);
 }
@@ -525,7 +525,7 @@ body {
 }
 
 .work-card .card-content {
-  background-color: var(--white);
+  background-color: var(--eerie-black);
   max-width: 90%;
   padding: 30px 10px;
   margin-block-start: -60px;
@@ -547,7 +547,7 @@ body {
 
 .work-card .card-btn {
   background-color: var(--international-orange-engineering);
-  color: var(--white);
+  color: var(--eerie-black);
   font-size: 2rem;
   margin-inline: auto;
   width: 38px;
