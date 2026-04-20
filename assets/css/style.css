@@ -1269,23 +1269,28 @@ body {
 
 
 /* Specific fixes for Mobile (Screens smaller than 575px) */
-@media (max-width: 574px) {
-  
-  /* 1. Shrink the shadow spread so it doesn't bleed off the screen */
-  .work-card .card-content {
-    box-shadow: 0px 0px 30px 0px #333333; /* Reduced from 100px to 30px */
-    padding: 20px 10px; /* Reduced vertical padding from 30px to 20px */
-    max-width: 85%; /* Makes the text box slightly narrower */
-  }
-
-  /* 2. Shrink the card width so you can see a "peek" of the next card */
-  /* This makes the section feel less "heavy" on a small screen */
+@media (max-width: 575px) {
+  /* 1. Shrink the card width and add spacing between them */
   .scrollbar-item {
-    min-width: 80%; 
+    min-width: 85%; 
+    padding-inline: 10px;
   }
 
-  /* 3. Slightly smaller titles for mobile cards */
-  .work-card .card-title {
-    font-size: 1.8rem; 
+  /* 2. Center the active card */
+  .has-scrollbar {
+    scroll-snap-type: inline mandatory;
+    padding-inline: 7.5%; /* This offsets the 85% width to center it */
+  }
+
+  /* 3. Re-align the snap point to center */
+  .scrollbar-item {
+    scroll-snap-align: center;
+  }
+
+  /* 4. Shrink the shadow and content box for mobile scale */
+  .work-card .card-content {
+    box-shadow: 0px 0px 40px 0px #333333;
+    max-width: 85%;
+    padding: 20px 10px;
   }
 }
