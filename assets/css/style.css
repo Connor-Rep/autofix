@@ -520,6 +520,10 @@ body {
 
 .work-card { position: relative; }
 
+.section.work {
+  background-color: #000000; /* Sets background to black */
+}
+
 .work-card .card-content {
   background-color: var(--white);
   max-width: 90%;
