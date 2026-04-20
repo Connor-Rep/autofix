@@ -188,7 +188,7 @@ body {
 
 .section-subtitle.\:dark::before { background-image: url('../images/text-bars-light.png'); }
 
-.section-subtitle.\:light { color: var(--international-orange-engineering); }
+.section-subtitle.\:light { color: var(--eerie-black); }
 
 .section-subtitle.\:light::before { background-image: url('../images/text-bars-dark.png'); }
 
