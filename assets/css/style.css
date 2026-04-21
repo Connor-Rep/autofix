@@ -30,6 +30,7 @@
   --eerie-black: hsl(0, 0%, 15%);
   --light-gray: hsl(0, 0%, 80%);
   --white: hsl(0, 0%, 100%);
+  --black hsl(0, 0%, 100%);
 
   /**
    * typography
@@ -1453,7 +1454,7 @@ body {
 .service-card {
   position: relative; /* Container for the absolute overlay */
   overflow: hidden;   /* Clips the overlay when it's "down" */
-  background-color: var(--eerie-black);
+  background-color: var(--black);
   padding: 40px 20px;
   border-radius: 8px; /* Optional: matches your theme */
   height: 100%;
