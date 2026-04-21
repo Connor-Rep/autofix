@@ -1284,31 +1284,37 @@ body {
 
 }
 
-
+ 
 /* Specific fixes for Mobile (Screens smaller than 575px) */
 @media (max-width: 575px) {
-  /* 1. Shrink the card width and add spacing between them */
-  .scrollbar-item {
-    min-width: 85%; 
-    padding-inline: 10px;
-  }
-
-  /* 2. Center the active card */
+  /* 1. Add horizontal padding to the list to allow the first/last cards to center */
   .has-scrollbar {
-    scroll-snap-type: inline mandatory;
-    padding-inline: 7.5%; /* This offsets the 85% width to center it */
+    scroll-snap-type: x mandatory;
+    padding-inline: 25px !important; /* Creates the 'peek' effect for side cards */
+    display: flex;
+    gap: 20px; /* This is the key: creates physical space between the images */
+    overflow-x: auto;
+    padding-block-end: 120px !important; 
   }
 
-  /* 3. Re-align the snap point to center */
+  /* 2. Set a fixed width relative to the screen so they look like distinct cards */
   .scrollbar-item {
+    min-width: 85vw; /* Each card takes up 85% of the screen width */
     scroll-snap-align: center;
+    flex-shrink: 0; /* Prevents cards from squishing */
   }
 
-  /* 4. Shrink the shadow and content box for mobile scale */
+  /* 3. Adjust the floating content box to stay within the card bounds */
   .work-card .card-content {
-    box-shadow: 0px 0px 40px 0px #333333;
-    max-width: 85%;
-    padding: 20px 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    padding: 20px 15px;
+    margin-inline: auto;
+  }
+  
+  /* Ensure the banner image takes up full width of the item */
+  .card-banner {
+    width: 100%;
   }
 }
 
