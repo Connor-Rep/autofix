@@ -1265,6 +1265,15 @@ body {
 
   .about-banner .w-100 { width: 50%; }
 
+/**
+   * MEMBERSHIP
+   */
+
+
+  #membership {
+  padding-block-end: 120px; 
+}
+
 
 
   /**
