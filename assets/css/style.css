@@ -1395,7 +1395,8 @@ body {
   border-radius: var(--radius-16);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
   /* Ensures nothing covers the back content */
-  z-index: 1; 
+  z-index: 5;
+  pointer-events: all; 
 }
 
 .back-list {
@@ -1413,7 +1414,16 @@ body {
   text-decoration: underline;
   cursor: pointer;
   font-size: 1.2rem;
-  /* Make sure the link is "above" the back container for clicking */
+  background: none;
+  border: none;
+  transition: var(--transition);
+  /* Higher z-index to stay above any decorative elements */
   position: relative;
-  z-index: 20; 
+  z-index: 30; 
+}
+
+/* 3. The Hover Effect */
+.flip-back-link:hover {
+  color: var(--international-orange-engineering); /* Your theme's red/orange */
+  text-decoration: none;
 }
