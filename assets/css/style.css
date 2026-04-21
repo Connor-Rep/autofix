@@ -734,7 +734,7 @@ body {
    * WORK
    */
 
-  .scrollbar-item { min-width: calc(50% - 2px); }
+  .scrollbar-item { min-width: calc(50% - 5px); }
 
 
 
@@ -1044,7 +1044,7 @@ body {
 
   .has-scrollbar { overflow-x: auto; }
 
-  .scrollbar-item { min-width: calc(33.33% - 20px); }
+  .scrollbar-item { min-width: calc(33.33% - 10px); }
 
 }
 
