@@ -47,6 +47,36 @@ navbarLinks.forEach(link => {
 
 
 
+/**
+ * MEMBERSHIP CARD FLIP LOGIC
+ */
+
+const flipTriggers = document.querySelectorAll(".flip-trigger");
+const backTriggers = document.querySelectorAll(".flip-back-text");
+
+// Flip to back
+flipTriggers.forEach(btn => {
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+    this.closest(".work-card").classList.add("flipped");
+  });
+});
+
+// Flip to front
+backTriggers.forEach(btn => {
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+    this.closest(".work-card").classList.remove("flipped");
+  });
+});
+
+
+
+
+
+
+
+
 const navbar = document.querySelector("[data-navbar]");
 const navToggler = document.querySelector("[data-nav-toggler]");
 
