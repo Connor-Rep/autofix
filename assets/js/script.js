@@ -51,18 +51,19 @@ navbarLinks.forEach(link => {
  * MEMBERSHIP CARD FLIP LOGIC
  */
 
+// Select all the front arrow buttons and the back "Return" buttons
 const flipTriggers = document.querySelectorAll(".flip-trigger");
-const backTriggers = document.querySelectorAll(".flip-back-text");
+const backTriggers = document.querySelectorAll(".flip-back-link");
 
-// Flip to back
+// 1. Flip to the back side
 flipTriggers.forEach(btn => {
   btn.addEventListener("click", function(e) {
-    e.preventDefault();
+    e.preventDefault(); // Stop any default jumping
     this.closest(".work-card").classList.add("flipped");
   });
 });
 
-// Flip to front
+// 2. Flip back to the front side
 backTriggers.forEach(btn => {
   btn.addEventListener("click", function(e) {
     e.preventDefault();
