@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 /**
  * MOBILE NAVBAR TOGGLE
  */
@@ -46,7 +44,6 @@ navbarLinks.forEach(link => {
 
 
 
-
 /**
  * MEMBERSHIP CARD FLIP LOGIC
  */
@@ -73,10 +70,6 @@ backTriggers.forEach(btn => {
 
 
 
-
-
-
-
 const navbar = document.querySelector("[data-navbar]");
 const navToggler = document.querySelector("[data-nav-toggler]");
 
@@ -84,3 +77,39 @@ navToggler.addEventListener("click", function () {
   navbar.classList.toggle("active");
   this.classList.toggle("active");
 });
+
+
+
+
+/**
+ * SERVICE CARD OVERLAY LOGIC
+ */
+
+const serviceReadMoreBtns = document.querySelectorAll(".service-read-more");
+const serviceCloseBtns = document.querySelectorAll(".close-overlay");
+
+serviceReadMoreBtns.forEach(btn => {
+  btn.addEventListener("click", function() {
+    // Find the overlay specifically within this card
+    const overlay = this.closest(".service-card").querySelector(".card-overlay");
+    overlay.classList.add("active");
+  });
+});
+
+serviceCloseBtns.forEach(btn => {
+  btn.addEventListener("click", function() {
+    // Remove the active class to slide it back down
+    this.closest(".card-overlay").classList.remove("active");
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
