@@ -1323,15 +1323,17 @@ body {
 /* --- MEMBERSHIP SECTION & FLIP SYSTEM --- */
 
 .has-scrollbar {
-  /* Increased padding so the "half-off" box and shadow aren't cut off at the bottom */
+  /* Ensure the container itself doesn't show a vertical scrollbar */
+  overflow-y: hidden !important; 
   padding-block-end: 120px !important; 
 }
 
 .work-card {
   perspective: 1000px;
   background-color: transparent !important;
-  /* Adjust this height to match your original image look (usually 400-450px) */
   height: 420px; 
+  /* Prevent internal scrollbars on the card container */
+  overflow: visible !important; 
 }
 
 .card-inner {
@@ -1354,32 +1356,32 @@ body {
   height: 100%;
   backface-visibility: hidden;
   border-radius: var(--radius-16);
+  /* CRITICAL: Allows the half-off box and shadows to show without scrollbars */
+  overflow: visible !important; 
 }
 
-/* FRONT SIDE FIXES */
+/* FRONT SIDE */
 .card-front .card-banner {
   height: 100%;
   margin-bottom: 0;
-  overflow: hidden;
+  overflow: hidden; /* This keeps the IMAGE rounded */
   border-radius: var(--radius-16);
 }
 
 .card-front .card-content {
   position: absolute;
-  /* This creates the "half-off" look */
-  bottom: -50px; 
+  bottom: -60px; /* Adjust this to get the perfect "half-off" look */
   left: 20px;
   right: 20px;
   width: auto;
   background-color: var(--eerie-black);
   padding: 25px;
   border-radius: var(--radius-16);
-  /* Adding the shadow back */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
-  z-index: 2;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
+  z-index: 10; /* Ensures the front content stays on top */
 }
 
-/* BACK SIDE FIXES */
+/* BACK SIDE */
 .card-back {
   background-color: var(--eerie-black);
   transform: rotateY(180deg);
@@ -1390,8 +1392,10 @@ body {
   padding: 30px;
   text-align: center;
   border: 1px solid var(--oxford-blue-2);
-  /* Match the shadow on the back too */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+  border-radius: var(--radius-16);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  /* Ensures nothing covers the back content */
+  z-index: 1; 
 }
 
 .back-list {
@@ -1409,4 +1413,7 @@ body {
   text-decoration: underline;
   cursor: pointer;
   font-size: 1.2rem;
+  /* Make sure the link is "above" the back container for clicking */
+  position: relative;
+  z-index: 20; 
 }
