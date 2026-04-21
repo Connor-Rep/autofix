@@ -1323,8 +1323,7 @@ body {
 /* --- MEMBERSHIP SECTION & FLIP SYSTEM --- */
 
 .has-scrollbar {
-  /* Ensure the container itself doesn't show a vertical scrollbar */
-  overflow-y: hidden !important; 
+  overflow-y: visible !important; /* Allow the hanging boxes to be seen */
   padding-block-end: 120px !important; 
 }
 
@@ -1332,7 +1331,6 @@ body {
   perspective: 1000px;
   background-color: transparent !important;
   height: 420px; 
-  /* Prevent internal scrollbars on the card container */
   overflow: visible !important; 
 }
 
@@ -1356,7 +1354,7 @@ body {
   height: 100%;
   backface-visibility: hidden;
   border-radius: var(--radius-16);
-  /* CRITICAL: Allows the half-off box and shadows to show without scrollbars */
+  /* Changed from hidden to visible so the arrow doesn't get cut off */
   overflow: visible !important; 
 }
 
@@ -1364,13 +1362,13 @@ body {
 .card-front .card-banner {
   height: 100%;
   margin-bottom: 0;
-  overflow: hidden; /* This keeps the IMAGE rounded */
+  overflow: hidden; /* Keep image inside the rounded corners */
   border-radius: var(--radius-16);
 }
 
 .card-front .card-content {
   position: absolute;
-  bottom: -60px; /* Adjust this to get the perfect "half-off" look */
+  bottom: -60px;
   left: 20px;
   right: 20px;
   width: auto;
@@ -1378,7 +1376,9 @@ body {
   padding: 25px;
   border-radius: var(--radius-16);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
-  z-index: 10; /* Ensures the front content stays on top */
+  /* Critical: ensure the box can grow if text is long */
+  min-height: 120px; 
+  z-index: 10;
 }
 
 /* BACK SIDE */
@@ -1394,8 +1394,6 @@ body {
   border: 1px solid var(--oxford-blue-2);
   border-radius: var(--radius-16);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  /* Ensures nothing covers the back content */
-  z-index: 1; 
 }
 
 .back-list {
@@ -1404,7 +1402,6 @@ body {
   font-family: var(--ff-mulish);
   font-size: var(--fs-6);
   line-height: 1.6;
-  list-style: none;
 }
 
 .flip-back-link {
@@ -1413,7 +1410,8 @@ body {
   text-decoration: underline;
   cursor: pointer;
   font-size: 1.2rem;
-  /* Make sure the link is "above" the back container for clicking */
+  /* FORCE this to the front so it can be clicked */
   position: relative;
-  z-index: 20; 
+  z-index: 50 !important; 
+  padding: 10px; /* Bigger hit area for the mouse */
 }
