@@ -1320,20 +1320,29 @@ body {
 
 /* --- CARD FLIP SYSTEM --- */
 
+/* --- FIXING THE CUT-OFF & FLIP SYSTEM --- */
+
+/* 1. Ensure the scrollbar container has enough height for the overlapping content */
+.has-scrollbar {
+  padding-block-end: 80px !important; /* Prevents the card bottom from being cut off */
+}
+
+/* 2. Setup the Flip Container */
 .work-card {
-  perspective: 1000px; /* Gives the 3D depth */
+  perspective: 1000px;
   background-color: transparent !important;
+  height: 480px; /* Fixed height ensures the image and content fit during the flip */
 }
 
 .card-inner {
   position: relative;
   width: 100%;
-  height: 450px; /* Fixed height is important for a smooth flip */
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
 
-/* Toggle this class with JS */
+/* 3. The Flip Trigger */
 .work-card.flipped .card-inner {
   transform: rotateY(180deg);
 }
@@ -1344,45 +1353,50 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Hides the side you aren't looking at */
-  border-radius: var(--radius-16);
-  overflow: hidden;
+  backface-visibility: hidden; /* Important: hides the side you aren't looking at */
+  border-radius: 12px;
 }
 
-/* Back Side Styling */
+/* 4. Back Side Styling (Plain Eerie Black) */
 .card-back {
   background-color: var(--eerie-black);
-  color: var(--white);
-  transform: rotateY(180deg); /* Flipped by default */
+  transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 30px;
   text-align: center;
-  border: 1px solid var(--oxford-blue-2);
+  border: 1px solid var(--white); /* Subtle border for visibility */
 }
 
 .back-list {
   margin-block: 20px;
-  font-family: var(--ff-mulish);
-  font-size: var(--fs-6);
   color: var(--cadet-blue-creyola);
+  font-size: var(--fs-6);
   line-height: 1.8;
 }
 
-.subscribe-btn {
+.flip-back-link {
   margin-top: 15px;
-  width: 100%;
-}
-
-.flip-back-text {
-  margin-top: 15px;
-  color: var(--sonic-silver);
-  font-size: 1.2rem;
+  color: var(--white);
   text-decoration: underline;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
+/* Ensure the image banner still fills the front correctly */
+.card-front .card-banner {
+  height: 100%;
+  margin-bottom: 0;
+}
 
+/* Adjust front content position to match your original design */
+.card-front .card-content {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+}
 
