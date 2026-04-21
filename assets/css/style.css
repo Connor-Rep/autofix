@@ -1320,18 +1320,18 @@ body {
 
 /* --- CARD FLIP SYSTEM --- */
 
-/* --- FIXING THE CUT-OFF & FLIP SYSTEM --- */
+/* --- MEMBERSHIP SECTION & FLIP SYSTEM --- */
 
-/* 1. Ensure the scrollbar container has enough height for the overlapping content */
 .has-scrollbar {
-  padding-block-end: 80px !important; /* Prevents the card bottom from being cut off */
+  /* Increased padding so the "half-off" box and shadow aren't cut off at the bottom */
+  padding-block-end: 120px !important; 
 }
 
-/* 2. Setup the Flip Container */
 .work-card {
   perspective: 1000px;
   background-color: transparent !important;
-  height: 480px; /* Fixed height ensures the image and content fit during the flip */
+  /* Adjust this height to match your original image look (usually 400-450px) */
+  height: 420px; 
 }
 
 .card-inner {
@@ -1342,7 +1342,6 @@ body {
   transform-style: preserve-3d;
 }
 
-/* 3. The Flip Trigger */
 .work-card.flipped .card-inner {
   transform: rotateY(180deg);
 }
@@ -1353,11 +1352,34 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Important: hides the side you aren't looking at */
-  border-radius: 12px;
+  backface-visibility: hidden;
+  border-radius: var(--radius-16);
 }
 
-/* 4. Back Side Styling (Plain Eerie Black) */
+/* FRONT SIDE FIXES */
+.card-front .card-banner {
+  height: 100%;
+  margin-bottom: 0;
+  overflow: hidden;
+  border-radius: var(--radius-16);
+}
+
+.card-front .card-content {
+  position: absolute;
+  /* This creates the "half-off" look */
+  bottom: -50px; 
+  left: 20px;
+  right: 20px;
+  width: auto;
+  background-color: var(--eerie-black);
+  padding: 25px;
+  border-radius: var(--radius-16);
+  /* Adding the shadow back */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+  z-index: 2;
+}
+
+/* BACK SIDE FIXES */
 .card-back {
   background-color: var(--eerie-black);
   transform: rotateY(180deg);
@@ -1367,36 +1389,24 @@ body {
   align-items: center;
   padding: 30px;
   text-align: center;
-  border: 1px solid var(--white); /* Subtle border for visibility */
+  border: 1px solid var(--oxford-blue-2);
+  /* Match the shadow on the back too */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
 }
 
 .back-list {
   margin-block: 20px;
   color: var(--cadet-blue-creyola);
+  font-family: var(--ff-mulish);
   font-size: var(--fs-6);
-  line-height: 1.8;
+  line-height: 1.6;
+  list-style: none;
 }
 
 .flip-back-link {
   margin-top: 15px;
-  color: var(--white);
+  color: var(--sonic-silver);
   text-decoration: underline;
-  font-size: 1.2rem;
   cursor: pointer;
+  font-size: 1.2rem;
 }
-
-/* Ensure the image banner still fills the front correctly */
-.card-front .card-banner {
-  height: 100%;
-  margin-bottom: 0;
-}
-
-/* Adjust front content position to match your original design */
-.card-front .card-content {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-}
-
