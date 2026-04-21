@@ -34,6 +34,17 @@ toggleBtn.addEventListener("click", function () {
 });
 
 
+const navbarLinks = document.querySelectorAll(".navbar-link");
+
+navbarLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    // This removes the 'active' class from your navbar and toggle button
+    document.querySelector("[data-navbar]").classList.remove("active");
+    document.querySelector("[data-nav-toggler]").classList.remove("active");
+  });
+});
+
+
 
 
 const navbar = document.querySelector("[data-navbar]");
