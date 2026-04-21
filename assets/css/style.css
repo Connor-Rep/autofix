@@ -1427,3 +1427,15 @@ body {
   color: var(--international-orange-engineering); /* Your theme's red/orange */
   text-decoration: none;
 }
+
+/* When flipped, hide the front side completely so it can't block clicks */
+.work-card.flipped .card-front {
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0s linear 0.4s; /* Matches half the flip duration */
+}
+
+.work-card.flipped .card-back {
+  pointer-events: all;
+  visibility: visible;
+}
