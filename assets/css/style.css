@@ -1453,7 +1453,7 @@ body {
 .service-card {
   position: relative; /* Container for the absolute overlay */
   overflow: hidden;   /* Clips the overlay when it's "down" */
-  background-color: var(--oxford-blue-3);
+  background-color: var(--eerie-black);
   padding: 40px 20px;
   border-radius: 8px; /* Optional: matches your theme */
   height: 100%;
