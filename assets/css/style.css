@@ -1394,7 +1394,7 @@ body {
   align-items: center;
   padding: 30px;
   text-align: center;
-  border: 1px solid var(--oxford-blue-2);
+  border: 1px solid var(--international-orange-engineering);
   border-radius: var(--radius-16);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
   /* Ensures nothing covers the back content */
