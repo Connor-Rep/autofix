@@ -1518,32 +1518,35 @@ body {
 
 
 
-/* Mobile adjustments for the Service Card and Overlay */
+/* Mobile adjustments for Service Card height and Overlay size */
 @media (max-width: 575px) {
-  
-  /* Makes the card itself slightly shorter and less wide */
-  .service-list li {
-    padding-inline: 15px; /* Adds space around the card so it's not full-width */
-  }
 
+  /* Reduce the overall height of the front card */
   .service-card {
-    min-height: 350px; /* Adjust this value to your preferred height */
-    padding: 30px 15px;
+    min-height: 300px; /* Adjusted from 350px to be even shorter */
+    padding: 20px 15px;
   }
 
-  /* Centers the text in the overlay ONLY on mobile */
+  /* Make the overlay smaller so it doesn't take up the whole card height */
   .card-overlay {
-    justify-content: center; /* Vertically centers the paragraph */
-    align-items: center;     /* Horizontally centers the paragraph */
-    text-align: center;
-    padding: 40px 20px;
+    height: 80%;      /* Overlay only covers 80% of the card */
+    top: 100%;        /* Starts hidden below */
+    border-radius: 15px 15px 0 0; /* Optional: rounds the top corners of the back */
   }
 
+  /* When active, slide it up to the bottom, leaving a gap at the top */
+  .card-overlay.active {
+    top: 20%;         /* Slides up to leave 20% of the front card visible at the top */
+  }
+
+  /* Ensure text stays centered and fits in the smaller space */
   .overlay-content {
     text-align: center;
+    padding-top: 10px;
   }
 
   .overlay-content p {
-    font-size: 1.4rem; /* Slightly smaller text for smaller screens */
+    font-size: 1.3rem; /* Slightly smaller font to ensure it fits */
+    line-height: 1.4;
   }
 }
