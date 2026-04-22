@@ -1462,19 +1462,38 @@ body {
 
 .card-overlay {
   position: absolute;
-  top: 100%; /* Keeps it hidden until 'active' class is added */
+  top: 100%; 
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100%; /* Ensures the overlay matches the card's height */
   background-color: var(--eerie-black); 
   color: var(--white);
+  
+  /* Layout and Alignment */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Start text at top for easier reading */
-  align-items: flex-start;
-  padding: 50px 25px 25px; /* Top padding to avoid the 'X' button */
+  justify-content: flex-start; /* Aligns text to the top to prepare for scrolling */
+  align-items: flex-start; 
+  
+  /* Scrolling Logic */
+  overflow-y: auto; /* Enables the vertical scrollbar when content is too long */
+  padding: 50px 30px 30px; 
   transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 5;
+}
+
+/* Custom Scrollbar Styling (Optional) */
+.card-overlay::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-overlay::-webkit-scrollbar-thumb {
+  background-color: var(--international-orange-engineering);
+  border-radius: 10px;
+}
+
+.card-overlay::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .card-overlay.active {
