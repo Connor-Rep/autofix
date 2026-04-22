@@ -1593,3 +1593,15 @@ body {
   background-color: var(--international-orange-engineering);
   border-radius: 10px;
 }
+
+/* Specific alignment for the Brake Repair card overlay (2nd card) */
+.service-list li:nth-child(2) .card-overlay {
+  align-items: center;    /* Horizontally centers the content */
+  justify-content: center; /* Vertically centers the content */
+  text-align: center;      /* Centers the text lines */
+}
+
+/* Ensure the inner paragraph container also centers its text */
+.service-list li:nth-child(2) .overlay-content {
+  text-align: center;
+}
