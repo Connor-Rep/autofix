@@ -1050,38 +1050,6 @@ body {
 }
 
 
-
-/* --- Special Query for Squashed Desktop Views (like Desktop-on-Mobile) --- */
-@media (min-width: 992px) and (max-width: 1199px) {
-
-  /* Slightly reduce the overall desktop section padding */
-  .section { --section-padding: 60px; }
-
-  /* Ensure the grid doesn't squash too much */
-  .service-list {
-    grid-template-columns: 1fr 1fr; /* Stay 2-column if needed, rather than 3 */
-    gap: 20px;
-  }
-
-  /* Shrink the text on the back of the card so it fits the narrow desktop container */
-  .overlay-content p {
-    font-size: 1.4rem; /* Reduced from 1.8rem to match the phone font size */
-    line-height: 1.5;
-  }
-
-  /* Reduce the spacing above and below the paragraph */
-  .overlay-content .h3 { margin-block-end: 10px; }
-  .overlay-content { padding-block: 20px; }
-}
-
-
-
-
-
-
-
-
-
 /**
  * responsive for large than 1200px screen
  */
