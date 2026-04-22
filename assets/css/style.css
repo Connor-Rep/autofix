@@ -1467,28 +1467,60 @@ body {
 }
 
 .card-overlay {
-  position: absolute;
-  top: 100%; 
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--eerie-black); /* Dark grey back */
-  color: var(--white);
-  
-  /* Re-formatting the internal layout of the back (Image 0) */
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center the list vertically in the card */
-  align-items: flex-start; /* IMPORTANT: Align bullet text to the left */
-  
-  padding: 40px 30px; /* Give the back content some breathing room from the edge */
-  transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 5;
+  justify-content: flex-start; /* Changed from center to start for better reading */
+  align-items: flex-start;
+  padding: 60px 25px 30px; /* Extra top padding to clear the 'X' button */
 }
 
 .card-overlay.active {
   top: 0;
 }
+
+
+
+
+
+
+.overlay-content {
+  text-align: left;
+  width: 100%;
+}
+
+.overlay-content .h3 {
+  margin-block-end: 15px;
+  color: var(--international-orange-engineering); /* Adds a pop of color to the title */
+  font-size: var(--fs-4);
+}
+
+.overlay-content p {
+  color: var(--white);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-family: var(--ff-mulish);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .close-overlay {
   position: absolute;
