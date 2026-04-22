@@ -1449,41 +1449,39 @@ body {
 
 
 
-/* --- Updated SERVICE CARD OVERLAY SYSTEM --- */
+/* --- UPDATED SERVICE CARD OVERLAY SYSTEM --- */
 
 .service-card {
-  position: relative; 
-  overflow: hidden;   
-  background-color: var(--black); /* Matches image 1 */
+  position: relative;
+  overflow: hidden;
+  background-color: var(--black);
   padding: 40px 20px;
   border-radius: 8px;
   height: 100%;
-  
-  /* Image 1 FIX: Center everything on the front of the card */
+  /* Front Centering Fix */
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   text-align: center;
 }
 
 .card-overlay {
   position: absolute;
-  top: 100%; 
+  top: 100%;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--eerie-black); /* Dark grey back */
+  background-color: var(--eerie-black);
   color: var(--white);
-  
-  /* Re-formatting the internal layout of the back (Image 0) */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center the list vertically in the card */
-  align-items: flex-start; /* IMPORTANT: Align bullet text to the left */
-  
-  padding: 40px 30px; /* Give the back content some breathing room from the edge */
+  padding: 40px 30px;
   transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 5;
+  
+  /* Layout for the back content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically centers the list */
+  align-items: flex-start; /* Aligns list to the left side */
 }
 
 .card-overlay.active {
@@ -1494,33 +1492,32 @@ body {
   position: absolute;
   top: 15px;
   right: 15px;
-  color: var(--international-orange-engineering); /* Red 'X' from image */
+  color: var(--international-orange-engineering);
   font-size: 2.2rem;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-/* Image 0 FIX: Fixing the list alignment and bullets */
+/* FIX FOR IMAGE 0: The "All over the place" text */
 .overlay-list {
-  /* Force bullets to show and place them inside the layout flow */
+  width: 100%;
   list-style-type: disc !important; 
-  list-style-position: inside !important;
-  
-  padding-inline-start: 10px; /* Minor offset for bullet alignment */
-  width: 100%; /* Ensure the list spans the card width for proper alignment */
-  text-align: left; /* Bullet text should be left-aligned */
-  font-size: 1.6rem; /* Adjusting font size for better readability on the back */
+  padding-inline-start: 25px; /* Creates space for the bullets */
+  text-align: left;
 }
 
 .overlay-list li {
   color: var(--white);
-  margin-block-end: 12px; /* Add spacing between the bullet points */
+  font-size: 1.6rem;
+  margin-block-end: 12px;
   
-  /* Image 0 FIX: Ensure text stays put and doesn't wander across the card */
+  /* CRITICAL: Overrides the global 'display: block' from your reset */
   display: list-item !important; 
-  padding: 0 !important; 
-  margin-left: 0 !important;
+  text-align: left;
 }
 
-
+/* If you have spans inside your list items, they must be inline */
+.overlay-list li span {
+  display: inline !important; 
+}
