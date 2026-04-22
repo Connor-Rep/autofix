@@ -1454,12 +1454,10 @@ body {
 .service-card {
   position: relative; 
   overflow: hidden;   
-  background-color: var(--black); /* Matches image 1 */
+  background-color: var(--black); 
   padding: 40px 20px;
   border-radius: 8px;
   height: 100%;
-  
-  /* Image 1 FIX: Center everything on the front of the card */
   display: flex;
   flex-direction: column;
   align-items: center; 
@@ -1467,22 +1465,27 @@ body {
 }
 
 .card-overlay {
+  position: absolute;
+  top: 100%; /* Keeps it hidden until 'active' class is added */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--eerie-black); 
+  color: var(--white);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Changed from center to start for better reading */
+  justify-content: flex-start; /* Start text at top for easier reading */
   align-items: flex-start;
-  padding: 60px 25px 30px; /* Extra top padding to clear the 'X' button */
+  padding: 50px 25px 25px; /* Top padding to avoid the 'X' button */
+  transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
 }
 
 .card-overlay.active {
-  top: 0;
+  top: 0; /* Slides up when Read More is clicked */
 }
 
-
-
-
-
-
+/* New paragraph formatting */
 .overlay-content {
   text-align: left;
   width: 100%;
@@ -1490,67 +1493,25 @@ body {
 
 .overlay-content .h3 {
   margin-block-end: 15px;
-  color: var(--international-orange-engineering); /* Adds a pop of color to the title */
+  color: var(--international-orange-engineering);
   font-size: var(--fs-4);
 }
 
 .overlay-content p {
-  color: var(--white);
   font-size: 1.5rem;
   line-height: 1.6;
+  color: var(--white);
   font-family: var(--ff-mulish);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .close-overlay {
   position: absolute;
   top: 15px;
   right: 15px;
-  color: var(--international-orange-engineering); /* Red 'X' from image */
+  color: var(--international-orange-engineering);
   font-size: 2.2rem;
   background: none;
   border: none;
   cursor: pointer;
-}
-
-/* Image 0 FIX: Fixing the list alignment and bullets */
-.overlay-list {
-  /* Force bullets to show and place them inside the layout flow */
-  list-style-type: disc !important; 
-  list-style-position: inside !important;
-  
-  padding-inline-start: 10px; /* Minor offset for bullet alignment */
-  width: 100%; /* Ensure the list spans the card width for proper alignment */
-  text-align: left; /* Bullet text should be left-aligned */
-  font-size: 1.6rem; /* Adjusting font size for better readability on the back */
-}
-
-.overlay-list li {
-  color: var(--white);
-  margin-block-end: 12px; /* Add spacing between the bullet points */
-  
-  /* Image 0 FIX: Ensure text stays put and doesn't wander across the card */
-  display: list-item !important; 
-  padding: 0 !important; 
-  margin-left: 0 !important;
+  z-index: 10;
 }
