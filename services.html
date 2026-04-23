@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services - SafeTay Auto</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Mulish&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@40,600,0,0" />
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <style>
+    /* Custom spacing for the dedicated services grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 80px 30px; /* Large vertical gap to account for the "half-off" card content */
+      padding-block: 60px;
+    }
+
+    @media (min-width: 768px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1200px) {
+      .services-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    /* Styling the icons to fit inside the flip cards */
+    .card-front .card-icon-overlay {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--international-orange-engineering);
+      padding: 10px;
+      border-radius: var(--radius-circle);
+      width: 60px;
+      height: 60px;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+
+    .card-front .card-icon-overlay img {
+      width: 35px;
+      filter: brightness(0) invert(1); /* Makes icons white */
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="./assets/images/logo.png" width="128" height="63" alt="autofix home">
+      </a>
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+          <li><a href="index.html#home" class="navbar-link">Home</a></li>
+          <li><a href="services.html" class="navbar-link">Services</a></li>
+          <li><a href="index.html#about" class="navbar-link">About</a></li>
+          <li><a href="index.html#membership" class="navbar-link">Membership</a></li>
+          <li><a href="index.html#contact" class="navbar-link">Contact Us</a></li>
+        </ul>
+      </nav>
+      <a href="index.html#contact" class="btn btn-primary">
+        <span class="span">Get a Quote</span>
+        <span class="material-symbols-rounded">arrow_forward</span>
+      </a>
+      <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
+        <span class="nav-toggle-icon icon-1"></span>
+        <span class="nav-toggle-icon icon-2"></span>
+        <span class="nav-toggle-icon icon-3"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <section class="hero has-bg-image" style="background-image: url('./assets/images/hero-bg.jpg'); padding-block: 150px 80px;">
+        <div class="container">
+          <div class="hero-content" style="max-width: 100%; text-align: center;">
+            <p class="section-subtitle :dark">Expertise You Can Trust</p>
+            <h1 class="h1 section-title">Our Professional Services</h1>
+          </div>
+        </div>
+      </section>
+
+      <section class="section work" style="background-color: #000;">
+        <div class="container">
+          
+          <ul class="services-grid">
+
+            <li class="service-item">
+              <div class="work-card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-icon-overlay">
+                        <img src="./assets/images/services-1.png" alt="Engine">
+                    </div>
+                    <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
+                      <img src="./assets/images/work-1.jpg" width="350" height="406" loading="lazy" class="img-cover">
+                    </figure>
+                    <div class="card-content">
+                      <p class="card-subtitle">Maintenance</p>
+                      <h3 class="h3 card-title">Engine Diagnostics</h3>
+                      <button class="card-btn flip-trigger"><span class="material-symbols-rounded">arrow_forward</span></button>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <h3 class="h3 card-title">Engine Support</h3>
+                    <ul class="back-list">
+                      <li>Full Computer Diagnostics</li>
+                      <li>Timing Belt & Chain Service</li>
+                      <li>Spark Plug Replacement</li>
+                      <li>Oil Leak Investigations</li>
+                    </ul>
+                    <button class="btn btn-primary"><span class="span">Book Now</span></button>
+                    <button class="flip-back-link">Return to Overview</button>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="work-card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-icon-overlay">
+                        <img src="./assets/images/services-2.png" alt="Brakes">
+                    </div>
+                    <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
+                      <img src="./assets/images/work-2.jpg" width="350" height="406" loading="lazy" class="img-cover">
+                    </figure>
+                    <div class="card-content">
+                      <p class="card-subtitle">Safety</p>
+                      <h3 class="h3 card-title">Brake Systems</h3>
+                      <button class="card-btn flip-trigger"><span class="material-symbols-rounded">arrow_forward</span></button>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <h3 class="h3 card-title">Brake Services</h3>
+                    <ul class="back-list">
+                      <li>Pad & Disc Replacement</li>
+                      <li>Brake Fluid Flush</li>
+                      <li>ABS System Repair</li>
+                      <li>Handbrake Adjustments</li>
+                    </ul>
+                    <button class="btn btn-primary"><span class="span">Book Now</span></button>
+                    <button class="flip-back-link">Return to Overview</button>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="work-card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-icon-overlay">
+                        <img src="./assets/images/services-6.png" alt="Detailing">
+                    </div>
+                    <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
+                      <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" class="img-cover">
+                    </figure>
+                    <div class="card-content">
+                      <p class="card-subtitle">Detailing</p>
+                      <h3 class="h3 card-title">Full Exterior Detail</h3>
+                      <button class="card-btn flip-trigger"><span class="material-symbols-rounded">arrow_forward</span></button>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <h3 class="h3 card-title">What's Included</h3>
+                    <ul class="back-list">
+                      <li>Multi-Stage Decontamination</li>
+                      <li>Machine Polish & Buff</li>
+                      <li>Clay Bar Treatment</li>
+                      <li>Ceramic Coating Application</li>
+                    </ul>
+                    <button class="btn btn-primary"><span class="span">Book Now</span></button>
+                    <button class="flip-back-link">Return to Overview</button>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top section">
+      <div class="container">
+        <div class="footer-brand">
+          <a href="#" class="logo"><img src="./assets/images/logo.png" width="128" height="63" alt="autofix home"></a>
+          <p class="footer-text">Find our Socials below:</p>
+          <ul class="social-list">
+            <li><a href="#" class="social-link"><img src="./assets/images/facebook.svg" alt="facebook"></a></li>
+            <li><a href="#" class="social-link"><img src="./assets/images/instagram.svg" alt="instagram"></a></li>
+            <li><a href="#" class="social-link"><img src="./assets/images/twitter.svg" alt="twitter"></a></li>
+          </ul>
+        </div>
+        <ul class="footer-list">
+          <li><p class="h3">Opening Hours</p></li>
+          <li><p class="p">Mon – Fri: 11:00 – 19:30</p></li>
+          <li><p class="p">Sat – Sun: 11:00 - 17:00</p></li>
+        </ul>
+        <ul class="footer-list">
+          <li><p class="h3">Contact Info</p></li>
+          <li><a href="tel:+44" class="footer-link"><span class="material-symbols-rounded">call</span><span class="span">+44</span></a></li>
+          <li><address class="footer-link address"><span class="material-symbols-rounded">location_on</span><span class="span">Blairgowrie</span></address></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">SafeTay © 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>
