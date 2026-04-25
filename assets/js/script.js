@@ -11,35 +11,28 @@ const packageContent = document.querySelector("#package-content");
 // 1. Reveal Packages Logic
 if (viewBtn && packageIntro && packageContent) {
   viewBtn.addEventListener("click", function () {
+    // We just toggle classes; CSS handles the smooth height growth
     packageIntro.classList.add("fade-out");
-
+    packageContent.classList.remove("hidden");
+    
+    // Tiny delay ensures the 'active' transition triggers properly
     setTimeout(() => {
-      packageIntro.style.display = "none";
-      packageContent.classList.remove("hidden");
-      
-      setTimeout(() => {
-        packageContent.classList.add("active");
-      }, 50);
-    }, 500); // Matches the 0.5s intro fade-out in CSS
+      packageContent.classList.add("active");
+    }, 10);
   });
 }
 
 // 2. Back to Overview Logic (Reverse)
 if (backBtn && packageIntro && packageContent) {
   backBtn.addEventListener("click", function () {
-    // Start by sliding the cards back down/fading out
+    // Reverse the classes
     packageContent.classList.remove("active");
-
-    // Wait for the card transition (800ms per CSS) before swapping visibility
+    
+    // Wait slightly for the cards to start sliding down before showing intro
     setTimeout(() => {
       packageContent.classList.add("hidden");
-      packageIntro.style.display = "block";
-      
-      // Small delay to ensure display:block has rendered before fading in
-      setTimeout(() => {
-        packageIntro.classList.remove("fade-out");
-      }, 50);
-    }, 800); 
+      packageIntro.classList.remove("fade-out");
+    }, 300); 
   });
 }
 
