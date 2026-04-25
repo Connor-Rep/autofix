@@ -41,6 +41,7 @@ if (backBtn && packageIntro && packageContent) {
       }, 50);
     }, 800); 
   });
+}
 
 /**
  * PACKAGE CARD FLIP LOGIC
