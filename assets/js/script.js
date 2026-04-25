@@ -45,17 +45,40 @@ navbarLinks.forEach(link => {
 
 
 /**
- * MEMBERSHIP CARD FLIP LOGIC
+ * PACKAGE REVEAL LOGIC
  */
+const viewBtn = document.querySelector("#view-packages-btn");
+const packageIntro = document.querySelector("#package-intro");
+const packageContent = document.querySelector("#package-content");
 
-// Ensure this block is at the very bottom of script (1).js
+if (viewBtn) {
+  viewBtn.addEventListener("click", function () {
+    // 1. Fade out the intro
+    packageIntro.classList.add("fade-out");
+
+    // 2. Wait for fade out, then swap visibility and trigger slide-in
+    setTimeout(() => {
+      packageIntro.style.display = "none";
+      packageContent.classList.remove("hidden");
+      
+      // Small timeout to ensure display:block has rendered before adding active class
+      setTimeout(() => {
+        packageContent.classList.add("active");
+      }, 50);
+    }, 500);
+  });
+}
+
+/**
+ * PACKAGE CARD FLIP LOGIC (Previously Membership Card Flip)
+ */
 const flipTriggers = document.querySelectorAll(".flip-trigger");
-const backTriggers = document.querySelectorAll(".flip-back-link"); // Must match the HTML class
+const backTriggers = document.querySelectorAll(".flip-back-link");
 
 flipTriggers.forEach(btn => {
   btn.addEventListener("click", function(e) {
     e.preventDefault();
-    e.stopPropagation(); // Prevents the click from bubbling up
+    e.stopPropagation();
     this.closest(".work-card").classList.add("flipped");
   });
 });
@@ -66,16 +89,6 @@ backTriggers.forEach(btn => {
     e.stopPropagation();
     this.closest(".work-card").classList.remove("flipped");
   });
-});
-
-
-
-const navbar = document.querySelector("[data-navbar]");
-const navToggler = document.querySelector("[data-nav-toggler]");
-
-navToggler.addEventListener("click", function () {
-  navbar.classList.toggle("active");
-  this.classList.toggle("active");
 });
 
 
