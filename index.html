@@ -401,394 +401,91 @@
 
 
 
-      <section class="section work" aria-labelledby="work-label" id="membership">
+      <section class="section work" aria-labelledby="package-label" id="packages">
   <div class="container">
+    <p class="section-subtitle :dark" id="package-label">Packages</p>
+    <h2 class="h2 section-title">Our Service Packages</h2>
 
-    <p class="section-subtitle :dark" id="work-label">Membership</p>
-
-    <h2 class="h2 section-title">Our Membership Options</h2>
-
-    <div style="display: flex; justify-content: center; margin-block-end: 30px;">
-      <button class="btn btn-primary" id="membership-toggle" data-state="maintenance">
-        <span class="span">Show Detailing Memberships</span>
+    <div class="package-intro" id="package-intro">
+      <p class="section-text">
+        We believe in proactive care rather than reactive repairs. Our tailored packages are designed 
+        to provide your vehicle with consistent attention, ensuring peak performance and 
+        preserving its value. By bundling our professional maintenance and detailing expertise, 
+        we offer you a seamless experience that keeps your car in showroom condition year-round.
+      </p>
+      <button class="btn btn-primary" id="view-packages-btn">
+        <span class="span">View Packages</span>
+        <span class="material-symbols-rounded">expand_more</span>
       </button>
     </div>
 
-    <ul class="has-scrollbar" id="membership-list">
+    <div class="package-content hidden" id="package-content">
+      <ul class="has-scrollbar" id="package-list">
+        
+        <li class="scrollbar-item">
+          <div class="work-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
+                  <img src="./assets/images/work-1.jpg" width="350" height="406" loading="lazy" alt="Package" class="img-cover">
+                </figure>
+                <div class="card-content">
+                  <p class="card-subtitle">Maintenance</p>
+                  <h3 class="h3 card-title">Essential Tier</h3>
+                  <button class="card-btn flip-trigger" aria-label="Flip Card">
+                    <span class="material-symbols-rounded">arrow_forward</span>
+                  </button>
+                </div>
+              </div>
+              <div class="card-back">
+                <h3 class="h3 card-title">What's Included</h3>
+                <ul class="back-list">
+                  <li>Full Engine Health Check</li>
+                  <li>Oil & Filter Replacement</li>
+                  <li>Fluid Level Top-ups</li>
+                  <li>Brake & Tire Inspection</li>
+                </ul>
+                <button class="btn btn-primary"><span class="span">Subscribe Now</span></button>
+                <button class="flip-back-link">Return to Overview</button>
+              </div>
+            </div>
+          </div>
+        </li>
 
+        <li class="scrollbar-item">
+          <div class="work-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
+                  <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" alt="Package" class="img-cover">
+                </figure>
+                <div class="card-content">
+                  <p class="card-subtitle">Detailing</p>
+                  <h3 class="h3 card-title">Interior & Exterior</h3>
+                  <button class="card-btn flip-trigger" aria-label="Flip Card">
+                    <span class="material-symbols-rounded">arrow_forward</span>
+                  </button>
+                </div>
+              </div>
+              <div class="card-back">
+                <h3 class="h3 card-title">What's Included</h3>
+                <ul class="back-list">
+                  <li>Full Interior Vacuum</li>
+                  <li>Upholstery Steam Clean</li>
+                  <li>Exterior Wax & Polish</li>
+                  <li>Wheel Deep Clean</li>
+                </ul>
+                <button class="btn btn-primary"><span class="span">Subscribe Now</span></button>
+                <button class="flip-back-link">Return to Overview</button>
+              </div>
+            </div>
+          </div>
+        </li>
 
-      <!-- 
-        - #Maintenance
-      -->
-
-
-      <li class="scrollbar-item maintenance-item">
-        <div class="work-card">
-  <div class="card-inner">
-
-    <div class="card-front">
-      <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-        <img src="./assets/images/work-1.jpg" width="350" height="406" loading="lazy" alt="Membership" class="img-cover">
-      </figure>
-
-      <div class="card-content">
-        <p class="card-subtitle">Essential Tier</p>
-        <h3 class="h3 card-title">Full Annual Service</h3>
-        <button class="card-btn flip-trigger" aria-label="Flip Card">
-          <span class="material-symbols-rounded">arrow_forward</span>
-        </button>
-      </div>
+        </ul>
     </div>
-
-    <div class="card-back">
-      <h3 class="h3 card-title">What's Included</h3>
-      <ul class="back-list">
-        <li>Full Engine Health Check</li>
-        <li>Oil & Filter Replacement</li>
-        <li>Fluid Level Top-ups</li>
-        <li>Brake & Tire Inspection</li>
-      </ul>
-      
-      <button class="btn btn-primary">
-        <span class="span">Subscribe Now</span>
-      </button>
-
-      <button class="flip-back-link">Return to Overview</button>
-    </div>
-
-  </div>
-</div>
-      </li>
-
-
-      <li class="scrollbar-item maintenance-item">
-        <div class="work-card">
-  <div class="card-inner">
-
-    <div class="card-front">
-      <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-        <img src="./assets/images/work-1.jpg" width="350" height="406" loading="lazy" alt="Membership" class="img-cover">
-      </figure>
-
-      <div class="card-content">
-        <p class="card-subtitle">Advanced Tier</p>
-        <h3 class="h3 card-title">Full Bi-Annual Service</h3>
-        <button class="card-btn flip-trigger" aria-label="Flip Card">
-          <span class="material-symbols-rounded">arrow_forward</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="card-back">
-      <h3 class="h3 card-title">What's Included</h3>
-      <ul class="back-list">
-        <li>Full Engine Health Check</li>
-        <li>Oil & Filter Replacement</li>
-        <li>Fluid Level Top-ups</li>
-        <li>Brake & Tire Inspection</li>
-      </ul>
-      
-      <button class="btn btn-primary">
-        <span class="span">Subscribe Now</span>
-      </button>
-
-      <button class="flip-back-link">Return to Overview</button>
-    </div>
-
-  </div>
-</div>
-      </li>
-
-
-      <li class="scrollbar-item maintenance-item">
-        <div class="work-card">
-  <div class="card-inner">
-
-    <div class="card-front">
-      <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-        <img src="./assets/images/work-1.jpg" width="350" height="406" loading="lazy" alt="Membership" class="img-cover">
-      </figure>
-
-      <div class="card-content">
-        <p class="card-subtitle">Premium Tier</p>
-        <h3 class="h3 card-title">Full Quarterly Service</h3>
-        <button class="card-btn flip-trigger" aria-label="Flip Card">
-          <span class="material-symbols-rounded">arrow_forward</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="card-back">
-      <h3 class="h3 card-title">What's Included</h3>
-      <ul class="back-list">
-        <li>Full Engine Health Check</li>
-        <li>Oil & Filter Replacement</li>
-        <li>Fluid Level Top-ups</li>
-        <li>Brake & Tire Inspection</li>
-      </ul>
-      
-      <button class="btn btn-primary">
-        <span class="span">Subscribe Now</span>
-      </button>
-
-      <button class="flip-back-link">Return to Overview</button>
-    </div>
-
-  </div>
-</div>
-      </li>
-
-
-
-      <li class="scrollbar-item maintenance-item">
-        <div class="work-card">
-  <div class="card-inner">
-
-    <div class="card-front">
-      <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-        <img src="./assets/images/work-1.jpg" width="350" height="406" loading="lazy" alt="Membership" class="img-cover">
-      </figure>
-
-      <div class="card-content">
-        <p class="card-subtitle">Elite Tier</p>
-        <h3 class="h3 card-title">Monthly Inspection / Service</h3>
-        <button class="card-btn flip-trigger" aria-label="Flip Card">
-          <span class="material-symbols-rounded">arrow_forward</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="card-back">
-      <h3 class="h3 card-title">What's Included</h3>
-      <ul class="back-list">
-        <li>Full Engine Health Check</li>
-        <li>Oil & Filter Replacement</li>
-        <li>Fluid Level Top-ups</li>
-        <li>Brake & Tire Inspection</li>
-      </ul>
-      
-      <button class="btn btn-primary">
-        <span class="span">Subscribe Now</span>
-      </button>
-
-      <button class="flip-back-link">Return to Overview</button>
-    </div>
-
-  </div>
-</div>
-      </li>
-
-
-
-<!-- 
-        - #Detailing
-      -->
-
-
-      <li class="scrollbar-item detailing-item hidden">
-        <div class="work-card">
-  <div class="card-inner">
-
-    <div class="card-front">
-      <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-        <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" alt="Membership" class="img-cover">
-      </figure>
-
-      <div class="card-content">
-        <p class="card-subtitle">Essential Tier</p>
-        <h3 class="h3 card-title">Annual Interior & Exterior Detail</h3>
-        <button class="card-btn flip-trigger" aria-label="Flip Card">
-          <span class="material-symbols-rounded">arrow_forward</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="card-back">
-      <h3 class="h3 card-title">What's Included</h3>
-      <ul class="back-list">
-        <li>Cleaning</li>
-        <li>More Cleaning</li>
-        <li>Even More Cleaning</li>
-        <li>And even more</li>
-      </ul>
-      
-      <button class="btn btn-primary">
-        <span class="span">Subscribe Now</span>
-      </button>
-
-      <button class="flip-back-link">Return to Overview</button>
-    </div>
-
-  </div>
-</div>
-      </li>
-
-
-
-      <li class="scrollbar-item detailing-item hidden">
-        <div class="work-card">
-  <div class="card-inner">
-
-    <div class="card-front">
-      <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-        <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" alt="Membership" class="img-cover">
-      </figure>
-
-      <div class="card-content">
-        <p class="card-subtitle">Standard Tier</p>
-        <h3 class="h3 card-title">Bi-Annual Interior & Exterior Detail</h3>
-        <button class="card-btn flip-trigger" aria-label="Flip Card">
-          <span class="material-symbols-rounded">arrow_forward</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="card-back">
-      <h3 class="h3 card-title">What's Included</h3>
-      <ul class="back-list">
-        <li>Cleaning</li>
-        <li>More Cleaning</li>
-        <li>Even More Cleaning</li>
-        <li>And even more</li>
-      </ul>
-      
-      <button class="btn btn-primary">
-        <span class="span">Subscribe Now</span>
-      </button>
-
-      <button class="flip-back-link">Return to Overview</button>
-    </div>
-
-  </div>
-</div>
-      </li>
-
-
-
-
-      <li class="scrollbar-item detailing-item hidden">
-        <div class="work-card">
-  <div class="card-inner">
-
-    <div class="card-front">
-      <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-        <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" alt="Membership" class="img-cover">
-      </figure>
-
-      <div class="card-content">
-        <p class="card-subtitle">Advanced Tier</p>
-        <h3 class="h3 card-title">Quarterly Interior & Exterior Detail</h3>
-        <button class="card-btn flip-trigger" aria-label="Flip Card">
-          <span class="material-symbols-rounded">arrow_forward</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="card-back">
-      <h3 class="h3 card-title">What's Included</h3>
-      <ul class="back-list">
-        <li>Cleaning</li>
-        <li>More Cleaning</li>
-        <li>Even More Cleaning</li>
-        <li>And even more</li>
-      </ul>
-      
-      <button class="btn btn-primary">
-        <span class="span">Subscribe Now</span>
-      </button>
-
-      <button class="flip-back-link">Return to Overview</button>
-    </div>
-
-  </div>
-</div>
-      </li>
-
-
-      <li class="scrollbar-item detailing-item hidden">
-        <div class="work-card">
-  <div class="card-inner">
-
-    <div class="card-front">
-      <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-        <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" alt="Membership" class="img-cover">
-      </figure>
-
-      <div class="card-content">
-        <p class="card-subtitle">Fast Premium Tier</p>
-        <h3 class="h3 card-title">Monthly Exterior Detail</h3>
-        <button class="card-btn flip-trigger" aria-label="Flip Card">
-          <span class="material-symbols-rounded">arrow_forward</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="card-back">
-      <h3 class="h3 card-title">What's Included</h3>
-      <ul class="back-list">
-        <li>Cleaning</li>
-        <li>More Cleaning</li>
-        <li>Even More Cleaning</li>
-        <li>And even more</li>
-      </ul>
-      
-      <button class="btn btn-primary">
-        <span class="span">Subscribe Now</span>
-      </button>
-
-      <button class="flip-back-link">Return to Overview</button>
-    </div>
-
-  </div>
-</div>
-      </li>
-
-
-
-      <li class="scrollbar-item detailing-item hidden">
-        <div class="work-card">
-  <div class="card-inner">
-
-    <div class="card-front">
-      <figure class="card-banner img-holder" style="--width: 350; --height: 406;">
-        <img src="./assets/images/work-3.jpg" width="350" height="406" loading="lazy" alt="Membership" class="img-cover">
-      </figure>
-
-      <div class="card-content">
-        <p class="card-subtitle">Premium Tier</p>
-        <h3 class="h3 card-title">Monthly Interior & Exterior Detail</h3>
-        <button class="card-btn flip-trigger" aria-label="Flip Card">
-          <span class="material-symbols-rounded">arrow_forward</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="card-back">
-      <h3 class="h3 card-title">What's Included</h3>
-      <ul class="back-list">
-        <li>Cleaning</li>
-        <li>More Cleaning</li>
-        <li>Even More Cleaning</li>
-        <li>And even more</li>
-      </ul>
-      
-      <button class="btn btn-primary">
-        <span class="span">Subscribe Now</span>
-      </button>
-
-      <button class="flip-back-link">Return to Overview</button>
-    </div>
-
-  </div>
-</div>
-      </li>
-
-
-      
-      </ul>
   </div>
 </section>
-      
     </article>
   </main>
 
