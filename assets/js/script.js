@@ -1,6 +1,40 @@
 'use strict';
 
 /**
+ * NAVBAR TOGGLE & HEADER SCROLL
+ */
+const navbar = document.querySelector("[data-navbar]");
+const navTogglers = document.querySelectorAll("[data-nav-toggler]");
+const navbarLinks = document.querySelectorAll(".navbar-link");
+const header = document.querySelector(".header");
+
+// Toggle navbar on mobile
+navTogglers.forEach(toggler => {
+  toggler.addEventListener("click", function () {
+    navbar.classList.toggle("active");
+    this.classList.toggle("active");
+  });
+});
+
+// Close navbar when a link is clicked (essential for smooth feel on mobile)
+navbarLinks.forEach(link => {
+  link.addEventListener("click", function () {
+    navbar.classList.remove("active");
+    navTogglers.forEach(t => t.classList.remove("active"));
+  });
+});
+
+// Add 'active' class to header on scroll
+window.addEventListener("scroll", function () {
+  if (window.scrollY >= 100) {
+    header.classList.add("active");
+  } else {
+    header.classList.remove("active");
+  }
+});
+
+
+/**
  * PACKAGE REVEAL & REVERSE LOGIC
  */
 const viewBtn = document.querySelector("#view-packages-btn");
@@ -8,31 +42,29 @@ const backBtn = document.querySelector("#back-to-intro-btn");
 const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 
-// 1. Reveal Packages Logic
 if (viewBtn && packageIntro && packageContent) {
   viewBtn.addEventListener("click", function () {
-    // We just toggle classes; CSS handles the smooth height growth
     packageIntro.classList.add("fade-out");
-    packageContent.classList.remove("hidden");
-    
-    // Tiny delay ensures the 'active' transition triggers properly
     setTimeout(() => {
-      packageContent.classList.add("active");
-    }, 10);
+      packageIntro.style.display = "none";
+      packageContent.classList.remove("hidden");
+      setTimeout(() => {
+        packageContent.classList.add("active");
+      }, 50);
+    }, 500);
   });
 }
 
-// 2. Back to Overview Logic (Reverse)
 if (backBtn && packageIntro && packageContent) {
   backBtn.addEventListener("click", function () {
-    // Reverse the classes
     packageContent.classList.remove("active");
-    
-    // Wait slightly for the cards to start sliding down before showing intro
     setTimeout(() => {
       packageContent.classList.add("hidden");
-      packageIntro.classList.remove("fade-out");
-    }, 300); 
+      packageIntro.style.display = "block";
+      setTimeout(() => {
+        packageIntro.classList.remove("fade-out");
+      }, 50);
+    }, 800); 
   });
 }
 
@@ -76,14 +108,3 @@ serviceCloseBtns.forEach(btn => {
     this.closest(".card-overlay").classList.remove("active");
   });
 });
-
-
-
-
-
-
-
-
-
-
-
