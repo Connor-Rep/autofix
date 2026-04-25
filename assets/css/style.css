@@ -1605,3 +1605,61 @@ body {
 .service-list li:nth-child(2) .overlay-content {
   text-align: center;
 }
+
+
+
+
+
+
+
+/* --- PACKAGE SECTION UPDATES --- */
+
+.package-intro {
+  text-align: center;
+  max-width: 700px;
+  margin-inline: auto;
+  margin-block-end: 40px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.package-intro .section-text {
+  margin-block-end: 30px;
+  color: var(--white);
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+.package-intro .btn {
+  margin-inline: auto;
+}
+
+/* Modern Transition Logic */
+.package-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block; /* Overrides none from hidden to allow transition */
+}
+
+.package-content.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.package-content.hidden {
+  display: none;
+}
+
+.package-intro.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+/* Adjusting padding for the section now that it has more content */
+#packages {
+  padding-block-end: 180px;
+  background-color: #000000;
+}
+
+
