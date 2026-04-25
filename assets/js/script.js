@@ -1,47 +1,29 @@
 'use strict';
 
 /**
- * MOBILE NAVBAR TOGGLE
+ * PACKAGE REVEAL LOGIC
  */
+const viewBtn = document.querySelector("#view-packages-btn");
+const packageIntro = document.querySelector("#package-intro");
+const packageContent = document.querySelector("#package-content");
 
+if (viewBtn && packageIntro && packageContent) {
+  viewBtn.addEventListener("click", function () {
+    // 1. Fade out the intro
+    packageIntro.classList.add("fade-out");
 
-const toggleBtn = document.querySelector("#membership-toggle");
-const mtnItems = document.querySelectorAll(".maintenance-item");
-const dtlItems = document.querySelectorAll(".detailing-item");
-const btnText = toggleBtn.querySelector(".span");
-
-toggleBtn.addEventListener("click", function () {
-  // Check the current state
-  const isMaintenance = toggleBtn.getAttribute("data-state") === "maintenance";
-
-  if (isMaintenance) {
-    // Switch to Detailing view
-    mtnItems.forEach(item => item.classList.add("hidden"));
-    dtlItems.forEach(item => item.classList.remove("hidden"));
-    
-    btnText.textContent = "Show Maintenance Memberships";
-    toggleBtn.setAttribute("data-state", "detailing");
-  } else {
-    // Switch to Maintenance view
-    dtlItems.forEach(item => item.classList.add("hidden"));
-    mtnItems.forEach(item => item.classList.remove("hidden"));
-    
-    btnText.textContent = "Show Detailing Memberships";
-    toggleBtn.setAttribute("data-state", "maintenance");
-  }
-});
-
-
-const navbarLinks = document.querySelectorAll(".navbar-link");
-
-navbarLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    // This removes the 'active' class from your navbar and toggle button
-    document.querySelector("[data-navbar]").classList.remove("active");
-    document.querySelector("[data-nav-toggler]").classList.remove("active");
+    // 2. Wait for fade out (500ms matches CSS), then show content
+    setTimeout(() => {
+      packageIntro.style.display = "none";
+      packageContent.classList.remove("hidden");
+      
+      // Allow a tiny delay for the slide-in animation to trigger
+      setTimeout(() => {
+        packageContent.classList.add("active");
+      }, 50);
+    }, 500);
   });
-});
-
+}
 
 
 /**
