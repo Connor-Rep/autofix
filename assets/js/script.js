@@ -1,27 +1,45 @@
 'use strict';
 
 /**
- * PACKAGE REVEAL LOGIC
+ * PACKAGE REVEAL & REVERSE LOGIC
  */
 const viewBtn = document.querySelector("#view-packages-btn");
+const backBtn = document.querySelector("#back-to-intro-btn");
 const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 
+// 1. Reveal Packages Logic
 if (viewBtn && packageIntro && packageContent) {
   viewBtn.addEventListener("click", function () {
-    // 1. Fade out the intro
     packageIntro.classList.add("fade-out");
 
-    // 2. Wait for fade out (500ms matches CSS), then show content
     setTimeout(() => {
       packageIntro.style.display = "none";
       packageContent.classList.remove("hidden");
       
-      // Allow a tiny delay for the slide-in animation to trigger
       setTimeout(() => {
         packageContent.classList.add("active");
       }, 50);
-    }, 500);
+    }, 500); // Matches the 0.5s intro fade-out in CSS
+  });
+}
+
+// 2. Back to Overview Logic (Reverse)
+if (backBtn && packageIntro && packageContent) {
+  backBtn.addEventListener("click", function () {
+    // Start by sliding the cards back down/fading out
+    packageContent.classList.remove("active");
+
+    // Wait for the card transition (800ms per CSS) before swapping visibility
+    setTimeout(() => {
+      packageContent.classList.add("hidden");
+      packageIntro.style.display = "block";
+      
+      // Small delay to ensure display:block has rendered before fading in
+      setTimeout(() => {
+        packageIntro.classList.remove("fade-out");
+      }, 50);
+    }, 800); 
   });
 }
 
