@@ -99,44 +99,42 @@ serviceCloseBtns.forEach(btn => {
 
 
 /**
- * SMOOTH SCROLLING FOR NAVBAR LINKS
+ * GLOBAL SMOOTH SCROLLING
  */
-const navbarLinks = document.querySelectorAll('.navbar-link');
+// Targets every link that starts with a "#"
+const allLinks = document.querySelectorAll('a[href^="#"]');
 
-navbarLinks.forEach(link => {
+allLinks.forEach(link => {
   link.addEventListener('click', function (e) {
-    // Get the target section ID from the href attribute (e.g., "#services")
     const targetId = this.getAttribute('href');
 
-    // Make sure it's an internal link
-    if (targetId && targetId.startsWith('#')) {
-      const targetSection = document.querySelector(targetId);
+    // Skip links that are just "#" (like your "Get a Quote" buttons currently)
+    if (targetId === '#' || targetId === '') return;
 
-      if (targetSection) {
-        // Prevent the default instant snap behavior
-        e.preventDefault();
+    const targetSection = document.querySelector(targetId);
 
-        // Smoothly scroll to the target section
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start' // Aligns the top of the section with the top of the viewport
-        });
+    if (targetSection) {
+      e.preventDefault(); // Stop the instant snap
 
-        // Close the mobile navbar if it's open
-        const navbar = document.querySelector('[data-navbar]');
-        const navToggler = document.querySelector('[data-nav-toggler]');
-        if (navbar && navbar.classList.contains('active')) {
-          navbar.classList.remove('active');
-          navToggler.classList.remove('active');
-        }
+      // Smoothly glide to the section
+      targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+      // Automatically close mobile menu if it's open
+      const navbar = document.querySelector("[data-navbar]");
+      const navToggler = document.querySelector("[data-nav-toggler]");
+      if (navbar?.classList.contains("active")) {
+        navbar.classList.remove("active");
+        navToggler.classList.remove("active");
       }
     }
   });
 });
 
-
 /**
- * MOBILE NAVBAR TOGGLE
+ * MOBILE NAVBAR TOGGLE (Explicit Logic)
  */
 const navbar = document.querySelector("[data-navbar]");
 const navToggler = document.querySelector("[data-nav-toggler]");
