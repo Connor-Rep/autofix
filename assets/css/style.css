@@ -284,8 +284,8 @@ body {
 }
 
 .scrollbar-item {
-  min-width: 100%;
-  scroll-snap-align: start;
+  min-width: 100%; /* Card takes full width on mobile */
+  scroll-snap-align: center;
 }
 
 .has-scrollbar::-webkit-scrollbar { height: 16px; }
@@ -1610,8 +1610,8 @@ body {
 .package-window {
   position: relative;
   /* Change this to allow a tiny bit of vertical overflow if needed */
-  overflow-x: hidden; 
-  overflow-y: clip; 
+  overflow-y: clip;
+  overflow-x: visible; /* Allows the scrollbar to be visible */
   transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
@@ -1670,7 +1670,27 @@ body {
 /* Ensure cards are centered within the scrollbar list */
 .package-content .has-scrollbar {
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  width: 100%;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-block-end: 20px;
+  padding-inline: 20px; /* Essential: gives space before the first card */
+  
+  /* Use flex-start by default for mobile to prevent the "left-side cut-off" */
+  justify-content: flex-start; 
+}
+
+/* On Desktop/Large screens where cards fit, we can center them */
+@media (min-width: 992px) {
+  .package-content .has-scrollbar {
+    justify-content: center;
+    overflow-x: visible;
+    padding-inline: 0;
+  }
+}
+
+@media (min-width: 575px) {
+  .scrollbar-item {
+    min-width: 320px; /* Fixed width for tablets/desktop */
+  }
 }
