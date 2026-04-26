@@ -1,70 +1,55 @@
 'use strict';
 
-/**
- * NAVBAR TOGGLE & HEADER SCROLL
- */
-const navbar = document.querySelector("[data-navbar]");
-const navTogglers = document.querySelectorAll("[data-nav-toggler]");
-const navbarLinks = document.querySelectorAll(".navbar-link");
-const header = document.querySelector(".header");
-
-// Toggle navbar on mobile
-navTogglers.forEach(toggler => {
-  toggler.addEventListener("click", function () {
-    navbar.classList.toggle("active");
-    this.classList.toggle("active");
-  });
-});
-
-// Close navbar when a link is clicked (essential for smooth feel on mobile)
-navbarLinks.forEach(link => {
-  link.addEventListener("click", function () {
-    navbar.classList.remove("active");
-    navTogglers.forEach(t => t.classList.remove("active"));
-  });
-});
-
-// Add 'active' class to header on scroll
-window.addEventListener("scroll", function () {
-  if (window.scrollY >= 100) {
-    header.classList.add("active");
-  } else {
-    header.classList.remove("active");
-  }
-});
-
-
-/**
- * PACKAGE REVEAL & REVERSE LOGIC
- */
 const viewBtn = document.querySelector("#view-packages-btn");
 const backBtn = document.querySelector("#back-to-intro-btn");
 const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
+const packageWindow = document.querySelector(".package-window");
 
-if (viewBtn && packageIntro && packageContent) {
+// Helper function to handle height animation
+function updateWindowHeight(element) {
+  const height = element.offsetHeight;
+  packageWindow.style.height = height + "px";
+}
+
+// 1. Reveal Packages
+if (viewBtn) {
   viewBtn.addEventListener("click", function () {
+    // Set initial height so it doesn't snap when intro starts fading
+    updateWindowHeight(packageIntro);
+    
     packageIntro.classList.add("fade-out");
+
     setTimeout(() => {
-      packageIntro.style.display = "none";
+      packageIntro.classList.add("hidden");
       packageContent.classList.remove("hidden");
+      
+      // Calculate new height of the cards and animate the background
+      updateWindowHeight(packageContent);
+
       setTimeout(() => {
         packageContent.classList.add("active");
       }, 50);
-    }, 500);
+    }, 500); 
   });
 }
 
-if (backBtn && packageIntro && packageContent) {
+// 2. Back to Overview
+if (backBtn) {
   backBtn.addEventListener("click", function () {
     packageContent.classList.remove("active");
+
     setTimeout(() => {
       packageContent.classList.add("hidden");
-      packageIntro.style.display = "block";
+      packageIntro.classList.remove("hidden");
+      
+      // Animate background back down to intro text size
+      updateWindowHeight(packageIntro);
+
       setTimeout(() => {
         packageIntro.classList.remove("fade-out");
       }, 50);
-    }, 800); 
+    }, 600); 
   });
 }
 
