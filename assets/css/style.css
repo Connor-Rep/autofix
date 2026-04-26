@@ -1607,15 +1607,19 @@ body {
 
 /* --- PACKAGE SECTION UPDATES --- */
 
-.package-intro {
-  text-align: center;
-  max-width: 700px;
-  margin-inline: auto;
-  margin-block-end: 40px;
-  /* Add max-height for smooth growth/shrink */
-  max-height: 1000px; 
-  overflow: hidden;
-  transition: opacity 0.5s ease, max-height 0.6s ease-in-out, margin 0.6s ease;
+
+.package-window {
+  position: relative;
+  overflow: hidden; /* Clips content while background is growing */
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 150px; /* Adjust based on your intro text height */
+}
+
+
+.package-intro, 
+.package-content {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  width: 100%;
 }
 
 .package-intro .section-text {
@@ -1629,20 +1633,14 @@ body {
   margin-inline: auto;
 }
 
-/* Modern Transition Logic */
 .package-content {
   opacity: 0;
   transform: translateY(30px);
-  max-height: 0; /* Start at 0 height */
-  overflow: hidden;
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.8s ease-in-out;
 }
 
 .package-content.active {
   opacity: 1;
   transform: translateY(0);
-  max-height: 2000px; /* A value large enough to hold your cards */
-  pointer-events: auto;
 }
 
 /* Remove the display: none logic and use max-height instead */
@@ -1653,11 +1651,9 @@ body {
   pointer-events: none;
 }
 
-/* When the intro fades out, we also shrink its height to 0 */
 .package-intro.fade-out {
   opacity: 0;
-  max-height: 0;
-  margin-block-end: 0;
+  transform: translateY(-20px);
   pointer-events: none;
 }
 
@@ -1666,5 +1662,8 @@ body {
   padding-block-end: 180px;
   background-color: #000000;
 }
+
+/* We still use hidden for display:none, but JS will manage it carefully */
+.hidden { display: none; }
 
 
