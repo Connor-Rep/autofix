@@ -1,85 +1,38 @@
 'use strict';
 
-/**
- * SELECTORS
- */
-const navbar = document.querySelector("[data-navbar]");
-const navToggler = document.querySelector("[data-nav-toggler]");
-const navbarLinks = document.querySelectorAll(".navbar-link");
-
 const viewBtn = document.querySelector("#view-packages-btn");
 const backBtn = document.querySelector("#back-to-intro-btn");
 const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 const packageWindow = document.querySelector(".package-window");
 
-
 /**
- * 1. MOBILE MENU TOGGLE
- */
-if (navToggler && navbar) {
-  navToggler.addEventListener("click", function () {
-    navbar.classList.toggle("active");
-    this.classList.toggle("active");
-  });
-}
-
-
-/**
- * 2. GLOBAL SMOOTH SCROLL (Fixes Desktop Snapping)
- */
-navbarLinks.forEach(link => {
-  link.addEventListener("click", function (e) {
-    const targetId = this.getAttribute("href");
-
-    // Only run if it's a link to a section on the same page (starts with #)
-    if (targetId && targetId.startsWith("#") && targetId !== "#") {
-      const targetSection = document.querySelector(targetId);
-
-      if (targetSection) {
-        e.preventDefault(); // Stop the instant snap
-
-        // Calculate position
-        const targetPosition = targetSection.offsetTop;
-
-        // Smooth scroll via JS (most reliable for desktop)
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "smooth"
-        });
-
-        // Close mobile menu after clicking a link
-        if (navbar.classList.contains("active")) {
-          navbar.classList.remove("active");
-          navToggler.classList.remove("active");
-        }
-      }
-    }
-  });
-});
-
-
-/**
- * 3. PACKAGE SECTION LOGIC
+ * Helper: Updates background height to match target element
  */
 function updateHeight(element) {
-  if (!packageWindow || !element) return;
-  const buffer = 20; // Prevents cutting off shadows/buttons
-  packageWindow.style.height = (element.scrollHeight + buffer) + "px";
+  packageWindow.style.height = element.scrollHeight + "px";
 }
 
+// 1. Reveal Packages
 if (viewBtn) {
   viewBtn.addEventListener("click", function () {
+    // Fade out intro and bring in cards simultaneously
     packageIntro.classList.add("fade-out");
     packageContent.classList.remove("hidden");
+    
+    // Animate background growth
     updateHeight(packageContent);
   });
 }
 
+// 2. Back to Overview (The Reverse)
 if (backBtn) {
   backBtn.addEventListener("click", function () {
+    // Fade out cards and bring back intro simultaneously
     packageContent.classList.add("hidden");
     packageIntro.classList.remove("fade-out");
+    
+    // Animate background shrinking
     updateHeight(packageIntro);
   });
 }
@@ -91,7 +44,19 @@ window.addEventListener('load', () => {
 
 
 /**
- * 4. CARD INTERACTION LOGIC (Flip & Overlay)
+ * Helper: Updates background height with a small buffer
+ */
+function updateHeight(element) {
+  // Adding 20px buffer prevents buttons/shadows from being cut off
+  const buffer = 20; 
+  packageWindow.style.height = (element.scrollHeight + buffer) + "px";
+}
+
+
+
+
+/**
+ * PACKAGE CARD FLIP LOGIC
  */
 const flipTriggers = document.querySelectorAll(".flip-trigger");
 const backTriggers = document.querySelectorAll(".flip-back-link");
@@ -112,6 +77,9 @@ backTriggers.forEach(btn => {
   });
 });
 
+/**
+ * SERVICE CARD OVERLAY LOGIC
+ */
 const serviceReadMoreBtns = document.querySelectorAll(".service-read-more");
 const serviceCloseBtns = document.querySelectorAll(".close-overlay");
 
@@ -127,3 +95,55 @@ serviceCloseBtns.forEach(btn => {
     this.closest(".card-overlay").classList.remove("active");
   });
 });
+
+
+
+/**
+ * SMOOTH SCROLLING FOR NAVBAR LINKS
+ */
+const navbarLinks = document.querySelectorAll('.navbar-link');
+
+navbarLinks.forEach(link => {
+  link.addEventListener('click', function (e) {
+    // Get the target section ID from the href attribute (e.g., "#services")
+    const targetId = this.getAttribute('href');
+
+    // Make sure it's an internal link
+    if (targetId && targetId.startsWith('#')) {
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        // Prevent the default instant snap behavior
+        e.preventDefault();
+
+        // Smoothly scroll to the target section
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start' // Aligns the top of the section with the top of the viewport
+        });
+
+        // Close the mobile navbar if it's open
+        const navbar = document.querySelector('[data-navbar]');
+        const navToggler = document.querySelector('[data-nav-toggler]');
+        if (navbar && navbar.classList.contains('active')) {
+          navbar.classList.remove('active');
+          navToggler.classList.remove('active');
+        }
+      }
+    }
+  });
+});
+
+
+/**
+ * MOBILE NAVBAR TOGGLE
+ */
+const navbar = document.querySelector("[data-navbar]");
+const navToggler = document.querySelector("[data-nav-toggler]");
+
+if (navbar && navToggler) {
+  navToggler.addEventListener("click", function () {
+    navbar.classList.toggle("active");
+    this.classList.toggle("active");
+  });
+}
