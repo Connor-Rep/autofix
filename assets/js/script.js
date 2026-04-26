@@ -1,38 +1,85 @@
 'use strict';
 
+/**
+ * SELECTORS
+ */
+const navbar = document.querySelector("[data-navbar]");
+const navToggler = document.querySelector("[data-nav-toggler]");
+const navbarLinks = document.querySelectorAll(".navbar-link");
+
 const viewBtn = document.querySelector("#view-packages-btn");
 const backBtn = document.querySelector("#back-to-intro-btn");
 const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 const packageWindow = document.querySelector(".package-window");
 
+
 /**
- * Helper: Updates background height to match target element
+ * 1. MOBILE MENU TOGGLE
  */
-function updateHeight(element) {
-  packageWindow.style.height = element.scrollHeight + "px";
+if (navToggler && navbar) {
+  navToggler.addEventListener("click", function () {
+    navbar.classList.toggle("active");
+    this.classList.toggle("active");
+  });
 }
 
-// 1. Reveal Packages
+
+/**
+ * 2. GLOBAL SMOOTH SCROLL (Fixes Desktop Snapping)
+ */
+navbarLinks.forEach(link => {
+  link.addEventListener("click", function (e) {
+    const targetId = this.getAttribute("href");
+
+    // Only run if it's a link to a section on the same page (starts with #)
+    if (targetId && targetId.startsWith("#") && targetId !== "#") {
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        e.preventDefault(); // Stop the instant snap
+
+        // Calculate position
+        const targetPosition = targetSection.offsetTop;
+
+        // Smooth scroll via JS (most reliable for desktop)
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth"
+        });
+
+        // Close mobile menu after clicking a link
+        if (navbar.classList.contains("active")) {
+          navbar.classList.remove("active");
+          navToggler.classList.remove("active");
+        }
+      }
+    }
+  });
+});
+
+
+/**
+ * 3. PACKAGE SECTION LOGIC
+ */
+function updateHeight(element) {
+  if (!packageWindow || !element) return;
+  const buffer = 20; // Prevents cutting off shadows/buttons
+  packageWindow.style.height = (element.scrollHeight + buffer) + "px";
+}
+
 if (viewBtn) {
   viewBtn.addEventListener("click", function () {
-    // Fade out intro and bring in cards simultaneously
     packageIntro.classList.add("fade-out");
     packageContent.classList.remove("hidden");
-    
-    // Animate background growth
     updateHeight(packageContent);
   });
 }
 
-// 2. Back to Overview (The Reverse)
 if (backBtn) {
   backBtn.addEventListener("click", function () {
-    // Fade out cards and bring back intro simultaneously
     packageContent.classList.add("hidden");
     packageIntro.classList.remove("fade-out");
-    
-    // Animate background shrinking
     updateHeight(packageIntro);
   });
 }
@@ -44,19 +91,7 @@ window.addEventListener('load', () => {
 
 
 /**
- * Helper: Updates background height with a small buffer
- */
-function updateHeight(element) {
-  // Adding 20px buffer prevents buttons/shadows from being cut off
-  const buffer = 20; 
-  packageWindow.style.height = (element.scrollHeight + buffer) + "px";
-}
-
-
-
-
-/**
- * PACKAGE CARD FLIP LOGIC
+ * 4. CARD INTERACTION LOGIC (Flip & Overlay)
  */
 const flipTriggers = document.querySelectorAll(".flip-trigger");
 const backTriggers = document.querySelectorAll(".flip-back-link");
@@ -77,9 +112,6 @@ backTriggers.forEach(btn => {
   });
 });
 
-/**
- * SERVICE CARD OVERLAY LOGIC
- */
 const serviceReadMoreBtns = document.querySelectorAll(".service-read-more");
 const serviceCloseBtns = document.querySelectorAll(".close-overlay");
 
@@ -95,57 +127,3 @@ serviceCloseBtns.forEach(btn => {
     this.closest(".card-overlay").classList.remove("active");
   });
 });
-
-
-
-/**
- * GLOBAL SMOOTH SCROLLING
- */
-// Targets every link that starts with a "#"
-const allLinks = document.querySelectorAll('a[href^="#"]');
-
-allLinks.forEach(link => {
-  link.addEventListener('click', function (e) {
-    const targetId = this.getAttribute('href');
-
-    // Skip links that are just "#" (like your "Get a Quote" buttons currently)
-    if (targetId === '#' || targetId === '') return;
-
-    const targetSection = document.querySelector(targetId);
-
-    if (targetSection) {
-      e.preventDefault(); // Stop the instant snap
-
-      // Smoothly glide to the section
-      targetSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-
-      // Automatically close mobile menu if it's open
-      const navbar = document.querySelector("[data-navbar]");
-      const navToggler = document.querySelector("[data-nav-toggler]");
-      if (navbar?.classList.contains("active")) {
-        navbar.classList.remove("active");
-        navToggler.classList.remove("active");
-      }
-    }
-  });
-});
-
-/**
- * MOBILE NAVBAR TOGGLE (Explicit Logic)
- */
-const navbar = document.querySelector("[data-navbar]");
-const navToggler = document.querySelector("[data-nav-toggler]");
-
-if (navbar && navToggler) {
-  navToggler.addEventListener("click", function () {
-    navbar.classList.toggle("active");
-    this.classList.toggle("active");
-  });
-}
-
-
-
-
