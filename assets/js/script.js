@@ -16,12 +16,16 @@ function updateHeight(element) {
 // 1. Reveal Packages
 if (viewBtn) {
   viewBtn.addEventListener("click", function () {
-    // Fade out intro and bring in cards simultaneously
     packageIntro.classList.add("fade-out");
-    packageContent.classList.remove("hidden");
     
-    // Animate background growth
-    updateHeight(packageContent);
+    // We remove hidden immediately so the browser can layout the cards
+    packageContent.classList.remove("hidden");
+
+    // Small delay allows the browser to calculate the mobile layout correctly
+    setTimeout(() => {
+      updateHeight(packageContent);
+      packageContent.classList.add("active");
+    }, 10);
   });
 }
 
