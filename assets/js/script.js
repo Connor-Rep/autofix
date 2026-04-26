@@ -43,6 +43,15 @@ window.addEventListener('load', () => {
 });
 
 
+/**
+ * Helper: Updates background height with a small buffer
+ */
+function updateHeight(element) {
+  // Adding 20px buffer prevents buttons/shadows from being cut off
+  const buffer = 20; 
+  packageWindow.style.height = (element.scrollHeight + buffer) + "px";
+}
+
 
 
 
