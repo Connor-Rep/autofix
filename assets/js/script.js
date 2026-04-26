@@ -6,40 +6,18 @@ const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 const packageWindow = document.querySelector(".package-window");
 
-// Helper to set height accurately
-function setWindowHeight(element) {
-  // We temporarily make it relative to get its true height
-  const originalPosition = element.style.position;
-  element.style.position = 'relative';
-  element.style.visibility = 'hidden';
-  element.classList.remove('hidden');
-  
-  const height = element.offsetHeight;
-  
-  // Reset styles
-  element.style.position = originalPosition;
-  element.style.visibility = '';
-  element.classList.add('hidden');
-  
-  packageWindow.style.height = height + "px";
-}
-
-// Initial height set on load
-window.addEventListener('load', () => {
-  if(packageIntro) packageWindow.style.height = packageIntro.offsetHeight + "px";
-});
-
 // 1. Reveal Packages
 if (viewBtn) {
   viewBtn.addEventListener("click", function () {
+    // Phase 1: Fade out Intro
     packageIntro.classList.add("fade-out");
 
     setTimeout(() => {
-      packageIntro.classList.add("hidden");
+      // Phase 2: Switch to Content
       packageContent.classList.remove("hidden");
       
-      // Grow the background
-      const newHeight = packageContent.scrollHeight; 
+      // Phase 3: Measure the cards and expand background
+      const newHeight = packageContent.scrollHeight;
       packageWindow.style.height = newHeight + "px";
 
       setTimeout(() => {
@@ -52,21 +30,25 @@ if (viewBtn) {
 // 2. Back to Overview
 if (backBtn) {
   backBtn.addEventListener("click", function () {
+    // Phase 1: Fade out Cards
     packageContent.classList.remove("active");
 
     setTimeout(() => {
+      // Phase 2: Switch back to Intro
       packageContent.classList.add("hidden");
-      packageIntro.classList.remove("hidden");
+      packageIntro.classList.remove("fade-out");
       
-      // Shrink the background back to intro size
-      packageWindow.style.height = packageIntro.scrollHeight + "px";
-
-      setTimeout(() => {
-        packageIntro.classList.remove("fade-out");
-      }, 50);
-    }, 600); 
+      // Phase 3: Measure intro and shrink background
+      const introHeight = packageIntro.scrollHeight;
+      packageWindow.style.height = introHeight + "px";
+    }, 500); 
   });
 }
+
+// Ensure the background fits the intro on page load
+window.addEventListener('load', () => {
+  if(packageIntro) packageWindow.style.height = packageIntro.offsetHeight + "px";
+});
 /**
  * PACKAGE CARD FLIP LOGIC
  */
