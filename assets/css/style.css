@@ -1610,15 +1610,28 @@ body {
 .package-window {
   position: relative;
   overflow: hidden;
-  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Increased from 0.6s to 1.5s for a much slower background growth */
+  transition: height 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
 }
 
-.package-intro, 
+.package-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the button and text horizontally */
+  text-align: center;   /* Centers the text lines */
+  max-width: 700px;
+  margin-inline: auto;
+  margin-block-end: 40px;
+  /* Increased from 0.5s to 1.2s to slow it down */
+  transition: opacity 1.2s ease, transform 1.2s ease, height 1.2s ease;
+}
+
 .package-content {
+  /* Increased to 1.2s to match the intro fade */
+  transition: opacity 1.2s ease, transform 1.2s ease;
   width: 100%;
-  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 /* HIDE THE CONTENT BY DEFAULT */
