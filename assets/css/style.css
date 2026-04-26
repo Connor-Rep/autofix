@@ -1733,3 +1733,10 @@ body {
   gap: 30px;
   width: 100%;
 }
+
+/* Fix: Start from the left on mobile so the first card isn't cut off */
+@media (max-width: 768px) {
+  .package-content .has-scrollbar {
+    justify-content: flex-start;
+  }
+}
