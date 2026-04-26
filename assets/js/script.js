@@ -6,45 +6,54 @@ const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 const packageWindow = document.querySelector(".package-window");
 
-// 1. Reveal Packages
+// Function to sync the background height to the visible content
+function syncHeight(element) {
+  packageWindow.style.height = element.scrollHeight + "px";
+}
+
+// 1. View Packages
 if (viewBtn) {
   viewBtn.addEventListener("click", function () {
+    // Start fading out intro
     packageIntro.classList.add("fade-out");
+    
+    // Immediately prepare content and start background growth
+    packageContent.classList.remove("hidden");
+    syncHeight(packageContent);
 
-    // Increased from 500 to 1200 (1.2 seconds) to match CSS
+    // Trigger the fade-in almost immediately
     setTimeout(() => {
-      packageIntro.classList.add("hidden");
-      packageContent.classList.remove("hidden");
-      
-      const newHeight = packageContent.scrollHeight;
-      packageWindow.style.height = newHeight + "px";
-
-      setTimeout(() => {
-        packageContent.classList.add("active");
-      }, 50);
-    }, 1200); 
+      packageContent.classList.add("active");
+    }, 10);
   });
 }
 
 // 2. Back to Overview
 if (backBtn) {
   backBtn.addEventListener("click", function () {
+    // Start fading out cards
     packageContent.classList.remove("active");
+    
+    // Immediately bring back intro and shrink background
+    packageIntro.classList.remove("fade-out");
+    syncHeight(packageIntro);
 
-    // Increased from 500 to 1200 (1.2 seconds) to match CSS
+    // Hide cards after the transition finishes (matching 1.2s CSS)
     setTimeout(() => {
       packageContent.classList.add("hidden");
-      packageIntro.classList.remove("fade-out");
-      
-      const introHeight = packageIntro.scrollHeight;
-      packageWindow.style.height = introHeight + "px";
-    }, 1200); 
+    }, 1200);
   });
 }
-// Ensure the background fits the intro on page load
+
+// Initialize height on load
 window.addEventListener('load', () => {
-  if(packageIntro) packageWindow.style.height = packageIntro.offsetHeight + "px";
+  if (packageIntro) syncHeight(packageIntro);
 });
+
+
+
+
+
 /**
  * PACKAGE CARD FLIP LOGIC
  */
