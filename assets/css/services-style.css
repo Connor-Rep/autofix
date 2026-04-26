@@ -1,0 +1,378 @@
+/*-----------------------------------*\
+  #services-style.css
+  Adapting styles from style.css for services.html layout
+\*-----------------------------------*/
+
+/* Standard variable reuse implicitly happens as style.css is linked */
+
+/* Custom layout elements */
+
+/* Header adaptations */
+.header .btn-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--ff-chakra-petch);
+  text-transform: uppercase;
+  color: var(--international-orange-engineering);
+  font-weight: var(--fw-700);
+}
+
+.header .btn-link .material-symbols-rounded {
+  font-size: 1.6rem;
+  transform: rotate(-90deg); /* Points left */
+}
+
+/* Services Hero Bubble */
+.service-hero {
+  padding-block: calc(var(--section-padding) + 40px) calc(var(--section-padding) / 2);
+  text-align: center;
+}
+
+.services-header-bubble {
+  background-color: var(--eerie-black);
+  padding: 40px 30px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow);
+  max-width: max-content;
+  margin-inline: auto;
+}
+
+.services-header-bubble .section-title {
+  margin-block-end: 0;
+}
+
+/* Services Search & Cards Bubble */
+.search-cards-bubble-section {
+  background-color: #000000;
+  padding-block: calc(var(--section-padding) / 2) var(--section-padding);
+}
+
+.search-cards-bubble {
+  background-color: var(--eerie-black);
+  padding: 40px 30px;
+  border-radius: 20px; /* Custom large rounding */
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Search Bar */
+.search-bar-container {
+  max-width: 500px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+#service-search {
+  background-color: #000000;
+  color: var(--white);
+  font-family: var(--ff-mulish);
+  padding: 15px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--international-orange-engineering);
+  width: 100%;
+  transition: var(--transition);
+}
+
+#service-search:focus {
+  outline: none;
+  border-color: var(--pastel-pink);
+  box-shadow: 0 0 10px rgba(1, 145, 230, 0.3); /* Reuse a hint of blue variable implicitly? Pastel pink used from variables */
+}
+
+/* Services Grid (Adapting grid-list for flex behavior with has-scrollbar) */
+.services-list.grid-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.scrollbar-item {
+  width: calc(33.33% - 13.33px); /* 3 columns with 20px gap */
+}
+
+/* Compact Card Styling */
+.compact-card {
+  height: 200px; /* Specific height for compact, longer look */
+  perspective: 1000px;
+  background-color: transparent !important;
+  overflow: visible !important;
+}
+
+.card-front, .card-back {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.compact-card .card-front {
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  height: 100%;
+}
+
+.compact-card .card-icon {
+  margin-inline: 0;
+  margin-block-end: 0;
+  flex-shrink: 0;
+}
+
+.compact-card .card-icon img {
+  width: 60px; /* Reduced icon size */
+  height: 60px;
+}
+
+.compact-card .card-title {
+  margin-block-end: 0;
+  font-size: 1.6rem;
+  text-align: left;
+}
+
+.compact-card .card-back {
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  height: 100%;
+  border: 1px solid var(--international-orange-engineering);
+  transform: rotateY(180deg);
+  visibility: hidden;
+  transition: visibility 0s linear 0.4s;
+}
+
+.work-card.flipped .compact-card .card-back {
+  visibility: visible;
+  transition: visibility 0s linear 0s;
+}
+
+.work-card.flipped .compact-card .card-front {
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0s linear 0.4s;
+}
+
+.compact-card .back-list {
+  display: none; /* Removed list for compact look */
+}
+
+.compact-card .btn-primary {
+  max-width: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+.compact-card .flip-back-link {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+/* Search Highlight Animation */
+@keyframes flashHighlight {
+  0% {
+    border-color: var(--international-orange-engineering);
+    box-shadow: 0 0 10px rgba(1, 145, 230, 0);
+  }
+  50% {
+    border-color: var(--white);
+    box-shadow: 0 0 20px var(--pastel-pink);
+  }
+  100% {
+    border-color: var(--international-orange-engineering);
+    box-shadow: 0 0 10px rgba(1, 145, 230, 0);
+  }
+}
+
+.compact-card .card-front.highlight {
+  animation: flashHighlight 1.5s ease-out;
+  border: 2px solid var(--pastel-pink); /* Strong final highlight border */
+}
+
+/* Revealing Form Section Adaptations */
+.form-window {
+  position: relative;
+  overflow: visible !important; /* Allow content to 'pull out' */
+  height: 0; /* Initially collapsed */
+  padding-block: 0 !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: height 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease, visibility 0.8s ease;
+  background-color: #000000;
+}
+
+.form-window:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+  padding-block: var(--section-padding) !important;
+  height: auto;
+}
+
+.form-content {
+  background-color: var(--eerie-black);
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.6); /* Shadow at top for pull-out effect */
+}
+
+.form-content .section-title {
+  color: var(--white);
+  margin-block-end: 40px;
+}
+
+.quote-form .form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-field.full-width {
+  grid-column: span 2;
+}
+
+.quote-form .label {
+  display: block;
+  font-family: var(--ff-chakra-petch);
+  font-weight: var(--fw-600);
+  text-transform: uppercase;
+  color: var(--cadet-blue-creyola);
+  margin-block-end: 8px;
+}
+
+.quote-form .input-field {
+  background-color: #000000;
+  color: var(--white);
+  font-family: var(--ff-mulish);
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  transition: var(--transition);
+}
+
+.quote-form .input-field:focus {
+  outline: none;
+  border-color: var(--international-orange-engineering);
+}
+
+.quote-form .input-field.textarea {
+  resize: vertical;
+  height: 120px;
+}
+
+.add-more-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.add-more-link {
+  color: var(--pastel-pink);
+  font-family: var(--ff-chakra-petch);
+  text-transform: uppercase;
+  font-weight: var(--fw-700);
+  width: max-content;
+  transition: var(--transition);
+}
+
+.add-more-link:is(:hover, :focus-visible) {
+  color: var(--international-orange-engineering);
+}
+
+.form-service-list {
+  background-color: #000000;
+  border: 1px solid var(--international-orange-engineering);
+  border-radius: 8px;
+  padding: 15px;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.form-service-list::-webkit-scrollbar { width: 5px; }
+
+.form-service-list::-webkit-scrollbar-thumb {
+  background-color: var(--international-orange-engineering);
+  border-radius: 10px;
+}
+
+.form-service-list.hidden {
+  display: none;
+}
+
+.service-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 8px;
+  cursor: pointer;
+}
+
+.service-list-item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.service-list-item:hover {
+  background-color: rgba(1, 145, 230, 0.1);
+}
+
+.service-list-item .material-symbols-rounded {
+  color: var(--cadet-blue-creyola);
+  font-size: 1.6rem;
+}
+
+.service-list-item.selected .material-symbols-rounded {
+  color: var(--international-orange-engineering);
+  font-variation-settings: 'FILL' 1;
+}
+
+.service-list-item-name {
+  font-family: var(--ff-mulish);
+  color: var(--white);
+}
+
+.quote-form .form-submit-btn {
+  margin-block-start: 40px;
+  margin-inline: auto;
+}
+
+/* Reusing shape animations explicitly */
+.shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Copy relevant media queries from style.css for grid control */
+
+@media (max-width: 991px) {
+  .scrollbar-item {
+    width: calc(50% - 10px); /* 2 columns */
+  }
+}
+
+@media (max-width: 574px) {
+  .scrollbar-item {
+    width: 100%; /* 1 column */
+  }
+
+  .quote-form .form-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field.full-width {
+    grid-column: span 1;
+  }
+}
