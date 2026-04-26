@@ -6,48 +6,40 @@ const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 const packageWindow = document.querySelector(".package-window");
 
-// Function to sync the background height to the visible content
-function syncHeight(element) {
+/**
+ * Helper: Updates background height to match target element
+ */
+function updateHeight(element) {
   packageWindow.style.height = element.scrollHeight + "px";
 }
 
-// 1. View Packages
+// 1. Reveal Packages
 if (viewBtn) {
   viewBtn.addEventListener("click", function () {
-    // Start fading out intro
+    // Fade out intro and bring in cards simultaneously
     packageIntro.classList.add("fade-out");
-    
-    // Immediately prepare content and start background growth
     packageContent.classList.remove("hidden");
-    syncHeight(packageContent);
-
-    // Trigger the fade-in almost immediately
-    setTimeout(() => {
-      packageContent.classList.add("active");
-    }, 10);
+    
+    // Animate background growth
+    updateHeight(packageContent);
   });
 }
 
-// 2. Back to Overview
+// 2. Back to Overview (The Reverse)
 if (backBtn) {
   backBtn.addEventListener("click", function () {
-    // Start fading out cards
-    packageContent.classList.remove("active");
-    
-    // Immediately bring back intro and shrink background
+    // Fade out cards and bring back intro simultaneously
+    packageContent.classList.add("hidden");
     packageIntro.classList.remove("fade-out");
-    syncHeight(packageIntro);
-
-    // Hide cards after the transition finishes (matching 1.2s CSS)
-    setTimeout(() => {
-      packageContent.classList.add("hidden");
-    }, 1200);
+    
+    // Animate background shrinking
+    updateHeight(packageIntro);
   });
 }
 
 // Initialize height on load
 window.addEventListener('load', () => {
-  if (packageIntro) syncHeight(packageIntro);
+  if (packageIntro) updateHeight(packageIntro);
 });
 
 
