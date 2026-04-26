@@ -6,26 +6,41 @@ const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 const packageWindow = document.querySelector(".package-window");
 
-// Helper function to handle height animation
-function updateWindowHeight(element) {
+// Helper to set height accurately
+function setWindowHeight(element) {
+  // We temporarily make it relative to get its true height
+  const originalPosition = element.style.position;
+  element.style.position = 'relative';
+  element.style.visibility = 'hidden';
+  element.classList.remove('hidden');
+  
   const height = element.offsetHeight;
+  
+  // Reset styles
+  element.style.position = originalPosition;
+  element.style.visibility = '';
+  element.classList.add('hidden');
+  
   packageWindow.style.height = height + "px";
 }
+
+// Initial height set on load
+window.addEventListener('load', () => {
+  if(packageIntro) packageWindow.style.height = packageIntro.offsetHeight + "px";
+});
 
 // 1. Reveal Packages
 if (viewBtn) {
   viewBtn.addEventListener("click", function () {
-    // Set initial height so it doesn't snap when intro starts fading
-    updateWindowHeight(packageIntro);
-    
     packageIntro.classList.add("fade-out");
 
     setTimeout(() => {
       packageIntro.classList.add("hidden");
       packageContent.classList.remove("hidden");
       
-      // Calculate new height of the cards and animate the background
-      updateWindowHeight(packageContent);
+      // Grow the background
+      const newHeight = packageContent.scrollHeight; 
+      packageWindow.style.height = newHeight + "px";
 
       setTimeout(() => {
         packageContent.classList.add("active");
@@ -43,8 +58,8 @@ if (backBtn) {
       packageContent.classList.add("hidden");
       packageIntro.classList.remove("hidden");
       
-      // Animate background back down to intro text size
-      updateWindowHeight(packageIntro);
+      // Shrink the background back to intro size
+      packageWindow.style.height = packageIntro.scrollHeight + "px";
 
       setTimeout(() => {
         packageIntro.classList.remove("fade-out");
@@ -52,7 +67,6 @@ if (backBtn) {
     }, 600); 
   });
 }
-
 /**
  * PACKAGE CARD FLIP LOGIC
  */
