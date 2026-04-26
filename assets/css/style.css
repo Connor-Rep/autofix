@@ -1510,35 +1510,83 @@ body {
 /* Mobile adjustments for Service Card height and Overlay size */
 @media (max-width: 575px) {
 
+  /* 1. Create the 2x2 Grid Layout */
+  .service-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px; /* Spacing between the columns/rows */
+  }
+
+  /* 2. Scale down the cards to fit nicely side-by-side */
   .service-card {
-    min-height: 300px; 
-    padding: 20px 15px;
+    min-height: 260px; 
+    padding: 20px 10px;
   }
 
+  /* Scale down the icons so they don't break out of the card */
+  .service-card .card-icon img {
+    width: 65px; 
+    height: auto;
+  }
+
+  .service-card .card-title {
+    font-size: 1.6rem;
+  }
+
+  /* 3. Setup the Side-Swipe Overlay Logic */
   .card-overlay {
-    /* Set height to 100% so it can cover the whole card if needed */
-    height: 100%;      
-    top: 100%;        
-    border-radius: 8px; /* Match the service-card radius */
+    height: 100%;
+    top: 0 !important; /* Force to top instead of starting at bottom */
+    border-radius: 8px;
+    /* Transition transform (X-axis) instead of top (Y-axis) */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; 
   }
 
-  /* Adjust this percentage to control how high the card slides up */
+  /* Left Column Cards (Items 1, 3) slide in from the Left */
+  .service-list li:nth-child(odd) .card-overlay {
+    transform: translateX(-100%);
+  }
+
+  /* Right Column Cards (Items 2, 4) slide in from the Right */
+  .service-list li:nth-child(even) .card-overlay {
+    transform: translateX(100%);
+  }
+
+  /* Exception: Because Item 5 (the car banner) is hidden on mobile, 
+     Item 6 shifts into the left column visually. 
+     We manually override it so it slides in from the left. */
+  .service-list li:nth-child(6) .card-overlay {
+    transform: translateX(-100%);
+  }
+
+  /* 4. When Read More is clicked (Active State) */
   .card-overlay.active {
-    top: 5%; /* Changed from 20% to 5% to make it start much higher up */
+    transform: translateX(0) !important; /* Slide to center */
   }
 
+  /* 5. Scale down the overlay text to fit the narrower cards */
   .overlay-content {
     text-align: center;
-    /* Add padding-top to move text down slightly if it's too close to the top */
-    padding-top: 20px; 
+    padding-top: 30px; /* Push text down to avoid overlapping the X button */
   }
 
   .overlay-content p {
-    font-size: 1.4rem; 
-    line-height: 1.5;
+    font-size: 1.2rem; 
+    line-height: 1.4;
+  }
+
+  .overlay-content .h3 {
+    font-size: 1.5rem;
+    margin-block-end: 10px;
+  }
+
+  /* Scale down the close button slightly */
+  .close-overlay {
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
   }
 }
-
 
 
 
