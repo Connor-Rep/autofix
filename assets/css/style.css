@@ -1609,15 +1609,15 @@ body {
 
 .package-window {
   position: relative;
-  overflow: hidden;
-  /* Adjust this time to make the background growth slower/faster */
+  /* Change this to allow a tiny bit of vertical overflow if needed */
+  overflow-x: hidden; 
+  overflow-y: clip; 
   transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.package-intro, 
 .package-content {
   width: 100%;
   /* Unified transition for fading and slight movement */
@@ -1626,6 +1626,17 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.package-intro {
+  width: 100%;
+  /* Unified transition for fading and slight movement */
+  transition: opacity 1.0s ease, transform 1.0s ease, visibility 1.0s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 10px; /* Gives the button extra room inside the calculation */
 }
 
 /* Base state for elements when they are hidden (both Intro and Cards) */
@@ -1649,6 +1660,11 @@ body {
   pointer-events: all;
   position: relative;
   transform: translateY(0);
+}
+
+/* Ensure the button itself doesn't have a margin that gets ignored by scrollHeight */
+#view-packages-btn {
+  margin-bottom: 5px;
 }
 
 /* Ensure cards are centered within the scrollbar list */
