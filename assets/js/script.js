@@ -1,56 +1,133 @@
 'use strict';
 
-/**
- * SELECTORS
- */
-const navbar = document.querySelector("[data-navbar]");
-const navToggler = document.querySelector("[data-nav-toggler]");
-const navbarLinks = document.querySelectorAll(".navbar-link");
-
-// Package Section Selectors
 const viewBtn = document.querySelector("#view-packages-btn");
 const backBtn = document.querySelector("#back-to-intro-btn");
 const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 const packageWindow = document.querySelector(".package-window");
 
-
 /**
- * 1. MOBILE MENU TOGGLE
+ * Helper: Updates background height to match target element
  */
-if (navToggler && navbar) {
-  navToggler.addEventListener("click", function () {
-    navbar.classList.toggle("active");
-    this.classList.toggle("active");
+function updateHeight(element) {
+  packageWindow.style.height = element.scrollHeight + "px";
+}
+
+// 1. Reveal Packages
+if (viewBtn) {
+  viewBtn.addEventListener("click", function () {
+    // Fade out intro and bring in cards simultaneously
+    packageIntro.classList.add("fade-out");
+    packageContent.classList.remove("hidden");
+    
+    // Animate background growth
+    updateHeight(packageContent);
   });
 }
 
+// 2. Back to Overview (The Reverse)
+if (backBtn) {
+  backBtn.addEventListener("click", function () {
+    // Fade out cards and bring back intro simultaneously
+    packageContent.classList.add("hidden");
+    packageIntro.classList.remove("fade-out");
+    
+    // Animate background shrinking
+    updateHeight(packageIntro);
+  });
+}
+
+// Initialize height on load
+window.addEventListener('load', () => {
+  if (packageIntro) updateHeight(packageIntro);
+});
+
 
 /**
- * 2. FORCED SMOOTH SCROLL (The Desktop Fix)
+ * Helper: Updates background height with a small buffer
  */
-navbarLinks.forEach(link => {
-  link.addEventListener("click", function (e) {
-    const href = this.getAttribute("href");
+function updateHeight(element) {
+  // Adding 20px buffer prevents buttons/shadows from being cut off
+  const buffer = 20; 
+  packageWindow.style.height = (element.scrollHeight + buffer) + "px";
+}
 
-    // Only run if the link starts with # (like #services)
-    if (href && href.startsWith("#") && href !== "#") {
-      const targetSection = document.querySelector(href);
+
+
+
+/**
+ * PACKAGE CARD FLIP LOGIC
+ */
+const flipTriggers = document.querySelectorAll(".flip-trigger");
+const backTriggers = document.querySelectorAll(".flip-back-link");
+
+flipTriggers.forEach(btn => {
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.closest(".work-card").classList.add("flipped");
+  });
+});
+
+backTriggers.forEach(btn => {
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.closest(".work-card").classList.remove("flipped");
+  });
+});
+
+/**
+ * SERVICE CARD OVERLAY LOGIC
+ */
+const serviceReadMoreBtns = document.querySelectorAll(".service-read-more");
+const serviceCloseBtns = document.querySelectorAll(".close-overlay");
+
+serviceReadMoreBtns.forEach(btn => {
+  btn.addEventListener("click", function() {
+    const overlay = this.closest(".service-card").querySelector(".card-overlay");
+    if (overlay) overlay.classList.add("active");
+  });
+});
+
+serviceCloseBtns.forEach(btn => {
+  btn.addEventListener("click", function() {
+    this.closest(".card-overlay").classList.remove("active");
+  });
+});
+
+
+
+/**
+ * SMOOTH SCROLLING FOR NAVBAR LINKS
+ */
+const navbarLinks = document.querySelectorAll('.navbar-link');
+
+navbarLinks.forEach(link => {
+  link.addEventListener('click', function (e) {
+    // Get the target section ID from the href attribute (e.g., "#services")
+    const targetId = this.getAttribute('href');
+
+    // Make sure it's an internal link
+    if (targetId && targetId.startsWith('#')) {
+      const targetSection = document.querySelector(targetId);
 
       if (targetSection) {
-        // Stop the browser from "snapping" instantly
+        // Prevent the default instant snap behavior
         e.preventDefault();
 
-        // Force a smooth scroll to the element's position
-        window.scrollTo({
-          top: targetSection.offsetTop,
-          behavior: "smooth"
+        // Smoothly scroll to the target section
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start' // Aligns the top of the section with the top of the viewport
         });
 
-        // Close the mobile menu automatically after clicking
-        if (navbar.classList.contains("active")) {
-          navbar.classList.remove("active");
-          navToggler.classList.remove("active");
+        // Close the mobile navbar if it's open
+        const navbar = document.querySelector('[data-navbar]');
+        const navToggler = document.querySelector('[data-nav-toggler]');
+        if (navbar && navbar.classList.contains('active')) {
+          navbar.classList.remove('active');
+          navToggler.classList.remove('active');
         }
       }
     }
@@ -59,63 +136,14 @@ navbarLinks.forEach(link => {
 
 
 /**
- * 3. PACKAGE SECTION LOGIC (Fixed Duplicates)
+ * MOBILE NAVBAR TOGGLE
  */
-function updateHeight(element) {
-  if (!packageWindow || !element) return;
-  const buffer = 20; 
-  packageWindow.style.height = (element.scrollHeight + buffer) + "px";
-}
+const navbar = document.querySelector("[data-navbar]");
+const navToggler = document.querySelector("[data-nav-toggler]");
 
-if (viewBtn) {
-  viewBtn.addEventListener("click", function () {
-    packageIntro.classList.add("fade-out");
-    packageContent.classList.remove("hidden");
-    updateHeight(packageContent);
+if (navbar && navToggler) {
+  navToggler.addEventListener("click", function () {
+    navbar.classList.toggle("active");
+    this.classList.toggle("active");
   });
 }
-
-if (backBtn) {
-  backBtn.addEventListener("click", function () {
-    packageContent.classList.add("hidden");
-    packageIntro.classList.remove("fade-out");
-    updateHeight(packageIntro);
-  });
-}
-
-window.addEventListener('load', () => {
-  if (packageIntro) updateHeight(packageIntro);
-});
-
-
-/**
- * 4. CARD & OVERLAY LOGIC
- */
-// Card Flips
-document.querySelectorAll(".flip-trigger").forEach(btn => {
-  btn.addEventListener("click", function(e) {
-    e.preventDefault();
-    this.closest(".work-card").classList.add("flipped");
-  });
-});
-
-document.querySelectorAll(".flip-back-link").forEach(btn => {
-  btn.addEventListener("click", function(e) {
-    e.preventDefault();
-    this.closest(".work-card").classList.remove("flipped");
-  });
-});
-
-// Service Overlays
-document.querySelectorAll(".service-read-more").forEach(btn => {
-  btn.addEventListener("click", function() {
-    const overlay = this.closest(".service-card").querySelector(".card-overlay");
-    if (overlay) overlay.classList.add("active");
-  });
-});
-
-document.querySelectorAll(".close-overlay").forEach(btn => {
-  btn.addEventListener("click", function() {
-    this.closest(".card-overlay").classList.remove("active");
-  });
-});
