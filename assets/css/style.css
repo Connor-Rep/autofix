@@ -284,7 +284,8 @@ body {
 }
 
 .scrollbar-item {
-  min-width: 100%; /* Card takes full width on mobile */
+  /* Prevents cards from squishing/shrinking */
+  flex: 0 0 100%; 
   scroll-snap-align: center;
 }
 
@@ -1316,7 +1317,6 @@ body {
 
 /* --- CARD FLIP SYSTEM --- */
 
-/* --- MEMBERSHIP SECTION & FLIP SYSTEM --- */
 
 .has-scrollbar {
   /* Ensure the container itself doesn't show a vertical scrollbar */
@@ -1609,13 +1609,10 @@ body {
 
 .package-window {
   position: relative;
-  /* Change this to allow a tiny bit of vertical overflow if needed */
-  overflow-y: clip;
-  overflow-x: visible; /* Allows the scrollbar to be visible */
+  /* 'clip' hides vertical overflow but allows horizontal scrollbars to work */
+  overflow: clip; 
   transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
 }
 
 .package-content {
@@ -1667,17 +1664,28 @@ body {
   margin-bottom: 5px;
 }
 
-/* Ensure cards are centered within the scrollbar list */
 .package-content .has-scrollbar {
   display: flex;
-  gap: 20px;
+  gap: 30px; /* This creates the gap between cards */
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding-block-end: 20px;
-  padding-inline: 20px; /* Essential: gives space before the first card */
-  
-  /* Use flex-start by default for mobile to prevent the "left-side cut-off" */
+  padding-block-end: 30px; /* Space for the scrollbar */
+  padding-inline: 20px;
+  width: 100%;
+  /* Ensures cards start from the left on mobile so they aren't cut off */
   justify-content: flex-start; 
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--international-orange-engineering) transparent;
+}
+
+/* Custom Scrollbar for Chrome/Safari */
+.package-content .has-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.package-content .has-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--international-orange-engineering);
+  border-radius: 10px;
 }
 
 /* On Desktop/Large screens where cards fit, we can center them */
@@ -1689,8 +1697,29 @@ body {
   }
 }
 
+/* Tablet / Desktop View */
+@media (min-width: 768px) {
+  .scrollbar-item {
+    flex: 0 0 320px; /* Cards keep their size and won't squish */
+  }
+  
+  .package-content .has-scrollbar {
+    /* Centers the cards if there is enough room, otherwise allows scroll */
+    justify-content: center; 
+    padding-inline: 0;
+  }
+}
+
 @media (min-width: 575px) {
   .scrollbar-item {
-    min-width: 320px; /* Fixed width for tablets/desktop */
-  }
+  /* Prevents cards from squishing/shrinking */
+  flex: 0 0 100%; 
+  scroll-snap-align: center;
+}
+}
+
+/* Specific centering for the "Back" button */
+#back-to-intro-btn {
+  margin-inline: auto;
+  margin-block-start: 20px;
 }
