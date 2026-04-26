@@ -1308,6 +1308,17 @@ body {
   }
 }
 
+/* Reset the Brake Repair (2nd) card to match the rest on mobile */
+  .service-list li:nth-child(2) .service-card {
+    height: auto; /* Overrides the forced desktop 300px height */
+    min-height: 260px; /* Matches the updated mobile grid size */
+  }
+
+  .service-list li:nth-child(2) .card-overlay {
+    align-items: flex-start; /* Resets the desktop center alignment */
+    justify-content: flex-start; /* Resets the desktop center alignment */
+  }
+
 
 
 
