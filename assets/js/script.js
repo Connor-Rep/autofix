@@ -10,22 +10,24 @@ const packageWindow = document.querySelector(".package-window");
  * Helper: Updates background height to match target element
  */
 function updateHeight(element) {
-  packageWindow.style.height = element.scrollHeight + "px";
+  // We use scrollHeight to get the full height, 
+  // then add 40px to account for the horizontal scrollbar and button spacing.
+  const extraSpace = 40; 
+  packageWindow.style.height = (element.scrollHeight + extraSpace) + "px";
 }
 
-// 1. Reveal Packages
+// In the View Packages listener, ensure layout is calculated first
 if (viewBtn) {
   viewBtn.addEventListener("click", function () {
     packageIntro.classList.add("fade-out");
-    
-    // We remove hidden immediately so the browser can layout the cards
     packageContent.classList.remove("hidden");
-
-    // Small delay allows the browser to calculate the mobile layout correctly
-    setTimeout(() => {
+    
+    // Using requestAnimationFrame ensures the browser has calculated the 
+    // card positions before we measure the height.
+    requestAnimationFrame(() => {
       updateHeight(packageContent);
       packageContent.classList.add("active");
-    }, 10);
+    });
   });
 }
 
