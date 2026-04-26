@@ -1605,72 +1605,47 @@ body {
 
 
 
-/* --- PACKAGE SECTION UPDATES --- */
-
+/* --- PACKAGE SECTION FIXES --- */
 
 .package-window {
   position: relative;
   overflow: hidden;
-  /* Ensure a smooth transition for the container height */
   transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Optional: gives it a starting height so it doesn't start at 0 on load */
-  height: auto; 
+  display: flex;
+  flex-direction: column;
 }
-
 
 .package-intro, 
 .package-content {
-  transition: opacity 0.5s ease, transform 0.5s ease;
   width: 100%;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.package-intro .section-text {
-  margin-block-end: 30px;
-  color: var(--white);
-  font-size: 1.8rem;
-  line-height: 1.6;
-}
-
-.package-intro .btn {
-  margin-inline: auto;
-}
-
-.package-content {
+/* HIDE THE CONTENT BY DEFAULT */
+.package-content.hidden {
   opacity: 0;
-  transform: translateY(30px);
+  visibility: hidden;
+  height: 0; /* Ensures it doesn't push the footer down */
+  pointer-events: none;
+  transform: translateY(20px);
+  overflow: hidden;
 }
 
+/* SHOW THE CONTENT */
 .package-content.active {
   opacity: 1;
-  transform: translateY(0);
-  position: relative; /* Brings it back into flow when active */
   visibility: visible;
+  height: auto;
   pointer-events: all;
+  transform: translateY(0);
 }
 
-.package-content.hidden,
-.package-intro.hidden {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute; /* Takes it out of flow so it doesn't create extra space */
-  top: 0;
-  left: 0;
-  visibility: hidden;
-}
-
+/* HIDE THE INTRO */
 .package-intro.fade-out {
   opacity: 0;
-  transform: translateY(-20px);
+  visibility: hidden;
+  height: 0;
   pointer-events: none;
+  transform: translateY(-20px);
+  margin: 0; /* Remove margins so height hits 0 */
 }
-
-/* Adjusting padding for the section now that it has more content */
-#packages {
-  padding-block-end: 180px;
-  background-color: #000000;
-}
-
-/* We still use hidden for display:none, but JS will manage it carefully */
-.hidden { display: none; }
-
-
