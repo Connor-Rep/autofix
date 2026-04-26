@@ -1605,57 +1605,56 @@ body {
 
 
 
-/* --- PACKAGE SECTION FIXES --- */
+/* --- PACKAGE SECTION REFINED TRANSITIONS --- */
 
 .package-window {
   position: relative;
   overflow: hidden;
-  /* Background height transition - adjust time for "slower" feel */
+  /* Adjust this time to make the background growth slower/faster */
   transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .package-intro, 
 .package-content {
   width: 100%;
-  /* This ensures transparency fades for both intro and cards */
-  transition: opacity 1.2s ease, transform 1.2s ease, visibility 1.2s ease;
-  /* Keeps layout centered during the fade */
+  /* Unified transition for fading and slight movement */
+  transition: opacity 1.0s ease, transform 1.0s ease, visibility 1.0s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-/* Base state for hidden elements */
+/* Base state for elements when they are hidden (both Intro and Cards) */
 .package-content.hidden,
 .package-intro.fade-out {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  /* position: absolute keeps the background from jumping while fading */
+  /* This prevents the "snapping" by keeping the hidden element 
+     perfectly centered over the window while it fades */
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
+  transform: translateY(10px); 
 }
 
 /* Active state for visible elements */
-.package-content.active,
+.package-content:not(.hidden),
 .package-intro:not(.fade-out) {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
   position: relative;
-  left: 0;
-  transform: translateX(0) translateY(0);
+  transform: translateY(0);
 }
 
-/* Ensure the card list inside content is centered */
+/* Ensure cards are centered within the scrollbar list */
 .package-content .has-scrollbar {
-  width: 100%;
   display: flex;
   justify-content: center;
   gap: 30px;
+  width: 100%;
 }
