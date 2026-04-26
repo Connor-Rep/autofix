@@ -7,15 +7,16 @@ const navbar = document.querySelector("[data-navbar]");
 const navToggler = document.querySelector("[data-nav-toggler]");
 const navbarLinks = document.querySelectorAll(".navbar-link");
 
+// Package Section Selectors
 const viewBtn = document.querySelector("#view-packages-btn");
 const backBtn = document.querySelector("#back-to-intro-btn");
 const packageIntro = document.querySelector("#package-intro");
 const packageContent = document.querySelector("#package-content");
 const packageWindow = document.querySelector(".package-window");
 
+
 /**
  * 1. MOBILE MENU TOGGLE
- * (Restored this so the menu actually works on mobile)
  */
 if (navToggler && navbar) {
   navToggler.addEventListener("click", function () {
@@ -24,27 +25,29 @@ if (navToggler && navbar) {
   });
 }
 
+
 /**
- * 2. ROBUST SMOOTH SCROLL (Fixes Desktop Snapping)
+ * 2. FORCED SMOOTH SCROLL (The Desktop Fix)
  */
 navbarLinks.forEach(link => {
   link.addEventListener("click", function (e) {
-    const targetId = this.getAttribute("href");
+    const href = this.getAttribute("href");
 
-    // Only run if it's a link to a section (starts with #)
-    if (targetId && targetId.startsWith("#") && targetId !== "#") {
-      const targetSection = document.querySelector(targetId);
+    // Only run if the link starts with # (like #services)
+    if (href && href.startsWith("#") && href !== "#") {
+      const targetSection = document.querySelector(href);
 
       if (targetSection) {
-        e.preventDefault(); // Stop the instant snap
+        // Stop the browser from "snapping" instantly
+        e.preventDefault();
 
-        // Manually scroll to the section
+        // Force a smooth scroll to the element's position
         window.scrollTo({
-          top: targetSection.offsetTop - 20, // Adjust -20 to add a little gap at the top
+          top: targetSection.offsetTop,
           behavior: "smooth"
         });
 
-        // Close mobile menu after clicking
+        // Close the mobile menu automatically after clicking
         if (navbar.classList.contains("active")) {
           navbar.classList.remove("active");
           navToggler.classList.remove("active");
@@ -54,8 +57,9 @@ navbarLinks.forEach(link => {
   });
 });
 
+
 /**
- * 3. PACKAGE SECTION LOGIC
+ * 3. PACKAGE SECTION LOGIC (Fixed Duplicates)
  */
 function updateHeight(element) {
   if (!packageWindow || !element) return;
@@ -83,39 +87,34 @@ window.addEventListener('load', () => {
   if (packageIntro) updateHeight(packageIntro);
 });
 
-/**
- * 4. CARD INTERACTION LOGIC
- */
-const flipTriggers = document.querySelectorAll(".flip-trigger");
-const backTriggers = document.querySelectorAll(".flip-back-link");
 
-flipTriggers.forEach(btn => {
+/**
+ * 4. CARD & OVERLAY LOGIC
+ */
+// Card Flips
+document.querySelectorAll(".flip-trigger").forEach(btn => {
   btn.addEventListener("click", function(e) {
     e.preventDefault();
-    e.stopPropagation();
     this.closest(".work-card").classList.add("flipped");
   });
 });
 
-backTriggers.forEach(btn => {
+document.querySelectorAll(".flip-back-link").forEach(btn => {
   btn.addEventListener("click", function(e) {
     e.preventDefault();
-    e.stopPropagation();
     this.closest(".work-card").classList.remove("flipped");
   });
 });
 
-const serviceReadMoreBtns = document.querySelectorAll(".service-read-more");
-const serviceCloseBtns = document.querySelectorAll(".close-overlay");
-
-serviceReadMoreBtns.forEach(btn => {
+// Service Overlays
+document.querySelectorAll(".service-read-more").forEach(btn => {
   btn.addEventListener("click", function() {
     const overlay = this.closest(".service-card").querySelector(".card-overlay");
     if (overlay) overlay.classList.add("active");
   });
 });
 
-serviceCloseBtns.forEach(btn => {
+document.querySelectorAll(".close-overlay").forEach(btn => {
   btn.addEventListener("click", function() {
     this.closest(".card-overlay").classList.remove("active");
   });
