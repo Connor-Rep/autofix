@@ -9,42 +9,38 @@ const packageWindow = document.querySelector(".package-window");
 // 1. Reveal Packages
 if (viewBtn) {
   viewBtn.addEventListener("click", function () {
-    // Phase 1: Fade out Intro
     packageIntro.classList.add("fade-out");
 
+    // Increased from 500 to 1200 (1.2 seconds) to match CSS
     setTimeout(() => {
-      // Phase 2: Switch to Content
+      packageIntro.classList.add("hidden");
       packageContent.classList.remove("hidden");
       
-      // Phase 3: Measure the cards and expand background
       const newHeight = packageContent.scrollHeight;
       packageWindow.style.height = newHeight + "px";
 
       setTimeout(() => {
         packageContent.classList.add("active");
       }, 50);
-    }, 500); 
+    }, 1200); 
   });
 }
 
 // 2. Back to Overview
 if (backBtn) {
   backBtn.addEventListener("click", function () {
-    // Phase 1: Fade out Cards
     packageContent.classList.remove("active");
 
+    // Increased from 500 to 1200 (1.2 seconds) to match CSS
     setTimeout(() => {
-      // Phase 2: Switch back to Intro
       packageContent.classList.add("hidden");
       packageIntro.classList.remove("fade-out");
       
-      // Phase 3: Measure intro and shrink background
       const introHeight = packageIntro.scrollHeight;
       packageWindow.style.height = introHeight + "px";
-    }, 500); 
+    }, 1200); 
   });
 }
-
 // Ensure the background fits the intro on page load
 window.addEventListener('load', () => {
   if(packageIntro) packageWindow.style.height = packageIntro.offsetHeight + "px";
