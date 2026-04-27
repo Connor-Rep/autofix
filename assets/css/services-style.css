@@ -16,7 +16,7 @@ body { background-color: #000000 !important; color: var(--white); }
 
 /* SEARCH BAR */
 .search-container { 
-    margin-bottom: 30px; 
+    margin-bottom: 1px; 
     display: flex;
     align-items: center;
     gap: 15px;
@@ -130,7 +130,7 @@ body { background-color: #000000 !important; color: var(--white); }
     cursor: pointer;
 }
 
-.form-actions { display: flex; gap: 15px; margin-top: 10px; }
+.form-actions { display: flex; gap: 15px; margin-top: 1px; }
 .submit-btn { flex-grow: 2; justify-content: center; gap: 10px; }
 .reset-btn { 
     flex-grow: 1; 
