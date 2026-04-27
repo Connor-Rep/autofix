@@ -156,7 +156,7 @@ body { background-color: #000000 !important; color: var(--white); }
     width: 100%;
 }
 
-.textarea, .service-wrapper-full, .form-actions { grid-column: span 2; }
+.textarea, .input-row-full, .form-actions { grid-column: span 2; }
 
 .service-input-wrapper { display: flex; gap: 10px; }
 
@@ -185,4 +185,20 @@ body { background-color: #000000 !important; color: var(--white); }
     .form-grid { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr; }
     .form-actions { flex-direction: column; }
+    
+    /* 1. Fix the header overlap by pushing the top bubble down */
+    .services-header-bubble {
+        margin-top: 90px; /* Adjust this value if your header is taller/shorter */
+    }
+
+    /* 2. Fix the squished input field by stacking the input and button */
+    .service-input-wrapper { 
+        flex-direction: column; 
+    }
+    
+    /* Make the button stretch full width on mobile for easier tapping */
+    .add-more-btn {
+        width: 100%;
+        padding: 15px; 
+    }
 }
