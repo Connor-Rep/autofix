@@ -7,8 +7,8 @@ body { background-color: #000000 !important; color: var(--white); }
 .quote-bubble {
     background-color: var(--eerie-black);
     border-radius: 24px;
-    padding: 10px;
-    margin-bottom: 5px;
+    padding: 40px;
+    margin-bottom: 1px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
