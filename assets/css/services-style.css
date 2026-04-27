@@ -16,7 +16,7 @@ body { background-color: #000000 !important; color: var(--white); }
 
 /* SEARCH BAR */
 .search-container { 
-    margin-bottom: 1px; 
+    margin-bottom: 30px; 
     display: flex;
     align-items: center;
     gap: 15px;
