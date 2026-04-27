@@ -462,7 +462,7 @@ body {
 \*-----------------------------------*/
 
 .about {
-  background-color: var(--eerie-black);
+  background-color: #000000; /* Swapped from var(--eerie-black) */
   color: var(--white);
   text-align: center;
 }
@@ -483,7 +483,7 @@ body {
 }
 
 .about-item {
-  background-color: #000000;
+  background-color: var(--eerie-black); /* Swapped from #000000 */
   padding: 40px 20px;
   transition: var(--transition);
 }
@@ -520,12 +520,13 @@ body {
 
 .work-card { position: relative; }
 
+/* --- UPDATED PACKAGES (WORK) SECTION --- */
 .section.work {
-  background-color: #000000; /* Sets background to black */
+  background-color: var(--eerie-black); /* Swapped from #000000 */
 }
 
 .work-card .card-content {
-  background-color: var(--eerie-black);
+  background-color: #000000 !important;
   max-width: 90%;
   padding: 30px 10px;
   margin-block-start: -60px;
@@ -1390,7 +1391,7 @@ body {
 
 /* BACK SIDE */
 .card-back {
-  background-color: var(--eerie-black);
+  background-color: #000000 !important;
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
