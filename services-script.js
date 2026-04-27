@@ -6,13 +6,13 @@ const logo = document.querySelector("#header-logo");
 
 [backBtn, logo].forEach(el => {
     el?.addEventListener("click", (e) => {
-        if (el.tagName === 'A') return; // Allow normal link behavior for <a>
+        if (el.tagName === 'A') return;
         e.preventDefault();
         window.location.href = "index.html";
     });
 });
 
-// 2. Search & Highlight Logic
+// 2. Search logic
 const searchInput = document.querySelector("#service-search");
 const searchStatus = document.querySelector("#search-status");
 const cards = document.querySelectorAll(".card-item");
@@ -31,7 +31,6 @@ searchInput?.addEventListener("input", (e) => {
         }
     });
 
-    // Show "Not Found" message if text exists but matches don't
     if (val && foundCount === 0) {
         searchStatus.textContent = "Not Found";
     } else {
@@ -39,13 +38,12 @@ searchInput?.addEventListener("input", (e) => {
     }
 });
 
-// 3. Card Flip & Quote Form Reveal
+// 3. Reveal Form with Scroll
 const quoteSection = document.querySelector("#quote-form-section");
 const serviceField = document.querySelector("#selected-service-field");
 
 cards.forEach(card => {
     card.addEventListener("click", (e) => {
-        // Prevent flip if clicking a button inside the card
         if (e.target.closest('.get-quote-btn')) return;
         card.classList.toggle("flipped");
     });
@@ -54,16 +52,13 @@ cards.forEach(card => {
     quoteBtn?.addEventListener("click", (e) => {
         e.stopPropagation(); 
         
-        // Populate service field
         serviceField.value = card.dataset.service;
-
-        // Reveal Form
         quoteSection.classList.remove("hidden");
         
-        // Smooth scroll to form
+        // Wait just a beat for the CSS slide animation to start before scrolling
         setTimeout(() => {
             quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
+        }, 150);
     });
 });
 
