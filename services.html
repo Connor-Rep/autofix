@@ -53,7 +53,6 @@
 
       <section class="section search-cards-bubble-section" id="services-grid-section">
         <div class="container main-bubble">
-          
           <div class="search-container">
             <input type="search" id="service-search" placeholder="Search services..." class="search-input">
             <span id="search-status"></span>
@@ -169,37 +168,25 @@
               </div>
             </li>
           </ul>
-
         </div>
       </section>
 
       <section class="section quote-section hidden" id="quote-form-section">
         <div class="container quote-bubble">
-          <div class="form-header">
-            <h2 class="h2 section-title">Request a Quote</h2>
-            <p class="form-subtitle">Fill out the details below and our team will get back to you shortly.</p>
-          </div>
+          <h2 class="h2 section-title">Request a Quote</h2>
           
           <form id="quote-form" class="form-grid">
-            <div class="input-group">
-                <label class="input-label">Full Name</label>
-                <input type="text" name="name" placeholder="John Doe" class="input-field" required>
-            </div>
-            <div class="input-group">
-                <label class="input-label">Email Address</label>
-                <input type="email" name="email" placeholder="john@example.com" class="input-field" required>
-            </div>
-            <div class="input-group textarea">
-                <label class="input-label">Selected Services</label>
+            <input type="text" name="name" placeholder="Full Name" class="input-field" required>
+            <input type="email" name="email" placeholder="Email Address" class="input-field" required>
+            
+            <div class="input-row-full">
                 <div class="service-input-wrapper">
                     <input type="text" id="selected-service-field" name="service" class="input-field" readonly placeholder="No services selected">
-                    <button type="button" id="add-more-btn" class="add-more-btn">Add More +</button>
+                    <button type="button" id="add-more-btn" class="add-more-btn">Add More Services +</button>
                 </div>
             </div>
-            <div class="input-group textarea">
-                <label class="input-label">Additional Message</label>
-                <textarea name="message" placeholder="Tell us more about your vehicle issues..." class="input-field"></textarea>
-            </div>
+
+            <textarea name="message" placeholder="Additional Message / Details" class="input-field textarea"></textarea>
             
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary submit-btn">
@@ -207,7 +194,7 @@
                     <span class="material-symbols-rounded">send</span>
                 </button>
                 <button type="button" id="reset-form-btn" class="btn btn-secondary reset-btn">
-                    <span class="span">Reset Form</span>
+                    <span class="span">Reset</span>
                 </button>
             </div>
           </form>
