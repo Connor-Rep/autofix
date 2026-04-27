@@ -6,69 +6,73 @@ const logo = document.querySelector("#header-logo");
 
 [backBtn, logo].forEach(el => {
     el?.addEventListener("click", (e) => {
+        if (el.tagName === 'A') return; // Allow normal link behavior for <a>
         e.preventDefault();
         window.location.href = "index.html";
     });
 });
 
-// 2. Search & Highlight
+// 2. Search & Highlight Logic
 const searchInput = document.querySelector("#service-search");
+const searchStatus = document.querySelector("#search-status");
 const cards = document.querySelectorAll(".card-item");
 
 searchInput?.addEventListener("input", (e) => {
     const val = e.target.value.toLowerCase().trim();
-    let found = false;
+    let foundCount = 0;
 
     cards.forEach(card => {
         card.classList.remove("highlight");
         const name = card.dataset.service.toLowerCase();
         
         if (val && name.includes(val)) {
-            card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
             card.classList.add("highlight");
-            found = true;
+            foundCount++;
         }
     });
 
-    // Default highlight if nothing exact is found but search isn't empty
-    if (val && !found) {
-        cards[0].classList.add("highlight");
+    // Show "Not Found" message if text exists but matches don't
+    if (val && foundCount === 0) {
+        searchStatus.textContent = "Not Found";
+    } else {
+        searchStatus.textContent = "";
     }
 });
 
-// 3. Card Flip & Pull-out Form
+// 3. Card Flip & Quote Form Reveal
 const quoteSection = document.querySelector("#quote-form-section");
 const serviceField = document.querySelector("#selected-service-field");
 
 cards.forEach(card => {
-    card.addEventListener("click", () => {
-        // Toggle Flip
+    card.addEventListener("click", (e) => {
+        // Prevent flip if clicking a button inside the card
+        if (e.target.closest('.get-quote-btn')) return;
         card.classList.toggle("flipped");
     });
 
     const quoteBtn = card.querySelector(".get-quote-btn");
     quoteBtn?.addEventListener("click", (e) => {
-        e.stopPropagation(); // Stop card from flipping back immediately
+        e.stopPropagation(); 
         
-        // Fill Service Name
+        // Populate service field
         serviceField.value = card.dataset.service;
 
-        // Reveal Form (Pull out from bottom)
+        // Reveal Form
         quoteSection.classList.remove("hidden");
         
+        // Smooth scroll to form
         setTimeout(() => {
-            quoteSection.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
+            quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
     });
 });
 
-// 4. Add More Services
+// 4. Add Multiple Services
 const addMoreBtn = document.querySelector("#add-more-btn");
 addMoreBtn?.addEventListener("click", () => {
-    // Logic to show/hide extra list or append text
     const current = serviceField.value;
-    const newService = prompt("Add another service:");
-    if (newService) {
-        serviceField.value = `${current}, ${newService}`;
+    const newService = prompt("Enter additional service needed:");
+    if (newService && newService.trim() !== "") {
+        serviceField.value = current ? `${current}, ${newService}` : newService;
     }
 });
