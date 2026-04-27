@@ -1,9 +1,18 @@
 'use strict';
 
-// 1. Navigation Logic
+// 1. References
 const backBtn = document.querySelector("#header-back-btn");
 const logo = document.querySelector("#header-logo");
+const searchInput = document.querySelector("#service-search");
+const searchStatus = document.querySelector("#search-status");
+const cards = document.querySelectorAll(".card-item");
+const quoteSection = document.querySelector("#quote-form-section");
+const serviceField = document.querySelector("#selected-service-field");
+const gridSection = document.querySelector("#services-grid-section");
+const resetBtn = document.querySelector("#reset-form-btn");
+const quoteForm = document.querySelector("#quote-form");
 
+// 2. Navigation
 [backBtn, logo].forEach(el => {
     el?.addEventListener("click", (e) => {
         if (el.tagName === 'A') return;
@@ -12,41 +21,33 @@ const logo = document.querySelector("#header-logo");
     });
 });
 
-// 2. Search Logic
-const searchInput = document.querySelector("#service-search");
-const searchStatus = document.querySelector("#search-status");
-const cards = document.querySelectorAll(".card-item");
-
+// 3. Search logic
 searchInput?.addEventListener("input", (e) => {
     const val = e.target.value.toLowerCase().trim();
     let foundCount = 0;
-
     cards.forEach(card => {
         card.classList.remove("highlight");
         const name = card.dataset.service.toLowerCase();
-        
         if (val && name.includes(val)) {
             card.classList.add("highlight");
             foundCount++;
         }
     });
-
-    if (val && foundCount === 0) {
-        searchStatus.textContent = "Not Found";
-    } else {
-        searchStatus.textContent = "";
-    }
+    searchStatus.textContent = (val && foundCount === 0) ? "Not Found" : "";
 });
 
-// 3. Selection & Multi-Service Logic
-const quoteSection = document.querySelector("#quote-form-section");
-const serviceField = document.querySelector("#selected-service-field");
-const gridSection = document.querySelector("#services-grid-section");
+// 4. Update Button Text Logic
+function updateAllButtons(text) {
+    cards.forEach(card => {
+        const btnSpan = card.querySelector(".get-quote-btn .span");
+        if (btnSpan) btnSpan.textContent = text;
+    });
+}
 
+// 5. Card Selection & Multi-Service logic
 cards.forEach(card => {
     card.addEventListener("click", (e) => {
-        // Only toggle flip if NOT clicking the "Get a Quote" button
-        if (!e.target.closest('.get-quote-btn')) {
+        if (!e.target.closest('.get-quote-btn') && !card.classList.contains('selected')) {
             card.classList.toggle("flipped");
         }
     });
@@ -58,17 +59,21 @@ cards.forEach(card => {
         const serviceName = card.dataset.service;
         const currentVal = serviceField.value.trim();
 
-        // If field has text, append with comma, otherwise just set it
-        if (currentVal === "") {
+        // Grey out and disable this card
+        card.classList.add("selected");
+        card.classList.remove("flipped");
+
+        // Append service
+        if (currentVal === "" || currentVal === "No services selected") {
             serviceField.value = serviceName;
         } else {
-            // Only add if it's not already in the list
-            if (!currentVal.includes(serviceName)) {
-                serviceField.value = `${currentVal}, ${serviceName}`;
-            }
+            serviceField.value = `${currentVal}, ${serviceName}`;
         }
 
-        // Reveal the section and scroll down
+        // Change all other card buttons to "Add"
+        updateAllButtons("Add");
+
+        // Reveal and scroll
         quoteSection.classList.remove("hidden");
         setTimeout(() => {
             quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -76,12 +81,27 @@ cards.forEach(card => {
     });
 });
 
-// 4. "Add More" Button Logic
-const addMoreBtn = document.querySelector("#add-more-btn");
-addMoreBtn?.addEventListener("click", () => {
-    // Scroll the user back to the grid bubble
+// 6. "Add More" Button
+document.querySelector("#add-more-btn")?.addEventListener("click", () => {
     gridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+// 7. Reset Logic
+resetBtn?.addEventListener("click", () => {
+    // 1. Reset form fields
+    quoteForm.reset();
+    serviceField.value = "";
     
-    // Optional: add a temporary highlight/pulse to the search area to show it's ready
-    searchInput.focus();
+    // 2. Hide form
+    quoteSection.classList.add("hidden");
+
+    // 3. Reset cards state
+    cards.forEach(card => {
+        card.classList.remove("selected", "flipped", "highlight");
+        const btnSpan = card.querySelector(".get-quote-btn .span");
+        if (btnSpan) btnSpan.textContent = "Get a Quote";
+    });
+
+    // 4. Scroll back up to grid
+    gridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
