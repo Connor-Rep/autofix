@@ -1,12 +1,12 @@
 /* GLOBAL DARK OVERRIDE */
 body { background-color: #000000 !important; color: var(--white); }
 
-/* BUBBLE STYLING & GAP REDUCTION */
+/* BUBBLE STYLING & CONSISTENT GAPS */
 .services-header-bubble {
     background-color: var(--eerie-black);
     border-radius: 24px;
     padding: 30px 40px;
-    margin-bottom: 10px; /* Reduced gap */
+    margin-bottom: 80px; /* Bigger Gap */
 }
 
 .main-bubble {
@@ -15,6 +15,7 @@ body { background-color: #000000 !important; color: var(--white); }
     border-radius: 24px;
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 80px; /* Same Gap to bottom bubble */
 }
 
 .search-cards-bubble-section {
@@ -43,20 +44,19 @@ body { background-color: #000000 !important; color: var(--white); }
     color: #ff4d4d;
     font-weight: 600;
     font-size: 0.9rem;
-    text-transform: uppercase;
 }
 
-/* CARDS GRID: 3x4 Desktop Layout */
+/* CARDS GRID: 3x4 Layout */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     list-style: none;
     padding: 0;
 }
 
 .card-item {
-    height: 100px; /* Larger cards */
+    height: 100px;
     perspective: 1000px;
     cursor: pointer;
 }
@@ -120,30 +120,30 @@ body { background-color: #000000 !important; color: var(--white); }
     to { box-shadow: 0 0 15px var(--international-orange-engineering); }
 }
 
-/* QUOTE SECTION ANIMATION */
+/* SLEEK QUOTE SECTION ANIMATION */
 .quote-section {
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
                 transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
                 max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-top: -10px; /* Reduces gap when visible */
 }
 
 .quote-section.hidden {
     max-height: 0;
     opacity: 0;
-    transform: translateY(-40px); /* Start higher for the "slide down" effect */
+    transform: translateY(-40px);
     pointer-events: none;
+    overflow: hidden;
 }
 
 .quote-section:not(.hidden) {
-    max-height: 1200px;
+    max-height: 1500px;
     opacity: 1;
     transform: translateY(0);
-    padding-block: 40px; /* Reduced block padding to tighten gap */
+    padding-block-end: 80px; 
 }
 
 .quote-bubble {
-    background-color: var(--eerie-black); /* Same grey as other bubbles */
+    background-color: var(--eerie-black); /* Matching Grey */
     border-radius: 24px;
     padding: 50px;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -195,13 +195,17 @@ body { background-color: #000000 !important; color: var(--white); }
     border-radius: 10px;
     font-family: var(--ff-chakra-petch);
     cursor: pointer;
+    transition: 0.3s ease;
 }
+
+.add-more-btn:hover { background: rgba(255, 77, 0, 0.1); }
 
 .submit-btn {
     grid-column: span 2;
     justify-content: center;
     gap: 10px;
     padding-block: 15px;
+    margin-top: 15px;
 }
 
 /* RESPONSIVE */
