@@ -1,22 +1,18 @@
 /* GLOBAL DARK OVERRIDE */
 body { background-color: #000000 !important; color: var(--white); }
 
-/* BUBBLE STYLING & GAPS */
-.services-header-bubble {
+/* BUBBLE STYLING & CONSISTENT GAPS */
+.services-header-bubble,
+.main-bubble,
+.quote-bubble {
     background-color: var(--eerie-black);
     border-radius: 24px;
-    padding: 30px 40px;
-    margin-bottom: 80px; 
+    padding: 40px;
+    margin-bottom: 80px; /* Big gap restored */
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.main-bubble {
-    position: relative;
-    background-color: var(--eerie-black);
-    border-radius: 24px 24px 0 0; /* Bottom corners squared to join next bubble */
-    padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 0; /* NO GAP to bottom bubble */
-}
+.services-header-bubble { padding: 30px 40px; }
 
 /* SEARCH BAR */
 .search-container { 
@@ -33,7 +29,6 @@ body { background-color: #000000 !important; color: var(--white); }
     padding: 10px 20px;
     border-radius: var(--radius-pill);
     color: var(--white);
-    font-family: var(--ff-chakra-petch);
 }
 
 /* CARDS GRID: 3x4 Layout */
@@ -52,7 +47,6 @@ body { background-color: #000000 !important; color: var(--white); }
     transition: opacity 0.4s ease;
 }
 
-/* Greyed out / Selected state */
 .card-item.selected {
     opacity: 0.3;
     pointer-events: none;
@@ -82,10 +76,9 @@ body { background-color: #000000 !important; color: var(--white); }
 
 .card-front { background-color: #0d0d0d; padding: 0 20px; gap: 15px; }
 .card-back { background-color: var(--international-orange-engineering); justify-content: center; transform: rotateX(180deg); }
+.card-title { margin: 0; font-size: 1.4rem; font-family: var(--ff-chakra-petch); }
 
-.card-title { margin: 0; font-size: 1.4rem; color: var(--white); font-family: var(--ff-chakra-petch); }
-
-/* QUOTE SECTION FLUSH LAYOUT */
+/* SLEEK QUOTE SECTION REVEAL */
 .quote-section {
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
                 transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
@@ -95,27 +88,49 @@ body { background-color: #000000 !important; color: var(--white); }
 .quote-section.hidden {
     max-height: 0;
     opacity: 0;
-    transform: translateY(0);
+    transform: translateY(-40px);
     pointer-events: none;
     overflow: hidden;
 }
 
-.quote-bubble {
-    background-color: var(--eerie-black);
-    border-radius: 0 0 24px 24px; /* Top corners squared to join middle bubble */
-    padding: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: none; /* Remove top border to look like one piece */
+.quote-section:not(.hidden) {
+    max-height: 1500px;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* FORM ACTIONS */
-.form-actions {
+/* FORM STYLING (THE OLD WAY) */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.input-row-full, .textarea, .form-actions {
     grid-column: span 2;
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
 }
 
+.input-field {
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    width: 100%;
+}
+
+.service-input-wrapper { display: flex; gap: 10px; }
+.add-more-btn {
+    white-space: nowrap;
+    background: none;
+    border: 1px dashed var(--international-orange-engineering);
+    color: var(--international-orange-engineering);
+    padding: 0 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form-actions { display: flex; gap: 15px; margin-top: 10px; }
 .submit-btn { flex-grow: 2; justify-content: center; gap: 10px; }
 .reset-btn { 
     flex-grow: 1; 
@@ -124,14 +139,10 @@ body { background-color: #000000 !important; color: var(--white); }
     color: #888;
     justify-content: center;
 }
-.reset-btn:hover { background: #222; color: #fff; }
 
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-.input-group.textarea { grid-column: span 2; }
-.input-field { background: #000000; border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; color: white; }
-
-@media (max-width: 992px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
     .form-grid { grid-template-columns: 1fr; }
+    .input-row-full, .textarea, .form-actions { grid-column: span 1; }
     .form-actions { flex-direction: column; }
 }
