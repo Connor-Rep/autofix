@@ -1,25 +1,21 @@
 /* GLOBAL DARK OVERRIDE */
 body { background-color: #000000 !important; color: var(--white); }
 
-/* BUBBLE STYLING & CONSISTENT GAPS */
+/* BUBBLE STYLING & GAPS */
 .services-header-bubble {
     background-color: var(--eerie-black);
     border-radius: 24px;
     padding: 30px 40px;
-    margin-bottom: 80px; /* Bigger Gap */
+    margin-bottom: 80px; 
 }
 
 .main-bubble {
     position: relative;
     background-color: var(--eerie-black);
-    border-radius: 24px;
+    border-radius: 24px 24px 0 0; /* Bottom corners squared to join next bubble */
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 80px; /* Same Gap to bottom bubble */
-}
-
-.search-cards-bubble-section {
-    padding-block-start: 0; 
+    margin-bottom: 0; /* NO GAP to bottom bubble */
 }
 
 /* SEARCH BAR */
@@ -39,12 +35,6 @@ body { background-color: #000000 !important; color: var(--white); }
     color: var(--white);
     font-family: var(--ff-chakra-petch);
 }
-#search-status {
-    font-family: var(--ff-chakra-petch);
-    color: #ff4d4d;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
 
 /* CARDS GRID: 3x4 Layout */
 .services-grid {
@@ -59,6 +49,14 @@ body { background-color: #000000 !important; color: var(--white); }
     height: 100px;
     perspective: 1000px;
     cursor: pointer;
+    transition: opacity 0.4s ease;
+}
+
+/* Greyed out / Selected state */
+.card-item.selected {
+    opacity: 0.3;
+    pointer-events: none;
+    filter: grayscale(1);
 }
 
 .card-inner {
@@ -82,45 +80,12 @@ body { background-color: #000000 !important; color: var(--white); }
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.card-front {
-    background-color: #0d0d0d;
-    padding: 0 20px;
-    gap: 15px;
-}
+.card-front { background-color: #0d0d0d; padding: 0 20px; gap: 15px; }
+.card-back { background-color: var(--international-orange-engineering); justify-content: center; transform: rotateX(180deg); }
 
-.card-back {
-    background-color: var(--international-orange-engineering);
-    justify-content: center;
-    transform: rotateX(180deg);
-}
+.card-title { margin: 0; font-size: 1.4rem; color: var(--white); font-family: var(--ff-chakra-petch); }
 
-.card-icon {
-    background: var(--international-orange-engineering);
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    flex-shrink: 0;
-}
-
-.card-title {
-    margin: 0;
-    font-size: 1.4rem;
-    color: var(--white);
-    font-family: var(--ff-chakra-petch);
-}
-
-/* SEARCH HIGHLIGHT */
-.card-item.highlight .card-front {
-    animation: flash 1s infinite alternate;
-    border: 2px solid var(--international-orange-engineering);
-}
-
-@keyframes flash {
-    from { box-shadow: 0 0 5px var(--international-orange-engineering); }
-    to { box-shadow: 0 0 15px var(--international-orange-engineering); }
-}
-
-/* SLEEK QUOTE SECTION ANIMATION */
+/* QUOTE SECTION FLUSH LAYOUT */
 .quote-section {
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
                 transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
@@ -130,90 +95,43 @@ body { background-color: #000000 !important; color: var(--white); }
 .quote-section.hidden {
     max-height: 0;
     opacity: 0;
-    transform: translateY(-40px);
+    transform: translateY(0);
     pointer-events: none;
     overflow: hidden;
 }
 
-.quote-section:not(.hidden) {
-    max-height: 1500px;
-    opacity: 1;
-    transform: translateY(0);
-    padding-block-end: 80px; 
-}
-
 .quote-bubble {
-    background-color: var(--eerie-black); /* Matching Grey */
-    border-radius: 24px;
+    background-color: var(--eerie-black);
+    border-radius: 0 0 24px 24px; /* Top corners squared to join middle bubble */
     padding: 50px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: none; /* Remove top border to look like one piece */
 }
 
-.form-header { margin-bottom: 30px; text-align: center; }
-.form-subtitle { color: #888; font-family: var(--ff-mulish); margin-top: 10px; }
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-}
-
-.input-group { display: flex; flex-direction: column; gap: 8px; }
-.input-group.textarea { grid-column: span 2; }
-
-.input-label {
-    font-family: var(--ff-chakra-petch);
-    font-size: 0.85rem;
-    color: var(--international-orange-engineering);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.input-field {
-    background: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    color: white;
-    font-family: var(--ff-mulish);
-    transition: all 0.3s ease;
-}
-
-.input-field:focus {
-    outline: none;
-    border-color: var(--international-orange-engineering);
-}
-
-.service-input-wrapper { display: flex; gap: 10px; }
-.service-input-wrapper .input-field { flex-grow: 1; }
-
-.add-more-btn {
-    background: none;
-    border: 1px dashed var(--international-orange-engineering);
-    color: var(--international-orange-engineering);
-    padding: 0 15px;
-    border-radius: 10px;
-    font-family: var(--ff-chakra-petch);
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.add-more-btn:hover { background: rgba(255, 77, 0, 0.1); }
-
-.submit-btn {
+/* FORM ACTIONS */
+.form-actions {
     grid-column: span 2;
-    justify-content: center;
-    gap: 10px;
-    padding-block: 15px;
-    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-/* RESPONSIVE */
+.submit-btn { flex-grow: 2; justify-content: center; gap: 10px; }
+.reset-btn { 
+    flex-grow: 1; 
+    background: transparent; 
+    border: 1px solid #444; 
+    color: #888;
+    justify-content: center;
+}
+.reset-btn:hover { background: #222; color: #fff; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.input-group.textarea { grid-column: span 2; }
+.input-field { background: #000000; border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; color: white; }
+
 @media (max-width: 992px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .form-grid { grid-template-columns: 1fr; }
-    .input-group.textarea, .submit-btn { grid-column: span 1; }
-}
-@media (max-width: 575px) {
-    .services-grid { grid-template-columns: 1fr; }
+    .form-actions { flex-direction: column; }
 }
