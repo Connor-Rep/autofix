@@ -1,74 +1,66 @@
 'use strict';
 
-// 1. Navigation
-const backBtn = document.querySelector("#header-back-btn");
-const logo = document.querySelector("#header-logo");
-
-[backBtn, logo].forEach(el => {
-    el?.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.location.href = "index.html";
-    });
-});
-
-// 2. Search & Highlight
+/**
+ * SEARCH & HIGHLIGHT LOGIC
+ */
 const searchInput = document.querySelector("#service-search");
-const cards = document.querySelectorAll(".card-item");
+const serviceCards = document.querySelectorAll(".service-item");
+const scrollContainer = document.querySelector(".scroll-wrapper");
 
 searchInput?.addEventListener("input", (e) => {
-    const val = e.target.value.toLowerCase().trim();
-    let found = false;
-
-    cards.forEach(card => {
+    const term = e.target.value.toLowerCase().trim();
+    
+    serviceCards.forEach(card => {
         card.classList.remove("highlight");
-        const name = card.dataset.service.toLowerCase();
-        
-        if (val && name.includes(val)) {
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const title = card.dataset.service.toLowerCase();
+
+        if (term && title.includes(term)) {
+            // Scroll the horizontal container to the card
+            const offsetLeft = card.offsetLeft - scrollContainer.offsetLeft;
+            scrollContainer.scrollTo({ left: offsetLeft, behavior: 'smooth' });
             card.classList.add("highlight");
-            found = true;
         }
     });
-
-    // Default highlight if nothing exact is found but search isn't empty
-    if (val && !found) {
-        cards[0].classList.add("highlight");
-    }
 });
 
-// 3. Card Flip & Pull-out Form
-const quoteSection = document.querySelector("#quote-form-section");
-const serviceField = document.querySelector("#selected-service-field");
+/**
+ * CARD FLIP & PULL-OUT FORM
+ */
+const formWindow = document.querySelector(".form-window");
+const formContent = document.querySelector("#quote-form-content");
+const serviceInput = document.querySelector("#selected-service");
 
-cards.forEach(card => {
+serviceCards.forEach(card => {
+    // Flip card on click
     card.addEventListener("click", () => {
-        // Toggle Flip
         card.classList.toggle("flipped");
     });
 
-    const quoteBtn = card.querySelector(".get-quote-btn");
-    quoteBtn?.addEventListener("click", (e) => {
-        e.stopPropagation(); // Stop card from flipping back immediately
+    // Handle "Get a Quote" click
+    const btn = card.querySelector(".quote-trigger");
+    btn?.addEventListener("click", (e) => {
+        e.stopPropagation(); // Don't flip the card back immediately
         
-        // Fill Service Name
-        serviceField.value = card.dataset.service;
-
-        // Reveal Form (Pull out from bottom)
-        quoteSection.classList.remove("hidden");
+        serviceInput.value = card.dataset.service;
+        
+        // "Pull out" animation logic
+        formWindow.classList.add("active");
+        formWindow.style.height = formContent.scrollHeight + 40 + "px";
         
         setTimeout(() => {
-            quoteSection.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
+            formWindow.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }, 100);
     });
 });
 
-// 4. Add More Services
-const addMoreBtn = document.querySelector("#add-more-btn");
+/**
+ * ADD MORE SERVICES TOGGLE
+ */
+const addMoreBtn = document.querySelector("#add-more-services");
+const extraList = document.querySelector("#extra-services-list");
+
 addMoreBtn?.addEventListener("click", () => {
-    // Logic to show/hide extra list or append text
-    const current = serviceField.value;
-    const newService = prompt("Add another service:");
-    if (newService) {
-        serviceField.value = `${current}, ${newService}`;
-    }
+    extraList.classList.toggle("show");
+    // Re-calculate height for the "pull-out" container
+    formWindow.style.height = formContent.scrollHeight + 40 + "px";
 });
