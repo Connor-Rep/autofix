@@ -20,8 +20,8 @@ body { background-color: #000000 !important; color: var(--white); }
     background-color: var(--eerie-black);
     border-radius: 24px;
     padding: 30px 40px;
-    /* ADJUST THIS FOR THE GAP IN YOUR SCREENSHOT */
-    margin-bottom: 5px; 
+    /* ADJUST THIS FOR THE GAP BETWEEN TOP AND MIDDLE */
+    margin-bottom: 20px; 
 }
 
 .main-bubble {
@@ -30,8 +30,8 @@ body { background-color: #000000 !important; color: var(--white); }
     border-radius: 24px;
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    /* ADJUST THIS FOR THE GAP TO THE FORM */
-    margin-bottom: 5px; 
+    /* ADJUST THIS FOR THE GAP BETWEEN MIDDLE AND BOTTOM */
+    margin-bottom: 20px; 
 }
 
 .quote-bubble {
