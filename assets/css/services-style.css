@@ -15,6 +15,11 @@ body { background-color: #000000 !important; color: var(--white); }
     padding-block-start: 0 !important;
 }
 
+/* Centers the paragraph text in the top bubble */
+.services-header-bubble .section-text {
+    text-align: center;
+}
+
 /* BUBBLE STYLING & MANUAL GAP CONTROL */
 .services-header-bubble {
     background-color: var(--eerie-black);
@@ -183,20 +188,28 @@ body { background-color: #000000 !important; color: var(--white); }
 
 @media (max-width: 768px) {
     .form-grid { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr; }
-    .form-actions { flex-direction: column; }
     
-    /* 1. Fix the header overlap by pushing the top bubble down */
-    .services-header-bubble {
-        margin-top: 90px; /* Adjust this value if your header is taller/shorter */
+    /* CHANGED: Now sets 2 columns (1fr 1fr) and reduces the gap slightly */
+    .services-grid { 
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px; 
+    }
+    
+    /* NEW: Shrinks the card font size slightly so long words don't overflow */
+    .card-title {
+        font-size: 1.2rem;
     }
 
-    /* 2. Fix the squished input field by stacking the input and button */
+    .form-actions { flex-direction: column; }
+    
+    .services-header-bubble {
+        margin-top: 90px; 
+    }
+
     .service-input-wrapper { 
         flex-direction: column; 
     }
     
-    /* Make the button stretch full width on mobile for easier tapping */
     .add-more-btn {
         width: 100%;
         padding: 15px; 
