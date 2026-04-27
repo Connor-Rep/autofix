@@ -30,20 +30,43 @@ body { background-color: #000000 !important; color: var(--white); }
     font-family: var(--ff-chakra-petch);
 }
 
-/* CARDS GRID: SIDE BY SIDE */
+/* HORIZONTAL SCROLLING CONTAINER */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
     gap: 20px;
     list-style: none;
-    padding: 0;
+    padding: 0 0 20px 0; /* Padding at bottom to make room for scrollbar */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Makes cards snap cleanly into place */
+    
+    /* Firefox scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--international-orange-engineering) transparent;
 }
 
-/* COMPACT & LONGER CARDS (Horizontal) */
+/* Chrome/Safari/Edge custom scrollbar matching your wireframe indicator */
+.services-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.services-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05); /* Subtle track */
+    border-radius: 10px;
+    margin: 0 20px; /* Keeps the track from touching the edges */
+}
+
+.services-grid::-webkit-scrollbar-thumb {
+    background: var(--international-orange-engineering); /* Red scrollbar */
+    border-radius: 10px;
+}
+
+/* FIXED-WIDTH CARDS */
 .card-item {
-    height: 100px; /* Compact height */
+    flex: 0 0 300px; /* Forces cards to stay exactly 300px wide, no shrinking */
+    height: 100px; 
     perspective: 1000px;
     cursor: pointer;
+    scroll-snap-align: center; /* Centers the card when scrolling stops */
 }
 
 .card-inner {
@@ -87,11 +110,15 @@ body { background-color: #000000 !important; color: var(--white); }
     align-items: center;
 }
 
+/* PREVENT TEXT WRAPPING */
 .card-title {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Scaled down slightly so longer names fit */
     color: var(--white);
     font-family: var(--ff-chakra-petch);
+    white-space: nowrap; /* Prevents text from dropping below the icon */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds '...' if text is too long */
 }
 
 /* SEARCH HIGHLIGHT */
