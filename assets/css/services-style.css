@@ -1,72 +1,87 @@
-/* GLOBAL DARK OVERRIDE */
+/* =========================================
+   1. FALLBACK VARIABLES 
+   (Ensures colors work even if style.css is missing them)
+========================================= */
+:root {
+    --eerie-black: #1a1a1a;
+    --international-orange-engineering: #ba181b; 
+    --white: #ffffff;
+    --shadow: 0 4px 10px rgba(0,0,0,0.5);
+    --radius-pill: 50px;
+    --ff-chakra-petch: 'Chakra Petch', sans-serif;
+    --oxford-blue-2: #0b0f19;
+    --pastel-pink: #ffb3c6;
+}
+
+/* =========================================
+   2. GLOBAL & BUBBLE STYLING
+========================================= */
 body { background-color: #000000 !important; color: var(--white); }
 
-/* BUBBLE STYLING */
 .services-header-bubble, 
 .main-bubble, 
 .quote-bubble {
-    background-color: var(--eerie-black);
+    /* Fallback used here to guarantee the bubble shows up */
+    background-color: var(--eerie-black, #1a1a1a) !important;
     border-radius: 24px;
     padding: 40px;
     margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1); 
     box-shadow: var(--shadow);
 }
 
-.main-bubble {
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* SEARCH BAR */
+/* =========================================
+   3. SEARCH BAR
+========================================= */
 .search-container { margin-bottom: 30px; }
 .search-input {
     width: 100%;
     max-width: 400px;
-    background-color: #000000;
-    border: 1px solid var(--international-orange-engineering);
+    background-color: #000000 !important;
+    border: 2px solid var(--international-orange-engineering) !important;
     padding: 12px 20px;
     border-radius: var(--radius-pill);
     color: var(--white);
     font-family: var(--ff-chakra-petch);
+    outline: none;
 }
 
-/* HORIZONTAL SCROLLING CONTAINER */
+/* =========================================
+   4. HORIZONTAL SCROLLING GRID (The Fix)
+========================================= */
 .services-grid {
-    display: flex;
+    display: flex !important; /* Forces horizontal layout */
     gap: 20px;
     list-style: none;
-    padding: 0 0 20px 0; /* Padding at bottom to make room for scrollbar */
-    overflow-x: auto; /* Enables horizontal scrolling */
-    scroll-snap-type: x mandatory; /* Makes cards snap cleanly into place */
+    padding: 0 0 20px 0;
+    margin: 0;
+    overflow-x: auto; /* Enables scrolling */
+    scroll-snap-type: x mandatory;
     
-    /* Firefox scrollbar styling */
+    /* Scrollbar styling */
     scrollbar-width: thin;
-    scrollbar-color: var(--international-orange-engineering) transparent;
+    scrollbar-color: var(--international-orange-engineering) rgba(255,255,255,0.05);
 }
 
-/* Chrome/Safari/Edge custom scrollbar matching your wireframe indicator */
-.services-grid::-webkit-scrollbar {
-    height: 6px;
+.services-grid::-webkit-scrollbar { height: 8px; }
+.services-grid::-webkit-scrollbar-track { 
+    background: rgba(255, 255, 255, 0.05); 
+    border-radius: 10px; 
+}
+.services-grid::-webkit-scrollbar-thumb { 
+    background: var(--international-orange-engineering, #ba181b); 
+    border-radius: 10px; 
 }
 
-.services-grid::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05); /* Subtle track */
-    border-radius: 10px;
-    margin: 0 20px; /* Keeps the track from touching the edges */
-}
-
-.services-grid::-webkit-scrollbar-thumb {
-    background: var(--international-orange-engineering); /* Red scrollbar */
-    border-radius: 10px;
-}
-
-/* FIXED-WIDTH CARDS */
+/* =========================================
+   5. CARDS
+========================================= */
 .card-item {
-    flex: 0 0 300px; /* Forces cards to stay exactly 300px wide, no shrinking */
-    height: 100px; 
+    flex: 0 0 300px !important; /* Strictly prevents cards from shrinking/stacking */
+    height: 100px;
     perspective: 1000px;
     cursor: pointer;
-    scroll-snap-align: center; /* Centers the card when scrolling stops */
+    scroll-snap-align: center;
 }
 
 .card-inner {
@@ -84,6 +99,7 @@ body { background-color: #000000 !important; color: var(--white); }
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Fix for Safari */
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -93,55 +109,43 @@ body { background-color: #000000 !important; color: var(--white); }
 .card-front {
     background-color: #000000;
     padding: 0 20px;
-    gap: 15px; /* Space between icon and text */
+    gap: 15px;
 }
 
 .card-back {
-    background-color: var(--international-orange-engineering);
+    background-color: var(--international-orange-engineering, #ba181b);
     justify-content: center;
     transform: rotateX(180deg);
 }
 
 .card-icon {
-    background: var(--oxford-blue-2);
+    background: var(--oxford-blue-2, #0b0f19);
     padding: 10px;
     border-radius: 8px;
     display: flex;
     align-items: center;
+    flex-shrink: 0; /* Keeps the image perfectly square */
 }
 
-/* PREVENT TEXT WRAPPING */
 .card-title {
     margin: 0;
-    font-size: 1.5rem; /* Scaled down slightly so longer names fit */
+    font-size: 1.3rem;
     color: var(--white);
     font-family: var(--ff-chakra-petch);
-    white-space: nowrap; /* Prevents text from dropping below the icon */
+    white-space: nowrap; /* Prevents text wrap */
     overflow: hidden;
-    text-overflow: ellipsis; /* Adds '...' if text is too long */
+    text-overflow: ellipsis; /* Adds "..." if title is too long */
 }
 
 /* SEARCH HIGHLIGHT */
 .card-item.highlight .card-front {
-    animation: flash 1s infinite alternate;
-    border: 2px solid var(--pastel-pink);
+    border: 2px solid var(--pastel-pink, #ffb3c6);
+    box-shadow: 0 0 15px var(--international-orange-engineering, #ba181b);
 }
 
-@keyframes flash {
-    from { box-shadow: 0 0 5px var(--international-orange-engineering); }
-    to { box-shadow: 0 0 20px var(--international-orange-engineering); }
-}
-
-/* SCROLLING BAR INDICATOR */
-.scrolling-indicator {
-    height: 4px;
-    background: var(--international-orange-engineering);
-    width: 60%;
-    margin: 30px auto 0;
-    border-radius: var(--radius-pill);
-}
-
-/* PULL-OUT FORM SECTION */
+/* =========================================
+   6. PULL-OUT FORM
+========================================= */
 .quote-section {
     overflow: hidden;
     transition: max-height 1s ease-in-out, opacity 0.8s ease;
@@ -151,7 +155,9 @@ body { background-color: #000000 !important; color: var(--white); }
     max-height: 0;
     opacity: 0;
     padding-block: 0;
-    display: block !important; /* Keep it in DOM for transition */
+    margin: 0;
+    border: none;
+    display: block !important;
 }
 
 .quote-section:not(.hidden) {
@@ -165,10 +171,19 @@ body { background-color: #000000 !important; color: var(--white); }
     gap: 15px;
 }
 
+/* Adds styling back to the quote inputs */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    background: #000000;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    border-radius: 8px;
+    font-family: var(--ff-chakra-petch);
+}
+
 .input-field.textarea, .add-more-container { grid-column: span 2; }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .form-grid { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr; }
 }
