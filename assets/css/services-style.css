@@ -1,189 +1,88 @@
-/* =========================================
-   1. FALLBACK VARIABLES 
-   (Ensures colors work even if style.css is missing them)
-========================================= */
+/* 1. DEFINE COLORS LOCALLY (In case main style.css is missing them) */
 :root {
-    --eerie-black: #1a1a1a;
-    --international-orange-engineering: #ba181b; 
-    --white: #ffffff;
-    --shadow: 0 4px 10px rgba(0,0,0,0.5);
-    --radius-pill: 50px;
-    --ff-chakra-petch: 'Chakra Petch', sans-serif;
-    --oxford-blue-2: #0b0f19;
-    --pastel-pink: #ffb3c6;
+  --eerie-black: #1b1b1b;
+  --international-orange-engineering: #ba181b;
+  --white: #ffffff;
+  --ff-chakra-petch: 'Chakra Petch', sans-serif;
 }
 
-/* =========================================
-   2. GLOBAL & BUBBLE STYLING
-========================================= */
-body { background-color: #000000 !important; color: var(--white); }
-
+/* 2. FORCE THE BUBBLE LAYOUT FROM WIREFRAME */
 .services-header-bubble, 
 .main-bubble, 
 .quote-bubble {
-    /* Fallback used here to guarantee the bubble shows up */
-    background-color: var(--eerie-black, #1a1a1a) !important;
-    border-radius: 24px;
-    padding: 40px;
-    margin-bottom: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    box-shadow: var(--shadow);
+  background-color: var(--eerie-black) !important;
+  border-radius: 24px !important;
+  padding: 30px !important;
+  margin-bottom: 30px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* =========================================
-   3. SEARCH BAR
-========================================= */
-.search-container { margin-bottom: 30px; }
-.search-input {
-    width: 100%;
-    max-width: 400px;
-    background-color: #000000 !important;
-    border: 2px solid var(--international-orange-engineering) !important;
-    padding: 12px 20px;
-    border-radius: var(--radius-pill);
-    color: var(--white);
-    font-family: var(--ff-chakra-petch);
-    outline: none;
-}
-
-/* =========================================
-   4. HORIZONTAL SCROLLING GRID (The Fix)
-========================================= */
+/* 3. FIX THE CARD LIST (FORCE HORIZONTAL SCROLL) */
 .services-grid {
-    display: flex !important; /* Forces horizontal layout */
-    gap: 20px;
-    list-style: none;
-    padding: 0 0 20px 0;
-    margin: 0;
-    overflow-x: auto; /* Enables scrolling */
-    scroll-snap-type: x mandatory;
-    
-    /* Scrollbar styling */
-    scrollbar-width: thin;
-    scrollbar-color: var(--international-orange-engineering) rgba(255,255,255,0.05);
+  display: flex !important; /* Force items side-by-side */
+  flex-direction: row !important;
+  overflow-x: auto !important; /* Enable horizontal scrolling */
+  gap: 20px !important;
+  padding: 10px 10px 30px 10px !important;
+  list-style: none !important;
+  scroll-behavior: smooth;
+  
+  /* Custom Red Scrollbar (The "Scrolling Bar" from your wireframe) */
+  scrollbar-width: thin;
+  scrollbar-color: var(--international-orange-engineering) transparent;
 }
 
-.services-grid::-webkit-scrollbar { height: 8px; }
-.services-grid::-webkit-scrollbar-track { 
-    background: rgba(255, 255, 255, 0.05); 
-    border-radius: 10px; 
+/* Chrome/Safari Scrollbar Styling */
+.services-grid::-webkit-scrollbar {
+  height: 8px;
 }
-.services-grid::-webkit-scrollbar-thumb { 
-    background: var(--international-orange-engineering, #ba181b); 
-    border-radius: 10px; 
+.services-grid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.services-grid::-webkit-scrollbar-thumb {
+  background: var(--international-orange-engineering);
+  border-radius: 10px;
 }
 
-/* =========================================
-   5. CARDS
-========================================= */
+/* 4. PREVENT CARDS FROM SQUISHING */
 .card-item {
-    flex: 0 0 300px !important; /* Strictly prevents cards from shrinking/stacking */
-    height: 100px;
-    perspective: 1000px;
-    cursor: pointer;
-    scroll-snap-align: center;
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-}
-
-.card-item.flipped .card-inner { transform: rotateX(180deg); }
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden; /* Fix for Safari */
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 0 0 300px !important; /* Fixed width: 300px per card */
+  height: 100px !important;
+  min-width: 300px !important;
 }
 
 .card-front {
-    background-color: #000000;
-    padding: 0 20px;
-    gap: 15px;
-}
-
-.card-back {
-    background-color: var(--international-orange-engineering, #ba181b);
-    justify-content: center;
-    transform: rotateX(180deg);
-}
-
-.card-icon {
-    background: var(--oxford-blue-2, #0b0f19);
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0; /* Keeps the image perfectly square */
+  background-color: #000 !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 20px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 .card-title {
-    margin: 0;
-    font-size: 1.3rem;
-    color: var(--white);
-    font-family: var(--ff-chakra-petch);
-    white-space: nowrap; /* Prevents text wrap */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Adds "..." if title is too long */
+  font-size: 1.4rem !important;
+  white-space: nowrap !important; /* Keep text on one line */
+  margin-left: 15px !important;
 }
 
-/* SEARCH HIGHLIGHT */
-.card-item.highlight .card-front {
-    border: 2px solid var(--pastel-pink, #ffb3c6);
-    box-shadow: 0 0 15px var(--international-orange-engineering, #ba181b);
-}
-
-/* =========================================
-   6. PULL-OUT FORM
-========================================= */
-.quote-section {
-    overflow: hidden;
-    transition: max-height 1s ease-in-out, opacity 0.8s ease;
-}
-
-.quote-section.hidden {
-    max-height: 0;
-    opacity: 0;
-    padding-block: 0;
-    margin: 0;
-    border: none;
-    display: block !important;
-}
-
-.quote-section:not(.hidden) {
-    max-height: 1000px;
-    opacity: 1;
-}
-
+/* 5. FIX THE FORM LAYOUT */
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
 }
 
-/* Adds styling back to the quote inputs */
 .input-field {
-    width: 100%;
-    padding: 12px;
-    background: #000000;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: var(--white);
-    border-radius: 8px;
-    font-family: var(--ff-chakra-petch);
+  flex: 1 1 45% !important; /* Two inputs per row */
+  background: #000 !important;
+  color: white !important;
+  border: 1px solid var(--international-orange-engineering) !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
 }
 
-.input-field.textarea, .add-more-container { grid-column: span 2; }
-
-@media (max-width: 768px) {
-    .form-grid { grid-template-columns: 1fr; }
+.input-field.textarea {
+  flex: 1 1 100% !important; /* Full width message box */
 }
