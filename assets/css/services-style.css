@@ -1,40 +1,64 @@
 /* GLOBAL DARK OVERRIDE */
 body { background-color: #000000 !important; color: var(--white); }
 
-/* BUBBLE STYLING & CONSISTENT GAPS */
-.services-header-bubble,
-.main-bubble,
+/* SECTION PADDING FIXES (Removes the "invisible" gaps between sections) */
+.service-hero {
+    padding-block-end: 0 !important;
+}
+
+.search-cards-bubble-section {
+    padding-block-start: 0 !important;
+    padding-block-end: 0 !important;
+}
+
+#quote-form-section {
+    padding-block-start: 0 !important;
+}
+
+/* BUBBLE STYLING & MANUAL GAP CONTROL */
+.services-header-bubble {
+    background-color: var(--eerie-black);
+    border-radius: 24px;
+    padding: 30px 40px;
+    /* ADJUST THIS FOR THE GAP IN YOUR SCREENSHOT */
+    margin-bottom: 5px; 
+}
+
+.main-bubble {
+    position: relative;
+    background-color: var(--eerie-black);
+    border-radius: 24px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* ADJUST THIS FOR THE GAP TO THE FORM */
+    margin-bottom: 5px; 
+}
+
 .quote-bubble {
     background-color: var(--eerie-black);
     border-radius: 24px;
     padding: 40px;
-    margin-bottom: 1px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 40px;
 }
-
-.services-header-bubble { padding: 30px 40px; }
 
 /* SEARCH BAR */
-.search-container { 
-    margin-bottom: 30px; 
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
+.search-container { margin-bottom: 30px; }
 .search-input {
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
     background-color: #000000;
     border: 1px solid var(--international-orange-engineering);
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: var(--radius-pill);
     color: var(--white);
+    font-family: var(--ff-chakra-petch);
 }
 
-/* CARDS GRID: 3x4 Layout */
+/* CARDS GRID */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     list-style: none;
     padding: 0;
@@ -47,8 +71,9 @@ body { background-color: #000000 !important; color: var(--white); }
     transition: opacity 0.4s ease;
 }
 
+/* Grey out selected cards */
 .card-item.selected {
-    opacity: 0.3;
+    opacity: 0.2;
     pointer-events: none;
     filter: grayscale(1);
 }
@@ -74,40 +99,52 @@ body { background-color: #000000 !important; color: var(--white); }
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.card-front { background-color: #0d0d0d; padding: 0 20px; gap: 15px; }
+.card-front { background-color: #000000; padding: 0 20px; gap: 15px; }
 .card-back { background-color: var(--international-orange-engineering); justify-content: center; transform: rotateX(180deg); }
-.card-title { margin: 0; font-size: 1.4rem; font-family: var(--ff-chakra-petch); }
 
-/* SLEEK QUOTE SECTION REVEAL */
+.card-icon {
+    background: var(--international-orange-engineering);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--white);
+    font-family: var(--ff-chakra-petch);
+}
+
+/* SEARCH HIGHLIGHT */
+.card-item.highlight .card-front {
+    animation: flash 1s infinite alternate;
+    border: 2px solid var(--international-orange-engineering);
+}
+
+@keyframes flash {
+    from { box-shadow: 0 0 5px var(--international-orange-engineering); }
+    to { box-shadow: 0 0 20px var(--international-orange-engineering); }
+}
+
+/* QUOTE SECTION ANIMATION */
 .quote-section {
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    transition: max-height 1s ease-in-out, opacity 0.8s ease;
 }
 
 .quote-section.hidden {
     max-height: 0;
     opacity: 0;
-    transform: translateY(-40px);
     pointer-events: none;
-    overflow: hidden;
 }
 
-.quote-section:not(.hidden) {
-    max-height: 1500px;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* FORM STYLING (THE OLD WAY) */
+/* FORM LAYOUT */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.input-row-full, .textarea, .form-actions {
-    grid-column: span 2;
+    gap: 15px;
 }
 
 .input-field {
@@ -119,7 +156,10 @@ body { background-color: #000000 !important; color: var(--white); }
     width: 100%;
 }
 
+.textarea, .service-wrapper-full, .form-actions { grid-column: span 2; }
+
 .service-input-wrapper { display: flex; gap: 10px; }
+
 .add-more-btn {
     white-space: nowrap;
     background: none;
@@ -128,10 +168,11 @@ body { background-color: #000000 !important; color: var(--white); }
     padding: 0 20px;
     border-radius: 10px;
     cursor: pointer;
+    font-family: var(--ff-chakra-petch);
 }
 
-.form-actions { display: flex; gap: 15px; margin-top: 1px; }
-.submit-btn { flex-grow: 2; justify-content: center; gap: 10px; }
+.form-actions { display: flex; gap: 15px; margin-top: 10px; }
+.submit-btn { flex-grow: 2; justify-content: center; }
 .reset-btn { 
     flex-grow: 1; 
     background: transparent; 
@@ -141,8 +182,7 @@ body { background-color: #000000 !important; color: var(--white); }
 }
 
 @media (max-width: 768px) {
-    .services-grid { grid-template-columns: 1fr; }
     .form-grid { grid-template-columns: 1fr; }
-    .input-row-full, .textarea, .form-actions { grid-column: span 1; }
+    .services-grid { grid-template-columns: 1fr; }
     .form-actions { flex-direction: column; }
 }
