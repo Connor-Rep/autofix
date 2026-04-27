@@ -43,11 +43,11 @@
 
   <main>
     <article>
-      <section class="section service-hero" id="services">
+      <section class="section service-hero" id="services" style="padding-block-end: 0;">
         <div class="container services-header-bubble">
           <p class="section-subtitle :dark">SafeTay - Comprehensive Auto Care</p>
           <h2 class="h1 section-title">Our Services</h2>
-          <p class="section-text">Text inside bubble layout from wireframe.</p>
+          <p class="section-text">Expert automotive solutions tailored to your vehicle's needs.</p>
         </div>
       </section>
 
@@ -55,92 +55,120 @@
         <div class="container main-bubble">
           
           <div class="search-container">
-            <input type="search" id="service-search" placeholder="Search for cards (e.g., Brake)..." class="search-input">
+            <input type="search" id="service-search" placeholder="Search services..." class="search-input">
+            <span id="search-status"></span>
           </div>
 
           <ul class="services-grid" id="services-grid">
             <li class="card-item" data-service="Respray">
               <div class="card-inner">
                 <div class="card-front">
-                  <div class="card-icon">
-                    <img src="./assets/images/services-1.png" width="50" height="50" alt="">
-                  </div>
+                  <div class="card-icon"><img src="./assets/images/services-1.png" width="40" height="40" alt=""></div>
                   <h3 class="h3 card-title">Respray</h3>
                 </div>
-                <div class="card-back">
-                  <button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button>
-                </div>
+                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
               </div>
             </li>
-
             <li class="card-item" data-service="Tyre Replacement">
               <div class="card-inner">
                 <div class="card-front">
-                  <div class="card-icon">
-                    <img src="./assets/images/services-3.png" width="50" height="50" alt="">
-                  </div>
-                  <h3 class="h3 card-title">Tyre Replacement</h3>
+                  <div class="card-icon"><img src="./assets/images/services-3.png" width="40" height="40" alt=""></div>
+                  <h3 class="h3 card-title">Tyres</h3>
                 </div>
-                <div class="card-back">
-                  <button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button>
-                </div>
+                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
               </div>
             </li>
-
             <li class="card-item" data-service="Brake Repair">
               <div class="card-inner">
                 <div class="card-front">
-                  <div class="card-icon">
-                    <img src="./assets/images/services-2.png" width="50" height="50" alt="">
-                  </div>
-                  <h3 class="h3 card-title">Brake Repair</h3>
+                  <div class="card-icon"><img src="./assets/images/services-2.png" width="40" height="40" alt=""></div>
+                  <h3 class="h3 card-title">Brakes</h3>
                 </div>
-                <div class="card-back">
-                  <button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button>
-                </div>
+                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
               </div>
             </li>
-
             <li class="card-item" data-service="Engine Repair">
               <div class="card-inner">
                 <div class="card-front">
-                  <div class="card-icon">
-                    <img src="./assets/images/services-1.png" width="50" height="50" alt="">
-                  </div>
-                  <h3 class="h3 card-title">Engine Repair</h3>
+                  <div class="card-icon"><img src="./assets/images/services-1.png" width="40" height="40" alt=""></div>
+                  <h3 class="h3 card-title">Engine</h3>
                 </div>
-                <div class="card-back">
-                  <button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button>
-                </div>
+                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
               </div>
             </li>
 
             <li class="card-item" data-service="Battery Check">
               <div class="card-inner">
                 <div class="card-front">
-                  <div class="card-icon">
-                    <img src="./assets/images/services-4.png" width="50" height="50" alt="">
-                  </div>
-                  <h3 class="h3 card-title">Battery Check</h3>
+                  <div class="card-icon"><img src="./assets/images/services-4.png" width="40" height="40" alt=""></div>
+                  <h3 class="h3 card-title">Battery</h3>
                 </div>
-                <div class="card-back">
-                  <button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button>
-                </div>
+                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
               </div>
             </li>
-
             <li class="card-item" data-service="Steering Alignment">
               <div class="card-inner">
                 <div class="card-front">
-                  <div class="card-icon">
-                    <img src="./assets/images/services-6.png" width="50" height="50" alt="">
-                  </div>
-                  <h3 class="h3 card-title">Steering Alignment</h3>
+                  <div class="card-icon"><img src="./assets/images/services-6.png" width="40" height="40" alt=""></div>
+                  <h3 class="h3 card-title">Steering</h3>
                 </div>
-                <div class="card-back">
-                  <button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button>
-                </div>
+                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
               </div>
+            </li>
+            <li class="card-item" data-service="Oil Change">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-icon"><img src="./assets/images/services-2.png" width="40" height="40" alt=""></div>
+                    <h3 class="h3 card-title">Oil Change</h3>
+                  </div>
+                  <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+                </div>
+            </li>
+            <li class="card-item" data-service="AC Service">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-icon"><img src="./assets/images/services-3.png" width="40" height="40" alt=""></div>
+                    <h3 class="h3 card-title">AC Service</h3>
+                  </div>
+                  <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+                </div>
+            </li>
+
+            <li class="card-item" data-service="Diagnostics">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-icon"><img src="./assets/images/services-4.png" width="40" height="40" alt=""></div>
+                    <h3 class="h3 card-title">Diagnostics</h3>
+                  </div>
+                  <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+                </div>
+            </li>
+            <li class="card-item" data-service="Full Valet">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-icon"><img src="./assets/images/services-1.png" width="40" height="40" alt=""></div>
+                    <h3 class="h3 card-title">Full Valet</h3>
+                  </div>
+                  <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+                </div>
+            </li>
+            <li class="card-item" data-service="Exhaust Repair">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-icon"><img src="./assets/images/services-6.png" width="40" height="40" alt=""></div>
+                    <h3 class="h3 card-title">Exhaust</h3>
+                  </div>
+                  <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+                </div>
+            </li>
+            <li class="card-item" data-service="Windscreen">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-icon"><img src="./assets/images/services-3.png" width="40" height="40" alt=""></div>
+                    <h3 class="h3 card-title">Windscreen</h3>
+                  </div>
+                  <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+                </div>
             </li>
           </ul>
 
@@ -149,18 +177,35 @@
 
       <section class="section quote-section hidden" id="quote-form-section">
         <div class="container quote-bubble">
-          <h2 class="h2 section-title">Request a Quote</h2>
+          <div class="form-header">
+            <h2 class="h2 section-title">Request a Quote</h2>
+            <p class="form-subtitle">Fill out the details below and our team will get back to you shortly.</p>
+          </div>
+          
           <form id="quote-form" class="form-grid">
-            <input type="text" name="name" placeholder="Full Name" class="input-field" required>
-            <input type="email" name="email" placeholder="Email Address" class="input-field" required>
-            <input type="text" id="selected-service-field" name="service" placeholder="Selected Service" class="input-field" readonly>
-            <div class="add-more-container">
-                <button type="button" id="add-more-btn" class="add-more-btn">Add More Services +</button>
-                <div id="extra-services-list" class="hidden">
-                    </div>
+            <div class="input-group">
+                <label class="input-label">Full Name</label>
+                <input type="text" name="name" placeholder="John Doe" class="input-field" required>
             </div>
-            <textarea name="message" placeholder="Message" class="input-field textarea"></textarea>
-            <button type="submit" class="btn btn-primary">Submit Request</button>
+            <div class="input-group">
+                <label class="input-label">Email Address</label>
+                <input type="email" name="email" placeholder="john@example.com" class="input-field" required>
+            </div>
+            <div class="input-group textarea">
+                <label class="input-label">Selected Services</label>
+                <div class="service-input-wrapper">
+                    <input type="text" id="selected-service-field" name="service" class="input-field" readonly>
+                    <button type="button" id="add-more-btn" class="add-more-btn">Add More +</button>
+                </div>
+            </div>
+            <div class="input-group textarea">
+                <label class="input-label">Additional Message</label>
+                <textarea name="message" placeholder="Tell us more about your vehicle issues..." class="input-field"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary submit-btn">
+                <span class="span">Send Request</span>
+                <span class="material-symbols-rounded">send</span>
+            </button>
           </form>
         </div>
       </section>
