@@ -1,6 +1,6 @@
 'use strict';
 
-// 1. Navigation
+// 1. Navigation Logic
 const backBtn = document.querySelector("#header-back-btn");
 const logo = document.querySelector("#header-logo");
 
@@ -12,7 +12,7 @@ const logo = document.querySelector("#header-logo");
     });
 });
 
-// 2. Search logic
+// 2. Search Logic
 const searchInput = document.querySelector("#service-search");
 const searchStatus = document.querySelector("#search-status");
 const cards = document.querySelectorAll(".card-item");
@@ -38,36 +38,50 @@ searchInput?.addEventListener("input", (e) => {
     }
 });
 
-// 3. Reveal Form with Scroll
+// 3. Selection & Multi-Service Logic
 const quoteSection = document.querySelector("#quote-form-section");
 const serviceField = document.querySelector("#selected-service-field");
+const gridSection = document.querySelector("#services-grid-section");
 
 cards.forEach(card => {
     card.addEventListener("click", (e) => {
-        if (e.target.closest('.get-quote-btn')) return;
-        card.classList.toggle("flipped");
+        // Only toggle flip if NOT clicking the "Get a Quote" button
+        if (!e.target.closest('.get-quote-btn')) {
+            card.classList.toggle("flipped");
+        }
     });
 
     const quoteBtn = card.querySelector(".get-quote-btn");
     quoteBtn?.addEventListener("click", (e) => {
         e.stopPropagation(); 
         
-        serviceField.value = card.dataset.service;
+        const serviceName = card.dataset.service;
+        const currentVal = serviceField.value.trim();
+
+        // If field has text, append with comma, otherwise just set it
+        if (currentVal === "") {
+            serviceField.value = serviceName;
+        } else {
+            // Only add if it's not already in the list
+            if (!currentVal.includes(serviceName)) {
+                serviceField.value = `${currentVal}, ${serviceName}`;
+            }
+        }
+
+        // Reveal the section and scroll down
         quoteSection.classList.remove("hidden");
-        
-        // Wait just a beat for the CSS slide animation to start before scrolling
         setTimeout(() => {
             quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 150);
+        }, 200);
     });
 });
 
-// 4. Add Multiple Services
+// 4. "Add More" Button Logic
 const addMoreBtn = document.querySelector("#add-more-btn");
 addMoreBtn?.addEventListener("click", () => {
-    const current = serviceField.value;
-    const newService = prompt("Enter additional service needed:");
-    if (newService && newService.trim() !== "") {
-        serviceField.value = current ? `${current}, ${newService}` : newService;
-    }
+    // Scroll the user back to the grid bubble
+    gridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    // Optional: add a temporary highlight/pulse to the search area to show it's ready
+    searchInput.focus();
 });
