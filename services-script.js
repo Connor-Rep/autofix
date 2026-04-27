@@ -24,7 +24,7 @@ searchInput?.addEventListener("input", (e) => {
         const name = card.dataset.service.toLowerCase();
         
         if (val && name.includes(val)) {
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
             card.classList.add("highlight");
             found = true;
         }
