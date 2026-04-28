@@ -409,8 +409,9 @@ body {
 .hero .section-subtitle { text-transform: unset; }
 
 .hero .section-text {
-  color: var(--white);
-  margin-block: 14px 18px;
+  margin-block: 20px 30px;
+  max-width: 600px; /* Limits width for better readability */
+  margin-inline: auto;
 }
 
 .hero .btn { margin-inline: auto; }
@@ -962,7 +963,20 @@ body {
 
   .hero :is(.section-subtitle, .btn) { margin-inline: 0; }
 
-  .hero .section-title { text-align: left; }
+ .hero .section-title {
+  white-space: nowrap;
+  max-width: 100%;
+  margin-inline: auto;
+  line-height: 1.2;
+}
+
+  /* On very small mobile screens, allow it to wrap so it doesn't overflow the screen */
+@media (max-width: 480px) {
+  .hero .section-title {
+    white-space: normal;
+    font-size: var(--fs-2); /* Slightly smaller font for mobile wrap */
+  }
+}
 
   .hero-banner img { width: 55%; }
 
