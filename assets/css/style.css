@@ -314,13 +314,15 @@ body {
 .header .btn { display: none; }
 
 .header {
-  position: absolute;
+  position: fixed; /* Changed from absolute to fixed */
   top: 0;
   left: 0;
   width: 100%;
-  padding: 40px 15px;
+  padding: 20px 15px; /* Slightly reduced padding so it takes up less screen space when scrolling */
   padding-inline-start: 40px;
-  z-index: 4;
+  background-color: #000000; /* Added background to hide scrolling content */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); /* Optional: adds a nice drop shadow */
+  z-index: 50; /* Increased to ensure it stays above overlays and flipped cards */
 }
 
 .header .container {
