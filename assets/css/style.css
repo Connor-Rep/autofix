@@ -416,14 +416,18 @@ body {
 
 .hero .btn { margin-inline: auto; }
 
-.hero-banner { aspect-ratio: var(--width) / var(--height); }
+.hero-banner { 
+  position: relative; /* Contains the image */
+  aspect-ratio: var(--width) / var(--height); 
+  margin-block-start: 40px; /* Gives some breathing room under the button */
+}
 
 .hero-banner img {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 90%;
-  z-index: -1;
+  /* Removed position: absolute for mobile so it stacks neatly */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  z-index: 1;
 }
 
 
@@ -962,11 +966,11 @@ body {
   .hero :is(.section-subtitle, .btn) { margin-inline: 0; }
 
  .hero .section-title {
-  white-space: nowrap;
-  max-width: 100%;
-  margin-inline: auto;
-  line-height: 1.2;
-}
+    white-space: nowrap; /* We moved this to the CSS so it only affects desktop! */
+    max-width: 100%;
+    margin-inline: auto;
+    line-height: 1.2;
+  }
 
   /* On very small mobile screens, allow it to wrap so it doesn't overflow the screen */
 @media (max-width: 480px) {
@@ -976,7 +980,13 @@ body {
   }
 }
 
-  .hero-banner img { width: 55%; }
+  .hero-banner img { 
+    position: absolute; /* Re-applies the floating effect for desktop */
+    bottom: 0; 
+    right: 0;
+    width: 55%; 
+    z-index: -1;
+  }
 
 
 
