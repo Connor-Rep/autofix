@@ -1808,23 +1808,25 @@ body {
 
 /* New Card Layout */
 .service-card.new-layout {
-  border: 3px solid var(--sonic-silver);
+  border: 3px solid var(--eerie-black);
   border-radius: 16px;
   padding: 0;
-  background-color: transparent;
+  background-color: var(--black); 
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: hidden; /* Contains the overlay */
+  overflow: hidden; 
 }
 
 .card-image-wrapper {
   position: relative;
   width: 100%;
   height: 200px;
-  border-bottom: 3px solid var(--sonic-silver);
+  border-bottom: 3px solid var(--eerie-black);
   border-radius: 12px 12px 0 0;
   overflow: hidden;
+  background-color: var(--eerie-black);
+  flex-shrink: 0;
 }
 
 .card-image-wrapper .card-img {
@@ -1849,12 +1851,12 @@ body {
   flex-grow: 1;
 }
 
+/* Card Text Section */
 .card-content-wrapper .card-title {
-  text-align: left;
-  border-bottom: 3px solid var(--sonic-silver);
+  border-bottom: 3px solid var(--eerie-black);
   padding-bottom: 10px;
   margin-bottom: 15px;
-  font-size: var(--fs-4);
+  width: 100%;
 }
 
 .card-text-box {
