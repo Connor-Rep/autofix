@@ -1323,11 +1323,7 @@ body {
   }
 }
 
-/* Reset the Brake Repair (2nd) card to match the rest on mobile */
-  .service-list li:nth-child(2) .service-card {
-    height: auto; /* Overrides the forced desktop 300px height */
-    min-height: 260px; /* Matches the updated mobile grid size */
-  }
+
 
   .service-list li:nth-child(2) .card-overlay {
     align-items: flex-start; /* Resets the desktop center alignment */
@@ -1752,17 +1748,16 @@ body {
 
 
 
-
 /*-----------------------------------*\
-  #NEW WIREFRAME SERVICES SECTION
+  #UPDATED WIREFRAME SERVICES SECTION
 \*-----------------------------------*/
 
 /* Reduce overall section height */
 .service.section {
-  padding-block: 60px; /* Reduced from default */
+  padding-block: 60px;
 }
 
-/* Header & Paragraph Box */
+/* Header & Paragraph */
 .service-header {
   display: flex;
   flex-direction: column;
@@ -1772,18 +1767,14 @@ body {
 
 .service-header .section-title {
   margin-bottom: 20px;
-  text-transform: capitalize;
 }
 
-.service-paragraph-box {
-  border: 4px solid var(--white);
-  padding: 20px;
+.service-paragraph {
   max-width: 600px;
-  text-align: left;
-  background-color: transparent;
+  text-align: center;
 }
 
-/* Override old staggered margins that made the section huge */
+/* Override old staggered margins */
 @media (min-width: 992px) {
   .service-list.wireframe-layout li:nth-child(-2n+3) { margin-block-start: 0 !important; }
   .service-list.wireframe-layout li:nth-child(4) { margin-inline-end: 0 !important; }
@@ -1818,6 +1809,7 @@ body {
   overflow: hidden; 
 }
 
+/* Image section */
 .card-image-wrapper {
   position: relative;
   width: 100%;
@@ -1827,116 +1819,6 @@ body {
   overflow: hidden;
   background-color: var(--eerie-black);
   flex-shrink: 0;
-}
-
-.card-image-wrapper .card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-icon-box {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: 2px solid var(--black);
-  background-color: var(--white);
-  padding: 5px;
-}
-
-.card-content-wrapper {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-/* Card Text Section */
-.card-content-wrapper .card-title {
-  border-bottom: 3px solid var(--eerie-black);
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-  width: 100%;
-}
-
-.card-text-box {
-  border: 3px solid var(--eerie-black;
-  padding: 15px;
-  margin-bottom: 20px;
-  flex-grow: 1;
-  text-align: left;
-}
-
-/*-----------------------------------*\
-  #UPDATED WIREFRAME SERVICES SECTION
-\*-----------------------------------*/
-
-/* Reduce overall section height */
-.service.section {
-  padding-block: 60px; /* Reduced from default */
-}
-
-/* Header & Paragraph */
-.service-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-block-end: 40px;
-}
-
-.service-header .section-title {
-  margin-bottom: 20px;
-}
-
-.service-paragraph {
-  max-width: 600px;
-  text-align: center;
-}
-
-/* Override old staggered margins that made the section huge */
-@media (min-width: 992px) {
-  .service-list.wireframe-layout li:nth-child(-2n+3) { margin-block-start: 0 !important; }
-  .service-list.wireframe-layout li:nth-child(4) { margin-inline-end: 0 !important; }
-  .service-list.wireframe-layout li:nth-child(6) { margin-inline-start: 0 !important; }
-}
-@media (min-width: 1200px) {
-  .service-list.wireframe-layout li:nth-child(-2n+3) { margin-block-start: 0 !important; }
-  .service-list.wireframe-layout li:is(:nth-child(1), :nth-child(6)) { margin-inline-start: 0 !important; }
-  .service-list.wireframe-layout li:is(:nth-child(3), :nth-child(4)) { margin-inline-end: 0 !important; }
-}
-
-/* New 3-Column Grid */
-.service-list.wireframe-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-  margin-block-end: 50px;
-}
-@media (min-width: 768px) {
-  .service-list.wireframe-layout { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* New Card Layout */
-.service-card.new-layout {
-  border: 3px solid var(--eerie-black);
-  border-radius: 16px;
-  padding: 0;
-  background-color: var(--black); /* Matches your dark aesthetic */
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden; /* Contains the overlay */
-}
-
-/* Image section (Empty background for card 2) */
-.card-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  border-bottom: 3px solid var(--eerie-black));
-  border-radius: 12px 12px 0 0;
-  overflow: hidden;
-  background-color: var(--eerie-black);
 }
 
 .card-image-wrapper .card-img {
@@ -1961,11 +1843,11 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  align-items: center; /* Centers the button and title */
+  align-items: center; 
 }
 
 .card-content-wrapper .card-title {
-  border-bottom: 3px solid var(--eerie-black));
+  border-bottom: 3px solid var(--eerie-black);
   padding-bottom: 10px;
   margin-bottom: 15px;
   width: 100%;
@@ -1977,15 +1859,5 @@ body {
 }
 
 .service-card.new-layout .service-read-more {
-  margin-top: auto; /* Pushes button to bottom of card */
-}
-
-/* Fix the crushed image on Card 2 caused by old desktop CSS */
-.service-list.wireframe-layout li:nth-child(2) .service-card {
-  height: 100% !important; 
-}
-
-/* Ensure the image wrapper is never allowed to shrink */
-.card-image-wrapper {
-  flex-shrink: 0; 
+  margin-top: auto; 
 }
