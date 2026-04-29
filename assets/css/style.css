@@ -1979,3 +1979,13 @@ body {
 .service-card.new-layout .service-read-more {
   margin-top: auto; /* Pushes button to bottom of card */
 }
+
+/* Fix the crushed image on Card 2 caused by old desktop CSS */
+.service-list.wireframe-layout li:nth-child(2) .service-card {
+  height: 100% !important; 
+}
+
+/* Ensure the image wrapper is never allowed to shrink */
+.card-image-wrapper {
+  flex-shrink: 0; 
+}
