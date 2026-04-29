@@ -1634,11 +1634,7 @@ body {
 
 
 
-/* Specific fix for the Brake Repair card flipped state */
-.service-list li:nth-child(2) .service-card {
-  height: 300px; /* Forces the card container to match others */
-  overflow: hidden;
-}
+
 
 .service-list li:nth-child(2) .card-overlay {
   height: 100%;
@@ -1861,3 +1857,5 @@ body {
 .service-card.new-layout .service-read-more {
   margin-top: auto; 
 }
+
+
