@@ -1748,3 +1748,155 @@ body {
   gap: 30px;
   width: 100%;
 }
+
+
+
+
+
+/*-----------------------------------*\
+  #NEW WIREFRAME SERVICES SECTION
+\*-----------------------------------*/
+
+/* Reduce overall section height */
+.service.section {
+  padding-block: 60px; /* Reduced from default */
+}
+
+/* Header & Paragraph Box */
+.service-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-end: 40px;
+}
+
+.service-header .section-title {
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.service-paragraph-box {
+  border: 4px solid var(--white);
+  padding: 20px;
+  max-width: 600px;
+  text-align: left;
+  background-color: transparent;
+}
+
+/* Override old staggered margins that made the section huge */
+@media (min-width: 992px) {
+  .service-list.wireframe-layout li:nth-child(-2n+3) { margin-block-start: 0 !important; }
+  .service-list.wireframe-layout li:nth-child(4) { margin-inline-end: 0 !important; }
+  .service-list.wireframe-layout li:nth-child(6) { margin-inline-start: 0 !important; }
+}
+@media (min-width: 1200px) {
+  .service-list.wireframe-layout li:nth-child(-2n+3) { margin-block-start: 0 !important; }
+  .service-list.wireframe-layout li:is(:nth-child(1), :nth-child(6)) { margin-inline-start: 0 !important; }
+  .service-list.wireframe-layout li:is(:nth-child(3), :nth-child(4)) { margin-inline-end: 0 !important; }
+}
+
+/* New 3-Column Grid */
+.service-list.wireframe-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-block-end: 50px;
+}
+@media (min-width: 768px) {
+  .service-list.wireframe-layout { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* New Card Layout */
+.service-card.new-layout {
+  border: 3px solid var(--sonic-silver);
+  border-radius: 16px;
+  padding: 0;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* Contains the overlay */
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-bottom: 3px solid var(--sonic-silver);
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+}
+
+.card-image-wrapper .card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-icon-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 2px solid var(--black);
+  background-color: var(--white);
+  padding: 5px;
+}
+
+.card-content-wrapper {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-content-wrapper .card-title {
+  text-align: left;
+  border-bottom: 3px solid var(--sonic-silver);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: var(--fs-4);
+}
+
+.card-text-box {
+  border: 3px solid var(--sonic-silver);
+  padding: 15px;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Wireframe specific buttons */
+.wireframe-btn {
+  align-self: center;
+  border: 3px solid var(--international-orange-engineering) !important;
+  border-radius: 25px;
+  padding: 8px 30px !important;
+  color: var(--white) !important;
+  text-transform: lowercase !important; /* matching sketch */
+  font-family: var(--ff-mulish);
+}
+
+.wireframe-btn:hover {
+  background-color: var(--international-orange-engineering) !important;
+  color: var(--white) !important;
+}
+
+.wireframe-btn-large {
+  margin-inline: auto;
+  background: transparent;
+  border: 4px solid var(--international-orange-engineering);
+  border-radius: 40px;
+  padding: 15px 50px;
+  color: var(--white);
+  text-transform: lowercase; /* matching sketch */
+}
+
+.wireframe-btn-large:hover {
+  background-color: var(--international-orange-engineering);
+}
+
+.wireframe-btn-large .span {
+  font-family: var(--ff-mulish);
+  font-weight: var(--fw-400);
+  font-size: 1.8rem;
+}
