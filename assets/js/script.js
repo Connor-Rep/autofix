@@ -22,30 +22,30 @@ serviceCloseBtns.forEach(btn => {
 
 
 /**
- * SMOOTH SCROLLING FOR NAVBAR LINKS
+ * SMOOTH SCROLLING FOR ALL INTERNAL ANCHOR LINKS
  */
-const navbarLinks = document.querySelectorAll('.navbar-link');
+// Find ALL links that start with a '#' (this catches the navbar AND your hero button)
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
-navbarLinks.forEach(link => {
+anchorLinks.forEach(link => {
   link.addEventListener('click', function (e) {
-    // Get the target section ID from the href attribute (e.g., "#services")
     const targetId = this.getAttribute('href');
 
-    // Make sure it's an internal link
-    if (targetId && targetId.startsWith('#')) {
+    // Make sure it's an actual section link and not just an empty "#" 
+    if (targetId !== '#' && targetId.startsWith('#')) {
       const targetSection = document.querySelector(targetId);
 
       if (targetSection) {
-        // Prevent the default instant snap behavior
+        // Prevent default behavior (This keeps your URL clean!)
         e.preventDefault();
 
         // Smoothly scroll to the target section
         targetSection.scrollIntoView({
           behavior: 'smooth',
-          block: 'start' // Aligns the top of the section with the top of the viewport
+          block: 'start'
         });
 
-        // Close the mobile navbar if it's open
+        // Close the mobile navbar if it's open (Keeping your original logic)
         const navbar = document.querySelector('[data-navbar]');
         const navToggler = document.querySelector('[data-nav-toggler]');
         if (navbar && navbar.classList.contains('active')) {
