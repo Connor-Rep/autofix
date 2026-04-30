@@ -1890,7 +1890,6 @@ body {
   .footer-top .container {
     /* Shrink the barrier even more for ultra-wide screens */
     padding-inline-start: 18% !important; 
-    grid-template-columns: 1fr 1fr 1fr 1.5fr !important;
     gap: 70px !important; /* Maximum breathing room for large monitors */
   }
 }
