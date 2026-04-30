@@ -1895,4 +1895,11 @@ body {
   }
 }
 
+/* --- MOBILE HEADER LOGO ALIGNMENT FIX --- */
+@media (max-width: 768px) {
+  .header {
+    padding-inline-start: 15px !important; /* Shrinks the large 40px left gap on phones and tablets */
+  }
+}
+
 
