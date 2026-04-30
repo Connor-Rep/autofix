@@ -1184,7 +1184,7 @@ body {
 
   .footer-top { padding-block: 150px; }
 
-  .footer-top .container { padding-inline-start: 0; padding-inline: 15px; }
+  .footer-top .container { padding-inline-start: 0; padding-inline: 10px; }
 
   .footer-bottom {
     position: relative;
