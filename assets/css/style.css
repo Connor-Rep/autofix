@@ -1868,4 +1868,31 @@ body {
   margin-top: auto; 
 }
 
+/* --- DESKTOP FOOTER FIX (PREVENT CAR OVERLAP & FIX SPACING) --- */
+
+@media (min-width: 992px) {
+  .footer-top .container {
+    /* Balances the 4 columns more evenly */
+    grid-template-columns: 1fr 1fr 1fr 1.2fr !important; 
+    gap: 20px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer-top .container {
+    /* Restores the invisible barrier to push the text past the car */
+    padding-inline-start: 25% !important; 
+    grid-template-columns: 1fr 1fr 1fr 1.5fr !important;
+    gap: 30px !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .footer-top .container {
+    /* Adjusts the barrier slightly for ultra-wide screens */
+    padding-inline-start: 22% !important; 
+    gap: 40px !important;
+  }
+}
+
 
