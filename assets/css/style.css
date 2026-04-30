@@ -399,6 +399,7 @@ body {
   text-align: center;
   z-index: 1;
   overflow: hidden;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/hero-bg.jpg');
 }
 
 .hero .container {
@@ -755,6 +756,12 @@ body {
     right: 0;
   }
 
+}
+
+@media (max-width: 575px) {
+  .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/mobile-hero-bg.png');
+  }
 }
 
 
