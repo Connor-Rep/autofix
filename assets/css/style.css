@@ -746,7 +746,7 @@ body {
     overflow: hidden;
   }
 
-  .footer-top .container { grid-template-columns: 1fr 1fr; }
+  .footer-top .container { grid-template-columns: 1fr 0.8fr 0.8fr 1fr; }
 
   .footer .shape-3 {
     display: block;
@@ -1184,7 +1184,7 @@ body {
 
   .footer-top { padding-block: 150px; }
 
-  .footer-top .container { padding-inline-start: 25%; }
+  .footer-top .container { padding-inline-start: 10%; }
 
   .footer-bottom {
     position: relative;
@@ -1295,7 +1295,7 @@ body {
    * FOOTER
    */
 
-  .footer-top .container { padding-inline-start: 20%; }
+  .footer-top .container { padding-inline-start: 5%; gap: 50px; }
 
 }
 
