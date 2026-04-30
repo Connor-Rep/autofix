@@ -1888,9 +1888,10 @@ body {
 
 @media (min-width: 1400px) {
   .footer-top .container {
-    /* Shrink the barrier even more for ultra-wide screens */
+    max-width: 1350px !important; 
     padding-inline-start: 18% !important; 
-    gap: 70px !important; /* Maximum breathing room for large monitors */
+    grid-template-columns: 1fr 1fr 1fr 2.5fr !important; 
+    gap: 70px !important; 
   }
 }
 
