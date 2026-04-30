@@ -1881,7 +1881,7 @@ body {
   .footer-top .container {
     /* Shrink the invisible left-side barrier from 25% down to 20% to free up width */
     padding-inline-start: 20% !important; 
-    grid-template-columns: 1fr 1fr 1fr 1.2fr !important;
+    grid-template-columns: 1fr 1fr 1fr 1.5fr !important;
     gap: 50px !important; /* Drastically increased the space between columns */
   }
 }
