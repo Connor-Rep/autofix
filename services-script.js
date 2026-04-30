@@ -110,3 +110,13 @@ resetBtn?.addEventListener("click", () => {
     });
     gridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
+
+// Secretly erase the hash from the address bar (Foolproof safety net)
+window.addEventListener("load", () => {
+  if (window.location.hash) {
+    setTimeout(() => {
+      // Wipes the hash from the URL without reloading the page
+      history.replaceState(null, null, window.location.pathname);
+    }, 10);
+  }
+});
