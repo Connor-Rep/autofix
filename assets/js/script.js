@@ -70,3 +70,12 @@ if (navbar && navToggler) {
     this.classList.toggle("active");
   });
 }
+
+// Secretly erase the hash from the address bar when arriving from another page
+window.addEventListener("load", () => {
+  if (window.location.hash) {
+    setTimeout(() => {
+      history.replaceState(null, null, window.location.pathname);
+    }, 10);
+  }
+});
