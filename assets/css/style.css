@@ -819,9 +819,7 @@ body {
   .hero .section-text { margin-block-end: 30px; }
 
   .hero.has-bg-image {
-    /* 50% is dead center. 100% is all the way right. 
-       Play with this number until it looks right on your tablet! */
-    background-position: 70% center; 
+    background-position: 80% center; 
   }
 
   .hero .section-text { margin-block-end: 30px; }
