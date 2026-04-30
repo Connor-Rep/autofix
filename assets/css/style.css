@@ -973,6 +973,12 @@ body {
     padding-block-end: 80px;
   }
 
+  .hero.has-bg-image {
+    /* This resets the image back to normal for laptops and desktops */
+    background-position: left center; 
+  }
+
+
   .hero .container {
     max-width: 960px;
     grid-template-columns: 1fr 1fr;
