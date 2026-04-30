@@ -819,11 +819,11 @@ body {
   .hero .section-text { margin-block-end: 30px; }
 
   .hero.has-bg-image {
-    /* Anchors the image to the right side instead of the left */
-    background-position: right center; 
+    /* 50% is dead center. 100% is all the way right. 
+       Play with this number until it looks right on your tablet! */
+    background-position: 70% center; 
   }
 
-  .hero { --section-padding: 120px; }
   .hero .section-text { margin-block-end: 30px; }
 
 
