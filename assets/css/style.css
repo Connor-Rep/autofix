@@ -852,7 +852,7 @@ body {
    * FOOTER
    */
 
-  .footer-top .container { grid-template-columns: 1fr 0.9fr 0.9fr; }
+  .footer-top .container { grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr; }
 
   .copyright { --fs-6: 1.4rem; }
 
@@ -1184,7 +1184,7 @@ body {
 
   .footer-top { padding-block: 150px; }
 
-  .footer-top .container { padding-inline-start: 10%; }
+  .footer-top .container { padding-inline-start: 0; padding-inline: 15px; }
 
   .footer-bottom {
     position: relative;
