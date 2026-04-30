@@ -10,7 +10,42 @@ const quoteForm = document.querySelector("#quote-form");
 
 // 1. Navigation
 document.querySelectorAll("#header-back-btn, #header-logo").forEach(el => {
-    el?.addEventListener("click", () => window.location.href = "index.html");
+    // CHANGED: Point to "/" to keep the URL completely clean
+    el?.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "/";
+    });
+});
+
+// 1.5 Smooth Scrolling & Clean URLs for Internal Links
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
+anchorLinks.forEach(link => {
+  link.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href');
+
+    if (targetId !== '#' && targetId.startsWith('#')) {
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        // Prevent the browser from adding # to the URL
+        e.preventDefault();
+
+        // Smooth scroll to the section
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+
+        // Close the mobile navbar if it's open
+        const navbar = document.querySelector('[data-navbar]');
+        const navToggler = document.querySelector('[data-nav-toggler]');
+        if (navbar && navbar.classList.contains('active')) {
+          navbar.classList.remove('active');
+          navToggler.classList.remove('active');
+        }
+      }
+    }
+  });
 });
 
 // 2. Search
