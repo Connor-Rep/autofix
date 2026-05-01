@@ -488,10 +488,7 @@ body {
   color: var(--international-orange-engineering);
 }
 
-.footer-bottom {
-  background-color: #000000;
-  padding-block: 1px;
-}
+
 
 .copyright {
   text-align: center;
@@ -997,8 +994,10 @@ body {
 
   .footer-bottom {
     position: relative;
-    padding-block: 30px;
+    padding-block: 15px;
     z-index: 1;
+    background-color: #000000;
+
   }
 
   .footer :is(.shape-1, .shape-2) {
