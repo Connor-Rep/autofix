@@ -1441,29 +1441,30 @@ body {
   margin-top: auto; 
 }
 
-/* --- DESKTOP FOOTER FIX (PREVENT CAR OVERLAP & ADD BREATHING ROOM) --- */
+/* --- DESKTOP FOOTER FIX (CENTERED LAYOUT) --- */
 
 @media (min-width: 992px) {
   .footer-top .container {
-    grid-template-columns: 1fr 1fr 1fr 1.2fr !important; 
-    gap: 30px !important; /* Increased gap for smaller desktop screens */
+    /* Makes all 4 columns exactly the same width */
+    grid-template-columns: repeat(4, 1fr) !important; 
+    gap: 30px !important; 
   }
 }
 
 @media (min-width: 1200px) {
   .footer-top .container {
-    /* Shrink the invisible left-side barrier from 25% down to 20% to free up width */
-    padding-inline-start: 20% !important; 
-    grid-template-columns: 1fr 1fr 1fr 1.5fr !important;
-    gap: 50px !important; /* Drastically increased the space between columns */
+    /* Removes the massive invisible barrier */
+    padding-inline-start: 16px !important; 
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 50px !important; 
   }
 }
 
 @media (min-width: 1400px) {
   .footer-top .container {
     max-width: 1350px !important; 
-    padding-inline-start: 18% !important; 
-    grid-template-columns: 1fr 1fr 1fr 2.5fr !important; 
+    padding-inline-start: 16px !important; 
+    grid-template-columns: repeat(4, 1fr) !important; 
     gap: 70px !important; 
   }
 }
