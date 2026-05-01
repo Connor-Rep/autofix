@@ -441,22 +441,6 @@ body {
 }
 
 
-
-
-
-/*-----------------------------------*\
-  #WORK
-\*-----------------------------------*/
-
-
-/* Custom Toggle Utility */
-
-/* --- UPDATED PACKAGES (WORK) SECTION --- */
-
-
-
-
-
 /*-----------------------------------*\
   #FOOTER
 \*-----------------------------------*/
@@ -520,8 +504,6 @@ body {
   text-align: center;
   font-size: var(--fs-6);
 }
-
-
 
 
 
@@ -926,12 +908,6 @@ body {
     z-index: -1;
   }
 
-
-
-  /**
-   * WORK
-   */
-
 }
 
 
@@ -1018,13 +994,6 @@ body {
   .service-list li:nth-child(-2n+3) {
     margin-block-start: 110px;
   }
-
-
-
-  /**
-   * WORK
-   */
-
 
 
   /**
@@ -1133,12 +1102,6 @@ body {
 
   .about-banner .w-100 { width: 50%; }
 
-/**
-   * MEMBERSHIP
-   */
-
-
-
   /**
    * FOOTER
    */
@@ -1147,27 +1110,10 @@ body {
 
 }
 
- 
-/* Specific fixes for Mobile (Screens smaller than 575px) */
-@media (max-width: 575px) {
-  /* 1. Add horizontal padding to the list to allow the first/last cards to center */
-
-  /* 2. Set a fixed width relative to the screen so they look like distinct cards */
-
-  /* 3. Adjust the floating content box to stay within the card bounds */
-  
-  /* Ensure the banner image takes up full width of the item */
-}
-
-
-
   .service-list li:nth-child(2) .card-overlay {
     align-items: flex-start; /* Resets the desktop center alignment */
     justify-content: flex-start; /* Resets the desktop center alignment */
   }
-
-
-
 
 
 
@@ -1196,8 +1142,6 @@ body {
   overflow: visible !important; 
 }
 
-/* FRONT SIDE */
-
 /* BACK SIDE */
 .card-back {
   background-color: #000000 !important;
@@ -1215,11 +1159,6 @@ body {
   z-index: 5;
   pointer-events: all; 
 }
-
-/* 3. The Hover Effect */
-
-/* When flipped, hide the front side completely so it can't block clicks */
-
 
 
 /* --- Updated SERVICE CARD OVERLAY SYSTEM --- */
@@ -1374,30 +1313,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .service-list li:nth-child(2) .card-overlay {
   height: 100%;
   max-height: 100%;
@@ -1426,23 +1341,6 @@ body {
 .service-list li:nth-child(2) .overlay-content {
   text-align: center;
 }
-
-
-
-
-
-
-
-/* --- PACKAGE SECTION REFINED TRANSITIONS --- */
-
-/* Base state for elements when they are hidden (both Intro and Cards) */
-
-/* Active state for visible elements */
-
-/* Ensure the button itself doesn't have a margin that gets ignored by scrollHeight */
-
-/* Ensure cards align properly within the scrollbar list to prevent cut-offs */
-
 
 
 
@@ -1523,7 +1421,6 @@ body {
   object-fit: cover;
 }
 
-/* Icon Box inside Image Wrapper */
 
 /* Card Text Section */
 .card-content-wrapper {
