@@ -122,8 +122,6 @@ body {
   line-height: 1.5;
 }
 
-:focus-visible { outline-offset: 4px; }
-
 ::-webkit-scrollbar { width: 10px; }
 
 ::-webkit-scrollbar-track { background-color: hsl(0, 0%, 98%); }
@@ -176,14 +174,6 @@ body {
   background-size: contain;
   background-position: center;
 }
-
-.section-subtitle.\:dark { color: var(--white); }
-
-.section-subtitle.\:dark::before { background-image: url('../images/text-bars-light.png'); }
-
-.section-subtitle.\:light { color: var(--white); }
-
-.section-subtitle.\:light::before { background-image: url('../images/text-bars-dark.png'); }
 
 .section-title { text-align: center; }
 
@@ -238,12 +228,6 @@ body {
   will-change: transform;
 }
 
-.btn:is(:hover, :focus-visible) {
-  transform: translateY(-5px);
-  background-color: var(--eerie-black);
-  border-color: var(--white);
-}
-
 .move-anim { animation: moving 2s ease-in-out infinite alternate; }
 
 @keyframes moving {
@@ -261,47 +245,6 @@ body {
 }
 
 .w-100 { width: 100%; }
-
-.img-holder {
-  aspect-ratio: var(--width) / var(--height);
-  background-color: var(--light-gray);
-  overflow: hidden;
-}
-
-.img-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.has-scrollbar {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  overflow-x: auto;
-  scroll-snap-type: inline mandatory;
-  padding-block-end: 20px;
-}
-
-.scrollbar-item {
-  min-width: 100%;
-  scroll-snap-align: start;
-}
-
-.has-scrollbar::-webkit-scrollbar { height: 16px; }
-
-.has-scrollbar::-webkit-scrollbar-track {
-  background-color: var(--eerie-black);
-  border-radius: 20px;
-}
-
-.has-scrollbar::-webkit-scrollbar-thumb {
-  background-color: var(--international-orange-engineering);
-  border-radius: 20px;
-  border: 3px solid var(--eerie-black);
-}
-
-.has-scrollbar::-webkit-scrollbar-button { width: 15%; }
 
 
 
@@ -381,11 +324,6 @@ body {
   transition: var(--transition);
 }
 
-.navbar-link:is(:hover, :focus-visible) {
-  background-color: var(--white);
-  color: var(--international-orange-engineering);
-}
-
 
 
 
@@ -436,8 +374,6 @@ body {
 /*-----------------------------------*\
   #SERVICE
 \*-----------------------------------*/
-
-.service-banner { display: none; }
 
 .service { text-align: center; }
 
@@ -514,55 +450,8 @@ body {
 
 
 /* Custom Toggle Utility */
-.scrollbar-item.hidden {
-  display: none;
-}
-
-
-
-.work .container { padding-inline: 0; }
-
-.work .section-title { margin-block-end: 24px; }
-
-.work-card { position: relative; }
 
 /* --- UPDATED PACKAGES (WORK) SECTION --- */
-.section.work {
-  background-color: var(--eerie-black); /* Swapped from #000000 */
-}
-
-.work-card .card-content {
-  background-color: #000000 !important;
-  max-width: 90%;
-  padding: 30px 10px;
-  margin-block-start: -60px;
-  margin-inline: auto;
-  position: relative;
-  text-align: center;
-  box-shadow: var(--shadow);
-}
-
-.work-card .card-subtitle {
-  font-family: var(--ff-chakra-petch);
-  text-transform: uppercase;
-  color: var(--international-orange-engineering);
-  font-weight: var(--fw-700);
-  margin-block-end: 5px;
-}
-
-.work-card .card-title { margin-block-end: 10px; }
-
-.work-card .card-btn {
-  background-color: var(--international-orange-engineering);
-  color: var(--eerie-black);
-  font-size: 2rem;
-  margin-inline: auto;
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-circle);
-}
 
 
 
@@ -597,11 +486,6 @@ body {
   transition: var(--transition);
 }
 
-.social-link:is(:hover, :focus-visible) {
-  background-color: var(--international-orange-engineering);
-  transform: translateY(-5px);
-}
-
 .footer .h3 {
   color: var(--white);
   margin-block-end: 18px;
@@ -620,8 +504,6 @@ body {
   align-items: center;
   gap: 10px;
 }
-
-.footer-link:is(:hover, :focus-visible) { color: var(--international-orange-engineering); }
 
 .footer-link .material-symbols-rounded {
   flex-shrink: 0;
@@ -734,8 +616,6 @@ body {
    * WORK
    */
 
-  .scrollbar-item { min-width: calc(50% - 5px); }
-
 
 
   /**
@@ -830,21 +710,7 @@ body {
    * SERVICE
    */
 
-  .service-banner {
-    display: block;
-    position: relative;
-  }
-
   .service-list { grid-template-columns: repeat(3, 1fr); }
-
-  .service-banner img {
-    position: absolute;
-    top: 0;
-    left: -25%;
-    margin-block-start: 15%;
-    width: 150%;
-    transform-origin: top;
-  }
 
 
 
@@ -938,11 +804,6 @@ body {
     font-size: unset;
   }
 
-  .navbar-link:is(:hover, :focus-visible) {
-    background: none;
-    color: var(--white);
-  }
-
   .navbar-link::after {
     content: url("../images/nav-before-img.png");
     position: absolute;
@@ -951,8 +812,6 @@ body {
     transform: translateX(-50%);
     opacity: 0;
   }
-
-  .navbar-link:is(:hover, :focus-visible)::after { opacity: 1; }
 
   .header .btn {
     display: flex;
@@ -1025,12 +884,6 @@ body {
 
   .service-list li:nth-child(6) { margin-inline-start: 60px; }
 
-  .service-banner img {
-    left: -55%;
-    margin-block-start: -30%;
-    width: 210%;
-  }
-
 
 
   /**
@@ -1078,10 +931,6 @@ body {
   /**
    * WORK
    */
-
-  .has-scrollbar { overflow-x: auto; }
-
-  .scrollbar-item { min-width: calc(33.33% - 10px); }
 
 }
 
@@ -1170,30 +1019,11 @@ body {
     margin-block-start: 110px;
   }
 
-  .service-list li:is(:nth-child(1), :nth-child(6)) {
-    margin-inline-start: 75px;
-  }
-
-  .service-list li:is(:nth-child(3), :nth-child(4)) {
-    margin-inline-end: 75px;
-  }
-
-  .service-banner img {
-    width: max-content;
-    left: -41%;
-  }
-
 
 
   /**
    * WORK
    */
-
-  .work-card .card-btn {
-    font-size: 2.4rem;
-    width: 55px;
-    height: 55px;
-  }
 
 
 
@@ -1308,11 +1138,6 @@ body {
    */
 
 
-  #membership {
-  padding-block-end: 240px; 
-}
-
-
 
   /**
    * FOOTER
@@ -1326,34 +1151,12 @@ body {
 /* Specific fixes for Mobile (Screens smaller than 575px) */
 @media (max-width: 575px) {
   /* 1. Add horizontal padding to the list to allow the first/last cards to center */
-  .has-scrollbar {
-    scroll-snap-type: x mandatory;
-    padding-inline: 25px !important; /* Creates the 'peek' effect for side cards */
-    display: flex;
-    gap: 20px; /* This is the key: creates physical space between the images */
-    overflow-x: auto;
-    padding-block-end: 120px !important; 
-  }
 
   /* 2. Set a fixed width relative to the screen so they look like distinct cards */
-  .scrollbar-item {
-    min-width: 85vw; /* Each card takes up 85% of the screen width */
-    scroll-snap-align: center;
-    flex-shrink: 0; /* Prevents cards from squishing */
-  }
 
   /* 3. Adjust the floating content box to stay within the card bounds */
-  .work-card .card-content {
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-    max-width: 90%;
-    padding: 20px 15px;
-    margin-inline: auto;
-  }
   
   /* Ensure the banner image takes up full width of the item */
-  .card-banner {
-    width: 100%;
-  }
 }
 
 
@@ -1373,30 +1176,12 @@ body {
 
 /* --- MEMBERSHIP SECTION & FLIP SYSTEM --- */
 
-.has-scrollbar {
-  /* Ensure the container itself doesn't show a vertical scrollbar */
-  overflow-y: hidden !important; 
-  padding-block-end: 120px !important; 
-}
-
-.work-card {
-  perspective: 1000px;
-  background-color: transparent !important;
-  height: 420px; 
-  /* Prevent internal scrollbars on the card container */
-  overflow: visible !important; 
-}
-
 .card-inner {
   position: relative;
   width: 100%;
   height: 100%;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-}
-
-.work-card.flipped .card-inner {
-  transform: rotateY(180deg);
 }
 
 .card-front, .card-back {
@@ -1412,25 +1197,6 @@ body {
 }
 
 /* FRONT SIDE */
-.card-front .card-banner {
-  height: 100%;
-  margin-bottom: 0;
-  overflow: hidden; /* This keeps the IMAGE rounded */
-  border-radius: var(--radius-16);
-}
-
-.card-front .card-content {
-  position: absolute;
-  bottom: -60px; /* Adjust this to get the perfect "half-off" look */
-  left: 20px;
-  right: 20px;
-  width: auto;
-  background-color: var(--eerie-black);
-  padding: 25px;
-  border-radius: var(--radius-16);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
-  z-index: 10; /* Ensures the front content stays on top */
-}
 
 /* BACK SIDE */
 .card-back {
@@ -1450,46 +1216,9 @@ body {
   pointer-events: all; 
 }
 
-.back-list {
-  margin-block: 20px;
-  color: var(--cadet-blue-creyola);
-  font-family: var(--ff-mulish);
-  font-size: var(--fs-6);
-  line-height: 1.6;
-  list-style: none;
-}
-
-.flip-back-link {
-  margin-top: 15px;
-  color: var(--sonic-silver);
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 1.2rem;
-  background: none;
-  border: none;
-  transition: var(--transition);
-  /* Higher z-index to stay above any decorative elements */
-  position: relative;
-  z-index: 30; 
-}
-
 /* 3. The Hover Effect */
-.flip-back-link:hover {
-  color: var(--international-orange-engineering); /* Your theme's red/orange */
-  text-decoration: none;
-}
 
 /* When flipped, hide the front side completely so it can't block clicks */
-.work-card.flipped .card-front {
-  pointer-events: none;
-  visibility: hidden;
-  transition: visibility 0s linear 0.4s; /* Matches half the flip duration */
-}
-
-.work-card.flipped .card-back {
-  pointer-events: all;
-  visibility: visible;
-}
 
 
 
@@ -1706,73 +1435,13 @@ body {
 
 /* --- PACKAGE SECTION REFINED TRANSITIONS --- */
 
-.package-window {
-  position: relative;
-  /* Change this to allow a tiny bit of vertical overflow if needed */
-  overflow-x: hidden; 
-  overflow-y: clip; 
-  transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.package-content {
-  width: 100%;
-  /* Unified transition for fading and slight movement */
-  transition: opacity 1.0s ease, transform 1.0s ease, visibility 1.0s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.package-intro {
-  width: 100%;
-  /* Unified transition for fading and slight movement */
-  transition: opacity 1.0s ease, transform 1.0s ease, visibility 1.0s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-bottom: 10px; /* Gives the button extra room inside the calculation */
-}
-
 /* Base state for elements when they are hidden (both Intro and Cards) */
-.package-content.hidden,
-.package-intro.fade-out {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  /* This prevents the "snapping" by keeping the hidden element 
-     perfectly centered over the window while it fades */
-  position: absolute;
-  top: 0;
-  transform: translateY(10px); 
-}
 
 /* Active state for visible elements */
-.package-content:not(.hidden),
-.package-intro:not(.fade-out) {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-  position: relative;
-  transform: translateY(0);
-}
 
 /* Ensure the button itself doesn't have a margin that gets ignored by scrollHeight */
-#view-packages-btn {
-  margin-bottom: 5px;
-}
 
 /* Ensure cards align properly within the scrollbar list to prevent cut-offs */
-.package-content .has-scrollbar {
-  display: flex;
-  justify-content: flex-start; /* Changed from center */
-  gap: 30px;
-  width: 100%;
-}
 
 
 
@@ -1811,8 +1480,6 @@ body {
 }
 @media (min-width: 1200px) {
   .service-list.wireframe-layout li:nth-child(-2n+3) { margin-block-start: 0 !important; }
-  .service-list.wireframe-layout li:is(:nth-child(1), :nth-child(6)) { margin-inline-start: 0 !important; }
-  .service-list.wireframe-layout li:is(:nth-child(3), :nth-child(4)) { margin-inline-end: 0 !important; }
 }
 
 /* New 3-Column Grid */
@@ -1857,14 +1524,6 @@ body {
 }
 
 /* Icon Box inside Image Wrapper */
-.card-icon-box {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: 2px solid var(--black);
-  background-color: var(--white);
-  padding: 5px;
-}
 
 /* Card Text Section */
 .card-content-wrapper {
