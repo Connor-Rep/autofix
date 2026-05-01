@@ -24,7 +24,6 @@ serviceCloseBtns.forEach(btn => {
 /**
  * SMOOTH SCROLLING FOR ALL INTERNAL ANCHOR LINKS
  */
-// Find ALL links that start with a '#' (this catches the navbar AND your hero button)
 const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
 anchorLinks.forEach(link => {
@@ -36,7 +35,7 @@ anchorLinks.forEach(link => {
       const targetSection = document.querySelector(targetId);
 
       if (targetSection) {
-        // Prevent default behavior (This keeps your URL clean!)
+        // keeps URL clean
         e.preventDefault();
 
         // Smoothly scroll to the target section
@@ -45,7 +44,7 @@ anchorLinks.forEach(link => {
           block: 'start'
         });
 
-        // Close the mobile navbar if it's open (Keeping your original logic)
+        // Close the mobile navbar if it's open
         const navbar = document.querySelector('[data-navbar]');
         const navToggler = document.querySelector('[data-nav-toggler]');
         if (navbar && navbar.classList.contains('active')) {
