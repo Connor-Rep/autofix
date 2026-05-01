@@ -1201,7 +1201,11 @@ body {
    * FOOTER
    */
 
-  .footer-top { padding-block: 150px; }
+ .footer-top { 
+    padding-top: 40px;      /* Shrinks the dark grey space at the top */
+    padding-bottom: 150px;  
+    margin-top: 110px;      /* Replaces the removed padding with invisible space so the footer doesn't move up */
+  }
 
   .footer-top .container { padding-inline-start: 0; padding-inline: 10px; }
 
