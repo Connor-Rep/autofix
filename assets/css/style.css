@@ -123,18 +123,17 @@ body {
 
 ::-webkit-scrollbar-thumb:hover { background-color: hsl(0, 0%, 70%); }
 
-/* --- CUSTOM TEXT HIGHLIGHT COLOR --- */
+/* --- TEXT HIGHLIGHT COLOR --- */
 ::selection {
-  background-color: var(--international-orange-engineering)
-  color: var(--white); /* Keeps the text white when highlighted so it's readable */
+  background-color: var(--international-orange-engineering);
+  color: var(--white); 
 }
 
 /* For Mozilla Firefox compatibility */
 ::-moz-selection {
-  background-color: #ff0000;
+  background-color: var(--international-orange-engineering); 
   color: var(--white);
 }
-
 
 
 
