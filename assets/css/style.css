@@ -1925,4 +1925,12 @@ body {
   }
 }
 
+/* --- BULLETPROOF FOOTER FIX --- */
+@media (min-width: 992px) {
+  .footer-top.section {
+    padding-top: 30px !important;  /* Forces the dark grey background to shrink */
+    margin-top: 120px !important;  /* Forces transparent space above it so it doesn't move */
+  }
+}
+
 
