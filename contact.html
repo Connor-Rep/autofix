@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeTay - Contact Us</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Mulish&display=swap" rel="stylesheet">
+  
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@40,600,0,0" />
+
+  <!-- Custom CSS Links -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/services-style.css">
+</head>
+
+<body style="background-color: #000000;">
+
+  <!-- 
+    - #HEADER
+  -->
+  <header class="header">
+    <div class="container">
+      <a href="/" class="logo" id="header-logo">
+        <img src="./assets/images/logo.png" width="128" height="63" alt="SafeTay Logo">
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+          <li><a href="/#home" class="navbar-link">Home</a></li>
+          <li><a href="/services.html" class="navbar-link">Services</a></li>
+          <li><a href="/#about" class="navbar-link">About</a></li>
+          <li><a href="#" class="navbar-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <a href="/" class="btn-link" id="header-back-btn">
+        <span class="material-symbols-rounded">arrow_back</span>
+        <span class="span">Back</span>
+      </a>
+      
+      <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
+        <span class="nav-toggle-icon icon-1"></span>
+        <span class="nav-toggle-icon icon-2"></span>
+        <span class="nav-toggle-icon icon-3"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <!-- 
+        - #CONTACT HERO BUBBLE
+      -->
+      <section class="section service-hero" id="contact-hero" style="padding-block-start: 160px; padding-block-end: 0;">
+        <div class="container services-header-bubble">
+          <p class="section-subtitle :dark">Get in Touch</p>
+          <h1 class="h1 section-title">Contact Us</h1>
+          <p class="section-text">Have a question or need to book an appointment? Send us a message and we will get back to you shortly.</p>
+        </div>
+      </section>
+
+      <!-- 
+        - #CONTACT FORM BUBBLE
+      -->
+      <section class="section search-cards-bubble-section" id="contact-form-section">
+        <div class="container main-bubble">
+          <h2 class="h2 section-title" style="margin-bottom: 30px; text-align: center;">Send a Message</h2>
+          
+          <form id="contact-form" class="form-grid">
+            <input type="text" name="name" placeholder="Full Name" class="input-field" required>
+            <input type="email" name="email" placeholder="Email Address" class="input-field" required>
+            
+            <input type="tel" name="phone" placeholder="Phone Number" class="input-field">
+            <input type="text" name="subject" placeholder="Subject / Enquiry Type" class="input-field">
+
+            <textarea name="message" placeholder="Your Message / Details" class="input-field textarea" rows="6" required></textarea>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary submit-btn" style="margin-inline: auto;">
+                    <span class="span">Send Message</span>
+                    <span class="material-symbols-rounded">send</span>
+                </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+  <footer class="footer" id="contact">
+    <div class="footer-top section">
+      <div class="container">
+
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <img src="./assets/images/logo.png" width="128" height="63" alt="autofix home">
+          </a>
+
+          <p class="footer-text">
+           Find our Socials below:
+          </p>
+
+          <ul class="social-list">
+            <li>
+              <a href="#" class="social-link">
+                <img src="./assets/images/facebook.svg" alt="facebook">
+              </a>
+            </li>
+            <li>
+              <a href="#" class="social-link">
+                <img src="./assets/images/instagram.svg" alt="instagram">
+              </a>
+            </li>
+            <li>
+              <a href="#" class="social-link">
+                <img src="./assets/images/twitter.svg" alt="twitter">
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="footer-list">
+          <li>
+            <p class="h3">Opening Hours</p>
+          </li>
+          <li>
+            <p class="p">Monday – Friday</p>
+            <span class="span">11:00 – 19:30</span>
+          </li>
+          <li>
+            <p class="p">Saturday – Sunday</p>
+            <span class="span">11:00 - 17:00</span>
+          </li>
+        </ul>
+
+        <ul class="footer-list">
+          <li>
+            <p class="h3">Contact Info</p>
+          </li>
+          <li>
+            <a href="tel:+44" class="footer-link">
+              <span class="material-symbols-rounded">call</span>
+              <span class="span">+44</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:info@safetay.uk" class="footer-link">
+              <span class="material-symbols-rounded">mail</span>
+              <span class="span">info@safetay.uk</span>
+            </a>
+          </li>
+          <li>
+            <address class="footer-link address">
+              <span class="material-symbols-rounded">location_on</span>
+              <span class="span">Blairgowrie</span>
+            </address>
+          </li>
+        </ul>
+
+        <div class="footer-map">
+          <p class="h3" style="color: var(--white); margin-block-end: 18px;">Find Us</p>
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35136.00287413038!2d-3.3762618!3d56.5916962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48866a745863c873%3A0xc3f58a8a30f3a61e!2sBlairgowrie!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" 
+            width="100%" 
+            height="220" 
+            style="border:0; border-radius: 8px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        
+      </div>
+      
+      <img src="./assets/images/footer-shape-3.png" width="" height="" loading="lazy" alt=""
+        class="shape shape-3 move-anim">
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">SafeTay © 2026</p>
+        <img src="./assets/images/footer-shape-2.png" width="778" height="335" loading="lazy" alt="Shape"
+          class="shape shape-2">
+        <img src="./assets/images/footer-shape-1.png" width="805" height="652" loading="lazy" alt="Red Car"
+          class="shape shape-1 move-anim">
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom JS Links -->
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
