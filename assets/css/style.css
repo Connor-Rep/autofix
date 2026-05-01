@@ -1478,7 +1478,7 @@ body {
 /* --- BULLETPROOF FOOTER FIX --- */
 @media (min-width: 992px) {
   .footer-top.section {
-    padding-top: 15px !important;  /* Forces the dark grey background to shrink */
+    padding-top: 25px !important;  /* Forces the dark grey background to shrink */
     margin-top: 120px !important;  /* Forces transparent space above it so it doesn't move */
     padding-bottom: 10px !important; 
     
