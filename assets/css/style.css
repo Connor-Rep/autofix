@@ -1486,4 +1486,21 @@ body {
   }
 }
 
+/* --- FOOTER CENTERING OVERRIDE --- */
+@media (min-width: 768px) {
+  .footer-top .container {
+    padding-inline-start: 16px !important; 
+    
+    grid-template-columns: repeat(4, 1fr) !important; 
+    gap: 30px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer-top .container {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 50px !important; 
+  }
+}
+
 
