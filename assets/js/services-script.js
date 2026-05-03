@@ -15,36 +15,44 @@ document.querySelectorAll("#header-back-btn, #header-logo").forEach(el => {
     });
 });
 
-// 2. Search Logic (Fixed Highlight)
+// 2. Search Logic (Fixed)
 searchInput?.addEventListener("input", (e) => {
     const val = e.target.value.toLowerCase().trim();
     cards.forEach(card => {
         card.classList.remove("highlight");
-        // If there's text, and the dataset matches the text, add highlight
         if (val && card.dataset.service.toLowerCase().includes(val)) {
             card.classList.add("highlight");
         }
     });
 });
 
-// 3. Selection Toggle Logic & Bottom Bar Updates
+// 3. Selection Toggle & Upsell Logic
+const fullServiceCard = document.querySelector('[data-service="Full Service"]');
+const detailCard = document.getElementById("complete-detail-card");
+
 cards.forEach(card => {
     card.addEventListener("click", () => {
-        // Toggle the selected state
         card.classList.toggle("selected");
         
         const btn = card.querySelector(".add-btn");
         const isDetailService = card.dataset.service === "Complete Detail";
 
-        // Logic for when the card is selected
         if (card.classList.contains("selected")) {
             selectedCount++;
             btn.innerHTML = "✓ ADDED";
-        } 
-        // Logic for when the card is deselected
-        else {
+        } else {
             selectedCount--;
             btn.innerHTML = isDetailService ? "+ ADD (HALF-PRICE DETAIL)" : "+ ADD";
+        }
+
+        // --- THE GOLD GLOW UPSELL LOGIC ---
+        // If Full Service is selected AND Complete detail is NOT yet selected, make it glow!
+        if (fullServiceCard && detailCard) {
+            if (fullServiceCard.classList.contains("selected") && !detailCard.classList.contains("selected")) {
+                detailCard.classList.add("gold-glow");
+            } else {
+                detailCard.classList.remove("gold-glow");
+            }
         }
 
         updateBookingBar();
@@ -66,18 +74,15 @@ viewBookingBtn?.addEventListener("click", () => {
     if (selectedCount > 0) {
         const selectedServices = Array.from(document.querySelectorAll('.card-item.selected'))
                                       .map(card => card.dataset.service);
-        
         console.log("Services to book:", selectedServices);
     } else {
         alert("Please select at least one service to begin your booking.");
     }
 });
 
-// Clean URLs for Internal Links
+// Clean URLs
 window.addEventListener("load", () => {
   if (window.location.hash) {
-    setTimeout(() => {
-      history.replaceState(null, null, window.location.pathname);
-    }, 10);
+    setTimeout(() => { history.replaceState(null, null, window.location.pathname); }, 10);
   }
 });
