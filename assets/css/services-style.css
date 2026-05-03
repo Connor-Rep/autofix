@@ -9,33 +9,45 @@ body {
 }
 
 
-/* --- PREMIUM PROMOTION BANNER --- */
 .promo-banner {
     position: fixed;
     top: 103px; /* Mobile header height */
     left: 0;
     width: 100%;
-    /* Dark background to match theme, with a thin brand-colored line underneath */
     background-color: rgba(15, 15, 15, 0.95); 
     backdrop-filter: blur(5px);
     border-bottom: 2px solid var(--international-orange-engineering);
     color: var(--white);
     text-align: center;
-    padding: 12px 20px;
-    font-size: 1.3rem; /* Slightly smaller and refined */
+    padding: 14px 10px; /* Slightly taller padding to accommodate bigger text */
+    font-size: 1.2rem; /* Base font size */
     font-family: var(--ff-chakra-petch);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     z-index: 49; 
+    
+    /* Forces it to stay on one line */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; /* Adds '...' if a phone screen is extremely narrow */
 }
 
-/* Make the offer stand out in Gold/Orange */
 .promo-banner .highlight-text {
     color: #FFD700; /* Gold */
-    font-weight: bold;
+    font-weight: 900; /* Extra bold */
+    font-size: 1.8rem; /* Much bigger than the base text */
+    vertical-align: middle; /* Keeps it perfectly lined up with the smaller text */
+    margin: 0 4px; /* Adds a tiny bit of breathing room on the sides */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); /* Subtle gold glow */
 }
 
 @media (min-width: 1200px) {
-    .promo-banner { top: 113px; /* Desktop header height */ }
+    .promo-banner { 
+        top: 113px; /* Desktop header height */ 
+        font-size: 1.5rem; /* Scales up overall size on desktop */
+    }
+    .promo-banner .highlight-text {
+        font-size: 2.2rem; /* Scales up the 50% OFF on desktop */
+    }
 }
 
 /* Pulls the 'Our Services' box up */
