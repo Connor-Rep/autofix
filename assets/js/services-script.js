@@ -7,13 +7,20 @@ const viewBookingBtn = document.getElementById("view-booking-btn");
 
 let selectedCount = 0;
 
-// 1. Navigation & Mobile Menu Logic (Restored from index.html)
+// 1. Navigation & Mobile Menu Logic
 const navbar = document.querySelector("[data-navbar]");
 const navToggler = document.querySelector("[data-nav-toggler]");
 
 navToggler?.addEventListener("click", function () {
   navbar.classList.toggle("active");
   this.classList.toggle("active");
+});
+
+document.querySelectorAll("#header-back-btn, #header-logo").forEach(el => {
+    el?.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "/";
+    });
 });
 
 // 2. Search Logic
@@ -34,24 +41,21 @@ const detailCard = document.getElementById("complete-detail-card");
 cards.forEach(card => {
     card.addEventListener("click", () => {
         card.classList.toggle("selected");
-        
         const btn = card.querySelector(".add-btn");
         
-        // Base logic for normal cards
+        // Count Tracker
+        if (card.classList.contains("selected")) {
+            selectedCount++;
+        } else {
+            selectedCount--;
+        }
+
+        // Apply Text for Normal Cards
         if (card !== detailCard) {
             if (card.classList.contains("selected")) {
-                selectedCount++;
                 btn.innerHTML = "✓ ADDED";
             } else {
-                selectedCount--;
                 btn.innerHTML = "+ ADD";
-            }
-        } else {
-            // Handle selected count for detail card separately to avoid miscounting
-            if (card.classList.contains("selected")) {
-                selectedCount++;
-            } else {
-                selectedCount--;
             }
         }
 
