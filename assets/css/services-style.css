@@ -1,31 +1,39 @@
 /* --- GLOBAL FIXES & PROMOTION BANNER --- */
 body { 
     background-color: #000000 !important;
-    padding-bottom: 120px; /* Space for the sticky footer */
+    padding-bottom: 120px; 
 }
 
+/* Attaches right below the fixed header */
 .promo-banner {
     background-color: var(--international-orange-engineering);
     color: var(--white);
     text-align: center;
     padding: 15px 20px;
-    font-size: 1.6rem; /* Much bigger */
+    font-size: 1.6rem; 
     font-family: var(--ff-chakra-petch);
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Makes text pop */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); 
     width: 100%;
-    margin-top: 105px; /* Pushes it down below the fixed header */
+    margin-top: 103px; /* Mobile header height */
     z-index: 10;
     position: relative;
 }
 
-/* SECTION PADDING FIXES */
-.service-hero { padding-block-end: 0 !important; }
+@media (min-width: 1200px) {
+    .promo-banner { margin-top: 113px; /* Desktop header height */ }
+}
+
+/* Pulls the 'Our Services' box higher up */
+.service-hero { 
+    padding-block-start: 30px !important; 
+    padding-block-end: 0 !important; 
+}
 .search-cards-bubble-section { padding-block-start: 0 !important; padding-block-end: 0 !important; }
 
-/* --- BUBBLE BLOCKS (Restored from your original) --- */
+/* --- BUBBLE BLOCKS --- */
 .services-header-bubble {
     background-color: var(--eerie-black);
     border-radius: 24px;
@@ -51,8 +59,8 @@ body {
     color: var(--white);
 }
 
-/* --- SEARCH BAR (Restored from your original) --- */
-.search-container { margin-bottom: 40px; }
+/* --- SEARCH BAR --- */
+.search-container { margin-bottom: 40px; text-align: center;}
 .search-input {
     width: 100%;
     max-width: 400px;
@@ -63,9 +71,10 @@ body {
     color: var(--white);
     font-family: var(--ff-chakra-petch);
     font-size: 1.2rem;
+    margin: 0 auto;
 }
 
-/* --- NEW CARD BASE (Replaces flip logic) --- */
+/* --- BASE CARD --- */
 .card-item {
     background-color: #000000;
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -78,16 +87,10 @@ body {
     transition: all 0.3s ease;
 }
 
-.card-item:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-}
+.card-item:hover { border-color: rgba(255, 255, 255, 0.3); }
+.card-item.selected { border: 2px solid var(--international-orange-engineering); }
 
-/* SELECTED STATE */
-.card-item.selected {
-    border: 2px solid var(--international-orange-engineering);
-}
-
-/* CHECKMARK INDICATOR */
+/* CHECKMARK */
 .check-indicator {
     position: absolute;
     top: 10px;
@@ -104,7 +107,6 @@ body {
     z-index: 5;
     transition: opacity 0.2s;
 }
-
 .card-item.selected .check-indicator { opacity: 1; }
 .check-indicator span { font-size: 18px; font-weight: bold; }
 
@@ -122,10 +124,7 @@ body {
     transition: background-color 0.3s ease;
     text-align: center;
 }
-
-.card-item.selected .add-btn {
-    background-color: var(--international-orange-engineering);
-}
+.card-item.selected .add-btn { background-color: var(--international-orange-engineering); }
 
 /* --- PREMIUM GRIDS & CARDS --- */
 .premium-grid {
@@ -134,8 +133,21 @@ body {
     gap: 30px;
 }
 
-.service-card.card-item { border: 2px solid rgba(255, 255, 255, 0.1); }
-.service-card.card-item.selected { border: 2px solid var(--international-orange-engineering); }
+/* Premium Black Background, Subtle Shadow, Button Rounding */
+.premium-grid .card-item { 
+    background-color: #000000; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Subtle shadow added */
+}
+.premium-btn { border-radius: 0 0 10px 10px; } /* Rounded bottom buttons */
+
+/* Line underneath premium titles */
+.premium-title {
+    border-bottom: 3px solid var(--eerie-black);
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
 
 .premium-deal-badge, .discount-badge {
     position: absolute;
@@ -146,11 +158,26 @@ body {
     font-family: var(--ff-chakra-petch);
     font-size: 1rem;
     z-index: 2;
+    transition: all 0.3s ease;
+}
+.discount-badge { right: 0; background-color: var(--international-orange-engineering); }
+
+/* --- GOLD GLOW ANIMATION (For Upsell) --- */
+.card-item.gold-glow {
+    border-color: #FFD700 !important;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    animation: pulse-gold 2s infinite alternate;
+}
+.card-item.gold-glow .discount-badge {
+    background-color: #FFD700;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    font-weight: 800;
 }
 
-.discount-badge {
-    right: 0;
-    background-color: var(--international-orange-engineering);
+@keyframes pulse-gold {
+    from { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    to { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7); }
 }
 
 /* --- STANDARD GRIDS & CARDS --- */
@@ -177,12 +204,7 @@ body {
     display: flex;
     align-items: center;
 }
-
-/* Kept grey (removed filter) and made bigger */
-.card-icon img {
-    width: 60px;
-    height: 60px;
-}
+.card-icon img { width: 60px; height: 60px; }
 
 .card-title {
     margin: 0;
@@ -205,13 +227,7 @@ body {
     align-items: center;
     z-index: 1000;
 }
-
-.booking-prompt {
-    color: #aaaaaa;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
-
+.booking-prompt { color: #aaaaaa; font-size: 1.1rem; margin-bottom: 10px; }
 .view-booking-btn {
     background-color: var(--international-orange-engineering);
     width: 100%;
@@ -225,19 +241,17 @@ body {
     gap: 10px;
 }
 
-/* --- SEARCH HIGHLIGHT ANIMATION (Fixed) --- */
+/* --- SEARCH HIGHLIGHT ANIMATION --- */
 .card-item.highlight {
     border: 2px solid var(--international-orange-engineering);
     animation: flash 1s infinite alternate;
 }
-
 @keyframes flash {
     from { box-shadow: 0 0 5px var(--international-orange-engineering); }
     to { box-shadow: 0 0 20px var(--international-orange-engineering); }
 }
 
 @media (max-width: 768px) {
-    .promo-banner { margin-top: 80px; font-size: 1.2rem; }
     .premium-grid { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
     .card-top { flex-direction: column; padding: 25px 10px; gap: 12px; text-align: center; }
