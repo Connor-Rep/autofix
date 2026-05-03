@@ -18,16 +18,43 @@
 
 <body style="background-color: #000000;">
 
+  <!-- FULLY RESTORED HEADER FROM INDEX.HTML -->
+  <header class="header">
+    <div class="container">
+      <a href="/" class="logo">
+        <img src="./assets/images/logo.png" width="128" height="63" alt="SafeTay Logo">
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+          <li><a href="/#home" class="navbar-link">Home</a></li>
+          <li><a href="#services" class="navbar-link">Services</a></li>
+          <li><a href="/#about" class="navbar-link">About</a></li>
+          <li><a href="/contact" class="navbar-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <a href="/#services" class="btn btn-primary">
+        <span class="span">Get a Quote</span>
+        <span class="material-symbols-rounded">arrow_forward</span>
+      </a>
+
+      <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
+        <span class="nav-toggle-icon icon-1"></span>
+        <span class="nav-toggle-icon icon-2"></span>
+        <span class="nav-toggle-icon icon-3"></span>
+      </button>
+    </div>
   </header>
 
-  <!-- PROMOTION BANNER -->
+  <!-- FIXED PROMOTION BANNER -->
   <div class="promo-banner">
     ✨ PROMOTION ALERT: Book a Full Service now and instantly get 50% OFF your Complete Detail! ✨
   </div>
 
   <main>
     <article>
-      <!-- BUBBLE 1: HEADER -->
+      <!-- BUBBLE 1: HEADER (Pulled higher up) -->
       <section class="section service-hero" id="services">
         <div class="container services-header-bubble">
           <p class="section-subtitle :dark">SafeTay - Comprehensive Auto Care</p>
@@ -71,14 +98,15 @@
               
               <div class="card-content-wrapper">
                 <h3 class="h3 card-title premium-title">COMPLETE DETAIL</h3>
-                <button class="add-btn w-100 premium-btn" style="margin-top: auto;">+ ADD (HALF-PRICE DETAIL)</button>
+                <!-- Add button will dynamically update text via JS -->
+                <button class="add-btn w-100 premium-btn" style="margin-top: auto;">+ ADD</button>
               </div>
             </div>
           </div>
 
-          <!-- SEARCH MOVED BELOW TITLE -->
           <h3 class="section-divider-title" style="margin-top: 50px;">ALL SERVICES</h3>
           
+          <!-- SEARCH MOVED BELOW TITLE -->
           <div class="search-container">
             <input type="search" id="service-search" placeholder="Search services..." class="search-input">
             <span id="search-status"></span>
