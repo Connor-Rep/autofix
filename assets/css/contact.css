@@ -2,68 +2,127 @@
 body { 
     background-color: #000000 !important; 
     color: var(--white); 
-    -webkit-tap-highlight-color: transparent; /* Prevents mobile blue flash */
+    -webkit-tap-highlight-color: transparent; 
 }
 
-/* --- CONTACT BUBBLE STYLING --- */
-/* Clears the fixed header and gives your form the premium dark grey background */
-.contact-bubble, .quote-bubble {
+/* --- SECTION PADDING FIXES --- */
+.service-hero, #quote-form-section {
+    padding-block-start: 180px !important; /* Clears the header */
+    padding-block-end: 0 !important;
+}
+
+/* --- BUBBLE BLOCKS (Restored) --- */
+.services-header-bubble, .contact-header-bubble {
+    background-color: var(--eerie-black);
+    border-radius: 24px;
+    padding: 30px 40px;
+    margin-bottom: 20px; 
+    text-align: center;
+}
+
+.services-header-bubble .section-text {
+    text-align: center;
+}
+
+.main-bubble, .quote-bubble, .contact-bubble {
+    position: relative;
     background-color: var(--eerie-black);
     border-radius: 24px;
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     margin-bottom: 40px;
-    margin-top: 120px; 
 }
 
-/* --- FORM LAYOUT --- */
+/* --- SEARCH BAR (Restored & Upgraded) --- */
+.search-container { margin-bottom: 30px; text-align: center; }
+
+.search-input {
+    width: 100%;
+    max-width: 400px;
+    background-color: #000000;
+    border: 1px solid var(--international-orange-engineering);
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    color: var(--white);
+    font-family: var(--ff-chakra-petch);
+    font-size: 1.2rem;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(204, 15, 0, 0.4);
+}
+
+/* --- FORM LAYOUT & GRIDS --- */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 20px;
 }
 
+/* --- FORM INPUTS (Now matching the sleek search bar) --- */
 .input-field {
     background: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
+    border: 1px solid var(--international-orange-engineering);
+    padding: 15px 20px;
+    border-radius: var(--radius-pill); /* Gives them the sleek rounded look */
     color: white;
     width: 100%;
     font-family: var(--ff-mulish);
     font-size: 1.1rem;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-/* Makes the boxes glow orange when the user clicks to type */
 .input-field:focus {
     outline: none;
-    border-color: var(--international-orange-engineering);
+    box-shadow: 0 0 15px rgba(204, 15, 0, 0.4); /* Glows on click */
 }
 
-/* Makes text areas and buttons stretch across the whole form */
-.textarea, .input-row-full, .form-actions { 
+/* Textareas can't be perfect pills, so we give them a soft matching curve */
+.textarea { 
+    grid-column: span 2; 
+    border-radius: 20px; 
+    min-height: 150px;
+    resize: vertical;
+}
+
+.input-row-full, .form-actions { 
     grid-column: span 2; 
 }
 
-.textarea {
-    min-height: 150px;
-    resize: vertical; /* Allows users to drag the box taller if needed */
+/* --- BUTTONS --- */
+.service-input-wrapper { display: flex; gap: 10px; }
+
+.add-more-btn {
+    white-space: nowrap;
+    background: none;
+    border: 1px dashed var(--international-orange-engineering);
+    color: var(--international-orange-engineering);
+    padding: 0 20px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-family: var(--ff-chakra-petch);
+    transition: all 0.3s ease;
 }
 
-/* --- BUTTONS --- */
+.add-more-btn:hover {
+    background-color: rgba(204, 15, 0, 0.1);
+}
+
 .form-actions { 
     display: flex; 
     gap: 15px; 
-    margin-top: 10px; 
+    margin-top: 15px; 
 }
 
 .submit-btn { 
     flex-grow: 2; 
     justify-content: center; 
     padding: 16px;
-    border-radius: 8px;
-    font-size: 1.2rem;
+    border-radius: var(--radius-pill);
+    font-size: 1.3rem;
 }
 
 .reset-btn { 
@@ -73,9 +132,9 @@ body {
     color: #888;
     justify-content: center;
     padding: 16px;
-    border-radius: 8px;
+    border-radius: var(--radius-pill);
+    font-size: 1.3rem;
     transition: all 0.3s ease;
-    font-size: 1.2rem;
 }
 
 .reset-btn:hover {
@@ -85,14 +144,18 @@ body {
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    /* Stacks the form into a single column on phones */
     .form-grid { grid-template-columns: 1fr; }
     .textarea, .input-row-full, .form-actions { grid-column: span 1; }
     .form-actions { flex-direction: column; }
     
-    /* Shrinks the bubble padding so it doesn't squish the phone screen */
-    .contact-bubble, .quote-bubble { 
-        padding: 25px 15px; 
-        margin-top: 100px; 
+    .services-header-bubble, .contact-header-bubble {
+        margin-top: 40px; 
+    }
+
+    .service-input-wrapper { flex-direction: column; }
+    
+    .add-more-btn {
+        width: 100%;
+        padding: 15px; 
     }
 }
