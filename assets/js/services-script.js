@@ -7,7 +7,7 @@ const viewBookingBtn = document.getElementById("view-booking-btn");
 
 let selectedCount = 0;
 
-// 1. Navigation (Retained from original)
+// 1. Navigation
 document.querySelectorAll("#header-back-btn, #header-logo").forEach(el => {
     el?.addEventListener("click", (e) => {
         e.preventDefault();
@@ -15,11 +15,12 @@ document.querySelectorAll("#header-back-btn, #header-logo").forEach(el => {
     });
 });
 
-// 2. Search Logic
+// 2. Search Logic (Fixed Highlight)
 searchInput?.addEventListener("input", (e) => {
     const val = e.target.value.toLowerCase().trim();
     cards.forEach(card => {
         card.classList.remove("highlight");
+        // If there's text, and the dataset matches the text, add highlight
         if (val && card.dataset.service.toLowerCase().includes(val)) {
             card.classList.add("highlight");
         }
@@ -63,12 +64,10 @@ function updateBookingBar() {
 // 4. Booking Button Click
 viewBookingBtn?.addEventListener("click", () => {
     if (selectedCount > 0) {
-        // Prepare to pass the selected services to the quote page
         const selectedServices = Array.from(document.querySelectorAll('.card-item.selected'))
                                       .map(card => card.dataset.service);
         
         console.log("Services to book:", selectedServices);
-        // Example: window.location.href = `/quote.html?services=${encodeURIComponent(selectedServices.join(','))}`;
     } else {
         alert("Please select at least one service to begin your booking.");
     }
