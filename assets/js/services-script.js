@@ -7,15 +7,16 @@ const viewBookingBtn = document.getElementById("view-booking-btn");
 
 let selectedCount = 0;
 
-// 1. Navigation
-document.querySelectorAll("#header-back-btn, #header-logo").forEach(el => {
-    el?.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.location.href = "/";
-    });
+// 1. Navigation & Mobile Menu Logic (Restored from index.html)
+const navbar = document.querySelector("[data-navbar]");
+const navToggler = document.querySelector("[data-nav-toggler]");
+
+navToggler?.addEventListener("click", function () {
+  navbar.classList.toggle("active");
+  this.classList.toggle("active");
 });
 
-// 2. Search Logic (Fixed)
+// 2. Search Logic
 searchInput?.addEventListener("input", (e) => {
     const val = e.target.value.toLowerCase().trim();
     cards.forEach(card => {
@@ -35,23 +36,44 @@ cards.forEach(card => {
         card.classList.toggle("selected");
         
         const btn = card.querySelector(".add-btn");
-        const isDetailService = card.dataset.service === "Complete Detail";
-
-        if (card.classList.contains("selected")) {
-            selectedCount++;
-            btn.innerHTML = "✓ ADDED";
+        
+        // Base logic for normal cards
+        if (card !== detailCard) {
+            if (card.classList.contains("selected")) {
+                selectedCount++;
+                btn.innerHTML = "✓ ADDED";
+            } else {
+                selectedCount--;
+                btn.innerHTML = "+ ADD";
+            }
         } else {
-            selectedCount--;
-            btn.innerHTML = isDetailService ? "+ ADD (HALF-PRICE DETAIL)" : "+ ADD";
+            // Handle selected count for detail card separately to avoid miscounting
+            if (card.classList.contains("selected")) {
+                selectedCount++;
+            } else {
+                selectedCount--;
+            }
         }
 
-        // --- THE GOLD GLOW UPSELL LOGIC ---
-        // If Full Service is selected AND Complete detail is NOT yet selected, make it glow!
+        // --- THE GOLD GLOW UPSELL LOGIC FOR DETAIL CARD ---
         if (fullServiceCard && detailCard) {
-            if (fullServiceCard.classList.contains("selected") && !detailCard.classList.contains("selected")) {
+            const detailBtn = detailCard.querySelector(".add-btn");
+            const isFullSelected = fullServiceCard.classList.contains("selected");
+            const isDetailSelected = detailCard.classList.contains("selected");
+
+            // If Full Service is clicked and Detail is NOT clicked
+            if (isFullSelected && !isDetailSelected) {
                 detailCard.classList.add("gold-glow");
+                detailBtn.innerHTML = "+ ADD (50% OFF)";
             } else {
+                // Remove glow if they haven't selected Full Service, or if they successfully added Detail
                 detailCard.classList.remove("gold-glow");
+                
+                if (isDetailSelected) {
+                    detailBtn.innerHTML = "✓ ADDED";
+                } else {
+                    detailBtn.innerHTML = "+ ADD";
+                }
             }
         }
 
