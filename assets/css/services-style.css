@@ -1,8 +1,13 @@
 /* --- GLOBAL FIXES & PROMOTION BANNER --- */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
 body { 
     background-color: #000000 !important;
     padding-bottom: 120px; 
 }
+
 
 /* Attaches directly below your fixed header and moves with it */
 .promo-banner {
@@ -87,7 +92,6 @@ body {
     flex-direction: column;
     overflow: hidden;
     transition: all 0.3s ease;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .card-item:hover { border-color: rgba(255, 255, 255, 0.3); }
