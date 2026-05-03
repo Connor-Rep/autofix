@@ -4,8 +4,12 @@ body {
     padding-bottom: 120px; 
 }
 
-/* Attaches right below the fixed header */
+/* Attaches directly below your fixed header and moves with it */
 .promo-banner {
+    position: fixed;
+    top: 103px; /* Mobile header height */
+    left: 0;
+    width: 100%;
     background-color: var(--international-orange-engineering);
     color: var(--white);
     text-align: center;
@@ -16,21 +20,19 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5); 
-    width: 100%;
-    margin-top: 103px; /* Mobile header height */
-    z-index: 10;
-    position: relative;
+    z-index: 49; /* Just below header's 50 */
 }
 
 @media (min-width: 1200px) {
-    .promo-banner { margin-top: 113px; /* Desktop header height */ }
+    .promo-banner { top: 113px; /* Desktop header height */ }
 }
 
-/* Pulls the 'Our Services' box higher up */
+/* Pulls the 'Our Services' box up, but keeps it clear of the fixed headers */
 .service-hero { 
-    padding-block-start: 30px !important; 
+    padding-block-start: 180px !important; /* Clears header + promo banner */
     padding-block-end: 0 !important; 
 }
+
 .search-cards-bubble-section { padding-block-start: 0 !important; padding-block-end: 0 !important; }
 
 /* --- BUBBLE BLOCKS --- */
@@ -121,7 +123,7 @@ body {
     font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     text-align: center;
 }
 .card-item.selected .add-btn { background-color: var(--international-orange-engineering); }
@@ -133,12 +135,17 @@ body {
     gap: 30px;
 }
 
-/* Premium Black Background, Subtle Shadow, Button Rounding */
+/* Premium Black Background & Subtle Shadow */
 .premium-grid .card-item { 
     background-color: #000000; 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Subtle shadow added */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); 
 }
-.premium-btn { border-radius: 0 0 10px 10px; } /* Rounded bottom buttons */
+
+/* Fixes the button cutoff issue - fully rounds the buttons */
+.premium-btn { 
+    border-radius: 8px !important; 
+    margin-top: 15px !important; 
+} 
 
 /* Line underneath premium titles */
 .premium-title {
@@ -173,6 +180,12 @@ body {
     color: #000;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     font-weight: 800;
+}
+/* Makes the add button glow gold too */
+.card-item.gold-glow .add-btn {
+    background-color: #FFD700;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
 }
 
 @keyframes pulse-gold {
@@ -252,6 +265,8 @@ body {
 }
 
 @media (max-width: 768px) {
+    .promo-banner { font-size: 1.1rem; }
+    .service-hero { padding-block-start: 160px !important; }
     .premium-grid { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
     .card-top { flex-direction: column; padding: 25px 10px; gap: 12px; text-align: center; }
