@@ -2,53 +2,20 @@
 
 const searchInput = document.querySelector("#service-search");
 const cards = document.querySelectorAll(".card-item");
-const quoteSection = document.querySelector("#quote-form-section");
-const serviceField = document.querySelector("#selected-service-field");
-const gridSection = document.querySelector("#services-grid-section");
-const resetBtn = document.querySelector("#reset-form-btn");
-const quoteForm = document.querySelector("#quote-form");
+const bookingPrompt = document.getElementById("booking-prompt");
+const viewBookingBtn = document.getElementById("view-booking-btn");
 
-// 1. Navigation
+let selectedCount = 0;
+
+// 1. Navigation (Retained from original)
 document.querySelectorAll("#header-back-btn, #header-logo").forEach(el => {
-    // CHANGED: Point to "/" to keep the URL completely clean
     el?.addEventListener("click", (e) => {
         e.preventDefault();
         window.location.href = "/";
     });
 });
 
-// 1.5 Smooth Scrolling & Clean URLs for Internal Links
-const anchorLinks = document.querySelectorAll('a[href^="#"]');
-anchorLinks.forEach(link => {
-  link.addEventListener('click', function (e) {
-    const targetId = this.getAttribute('href');
-
-    if (targetId !== '#' && targetId.startsWith('#')) {
-      const targetSection = document.querySelector(targetId);
-
-      if (targetSection) {
-        // Prevent the browser from adding # to the URL
-        e.preventDefault();
-
-        // Smooth scroll to the section
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-
-        // Close the mobile navbar if it's open
-        const navbar = document.querySelector('[data-navbar]');
-        const navToggler = document.querySelector('[data-nav-toggler]');
-        if (navbar && navbar.classList.contains('active')) {
-          navbar.classList.remove('active');
-          navToggler.classList.remove('active');
-        }
-      }
-    }
-  });
-});
-
-// 2. Search
+// 2. Search Logic
 searchInput?.addEventListener("input", (e) => {
     const val = e.target.value.toLowerCase().trim();
     cards.forEach(card => {
@@ -59,63 +26,58 @@ searchInput?.addEventListener("input", (e) => {
     });
 });
 
-// 3. Selection Logic
-function updateButtons(text) {
-    cards.forEach(c => {
-        const span = c.querySelector(".get-quote-btn .span");
-        if (span) span.textContent = text;
+// 3. Selection Toggle Logic & Bottom Bar Updates
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        // Toggle the selected state
+        card.classList.toggle("selected");
+        
+        const btn = card.querySelector(".add-btn");
+        const isDetailService = card.dataset.service === "Complete Detail";
+
+        // Logic for when the card is selected
+        if (card.classList.contains("selected")) {
+            selectedCount++;
+            btn.innerHTML = "✓ ADDED";
+        } 
+        // Logic for when the card is deselected
+        else {
+            selectedCount--;
+            btn.innerHTML = isDetailService ? "+ ADD (HALF-PRICE DETAIL)" : "+ ADD";
+        }
+
+        updateBookingBar();
     });
+});
+
+function updateBookingBar() {
+    if (selectedCount > 0) {
+        bookingPrompt.style.display = "none";
+        viewBookingBtn.innerHTML = `VIEW BOOKING (${selectedCount} SERVICE${selectedCount > 1 ? 'S' : ''} SELECTED) <span class="material-symbols-rounded">arrow_forward</span>`;
+    } else {
+        bookingPrompt.style.display = "block";
+        viewBookingBtn.innerHTML = `VIEW BOOKING (0 SERVICES SELECTED) <span class="material-symbols-rounded">arrow_forward</span>`;
+    }
 }
 
-cards.forEach(card => {
-    card.addEventListener("click", (e) => {
-        if (!e.target.closest('.get-quote-btn') && !card.classList.contains('selected')) {
-            card.classList.toggle("flipped");
-        }
-    });
-
-    card.querySelector(".get-quote-btn")?.addEventListener("click", (e) => {
-        e.stopPropagation(); 
-        const name = card.dataset.service;
-        const current = serviceField.value.trim();
-
-        card.classList.add("selected");
-        card.classList.remove("flipped");
-
-        if (current === "" || current === "No services selected") {
-            serviceField.value = name;
-        } else if (!current.includes(name)) {
-            serviceField.value = `${current}, ${name}`;
-        }
-
-        updateButtons("Add");
-        quoteSection.classList.remove("hidden");
-        setTimeout(() => quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
-    });
+// 4. Booking Button Click
+viewBookingBtn?.addEventListener("click", () => {
+    if (selectedCount > 0) {
+        // Prepare to pass the selected services to the quote page
+        const selectedServices = Array.from(document.querySelectorAll('.card-item.selected'))
+                                      .map(card => card.dataset.service);
+        
+        console.log("Services to book:", selectedServices);
+        // Example: window.location.href = `/quote.html?services=${encodeURIComponent(selectedServices.join(','))}`;
+    } else {
+        alert("Please select at least one service to begin your booking.");
+    }
 });
 
-// 4. Buttons
-document.querySelector("#add-more-btn")?.addEventListener("click", () => {
-    gridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
-resetBtn?.addEventListener("click", () => {
-    quoteForm.reset();
-    serviceField.value = "";
-    quoteSection.classList.add("hidden");
-    cards.forEach(c => {
-        c.classList.remove("selected", "flipped", "highlight");
-        const span = c.querySelector(".get-quote-btn .span");
-        if (span) span.textContent = "Get a Quote";
-    });
-    gridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
-// Secretly erase the hash from the address bar (Foolproof safety net)
+// Clean URLs for Internal Links
 window.addEventListener("load", () => {
   if (window.location.hash) {
     setTimeout(() => {
-      // Wipes the hash from the URL without reloading the page
       history.replaceState(null, null, window.location.pathname);
     }, 10);
   }
