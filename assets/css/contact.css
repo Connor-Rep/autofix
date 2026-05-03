@@ -1,151 +1,22 @@
-/* GLOBAL DARK OVERRIDE */
-body { background-color: #000000 !important; color: var(--white); }
-
-/* SECTION PADDING FIXES (Removes the "invisible" gaps between sections) */
-.service-hero {
-    padding-block-end: 0 !important;
+/* --- GLOBAL DARK OVERRIDE & FIXES --- */
+body { 
+    background-color: #000000 !important; 
+    color: var(--white); 
+    -webkit-tap-highlight-color: transparent; /* Prevents mobile blue flash */
 }
 
-.search-cards-bubble-section {
-    padding-block-start: 0 !important;
-    padding-block-end: 0 !important;
-}
-
-#quote-form-section {
-    padding-block-start: 0 !important;
-}
-
-/* Centers the paragraph text in the top bubble */
-.services-header-bubble .section-text {
-    text-align: center;
-}
-
-/* BUBBLE STYLING & MANUAL GAP CONTROL */
-.services-header-bubble {
-    background-color: var(--eerie-black);
-    border-radius: 24px;
-    padding: 30px 40px;
-    /* ADJUST THIS FOR THE GAP BETWEEN TOP AND MIDDLE */
-    margin-bottom: 20px; 
-}
-
-.main-bubble {
-    position: relative;
-    background-color: var(--eerie-black);
-    border-radius: 24px;
-    padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    /* ADJUST THIS FOR THE GAP BETWEEN MIDDLE AND BOTTOM */
-    margin-bottom: 20px; 
-}
-
-.quote-bubble {
+/* --- CONTACT BUBBLE STYLING --- */
+/* Clears the fixed header and gives your form the premium dark grey background */
+.contact-bubble, .quote-bubble {
     background-color: var(--eerie-black);
     border-radius: 24px;
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     margin-bottom: 40px;
+    margin-top: 120px; 
 }
 
-/* SEARCH BAR */
-.search-container { margin-bottom: 30px; }
-.search-input {
-    width: 100%;
-    max-width: 400px;
-    background-color: #000000;
-    border: 1px solid var(--international-orange-engineering);
-    padding: 12px 20px;
-    border-radius: var(--radius-pill);
-    color: var(--white);
-    font-family: var(--ff-chakra-petch);
-}
-
-/* CARDS GRID */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    list-style: none;
-    padding: 0;
-}
-
-.card-item {
-    height: 100px;
-    perspective: 1000px;
-    cursor: pointer;
-    transition: opacity 0.4s ease;
-}
-
-/* Grey out selected cards */
-.card-item.selected {
-    opacity: 0.2;
-    pointer-events: none;
-    filter: grayscale(1);
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-}
-
-.card-item.flipped .card-inner { transform: rotateX(180deg); }
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.card-front { background-color: #000000; padding: 0 20px; gap: 15px; }
-.card-back { background-color: var(--international-orange-engineering); justify-content: center; transform: rotateX(180deg); }
-
-.card-icon {
-    background: var(--international-orange-engineering);
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-}
-
-.card-title {
-    margin: 0;
-    font-size: 1.8rem;
-    color: var(--white);
-    font-family: var(--ff-chakra-petch);
-}
-
-/* SEARCH HIGHLIGHT */
-.card-item.highlight .card-front {
-    animation: flash 1s infinite alternate;
-    border: 2px solid var(--international-orange-engineering);
-}
-
-@keyframes flash {
-    from { box-shadow: 0 0 5px var(--international-orange-engineering); }
-    to { box-shadow: 0 0 20px var(--international-orange-engineering); }
-}
-
-/* QUOTE SECTION ANIMATION */
-.quote-section {
-    overflow: hidden;
-    transition: max-height 1s ease-in-out, opacity 0.8s ease;
-}
-
-.quote-section.hidden {
-    max-height: 0;
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* FORM LAYOUT */
+/* --- FORM LAYOUT --- */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -159,328 +30,69 @@ body { background-color: #000000 !important; color: var(--white); }
     border-radius: 10px;
     color: white;
     width: 100%;
+    font-family: var(--ff-mulish);
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
 }
 
-.textarea, .input-row-full, .form-actions { grid-column: span 2; }
-
-.service-input-wrapper { display: flex; gap: 10px; }
-
-.add-more-btn {
-    white-space: nowrap;
-    background: none;
-    border: 1px dashed var(--international-orange-engineering);
-    color: var(--international-orange-engineering);
-    padding: 0 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: var(--ff-chakra-petch);
+/* Makes the boxes glow orange when the user clicks to type */
+.input-field:focus {
+    outline: none;
+    border-color: var(--international-orange-engineering);
 }
 
-.form-actions { display: flex; gap: 15px; margin-top: 10px; }
-.submit-btn { flex-grow: 2; justify-content: center; }
-.reset-btn { 
-    flex-grow: 1; 
-    background: transparent; 
-    border: 1px solid #444; 
-    color: #888;
-    justify-content: center;
+/* Makes text areas and buttons stretch across the whole form */
+.textarea, .input-row-full, .form-actions { 
+    grid-column: span 2; 
 }
 
-@media (max-width: 768px) {
-    .form-grid { grid-template-columns: 1fr; }
-    
-    .services-grid { 
-        grid-template-columns: 1fr 1fr; 
-        gap: 10px; 
-    }
-
-    .card-front {
-        padding: 0 10px; /* Reduce padding to give text more room */
-        gap: 8px;        /* Tighten the gap between icon and text */
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-    }
-    
-    .card-title {
-        /* 1. Use a smaller base size */
-        font-size: 1.1rem; 
-        
-        /* 2. Prevent overflow */
-        overflow-wrap: break-word; 
-        word-wrap: break-word;
-        hyphens: auto;
-        
-        /* 3. Ensure it doesn't push the card wider */
-        max-width: 100%;
-        line-height: 1.2;
-    }
-
-    .card-icon {
-        padding: 6px; /* Shrink the icon box slightly on mobile */
-    }
-
-    .card-icon img {
-        width: 32px;  /* Shrink the actual icon image */
-        height: 32px;
-    }
-
-    
-    .form-actions { flex-direction: column; }
-    
-    .services-header-bubble {
-        margin-top: 90px; 
-    }
-
-    .service-input-wrapper { 
-        flex-direction: column; 
-    }
-    
-    .add-more-btn {
-        width: 100%;
-        padding: 15px; 
-    }
-}
-/* GLOBAL DARK OVERRIDE */
-body { background-color: #000000 !important; color: var(--white); }
-
-/* SECTION PADDING FIXES (Removes the "invisible" gaps between sections) */
-.service-hero {
-    padding-block-end: 0 !important;
+.textarea {
+    min-height: 150px;
+    resize: vertical; /* Allows users to drag the box taller if needed */
 }
 
-.search-cards-bubble-section {
-    padding-block-start: 0 !important;
-    padding-block-end: 0 !important;
+/* --- BUTTONS --- */
+.form-actions { 
+    display: flex; 
+    gap: 15px; 
+    margin-top: 10px; 
 }
 
-#quote-form-section {
-    padding-block-start: 0 !important;
-}
-
-/* Centers the paragraph text in the top bubble */
-.services-header-bubble .section-text {
-    text-align: center;
-}
-
-/* BUBBLE STYLING & MANUAL GAP CONTROL */
-.services-header-bubble {
-    background-color: var(--eerie-black);
-    border-radius: 24px;
-    padding: 30px 40px;
-    /* ADJUST THIS FOR THE GAP BETWEEN TOP AND MIDDLE */
-    margin-bottom: 20px; 
-}
-
-.main-bubble {
-    position: relative;
-    background-color: var(--eerie-black);
-    border-radius: 24px;
-    padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    /* ADJUST THIS FOR THE GAP BETWEEN MIDDLE AND BOTTOM */
-    margin-bottom: 20px; 
-}
-
-.quote-bubble {
-    background-color: var(--eerie-black);
-    border-radius: 24px;
-    padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 40px;
-}
-
-/* SEARCH BAR */
-.search-container { margin-bottom: 30px; }
-.search-input {
-    width: 100%;
-    max-width: 400px;
-    background-color: #000000;
-    border: 1px solid var(--international-orange-engineering);
-    padding: 12px 20px;
-    border-radius: var(--radius-pill);
-    color: var(--white);
-    font-family: var(--ff-chakra-petch);
-}
-
-/* CARDS GRID */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    list-style: none;
-    padding: 0;
-}
-
-.card-item {
-    height: 100px;
-    perspective: 1000px;
-    cursor: pointer;
-    transition: opacity 0.4s ease;
-}
-
-/* Grey out selected cards */
-.card-item.selected {
-    opacity: 0.2;
-    pointer-events: none;
-    filter: grayscale(1);
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-}
-
-.card-item.flipped .card-inner { transform: rotateX(180deg); }
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.card-front { background-color: #000000; padding: 0 20px; gap: 15px; }
-.card-back { background-color: var(--international-orange-engineering); justify-content: center; transform: rotateX(180deg); }
-
-.card-icon {
-    background: var(--international-orange-engineering);
-    padding: 10px;
+.submit-btn { 
+    flex-grow: 2; 
+    justify-content: center; 
+    padding: 16px;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
+    font-size: 1.2rem;
 }
 
-.card-title {
-    margin: 0;
-    font-size: 1.8rem;
-    color: var(--white);
-    font-family: var(--ff-chakra-petch);
-}
-
-/* SEARCH HIGHLIGHT */
-.card-item.highlight .card-front {
-    animation: flash 1s infinite alternate;
-    border: 2px solid var(--international-orange-engineering);
-}
-
-@keyframes flash {
-    from { box-shadow: 0 0 5px var(--international-orange-engineering); }
-    to { box-shadow: 0 0 20px var(--international-orange-engineering); }
-}
-
-/* QUOTE SECTION ANIMATION */
-.quote-section {
-    overflow: hidden;
-    transition: max-height 1s ease-in-out, opacity 0.8s ease;
-}
-
-.quote-section.hidden {
-    max-height: 0;
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* FORM LAYOUT */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.input-field {
-    background: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    color: white;
-    width: 100%;
-}
-
-.textarea, .input-row-full, .form-actions { grid-column: span 2; }
-
-.service-input-wrapper { display: flex; gap: 10px; }
-
-.add-more-btn {
-    white-space: nowrap;
-    background: none;
-    border: 1px dashed var(--international-orange-engineering);
-    color: var(--international-orange-engineering);
-    padding: 0 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: var(--ff-chakra-petch);
-}
-
-.form-actions { display: flex; gap: 15px; margin-top: 10px; }
-.submit-btn { flex-grow: 2; justify-content: center; }
 .reset-btn { 
     flex-grow: 1; 
     background: transparent; 
     border: 1px solid #444; 
     color: #888;
     justify-content: center;
+    padding: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
 }
 
+.reset-btn:hover {
+    border-color: var(--international-orange-engineering);
+    color: var(--white);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
+    /* Stacks the form into a single column on phones */
     .form-grid { grid-template-columns: 1fr; }
-    
-    .services-grid { 
-        grid-template-columns: 1fr 1fr; 
-        gap: 10px; 
-    }
-
-    .card-front {
-        padding: 0 10px; /* Reduce padding to give text more room */
-        gap: 8px;        /* Tighten the gap between icon and text */
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-    }
-    
-    .card-title {
-        /* 1. Use a smaller base size */
-        font-size: 1.1rem; 
-        
-        /* 2. Prevent overflow */
-        overflow-wrap: break-word; 
-        word-wrap: break-word;
-        hyphens: auto;
-        
-        /* 3. Ensure it doesn't push the card wider */
-        max-width: 100%;
-        line-height: 1.2;
-    }
-
-    .card-icon {
-        padding: 6px; /* Shrink the icon box slightly on mobile */
-    }
-
-    .card-icon img {
-        width: 32px;  /* Shrink the actual icon image */
-        height: 32px;
-    }
-
-    
+    .textarea, .input-row-full, .form-actions { grid-column: span 1; }
     .form-actions { flex-direction: column; }
     
-    .services-header-bubble {
-        margin-top: 90px; 
-    }
-
-    .service-input-wrapper { 
-        flex-direction: column; 
-    }
-    
-    .add-more-btn {
-        width: 100%;
-        padding: 15px; 
+    /* Shrinks the bubble padding so it doesn't squish the phone screen */
+    .contact-bubble, .quote-bubble { 
+        padding: 25px 15px; 
+        margin-top: 100px; 
     }
 }
