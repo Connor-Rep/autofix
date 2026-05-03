@@ -31,14 +31,21 @@ body {
     font-size: clamp(0.7rem, 2.5vw, 1.2rem); 
 }
 
-/* Makes the offer stand out and scale with the rest of the text */
 .promo-banner .highlight-text {
-    color: #FFD700; 
     font-weight: 900; 
-    /* Fluid size for the highlight text too */
     font-size: clamp(0.9rem, 3.5vw, 1.8rem); 
     margin: 0 5px; 
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); 
+    background-image: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine-text 2.5s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+}
+
+@keyframes shine-text {
+    to { background-position: 200% center; }
 }
 
 @media (min-width: 1200px) {
