@@ -18,16 +18,37 @@
 
 <body style="background-color: #000000;">
 
+  <!-- ORIGINAL HEADER -->
+  <header class="header">
+    <div class="container">
+      <a href="/" class="logo" id="header-logo">
+        <img src="./assets/images/logo.png" width="128" height="63" alt="SafeTay Logo">
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+          <li><a href="/#home" class="navbar-link">Home</a></li>
+          <li><a href="#services" class="navbar-link">Services</a></li>
+          <li><a href="/#about" class="navbar-link">About</a></li>
+          <li><a href="/contact" class="navbar-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <a href="/" class="btn-link" id="header-back-btn">
+        <span class="material-symbols-rounded">arrow_back</span>
+        <span class="span">Back</span>
+      </a>
+    </div>
   </header>
 
-  <!-- PROMOTION BANNER -->
+  <!-- NEW BIGGER PROMOTION BANNER -->
   <div class="promo-banner">
     ✨ PROMOTION ALERT: Book a Full Service now and instantly get 50% OFF your Complete Detail! ✨
   </div>
 
   <main>
     <article>
-      <!-- HERO HEADER -->
+      <!-- BUBBLE 1: HEADER -->
       <section class="section service-hero" id="services" style="padding-block-end: 0;">
         <div class="container services-header-bubble">
           <p class="section-subtitle :dark">SafeTay - Comprehensive Auto Care</p>
@@ -36,13 +57,20 @@
         </div>
       </section>
 
-      <!-- PREMIUM PACKAGES SECTION -->
-      <section class="section premium-packages-section" style="padding-block-start: 0; padding-block-end: 0;">
+      <!-- BUBBLE 2: SEARCH, PREMIUM & GRID -->
+      <section class="section search-cards-bubble-section" id="services-grid-section">
         <div class="container main-bubble">
+          
+          <!-- ORIGINAL SEARCH BAR -->
+          <div class="search-container">
+            <input type="search" id="service-search" placeholder="Search services..." class="search-input">
+            <span id="search-status"></span>
+          </div>
+
           <h3 class="section-divider-title">PREMIUM PACKAGES</h3>
           
+          <!-- PREMIUM PACKAGES (Inside the main bubble) -->
           <div class="premium-grid">
-            <!-- Full Service -->
             <div class="service-card new-layout card-item" data-service="Full Service">
               <div class="premium-deal-badge">UNLOCKS DETAIL DEAL.</div>
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
@@ -60,7 +88,6 @@
               </div>
             </div>
 
-            <!-- Complete Detail -->
             <div class="service-card new-layout card-item" data-service="Complete Detail">
               <div class="discount-badge">50% OFF</div>
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
@@ -75,25 +102,15 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- ALL SERVICES SECTION -->
-      <section class="section search-cards-bubble-section" id="services-grid-section">
-        <div class="container main-bubble">
-          <h3 class="section-divider-title">ALL SERVICES</h3>
+          <h3 class="section-divider-title" style="margin-top: 50px;">ALL SERVICES</h3>
 
-          <div class="search-container">
-            <input type="search" id="service-search" placeholder="Search services..." class="search-input">
-            <span id="search-status"></span>
-          </div>
-
+          <!-- ALL SERVICES GRID -->
           <ul class="services-grid" id="services-grid">
-            <!-- Grid Service Cards -->
             <li class="card-item grid-card" data-service="Respray">
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
               <div class="card-top">
-                <div class="card-icon"><img src="./assets/images/services-1.png" width="48" height="48" alt="Respray"></div>
+                <div class="card-icon"><img src="./assets/images/services-1.png" alt="Respray"></div>
                 <h3 class="h3 card-title">RESPRAY</h3>
               </div>
               <button class="add-btn">+ ADD</button>
@@ -102,7 +119,7 @@
             <li class="card-item grid-card" data-service="Tyres">
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
               <div class="card-top">
-                <div class="card-icon"><img src="./assets/images/services-3.png" width="48" height="48" alt="Tyres"></div>
+                <div class="card-icon"><img src="./assets/images/services-3.png" alt="Tyres"></div>
                 <h3 class="h3 card-title">TYRES</h3>
               </div>
               <button class="add-btn">+ ADD</button>
@@ -111,7 +128,7 @@
             <li class="card-item grid-card" data-service="Brakes">
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
               <div class="card-top">
-                <div class="card-icon"><img src="./assets/images/services-2.png" width="48" height="48" alt="Brakes"></div>
+                <div class="card-icon"><img src="./assets/images/services-2.png" alt="Brakes"></div>
                 <h3 class="h3 card-title">BRAKES</h3>
               </div>
               <button class="add-btn">+ ADD</button>
@@ -120,7 +137,7 @@
             <li class="card-item grid-card" data-service="Engine Repair">
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
               <div class="card-top">
-                <div class="card-icon"><img src="./assets/images/services-1.png" width="48" height="48" alt="Engine"></div>
+                <div class="card-icon"><img src="./assets/images/services-1.png" alt="Engine"></div>
                 <h3 class="h3 card-title">ENGINE</h3>
               </div>
               <button class="add-btn">+ ADD</button>
@@ -129,7 +146,7 @@
             <li class="card-item grid-card" data-service="Battery Check">
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
               <div class="card-top">
-                <div class="card-icon"><img src="./assets/images/services-4.png" width="48" height="48" alt="Battery"></div>
+                <div class="card-icon"><img src="./assets/images/services-4.png" alt="Battery"></div>
                 <h3 class="h3 card-title">BATTERY</h3>
               </div>
               <button class="add-btn">+ ADD</button>
@@ -138,7 +155,7 @@
             <li class="card-item grid-card" data-service="Steering Alignment">
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
               <div class="card-top">
-                <div class="card-icon"><img src="./assets/images/services-6.png" width="48" height="48" alt="Steering"></div>
+                <div class="card-icon"><img src="./assets/images/services-6.png" alt="Steering"></div>
                 <h3 class="h3 card-title">STEERING</h3>
               </div>
               <button class="add-btn">+ ADD</button>
@@ -147,7 +164,7 @@
             <li class="card-item grid-card" data-service="Oil Change">
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
               <div class="card-top">
-                <div class="card-icon"><img src="./assets/images/services-2.png" width="48" height="48" alt="Oil Change"></div>
+                <div class="card-icon"><img src="./assets/images/services-2.png" alt="Oil Change"></div>
                 <h3 class="h3 card-title">OIL CHANGE</h3>
               </div>
               <button class="add-btn">+ ADD</button>
@@ -156,7 +173,7 @@
             <li class="card-item grid-card" data-service="AC Service">
               <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
               <div class="card-top">
-                <div class="card-icon"><img src="./assets/images/services-3.png" width="48" height="48" alt="AC Service"></div>
+                <div class="card-icon"><img src="./assets/images/services-3.png" alt="AC Service"></div>
                 <h3 class="h3 card-title">AC SERVICE</h3>
               </div>
               <button class="add-btn">+ ADD</button>
@@ -175,99 +192,39 @@
     </button>
   </div>
 
-
-  <!-- 
-    - #FOOTER
-  -->
+  <!-- ORIGINAL FOOTER -->
   <footer class="footer" id="contact">
     <div class="footer-top section">
       <div class="container">
-
         <div class="footer-brand">
           <a href="/" class="logo">
             <img src="./assets/images/logo.png" width="128" height="63" alt="autofix home">
           </a>
-
-          <p class="footer-text">
-           Find our Socials below:
-          </p>
-
+          <p class="footer-text">Find our Socials below:</p>
           <ul class="social-list">
-            <li>
-              <a href="#" class="social-link">
-                <img src="./assets/images/facebook.svg" alt="facebook">
-              </a>
-            </li>
-            <li>
-              <a href="#" class="social-link">
-                <img src="./assets/images/instagram.svg" alt="instagram">
-              </a>
-            </li>
-            <li>
-              <a href="#" class="social-link">
-                <img src="./assets/images/twitter.svg" alt="twitter">
-              </a>
-            </li>
+            <li><a href="#" class="social-link"><img src="./assets/images/facebook.svg" alt="facebook"></a></li>
+            <li><a href="#" class="social-link"><img src="./assets/images/instagram.svg" alt="instagram"></a></li>
+            <li><a href="#" class="social-link"><img src="./assets/images/twitter.svg" alt="twitter"></a></li>
           </ul>
         </div>
-
         <ul class="footer-list">
-          <li>
-            <p class="h3">Opening Hours</p>
-          </li>
-          <li>
-            <p class="p">Monday – Friday</p>
-            <span class="span">11:00 – 19:30</span>
-          </li>
-          <li>
-            <p class="p">Saturday – Sunday</p>
-            <span class="span">11:00 - 17:00</span>
-          </li>
+          <li><p class="h3">Opening Hours</p></li>
+          <li><p class="p">Monday – Friday</p><span class="span">11:00 – 19:30</span></li>
+          <li><p class="p">Saturday – Sunday</p><span class="span">11:00 - 17:00</span></li>
         </ul>
-
         <ul class="footer-list">
-          <li>
-            <p class="h3">Contact Info</p>
-          </li>
-          <li>
-            <a href="tel:+44" class="footer-link">
-              <span class="material-symbols-rounded">call</span>
-              <span class="span">+44</span>
-            </a>
-          </li>
-          <li>
-            <a href="mailto:info@safetay.uk" class="footer-link">
-              <span class="material-symbols-rounded">mail</span>
-              <span class="span">info@safetay.uk</span>
-            </a>
-          </li>
-          <li>
-            <address class="footer-link address">
-              <span class="material-symbols-rounded">location_on</span>
-              <span class="span">Blairgowrie</span>
-            </address>
-          </li>
+          <li><p class="h3">Contact Info</p></li>
+          <li><a href="tel:+44" class="footer-link"><span class="material-symbols-rounded">call</span><span class="span">+44</span></a></li>
+          <li><a href="mailto:info@safetay.uk" class="footer-link"><span class="material-symbols-rounded">mail</span><span class="span">info@safetay.uk</span></a></li>
+          <li><address class="footer-link address"><span class="material-symbols-rounded">location_on</span><span class="span">Blairgowrie</span></address></li>
         </ul>
-
         <div class="footer-map">
           <p class="h3" style="color: var(--white); margin-block-end: 18px;">Find Us</p>
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35136.00287413038!2d-3.3762618!3d56.5916962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48866a745863c873%3A0xc3f58a8a30f3a61e!2sBlairgowrie!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" 
-            width="100%" 
-            height="220" 
-            style="border:0; border-radius: 8px;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35136.00287413038!2d-3.3762618!3d56.5916962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48866a745863c873%3A0xc3f58a8a30f3a61e!2sBlairgowrie!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" width="100%" height="220" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        
       </div>
-      
-      <img src="./assets/images/footer-shape-3.png" width="" height="" loading="lazy" alt=""
-        class="shape shape-3 move-anim">
+      <img src="./assets/images/footer-shape-3.png" width="" height="" loading="lazy" alt="" class="shape shape-3 move-anim">
     </div>
-
     <div class="footer-bottom">
       <div class="container">
         <p class="copyright">SafeTay © 2026</p>
