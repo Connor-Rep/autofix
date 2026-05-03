@@ -34,10 +34,15 @@
         </ul>
       </nav>
 
-      <a href="/#services" class="btn btn-primary">
-        <span class="span">Get a Quote</span>
+      <!-- SMART HEADER CART BUTTON -->
+      <button id="header-booking-btn" class="btn btn-primary header-booking-btn">
+        <div class="cart-icon-wrapper">
+          <span class="material-symbols-rounded">shopping_cart</span>
+          <span class="cart-badge" id="cart-count">0</span>
+        </div>
+        <span class="span" id="header-btn-text">SERVICES</span>
+      </button>
         <span class="material-symbols-rounded">arrow_forward</span>
-      </a>
 
       <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
         <span class="nav-toggle-icon icon-1"></span>
@@ -194,14 +199,6 @@
       </section>
     </article>
   </main>
-
-  <!-- STICKY BOTTOM BOOKING BAR -->
-  <div id="sticky-booking-bar" class="sticky-booking-bar">
-    <p id="booking-prompt" class="booking-prompt">Start your booking by selecting services above.</p>
-    <button id="view-booking-btn" class="btn btn-primary view-booking-btn">
-      VIEW BOOKING (0 SERVICES SELECTED) <span class="material-symbols-rounded">arrow_forward</span>
-    </button>
-  </div>
 
   <!-- ORIGINAL FOOTER -->
   <footer class="footer" id="contact">
