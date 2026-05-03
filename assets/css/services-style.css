@@ -9,6 +9,7 @@ body {
 }
 
 
+/* --- PREMIUM PROMOTION BANNER (BULLETPROOF ONE-LINE) --- */
 .promo-banner {
     position: fixed;
     top: 103px; /* Mobile header height */
@@ -18,35 +19,31 @@ body {
     backdrop-filter: blur(5px);
     border-bottom: 2px solid var(--international-orange-engineering);
     color: var(--white);
-    text-align: center;
-    padding: 14px 10px; /* Slightly taller padding to accommodate bigger text */
-    font-size: 1.2rem; /* Base font size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; 
+    white-space: nowrap; 
+    padding: 12px 10px;
     font-family: var(--ff-chakra-petch);
     letter-spacing: 0.5px;
     z-index: 49; 
-    
-    /* Forces it to stay on one line */
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; /* Adds '...' if a phone screen is extremely narrow */
+    font-size: clamp(0.7rem, 2.5vw, 1.2rem); 
 }
 
+/* Makes the offer stand out and scale with the rest of the text */
 .promo-banner .highlight-text {
-    color: #FFD700; /* Gold */
-    font-weight: 900; /* Extra bold */
-    font-size: 1.8rem; /* Much bigger than the base text */
-    vertical-align: middle; /* Keeps it perfectly lined up with the smaller text */
-    margin: 0 4px; /* Adds a tiny bit of breathing room on the sides */
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); /* Subtle gold glow */
+    color: #FFD700; 
+    font-weight: 900; 
+    /* Fluid size for the highlight text too */
+    font-size: clamp(0.9rem, 3.5vw, 1.8rem); 
+    margin: 0 5px; 
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); 
 }
 
 @media (min-width: 1200px) {
     .promo-banner { 
         top: 113px; /* Desktop header height */ 
-        font-size: 1.5rem; /* Scales up overall size on desktop */
-    }
-    .promo-banner .highlight-text {
-        font-size: 2.2rem; /* Scales up the 50% OFF on desktop */
     }
 }
 
