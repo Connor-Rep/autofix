@@ -18,33 +18,16 @@
 
 <body style="background-color: #000000;">
 
-  <header class="header">
-    <div class="container">
-      <!-- Changed index.html to / -->
-      <a href="/" class="logo" id="header-logo">
-        <img src="./assets/images/logo.png" width="128" height="63" alt="SafeTay Logo">
-      </a>
-
-      <nav class="navbar" data-navbar>
-        <ul class="navbar-list">
-          <!-- Changed index.html to / for all cross-page links -->
-          <li><a href="/#home" class="navbar-link">Home</a></li>
-          <li><a href="#services" class="navbar-link">Services</a></li>
-          <li><a href="/#about" class="navbar-link">About</a></li>
-          <li><a href="/contact" class="navbar-link">Contact Us</a></li>
-        </ul>
-      </nav>
-
-      <!-- Changed index.html to / -->
-      <a href="/" class="btn-link" id="header-back-btn">
-        <span class="material-symbols-rounded">arrow_back</span>
-        <span class="span">Back</span>
-      </a>
-    </div>
   </header>
+
+  <!-- PROMOTION BANNER -->
+  <div class="promo-banner">
+    ✨ PROMOTION ALERT: Book a Full Service now and instantly get 50% OFF your Complete Detail! ✨
+  </div>
 
   <main>
     <article>
+      <!-- HERO HEADER -->
       <section class="section service-hero" id="services" style="padding-block-end: 0;">
         <div class="container services-header-bubble">
           <p class="section-subtitle :dark">SafeTay - Comprehensive Auto Care</p>
@@ -53,158 +36,144 @@
         </div>
       </section>
 
+      <!-- PREMIUM PACKAGES SECTION -->
+      <section class="section premium-packages-section" style="padding-block-start: 0; padding-block-end: 0;">
+        <div class="container main-bubble">
+          <h3 class="section-divider-title">PREMIUM PACKAGES</h3>
+          
+          <div class="premium-grid">
+            <!-- Full Service -->
+            <div class="service-card new-layout card-item" data-service="Full Service">
+              <div class="premium-deal-badge">UNLOCKS DETAIL DEAL.</div>
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              
+              <div class="card-image-wrapper">
+                <img src="./assets/images/engine-mustang.png" alt="Full Service" class="card-img">
+              </div>
+              
+              <div class="card-content-wrapper">
+                <h3 class="h3 card-title">FULL SERVICE</h3>
+                <div class="card-text-wrapper">
+                  <p class="card-text" style="font-size: 1.4rem;">Our Comprehensive check of all your vehicles components including full oil change. <span style="color: #888; font-size: 1.2rem; display: block; margin-top: 5px;">(Selecting unlocks the 50% Detail deal automatically).</span></p>
+                </div>
+                <button class="add-btn w-100">+ ADD</button>
+              </div>
+            </div>
+
+            <!-- Complete Detail -->
+            <div class="service-card new-layout card-item" data-service="Complete Detail">
+              <div class="discount-badge">50% OFF</div>
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              
+              <div class="card-image-wrapper">
+                <img src="./assets/images/detail-mustang.png" alt="Complete Detail" class="card-img">
+              </div>
+              
+              <div class="card-content-wrapper">
+                <h3 class="h3 card-title">COMPLETE DETAIL</h3>
+                <button class="add-btn w-100" style="margin-top: auto;">+ ADD (HALF-PRICE DETAIL)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ALL SERVICES SECTION -->
       <section class="section search-cards-bubble-section" id="services-grid-section">
         <div class="container main-bubble">
+          <h3 class="section-divider-title">ALL SERVICES</h3>
+
           <div class="search-container">
             <input type="search" id="service-search" placeholder="Search services..." class="search-input">
             <span id="search-status"></span>
           </div>
 
           <ul class="services-grid" id="services-grid">
-            <li class="card-item" data-service="Respray">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-1.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Respray</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+            <!-- Grid Service Cards -->
+            <li class="card-item grid-card" data-service="Respray">
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              <div class="card-top">
+                <div class="card-icon"><img src="./assets/images/services-1.png" width="48" height="48" alt="Respray"></div>
+                <h3 class="h3 card-title">RESPRAY</h3>
               </div>
+              <button class="add-btn">+ ADD</button>
             </li>
-            <li class="card-item" data-service="Tyres">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-3.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Tyres</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+
+            <li class="card-item grid-card" data-service="Tyres">
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              <div class="card-top">
+                <div class="card-icon"><img src="./assets/images/services-3.png" width="48" height="48" alt="Tyres"></div>
+                <h3 class="h3 card-title">TYRES</h3>
               </div>
+              <button class="add-btn">+ ADD</button>
             </li>
-            <li class="card-item" data-service="Brakes">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-2.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Brakes</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+
+            <li class="card-item grid-card" data-service="Brakes">
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              <div class="card-top">
+                <div class="card-icon"><img src="./assets/images/services-2.png" width="48" height="48" alt="Brakes"></div>
+                <h3 class="h3 card-title">BRAKES</h3>
               </div>
+              <button class="add-btn">+ ADD</button>
             </li>
-            <li class="card-item" data-service="Engine Repair">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-1.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Engine</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+
+            <li class="card-item grid-card" data-service="Engine Repair">
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              <div class="card-top">
+                <div class="card-icon"><img src="./assets/images/services-1.png" width="48" height="48" alt="Engine"></div>
+                <h3 class="h3 card-title">ENGINE</h3>
               </div>
+              <button class="add-btn">+ ADD</button>
             </li>
-            <li class="card-item" data-service="Battery Check">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-4.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Battery</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+
+            <li class="card-item grid-card" data-service="Battery Check">
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              <div class="card-top">
+                <div class="card-icon"><img src="./assets/images/services-4.png" width="48" height="48" alt="Battery"></div>
+                <h3 class="h3 card-title">BATTERY</h3>
               </div>
+              <button class="add-btn">+ ADD</button>
             </li>
-            <li class="card-item" data-service="Steering Alignment">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-6.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Steering</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+
+            <li class="card-item grid-card" data-service="Steering Alignment">
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              <div class="card-top">
+                <div class="card-icon"><img src="./assets/images/services-6.png" width="48" height="48" alt="Steering"></div>
+                <h3 class="h3 card-title">STEERING</h3>
               </div>
+              <button class="add-btn">+ ADD</button>
             </li>
-            <li class="card-item" data-service="Oil Change">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-2.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Oil Change</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+            
+            <li class="card-item grid-card" data-service="Oil Change">
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              <div class="card-top">
+                <div class="card-icon"><img src="./assets/images/services-2.png" width="48" height="48" alt="Oil Change"></div>
+                <h3 class="h3 card-title">OIL CHANGE</h3>
               </div>
+              <button class="add-btn">+ ADD</button>
             </li>
-            <li class="card-item" data-service="AC Service">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-3.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">AC Service</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
+
+            <li class="card-item grid-card" data-service="AC Service">
+              <div class="check-indicator"><span class="material-symbols-rounded">check</span></div>
+              <div class="card-top">
+                <div class="card-icon"><img src="./assets/images/services-3.png" width="48" height="48" alt="AC Service"></div>
+                <h3 class="h3 card-title">AC SERVICE</h3>
               </div>
-            </li>
-            <li class="card-item" data-service="Diagnostics">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-4.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Diagnostics</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
-              </div>
-            </li>
-            <li class="card-item" data-service="Full Valet">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-1.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Full Valet</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
-              </div>
-            </li>
-            <li class="card-item" data-service="Exhaust Repair">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-6.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Exhaust</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
-              </div>
-            </li>
-            <li class="card-item" data-service="Windscreen">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="card-icon"><img src="./assets/images/services-3.png" width="48" height="48"></div>
-                  <h3 class="h3 card-title">Windscreen</h3>
-                </div>
-                <div class="card-back"><button class="btn btn-primary get-quote-btn"><span class="span">Get a Quote</span></button></div>
-              </div>
+              <button class="add-btn">+ ADD</button>
             </li>
           </ul>
         </div>
       </section>
-
-      <section class="section quote-section hidden" id="quote-form-section">
-        <div class="container quote-bubble">
-          <h2 class="h2 section-title">Request a Quote</h2>
-          
-          <form id="quote-form" class="form-grid">
-            <input type="text" name="name" placeholder="Full Name" class="input-field" required>
-            <input type="email" name="email" placeholder="Email Address" class="input-field" required>
-            
-            <div class="input-row-full">
-                <div class="service-input-wrapper">
-                    <input type="text" id="selected-service-field" name="service" class="input-field" readonly placeholder="No services selected">
-                    <button type="button" id="add-more-btn" class="add-more-btn">Add More Services +</button>
-                </div>
-            </div>
-
-            <textarea name="message" placeholder="Additional Message / Details" class="input-field textarea"></textarea>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary submit-btn">
-                    <span class="span">Send Request</span>
-                    <span class="material-symbols-rounded">send</span>
-                </button>
-                <button type="button" id="reset-form-btn" class="btn btn-secondary reset-btn">
-                    <span class="span">Reset</span>
-                </button>
-            </div>
-          </form>
-        </div>
-      </section>
-
     </article>
   </main>
+
+  <!-- STICKY BOTTOM BOOKING BAR -->
+  <div id="sticky-booking-bar" class="sticky-booking-bar">
+    <p id="booking-prompt" class="booking-prompt">Start your booking by selecting services above.</p>
+    <button id="view-booking-btn" class="btn btn-primary view-booking-btn">
+      VIEW BOOKING (0 SERVICES SELECTED) <span class="material-symbols-rounded">arrow_forward</span>
+    </button>
+  </div>
 
 
   <!-- 
