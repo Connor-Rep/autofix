@@ -101,7 +101,7 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #000000; /* Default hidden state */
+    background-color: #000000; 
     color: #000;
     width: 28px;
     height: 28px;
@@ -124,7 +124,7 @@ body {
     background-color: #444444;
     color: var(--white);
     width: 100%;
-    padding: 18px;
+    padding: 16px;
     border: none;
     font-family: var(--ff-chakra-petch);
     font-size: 1.4rem;
@@ -132,6 +132,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
+    border-radius: 8px; /* Globally rounds all buttons */
 }
 
 /* Button turns green with dark text when selected */
@@ -152,8 +153,8 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); 
 }
 
+/* Premium cards already have padding, just apply margin */
 .premium-btn { 
-    border-radius: 8px !important; 
     margin-top: 15px !important; 
 } 
 
@@ -169,8 +170,8 @@ body {
 .premium-deal-badge {
     position: absolute;
     top: 0;
-    left: 50%; /* Centers the badge horizontally */
-    transform: translateX(-50%); /* Centers the badge horizontally */
+    left: 50%; 
+    transform: translateX(-50%); 
     background-color: rgba(0,0,0,0.8);
     color: var(--white);
     padding: 8px 20px;
@@ -178,16 +179,13 @@ body {
     font-size: 1rem;
     font-weight: bold;
     z-index: 2;
-    border-radius: 0 0 8px 8px; /* Slightly round the bottom corners */
+    border-radius: 0 0 8px 8px; 
 }
-/* Red modifier for the detail badge */
 .discount-red { background-color: var(--international-orange-engineering); }
 
 
 /* --- METALLIC GOLD GLOW ANIMATION (BUTTON ONLY) --- */
-/* The card itself does NOT glow anymore */
 .card-item.gold-glow .add-btn {
-    /* Rich metallic gold gradient */
     background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
     background-size: 200% auto;
     color: #000000 !important;
@@ -237,6 +235,13 @@ body {
     font-family: var(--ff-chakra-petch);
 }
 
+/* Pinches the button in and raises it up to reveal the card's black background */
+.grid-card .add-btn {
+    width: calc(100% - 40px); /* 20px gap on left and right */
+    margin: 0 auto 20px auto; /* Centered, 20px gap at the bottom */
+}
+
+
 /* --- STICKY BOTTOM BAR --- */
 .sticky-booking-bar {
     position: fixed;
@@ -266,7 +271,6 @@ body {
 }
 
 /* --- SEARCH HIGHLIGHT ANIMATION --- */
-/* Kept the red/orange flash for the search function */
 .card-item.highlight {
     border: 2px solid var(--international-orange-engineering);
     animation: flash 1s infinite alternate;
@@ -284,5 +288,6 @@ body {
     .card-top { flex-direction: column; padding: 25px 10px; gap: 12px; text-align: center; }
     .card-title { font-size: 1.4rem; }
     .card-icon img { width: 50px; height: 50px; }
+    .grid-card .add-btn { width: calc(100% - 20px); margin: 0 auto 15px auto; } /* Tighter gap on mobile */
     .view-booking-btn { font-size: 1.2rem; padding: 15px; }
 }
