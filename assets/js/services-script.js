@@ -2,8 +2,10 @@
 
 const searchInput = document.querySelector("#service-search");
 const cards = document.querySelectorAll(".card-item");
-const bookingPrompt = document.getElementById("booking-prompt");
-const viewBookingBtn = document.getElementById("view-booking-btn");
+
+// New Header Button Targets
+const headerBookingBtn = document.getElementById("header-booking-btn");
+const headerBtnText = document.getElementById("header-btn-text");
 
 let selectedCount = 0;
 
@@ -65,14 +67,11 @@ cards.forEach(card => {
             const isFullSelected = fullServiceCard.classList.contains("selected");
             const isDetailSelected = detailCard.classList.contains("selected");
 
-            // If Full Service is clicked and Detail is NOT clicked
             if (isFullSelected && !isDetailSelected) {
                 detailCard.classList.add("gold-glow");
                 detailBtn.innerHTML = "+ ADD (50% OFF)";
             } else {
-                // Remove glow if they haven't selected Full Service, or if they successfully added Detail
                 detailCard.classList.remove("gold-glow");
-                
                 if (isDetailSelected) {
                     detailBtn.innerHTML = "✓ ADDED";
                 } else {
@@ -81,28 +80,46 @@ cards.forEach(card => {
             }
         }
 
-        updateBookingBar();
+        updateHeaderCart();
     });
 });
 
-function updateBookingBar() {
+// 4. Update Header Cart Logic
+function updateHeaderCart() {
+    const cartCountBadge = document.getElementById("cart-count");
+    
+    // Update the number inside the badge
+    if (cartCountBadge) {
+        cartCountBadge.innerText = selectedCount;
+        
+        // Add a quick little 'pop' animation to draw the eye
+        cartCountBadge.classList.add("pop");
+        setTimeout(() => {
+            cartCountBadge.classList.remove("pop");
+        }, 200);
+    }
+
     if (selectedCount > 0) {
-        bookingPrompt.style.display = "none";
-        viewBookingBtn.innerHTML = `VIEW BOOKING (${selectedCount} SERVICE${selectedCount > 1 ? 'S' : ''} SELECTED) <span class="material-symbols-rounded">arrow_forward</span>`;
+        // Active State
+        headerBookingBtn.classList.add("ready-to-click");
+        headerBtnText.innerText = "CONTINUE";
     } else {
-        bookingPrompt.style.display = "block";
-        viewBookingBtn.innerHTML = `VIEW BOOKING (0 SERVICES SELECTED) <span class="material-symbols-rounded">arrow_forward</span>`;
+        // Empty State
+        headerBookingBtn.classList.remove("ready-to-click");
+        headerBtnText.innerText = "SERVICES";
     }
 }
 
-// 4. Booking Button Click
-viewBookingBtn?.addEventListener("click", () => {
+// 5. Header Booking Button Click
+headerBookingBtn?.addEventListener("click", () => {
     if (selectedCount > 0) {
         const selectedServices = Array.from(document.querySelectorAll('.card-item.selected'))
                                       .map(card => card.dataset.service);
         console.log("Services to book:", selectedServices);
+        // e.g. window.location.href = "/quote.html";
     } else {
-        alert("Please select at least one service to begin your booking.");
+        // If they click it when it says "SERVICES" and it's empty, smoothly scroll them to the grid
+        document.getElementById("services-grid-section").scrollIntoView({ behavior: "smooth" });
     }
 });
 
