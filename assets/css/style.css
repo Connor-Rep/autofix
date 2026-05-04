@@ -1548,7 +1548,7 @@ body {
 .hero-content .section-title {
   white-space: normal !important; 
   text-align: left !important; 
-  font-size: 4.5rem !important; /* The perfect size you found */
+  font-size: 5rem !important; /* The perfect size you found */
   line-height: 1.1 !important; 
   margin-inline: 0 !important; /* Stops the text block from centering itself */
 }
