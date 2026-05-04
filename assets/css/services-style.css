@@ -1,53 +1,15 @@
-/* --- GLOBAL FIXES & PROMOTION BANNER --- */
+/* --- GLOBAL FIXES --- */
 * {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* --- GLOBAL FIXES --- */
 body { 
     background-color: #000000 !important;
 }
 
-
-.promo-banner {
-    position: fixed;
-    top: 103px;
-    left: 0;
-    width: 100%;
-    background-color: rgba(15, 15, 15, 0.95); 
-    backdrop-filter: blur(5px);
-    border-bottom: 2px solid var(--international-orange-engineering);
-    color: var(--white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap; 
-    white-space: nowrap; 
-    
-    padding: 12px 10px;
-    font-family: var(--ff-chakra-petch);
-    letter-spacing: 0.5px;
-    z-index: 49; 
-    font-size: clamp(0.7rem, 2.5vw, 1.2rem); 
-}
-
-.promo-banner .highlight-text {
-    color: #FFD700; 
-    font-weight: 900; 
-    font-size: clamp(0.9rem, 3.5vw, 1.8rem); 
-    margin: 0 5px; 
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); 
-}
-
-@media (min-width: 1200px) {
-    .promo-banner { 
-        top: 113px; /* Desktop header height */ 
-    }
-}
-
-
+/* Adjusted since the promo banner is removed */
 .service-hero { 
-    padding-block-start: 180px !important; 
+    padding-block-start: 140px !important; 
     padding-block-end: 0 !important; 
 }
 
@@ -111,7 +73,7 @@ body {
 
 /* --- BRIGHT GREEN SELECTED STATE --- */
 .card-item.selected { 
-    border: 2px solid #00E676 !important; /* Bright checkmark green */
+    border: 2px solid #00E676 !important; 
 }
 
 /* CHECKMARK */
@@ -133,7 +95,7 @@ body {
 }
 .card-item.selected .check-indicator { 
     opacity: 1; 
-    background-color: #00E676; /* Green circle */
+    background-color: #00E676; 
 }
 .check-indicator span { font-size: 18px; font-weight: bold; color: #000; }
 
@@ -150,7 +112,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
-    border-radius: 8px; /* Globally rounds all buttons */
+    border-radius: 8px; 
 }
 
 /* Button turns green with dark text when selected */
@@ -166,12 +128,17 @@ body {
     gap: 30px;
 }
 
+/* Centers and prevents a single card from stretching across huge monitors */
+.single-card-center {
+    max-width: 500px;
+    margin-inline: auto;
+}
+
 .premium-grid .card-item { 
     background-color: #000000; 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); 
 }
 
-/* Premium cards already have padding, just apply margin */
 .premium-btn { 
     margin-top: 15px !important; 
 } 
@@ -182,41 +149,6 @@ body {
     margin-bottom: 15px;
     width: 100%;
     text-align: center;
-}
-
-/* CENTERED BADGES */
-.premium-deal-badge {
-    position: absolute;
-    top: 0;
-    left: 50%; 
-    transform: translateX(-50%); 
-    background-color: rgba(0,0,0,0.8);
-    color: var(--white);
-    padding: 8px 20px;
-    font-family: var(--ff-chakra-petch);
-    font-size: 1rem;
-    font-weight: bold;
-    z-index: 2;
-    border-radius: 0 0 8px 8px; 
-}
-.discount-red { background-color: var(--international-orange-engineering); }
-
-
-/* --- METALLIC GOLD GLOW ANIMATION (BUTTON ONLY) --- */
-.card-item.gold-glow .add-btn {
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-    background-size: 200% auto;
-    color: #000000 !important;
-    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6);
-    animation: shine 2.5s linear infinite, pulse-gold-btn 1.5s infinite alternate !important;
-}
-
-@keyframes shine {
-    to { background-position: 200% center; }
-}
-@keyframes pulse-gold-btn {
-    from { box-shadow: 0 0 10px rgba(191, 149, 63, 0.5); }
-    to { box-shadow: 0 0 25px rgba(252, 246, 186, 0.9); }
 }
 
 
@@ -253,10 +185,9 @@ body {
     font-family: var(--ff-chakra-petch);
 }
 
-/* Pinches the button in and raises it up to reveal the card's black background */
 .grid-card .add-btn {
-    width: calc(100% - 40px); /* 20px gap on left and right */
-    margin: 0 auto 20px auto; /* Centered, 20px gap at the bottom */
+    width: calc(100% - 40px); 
+    margin: 0 auto 20px auto; 
 }
 
 
@@ -293,7 +224,7 @@ body {
 
 /* --- "READY TO CLICK" HEADER BUTTON MAGNET --- */
 .header-booking-btn {
-    gap: 12px; /* Spaces the cart icon and text nicely */
+    gap: 12px; 
     transition: all 0.3s ease;
 }
 
@@ -307,20 +238,6 @@ body {
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(204, 15, 0, 0); }
 }
 
-.booking-prompt { color: #aaaaaa; font-size: 1.1rem; margin-bottom: 10px; }
-.view-booking-btn {
-    background-color: var(--international-orange-engineering);
-    width: 100%;
-    max-width: 500px;
-    padding: 18px;
-    font-size: 1.4rem;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
 /* --- SEARCH HIGHLIGHT ANIMATION --- */
 .card-item.highlight {
     border: 2px solid var(--international-orange-engineering);
@@ -332,13 +249,11 @@ body {
 }
 
 @media (max-width: 768px) {
-    .promo-banner { font-size: 1.1rem; }
-    .service-hero { padding-block-start: 160px !important; }
+    .service-hero { padding-block-start: 120px !important; }
     .premium-grid { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
     .card-top { flex-direction: column; padding: 25px 10px; gap: 12px; text-align: center; }
     .card-title { font-size: 1.4rem; }
     .card-icon img { width: 50px; height: 50px; }
-    .grid-card .add-btn { width: calc(100% - 20px); margin: 0 auto 15px auto; } /* Tighter gap on mobile */
-    .view-booking-btn { font-size: 1.2rem; padding: 15px; }
+    .grid-card .add-btn { width: calc(100% - 20px); margin: 0 auto 15px auto; } 
 }
