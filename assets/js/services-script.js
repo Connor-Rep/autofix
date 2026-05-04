@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 const searchInput = document.querySelector("#service-search");
 const cards = document.querySelectorAll(".card-item");
 
