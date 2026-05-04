@@ -268,25 +268,26 @@ body {
   }
 }
 
-/* --- OUTLINE BUTTON STYLE --- */
+/* --- OPTION 2: AGGRESSIVE TECH --- */
 .btn-outline {
   background-color: transparent;
   color: var(--white);
-  border: 2px solid var(--international-orange-engineering);
+  border: 2px solid var(--eerie-black); /* Dark grey border initially */
+  border-left: 4px solid var(--international-orange-engineering); /* Thick red accent on the left */
   font-family: var(--ff-chakra-petch);
   font-weight: var(--fw-600);
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  padding: 10px 24px; /* Slightly smaller padding than the main button */
-  border-radius: var(--radius-pill);
+  padding: 12px 24px;
+  border-radius: 0; /* Sharp, square corners */
   transition: var(--transition);
 }
 
 .btn-outline:hover {
-  background-color: var(--international-orange-engineering);
-  color: var(--white);
-  transform: translateY(-3px); /* Gives a slight lift effect on hover */
+  background-color: var(--eerie-black);
+  border-color: var(--international-orange-engineering);
+  transform: translateY(-2px);
 }
 
 
