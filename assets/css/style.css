@@ -268,29 +268,27 @@ body {
   }
 }
 
-/* --- OPTION 2: AGGRESSIVE TECH --- */
-.btn-outline {
-  background-color: transparent;
+/* --- OPTION 2: AGGRESSIVE TECH (FORCED OVERRIDE) --- */
+.btn.btn-outline {
+  background-color: transparent !important;
   color: var(--white);
-  border: 2px solid var(--eerie-black); /* Dark grey border initially */
-  border-left: 4px solid var(--international-orange-engineering); /* Thick red accent on the left */
+  border: 2px solid var(--eerie-black);
+  border-left: 4px solid var(--international-orange-engineering);
   font-family: var(--ff-chakra-petch);
   font-weight: var(--fw-600);
   text-transform: uppercase;
   display: flex;
   align-items: center;
   padding: 12px 24px;
-  border-radius: 0; /* Sharp, square corners */
+  border-radius: 0 !important; /* Forces the sharp corners */
   transition: var(--transition);
 }
 
-.btn-outline:hover {
-  background-color: var(--eerie-black);
+.btn.btn-outline:hover {
+  background-color: var(--eerie-black) !important;
   border-color: var(--international-orange-engineering);
   transform: translateY(-2px);
 }
-
-
 
 
 
