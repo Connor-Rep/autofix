@@ -412,6 +412,11 @@ body {
 }
 
 
+/* --- FIX TITLE OVERFLOW IN BUBBLE --- */
+.hero .section-title {
+  white-space: normal !important; /* Allows the title to stack nicely inside the bubble */
+  word-wrap: break-word; /* Extra safety so it never breaks out again */
+}
 
 /* --- HERO CONTENT BUBBLE (FORCED OVERRIDE) --- */
 .hero-content {
@@ -430,6 +435,7 @@ body {
     padding: 25px 20px !important;
   }
 }
+
 
 
 
