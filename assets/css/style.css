@@ -413,6 +413,28 @@ body {
 
 
 
+/* --- HERO CONTENT BUBBLE (FROSTED GLASS) --- */
+.hero-content {
+  background: rgba(0, 0, 0, 0.45); /* Semi-transparent black */
+  backdrop-filter: blur(8px); /* The frosted glass blur effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  padding: 40px;
+  border-radius: 16px; /* Soft rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Very faint white outline */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Deep shadow to lift it off the page */
+}
+
+/* Make the bubble slightly smaller on mobile so it doesn't touch the screen edges */
+@media (max-width: 575px) {
+  .hero-content {
+    padding: 25px 20px;
+  }
+}
+
+
+
+
+
 /*-----------------------------------*\
   #SERVICE
 \*-----------------------------------*/
