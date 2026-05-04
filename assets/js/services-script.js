@@ -3,7 +3,7 @@
 const searchInput = document.querySelector("#service-search");
 const cards = document.querySelectorAll(".card-item");
 
-// New Header Button Targets
+// Header Button Targets
 const headerBookingBtn = document.getElementById("header-booking-btn");
 const headerBtnText = document.getElementById("header-btn-text");
 
@@ -36,48 +36,19 @@ searchInput?.addEventListener("input", (e) => {
     });
 });
 
-// 3. Selection Toggle & Upsell Logic
-const fullServiceCard = document.querySelector('[data-service="Full Service"]');
-const detailCard = document.getElementById("complete-detail-card");
-
+// 3. Selection Toggle Logic
 cards.forEach(card => {
     card.addEventListener("click", () => {
         card.classList.toggle("selected");
         const btn = card.querySelector(".add-btn");
         
-        // Count Tracker
+        // Count Tracker & Button Text
         if (card.classList.contains("selected")) {
             selectedCount++;
+            btn.innerHTML = "✓ ADDED";
         } else {
             selectedCount--;
-        }
-
-        // Apply Text for Normal Cards
-        if (card !== detailCard) {
-            if (card.classList.contains("selected")) {
-                btn.innerHTML = "✓ ADDED";
-            } else {
-                btn.innerHTML = "+ ADD";
-            }
-        }
-
-        // --- THE GOLD GLOW UPSELL LOGIC FOR DETAIL CARD ---
-        if (fullServiceCard && detailCard) {
-            const detailBtn = detailCard.querySelector(".add-btn");
-            const isFullSelected = fullServiceCard.classList.contains("selected");
-            const isDetailSelected = detailCard.classList.contains("selected");
-
-            if (isFullSelected && !isDetailSelected) {
-                detailCard.classList.add("gold-glow");
-                detailBtn.innerHTML = "+ ADD (50% OFF)";
-            } else {
-                detailCard.classList.remove("gold-glow");
-                if (isDetailSelected) {
-                    detailBtn.innerHTML = "✓ ADDED";
-                } else {
-                    detailBtn.innerHTML = "+ ADD";
-                }
-            }
+            btn.innerHTML = "+ ADD";
         }
 
         updateHeaderCart();
@@ -92,7 +63,7 @@ function updateHeaderCart() {
     if (cartCountBadge) {
         cartCountBadge.innerText = selectedCount;
         
-        // Add a quick little 'pop' animation to draw the eye
+        // Add a quick 'pop' animation
         cartCountBadge.classList.add("pop");
         setTimeout(() => {
             cartCountBadge.classList.remove("pop");
@@ -116,9 +87,9 @@ headerBookingBtn?.addEventListener("click", () => {
         const selectedServices = Array.from(document.querySelectorAll('.card-item.selected'))
                                       .map(card => card.dataset.service);
         console.log("Services to book:", selectedServices);
-        // e.g. window.location.href = "/quote.html";
+        // window.location.href = "/quote.html";
     } else {
-        // If they click it when it says "SERVICES" and it's empty, smoothly scroll them to the grid
+        // If empty, smoothly scroll them to the grid
         document.getElementById("services-grid-section").scrollIntoView({ behavior: "smooth" });
     }
 });
