@@ -1545,9 +1545,7 @@ body {
 
 /* --- KEEP TITLE ON ONE LINE AND SHRINK TO FIT --- */
 .hero-content .section-title {
-  white-space: nowrap !important; /* Forces the text to stay on one line */
-  font-size: clamp(2rem, 4vw, 5rem) !important; /* Automatically scales the font down so it doesn't break out */
-  max-width: 100% !important; /* Ensures it respects the bubble's width */
-  overflow: hidden !important; 
-  text-overflow: ellipsis !important; /* Optional: adds "..." if the screen gets ridiculously small */
+  white-space: nowrap !important; 
+  font-size: clamp(1.5rem, 2.5vw, 3.5rem) !important; /* Shrunk the text down so it fits the box */
+  max-width: 100% !important; 
 }
