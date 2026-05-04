@@ -1544,13 +1544,17 @@ body {
 }
 
 
-/* --- PERFECT TWO-LINE TITLE INSIDE BUBBLE --- */
+/* --- PERFECT TWO-LINE BUBBLE TEXT ALIGNMENT --- */
 .hero-content .section-title {
-  font-size: 3.8rem !important; /* Shrunk slightly from the massive 6rem default */
-  line-height: 1.2 !important;
-  text-align: left !important; /* Aligns the title with your buttons */
+  white-space: normal !important; 
+  text-align: left !important; 
+  font-size: 4.5rem !important; /* The perfect size you found */
+  line-height: 1.1 !important; 
+  margin-inline: 0 !important; /* Stops the text block from centering itself */
 }
 
 .hero-content .section-text {
-  text-align: left !important; /* Aligns the paragraph with your buttons */
+  text-align: left !important; 
+  margin-inline: 0 !important; /* Stops the text block from centering itself */
+  max-width: 600px; /* Keeps the paragraph from stretching too far right */
 }
