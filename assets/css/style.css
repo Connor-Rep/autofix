@@ -250,6 +250,45 @@ body {
 
 .w-100 { width: 100%; }
 
+/* --- HERO BUTTON GROUP --- */
+.hero-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-block-start: 20px;
+  justify-content: center; /* Centers buttons on mobile */
+  margin-inline: auto;
+}
+
+/* Aligns buttons to the left on desktop to match the rest of your hero text */
+@media (min-width: 992px) {
+  .hero-btn-group {
+    justify-content: flex-start;
+    margin-inline: 0;
+  }
+}
+
+/* --- OUTLINE BUTTON STYLE --- */
+.btn-outline {
+  background-color: transparent;
+  color: var(--white);
+  border: 2px solid var(--international-orange-engineering);
+  font-family: var(--ff-chakra-petch);
+  font-weight: var(--fw-600);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  padding: 10px 24px; /* Slightly smaller padding than the main button */
+  border-radius: var(--radius-pill);
+  transition: var(--transition);
+}
+
+.btn-outline:hover {
+  background-color: var(--international-orange-engineering);
+  color: var(--white);
+  transform: translateY(-3px); /* Gives a slight lift effect on hover */
+}
+
 
 
 
