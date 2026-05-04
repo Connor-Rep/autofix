@@ -1542,3 +1542,15 @@ body {
     gap: 25px !important; 
   }
 }
+
+
+/* --- PERFECT TWO-LINE TITLE INSIDE BUBBLE --- */
+.hero-content .section-title {
+  font-size: 3.8rem !important; /* Shrunk slightly from the massive 6rem default */
+  line-height: 1.2 !important;
+  text-align: left !important; /* Aligns the title with your buttons */
+}
+
+.hero-content .section-text {
+  text-align: left !important; /* Aligns the paragraph with your buttons */
+}
