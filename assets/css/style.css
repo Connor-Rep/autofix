@@ -893,7 +893,7 @@ body {
   .hero :is(.section-subtitle, .btn) { margin-inline: 0; }
 
  .hero .section-title {
-    white-space: nowrap; /* We moved this to the CSS so it only affects desktop! */
+    white-space: nowrap;
     max-width: 100%;
     margin-inline: auto;
     line-height: 1.2;
@@ -1541,4 +1541,13 @@ body {
     grid-template-columns: repeat(4, 1fr) !important;
     gap: 25px !important; 
   }
+}
+
+/* --- KEEP TITLE ON ONE LINE AND SHRINK TO FIT --- */
+.hero-content .section-title {
+  white-space: nowrap !important; /* Forces the text to stay on one line */
+  font-size: clamp(2rem, 4vw, 5rem) !important; /* Automatically scales the font down so it doesn't break out */
+  max-width: 100% !important; /* Ensures it respects the bubble's width */
+  overflow: hidden !important; 
+  text-overflow: ellipsis !important; /* Optional: adds "..." if the screen gets ridiculously small */
 }
