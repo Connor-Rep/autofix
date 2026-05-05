@@ -1519,23 +1519,49 @@ body {
   }
 }
 
-/* --- MOBILE FIX FOR HERO BUTTONS (3 TOP, 1 CENTERED BOTTOM) --- */
+/* --- THE "CHUNKY 2x2" MOBILE GRID --- */
 @media (max-width: 575px) {
   .hero-btn-group {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important; /* Centers that bottom button automatically */
-    gap: 8px !important; /* Tightened the gap so they fit */
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Forces a strict 2-column grid */
+    gap: 15px !important; /* Nice breathing room between buttons */
+    width: 100% !important;
   }
 
   .btn.btn-outline {
-    width: 31% !important; /* Forces exactly 3 buttons per row */
-    padding: 10px 4px !important; 
-    font-size: 1.1rem !important; /* Shrunk slightly to fit the narrower boxes */
-    line-height: 1.2 !important; /* Brings stacked words closer together */
-    justify-content: center !important;
+    width: 100% !important; /* Forces button to fill its grid space */
+    min-height: 70px !important; /* Makes the buttons tall and chunky! */
+    padding: 10px !important;
+    font-size: 1.5rem !important; /* Much larger, readable text */
+    line-height: 1.2 !important;
+    justify-content: center !important; /* Centers text horizontally */
     text-align: center !important;
-    white-space: normal !important; /* CRITICAL: Allows longer words to safely drop to a second line inside the button */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important; /* Softer shadow for mobile */
+    white-space: normal !important; /* Allows words to nicely stack (e.g. "Car" on top of "Servicing") */
   }
+}
+
+/* --- SMOOTH ENTRANCE ANIMATION --- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero .section-title {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.hero .section-text {
+  opacity: 0; /* Starts hidden */
+  animation: fadeUp 0.8s ease-out 0.2s forwards; /* 0.2s delay */
+}
+
+.hero-btn-group {
+  opacity: 0; /* Starts hidden */
+  animation: fadeUp 0.8s ease-out 0.4s forwards; /* 0.4s delay */
 }
