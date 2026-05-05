@@ -1519,20 +1519,23 @@ body {
   }
 }
 
-/* --- MOBILE FIX FOR HERO BUTTONS --- */
+/* --- MOBILE FIX FOR HERO BUTTONS (3 TOP, 1 CENTERED BOTTOM) --- */
 @media (max-width: 575px) {
   .hero-btn-group {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* Forces a perfectly neat 2x2 layout */
-    gap: 10px !important; /* Tighter gap so they fit the screen nicely */
-    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important; /* Centers that bottom button automatically */
+    gap: 8px !important; /* Tightened the gap so they fit */
   }
 
   .btn.btn-outline {
-    padding: 12px 4px !important; /* Reduces side padding to stop text cramping */
-    font-size: 1.2rem !important; /* Slightly smaller font for small screens */
-    justify-content: center !important; /* Centers the text perfectly inside the button */
+    width: 31% !important; /* Forces exactly 3 buttons per row */
+    padding: 10px 4px !important; 
+    font-size: 1.1rem !important; /* Shrunk slightly to fit the narrower boxes */
+    line-height: 1.2 !important; /* Brings stacked words closer together */
+    justify-content: center !important;
     text-align: center !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important; /* Softens the massive shadow for mobile */
+    white-space: normal !important; /* CRITICAL: Allows longer words to safely drop to a second line inside the button */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important; /* Softer shadow for mobile */
   }
 }
