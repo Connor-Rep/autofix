@@ -268,26 +268,27 @@ body {
   }
 }
 
-/* --- OPTION 2: AGGRESSIVE TECH (FORCED OVERRIDE) --- */
+
 .btn.btn-outline {
-  background-color: transparent !important;
-  color: var(--white);
-  border: 2px solid var(--eerie-black);
-  border-left: 4px solid var(--international-orange-engineering);
+  background-color: var(--international-orange-engineering) !important; /* Your signature red */
+  color: var(--white) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important; /* A tiny white highlight on the edge */
   font-family: var(--ff-chakra-petch);
   font-weight: var(--fw-600);
   text-transform: uppercase;
   display: flex;
   align-items: center;
   padding: 12px 24px;
-  border-radius: 0 !important; /* Forces the sharp corners */
+  border-radius: 4px !important; /* Slightly softened corners so it doesn't look too rigid */
   transition: var(--transition);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8) !important; /* Deep black shadow to lift it off the image */
 }
 
 .btn.btn-outline:hover {
-  background-color: var(--eerie-black) !important;
-  border-color: var(--international-orange-engineering);
-  transform: translateY(-2px);
+  background-color: var(--eerie-black) !important; /* Swaps to dark grey on hover */
+  border-color: var(--international-orange-engineering) !important;
+  transform: translateY(-4px); /* Lifts up more when hovered */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(234, 40, 6, 0.4) !important; /* Deepens the shadow and adds a red glow */
 }
 
 
