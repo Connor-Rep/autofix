@@ -1518,3 +1518,21 @@ body {
     gap: 25px !important; 
   }
 }
+
+/* --- MOBILE FIX FOR HERO BUTTONS --- */
+@media (max-width: 575px) {
+  .hero-btn-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Forces a perfectly neat 2x2 layout */
+    gap: 10px !important; /* Tighter gap so they fit the screen nicely */
+    width: 100% !important;
+  }
+
+  .btn.btn-outline {
+    padding: 12px 4px !important; /* Reduces side padding to stop text cramping */
+    font-size: 1.2rem !important; /* Slightly smaller font for small screens */
+    justify-content: center !important; /* Centers the text perfectly inside the button */
+    text-align: center !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important; /* Softens the massive shadow for mobile */
+  }
+}
