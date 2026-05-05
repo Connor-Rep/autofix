@@ -190,7 +190,7 @@ body { background-color: #000000 !important; color: var(--white); }
 
     /* Adjust the spacing at the top of the contact hero section */
     #contact-hero {
-        padding-block-start: 80px !important; /* Reduces the 160px gap */
+        padding-block-start: 40px !important; /* Reduces the 160px gap */
     }
 
     .services-header-bubble {
