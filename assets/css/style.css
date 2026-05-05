@@ -412,31 +412,6 @@ body {
 }
 
 
-/* --- FIX TITLE OVERFLOW IN BUBBLE --- */
-.hero .section-title {
-  white-space: normal !important; /* Allows the title to stack nicely inside the bubble */
-  word-wrap: break-word; /* Extra safety so it never breaks out again */
-}
-
-/* --- HERO CONTENT BUBBLE (FORCED OVERRIDE) --- */
-.hero-content {
-  background: rgba(0, 0, 0, 0.6) !important; /* Made slightly darker so it's obvious if it works */
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  padding: 40px !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
-  z-index: 10 !important; /* Forces it to sit on top of the background */
-}
-
-@media (max-width: 575px) {
-  .hero-content {
-    padding: 25px 20px !important;
-  }
-}
-
-
 
 
 
@@ -1541,20 +1516,4 @@ body {
     grid-template-columns: repeat(4, 1fr) !important;
     gap: 25px !important; 
   }
-}
-
-
-/* --- PERFECT TWO-LINE BUBBLE TEXT ALIGNMENT --- */
-.hero-content .section-title {
-  white-space: normal !important; 
-  text-align: left !important; 
-  font-size: 5rem !important; /* The perfect size you found */
-  line-height: 1.1 !important; 
-  margin-inline: 0 !important; /* Stops the text block from centering itself */
-}
-
-.hero-content .section-text {
-  text-align: left !important; 
-  margin-inline: 0 !important; /* Stops the text block from centering itself */
-  max-width: 600px; /* Keeps the paragraph from stretching too far right */
 }
