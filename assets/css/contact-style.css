@@ -187,6 +187,17 @@ body { background-color: #000000 !important; color: var(--white); }
 }
 
 @media (max-width: 768px) {
+
+    /* Adjust the spacing at the top of the contact hero section */
+    #contact-hero {
+        padding-block-start: 80px !important; /* Reduces the 160px gap */
+    }
+
+    .services-header-bubble {
+        margin-top: 20px; /* Reduced from 90px to bring it up */
+    }
+
+    
     .form-grid { grid-template-columns: 1fr; }
     
     .services-grid { 
