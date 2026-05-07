@@ -1568,3 +1568,97 @@ body {
   opacity: 0; /* Starts hidden */
   animation: fadeUp 0.8s ease-out 0.4s forwards; /* 0.4s delay */
 }
+
+
+
+/* --- POPULAR SERVICES HOVER GLOW --- */
+.service-read-more {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.service-read-more:hover {
+  color: var(--international-orange-engineering) !important;
+  text-shadow: 0 0 15px rgba(234, 40, 6, 0.8);
+}
+
+/* --- REPAIRS & SERVICES (SLIM GRID) --- */
+.repairs-section {
+  padding-block: 60px;
+}
+
+.repairs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 in a row on desktop */
+  gap: 15px;
+  margin-block: 40px;
+  list-style: none;
+  padding: 0;
+}
+
+.repair-card {
+  background-color: var(--eerie-black);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.repair-card:hover {
+  border-color: var(--international-orange-engineering);
+  box-shadow: 0 0 15px rgba(234, 40, 6, 0.4); /* Soft red glowing box */
+  transform: translateY(-3px);
+}
+
+.repair-card .card-icon {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.repair-card .card-icon img {
+  width: 35px; /* Shrunk the icons */
+  height: 35px;
+  object-fit: contain;
+}
+
+.repair-card .card-title {
+  font-size: 1.3rem; /* Scaled down the title */
+  color: var(--white);
+  font-family: var(--ff-chakra-petch);
+  margin: 0;
+  text-align: center;
+}
+
+/* --- REPAIRS GRID MOBILE RESPONSIVENESS --- */
+@media (max-width: 991px) {
+  .repairs-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3x3 on tablets */
+  }
+}
+
+@media (max-width: 575px) {
+  .repairs-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Perfect 2x5 grid on mobile */
+  }
+}
+
+/* --- WHY CHOOSE US (HEIGHT FIX) --- */
+.about.section {
+  padding-block-start: 20px !important; /* Forces the section to pull up higher */
+}
+
+@media (min-width: 992px) {
+  .about.section {
+    padding-block-start: 40px !important; /* Gives a tiny bit more room on big screens, but much tighter than before */
+  }
+}
