@@ -1582,15 +1582,41 @@ body {
   text-shadow: 0 0 15px rgba(234, 40, 6, 0.8);
 }
 
-/* --- REPAIRS & SERVICES (SLIM GRID) --- */
+/* --- HEADER CART ICON & BADGE (GLOBAL) --- */
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background-color: #000000; 
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  font-family: var(--ff-chakra-petch);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--international-orange-engineering); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+/* --- REPAIRS & SERVICES (4x2 GRID) --- */
 .repairs-section {
   padding-block: 60px;
 }
 
 .repairs-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 in a row on desktop */
-  gap: 15px;
+  grid-template-columns: repeat(4, 1fr) !important; /* 4 in a row on desktop */
+  gap: 20px; /* Slightly wider gap */
   margin-block: 40px;
   list-style: none;
   padding: 0;
@@ -1600,65 +1626,81 @@ body {
   background-color: var(--eerie-black);
   border: 2px solid rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  padding: 20px 10px;
+  padding: 25px 15px; /* Taller padding */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 8px; /* Tighter gap between text and icon */
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .repair-card:hover {
   border-color: var(--international-orange-engineering);
-  box-shadow: 0 0 15px rgba(234, 40, 6, 0.4); /* Soft red glowing box */
+  box-shadow: 0 0 15px rgba(234, 40, 6, 0.4); 
   transform: translateY(-3px);
 }
 
+/* Icons - Circles removed, made bigger */
 .repair-card .card-icon {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 12px;
-  border-radius: 50%;
+  background: transparent !important; 
+  padding: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 5px;
 }
 
 .repair-card .card-icon img {
-  width: 35px; /* Shrunk the icons */
-  height: 35px;
+  width: 55px !important; /* Increased from 35px */
+  height: 55px !important;
   object-fit: contain;
 }
 
 .repair-card .card-title {
-  font-size: 1.3rem; /* Scaled down the title */
+  font-size: 1.6rem !important; /* Made text bigger */
   color: var(--white);
   font-family: var(--ff-chakra-petch);
   margin: 0;
   text-align: center;
 }
 
+/* The new tiny "find out more" text */
+.find-out-more-text {
+  font-size: 1.1rem;
+  color: var(--international-orange-engineering);
+  font-family: var(--ff-mulish);
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.7;
+  transition: var(--transition);
+}
+
+.repair-card:hover .find-out-more-text {
+  opacity: 1; /* Brightens up when hovered */
+}
+
 /* --- REPAIRS GRID MOBILE RESPONSIVENESS --- */
 @media (max-width: 991px) {
   .repairs-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3x3 on tablets */
+    grid-template-columns: repeat(3, 1fr) !important; 
   }
 }
 
 @media (max-width: 575px) {
   .repairs-grid {
-    grid-template-columns: repeat(2, 1fr) !important; /* Perfect 2x5 grid on mobile */
+    grid-template-columns: repeat(2, 1fr) !important; /* Perfect 2x4 grid on mobile */
   }
 }
 
-/* --- WHY CHOOSE US (HEIGHT FIX) --- */
+/* --- WHY CHOOSE US (HEIGHT FIX & GAP) --- */
 .about.section {
-  padding-block-start: 20px !important; /* Forces the section to pull up higher */
+  padding-block-start: 60px !important; /* Increased from 20px to give it a larger gap from the repairs section */
 }
 
 @media (min-width: 992px) {
   .about.section {
-    padding-block-start: 40px !important; /* Gives a tiny bit more room on big screens, but much tighter than before */
+    padding-block-start: 80px !important; 
   }
 }
