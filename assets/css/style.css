@@ -1519,24 +1519,27 @@ body {
   }
 }
 
-/* --- THE "CHUNKY 2x2" MOBILE GRID --- */
+/* --- OPTION 1: THE APP-STYLE VERTICAL STACK --- */
 @media (max-width: 575px) {
   .hero-btn-group {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* Forces a strict 2-column grid */
-    gap: 15px !important; /* Nice breathing room between buttons */
+    display: flex !important;
+    flex-direction: column !important; /* Stacks them straight down */
     width: 100% !important;
+    gap: 12px !important;
   }
 
   .btn.btn-outline {
-    width: 100% !important; /* Forces button to fill its grid space */
-    min-height: 70px !important; /* Makes the buttons tall and chunky! */
-    padding: 10px !important;
-    font-size: 1.5rem !important; /* Much larger, readable text */
-    line-height: 1.2 !important;
-    justify-content: center !important; /* Centers text horizontally */
-    text-align: center !important;
-    white-space: normal !important; /* Allows words to nicely stack (e.g. "Car" on top of "Servicing") */
+    width: 100% !important;
+    justify-content: space-between !important; /* Pushes text left and arrow right */
+    padding: 16px 24px !important; /* Nice thick touch area */
+    font-size: 1.4rem !important;
+  }
+
+  /* Automatically adds a neat arrow to the end of each button on mobile */
+  .btn.btn-outline::after {
+    content: "→";
+    font-weight: bold;
+    font-size: 1.6rem;
   }
 }
 
