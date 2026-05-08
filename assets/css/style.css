@@ -396,8 +396,6 @@ body {
   margin-inline: auto;
 }
 
-.hero .btn { margin-inline: auto; }
-
 .hero-banner { 
   position: relative; /* Contains the image */
   aspect-ratio: var(--width) / var(--height); 
@@ -1763,25 +1761,64 @@ a:focus, button:focus {
 }
 
 /* =========================================
-   3. MOBILE FIX: LEFT-ALIGNED HERO BUTTONS
+   3. MOBILE FIX: LEFT-ALIGNED HERO BUTTONS (FIXED)
    ========================================= */
 @media (max-width: 575px) {
   .hero-btn-group {
     display: flex !important;
     flex-direction: column !important; 
-    align-items: flex-start !important; /* Forces the whole group to the left */
+    align-items: flex-start !important; 
     width: 100% !important;
     gap: 12px !important;
-    margin-inline: 0 !important; /* Kills any lingering auto-centering margins */
+    margin-inline: 0 !important; 
   }
 
-  .btn.btn-outline {
+  /* Adding ".hero" here overpowers the old centering rule! */
+  .hero .btn.btn-outline {
     width: 100% !important;
+    margin-inline: 0 !important; /* Physically kills the center lock */
     display: flex !important;
-    justify-content: space-between !important; /* Text left, arrow right */
+    justify-content: space-between !important; 
     align-items: center !important;
     text-align: left !important; 
     padding: 16px 24px !important; 
     font-size: 1.4rem !important;
   }
+}
+
+/* =========================================
+   4. BASKET ICON SCALING
+   ========================================= */
+.cart-icon-wrapper .material-symbols-rounded {
+  font-size: 2.2rem !important; /* Bumps up the size on desktop */
+}
+
+@media (max-width: 768px) {
+  .cart-icon-wrapper .material-symbols-rounded {
+    font-size: 3.2rem !important; /* Makes it massive to fill the mobile floating circle */
+  }
+}
+
+/* =========================================
+   5. PREMIUM HOVER EFFECTS (NAV & BUTTONS)
+   ========================================= */
+/* Navbar links turn red on hover */
+.navbar-link:hover {
+  color: var(--international-orange-engineering) !important;
+}
+
+/* Base state for the Quote & View All buttons to prevent jumping */
+.header-booking-btn, .repairs-section .btn {
+  border: 1px solid transparent !important; 
+  transition: all 0.3s ease !important;
+}
+
+/* Eerie Black + Red Outline on hover */
+.header-booking-btn:hover, 
+.repairs-section .btn:hover {
+  background-color: var(--eerie-black) !important;
+  border-color: var(--international-orange-engineering) !important;
+  color: var(--white) !important;
+  box-shadow: 0 5px 15px rgba(234, 40, 6, 0.4) !important; /* Adds a subtle red glow */
+  transform: translateY(-2px); /* Tiny premium lift effect */
 }
