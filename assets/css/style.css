@@ -1519,32 +1519,6 @@ body {
   }
 }
 
-/* --- APP-STYLE VERTICAL STACK (FIXED ARROW & ALIGNMENT) --- */
-@media (max-width: 575px) {
-  .hero-btn-group {
-    display: flex !important;
-    flex-direction: column !important; 
-    width: 100% !important;
-    gap: 12px !important;
-  }
-
-  .btn.btn-outline {
-    width: 100% !important;
-    justify-content: space-between !important; /* Pushes text left, arrow right */
-    text-align: left !important; /* Forces text to the left */
-    padding: 16px 24px !important; 
-    font-size: 1.4rem !important;
-  }
-
-  /* Uses the actual Material Design Arrow */
-  .btn.btn-outline::after {
-    content: "arrow_forward" !important; 
-    font-family: 'Material Symbols Rounded' !important;
-    font-weight: 600;
-    font-size: 1.6rem;
-  }
-}
-
 /* --- SMOOTH ENTRANCE ANIMATION --- */
 @keyframes fadeUp {
   from {
@@ -1570,7 +1544,6 @@ body {
   opacity: 0; /* Starts hidden */
   animation: fadeUp 0.8s ease-out 0.4s forwards; /* 0.4s delay */
 }
-
 
 
 /* --- POPULAR SERVICES HOVER GLOW --- */
@@ -1753,5 +1726,62 @@ body {
   /* Centers the basket inside the circle */
   .cart-icon-wrapper {
     margin: 0 !important;
+  }
+}
+
+/* =========================================
+   1. GLOBAL FIX: STOP BLUE TAP HIGHLIGHT
+   ========================================= */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+a:focus, button:focus {
+  outline: none !important;
+}
+
+/* =========================================
+   2. MOBILE FIX: PERFECT CIRCLE BASKET
+   ========================================= */
+@media (max-width: 768px) {
+  .header-booking-btn {
+    position: fixed !important;
+    bottom: 25px !important;
+    right: 25px !important;
+    border-radius: 50% !important; 
+    width: 65px !important;
+    height: 65px !important;
+    min-width: 65px !important; /* Physically prevents the oval squish */
+    min-height: 65px !important; /* Physically prevents the oval squish */
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6) !important; 
+    z-index: 100;
+  }
+}
+
+/* =========================================
+   3. MOBILE FIX: LEFT-ALIGNED HERO BUTTONS
+   ========================================= */
+@media (max-width: 575px) {
+  .hero-btn-group {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important; /* Forces the whole group to the left */
+    width: 100% !important;
+    gap: 12px !important;
+    margin-inline: 0 !important; /* Kills any lingering auto-centering margins */
+  }
+
+  .btn.btn-outline {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important; /* Text left, arrow right */
+    align-items: center !important;
+    text-align: left !important; 
+    padding: 16px 24px !important; 
+    font-size: 1.4rem !important;
   }
 }
