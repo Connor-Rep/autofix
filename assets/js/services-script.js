@@ -25,14 +25,26 @@ searchInput?.addEventListener("input", (e) => {
     const val = e.target.value.toLowerCase().trim();
     cards.forEach(card => {
         card.classList.remove("highlight");
-        if (val && card.dataset.service.toLowerCase().includes(val)) {
+        if (val && card.dataset.service?.toLowerCase().includes(val)) {
             card.classList.add("highlight");
         }
     });
 });
 
-// 3. Selection Toggle & Local Storage Memory
-let selectedServices = JSON.parse(localStorage.getItem('safetay_cart')) || [];
+// 3. Self-Healing Memory (Catches crashes from old corrupted test data)
+let selectedServices = [];
+try {
+    const stored = localStorage.getItem('safetay_cart');
+    if (stored) {
+        selectedServices = JSON.parse(stored);
+        if (!Array.isArray(selectedServices)) selectedServices = []; // Forces it to be a clean array
+    }
+} catch (error) {
+    console.warn("Cleared old corrupted cart data.");
+    selectedServices = [];
+    localStorage.removeItem('safetay_cart');
+}
+
 let selectedCount = selectedServices.length;
 
 function updateHeaderCart() {
@@ -43,7 +55,6 @@ function updateHeaderCart() {
         setTimeout(() => cartCountBadge.classList.remove("pop"), 200);
     }
 
-    // Add the glowing pulse effect if items are in cart
     if (headerBookingBtn) {
         if (selectedCount > 0) {
             headerBookingBtn.classList.add("ready-to-click");
@@ -53,31 +64,35 @@ function updateHeaderCart() {
     }
 }
 
-// 4. Card Click Logic
+// 4. Bulletproof Card Click Logic
 cards.forEach(card => {
     const serviceName = card.dataset.service;
+    if (!serviceName) return; // Skips if a card is missing its data tag
+
     const btn = card.querySelector(".add-btn");
     
-    // On page load, if it's in local storage, visually select it immediately
+    // Check memory on load
     if (selectedServices.includes(serviceName)) {
         card.classList.add("selected");
         if (btn) btn.innerHTML = "✓ ADDED";
     }
 
-    card.addEventListener("click", () => {
+    card.addEventListener("click", (e) => {
+        e.preventDefault(); // Stops the browser from doing any weird default behaviors
+        
         card.classList.toggle("selected");
         
         if (card.classList.contains("selected")) {
             if (btn) btn.innerHTML = "✓ ADDED";
             if (!selectedServices.includes(serviceName)) {
-                selectedServices.push(serviceName); // Save to memory
+                selectedServices.push(serviceName);
             }
         } else {
             if (btn) btn.innerHTML = "+ ADD";
-            selectedServices = selectedServices.filter(s => s !== serviceName); // Remove from memory
+            selectedServices = selectedServices.filter(s => s !== serviceName);
         }
 
-        // Save to browser memory and update the UI
+        // Save safely
         selectedCount = selectedServices.length;
         localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
         updateHeaderCart();
@@ -85,12 +100,12 @@ cards.forEach(card => {
 });
 
 // 5. Header Booking Button Click
-headerBookingBtn?.addEventListener("click", () => {
+headerBookingBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
     if (selectedCount > 0) {
         console.log("Services to book:", selectedServices);
-        // window.location.href = "/quote.html"; // Ready for your actual quote page!
+        // window.location.href = "/quote.html"; // Uncomment this when you build the quote page!
     } else {
-        // If empty, smoothly scroll them down to the grid
         document.getElementById("services-grid-section")?.scrollIntoView({ behavior: "smooth" });
     }
 });
@@ -102,5 +117,5 @@ window.addEventListener("load", () => {
   }
 });
 
-// Run immediately on load to update the badge
+// Run UI update immediately
 updateHeaderCart();
