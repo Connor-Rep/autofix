@@ -1,15 +1,8 @@
 'use strict';
 
-
-
 const searchInput = document.querySelector("#service-search");
 const cards = document.querySelectorAll(".card-item");
-
-// Header Button Targets
 const headerBookingBtn = document.getElementById("header-booking-btn");
-const headerBtnText = document.getElementById("header-btn-text");
-
-let selectedCount = 0;
 
 // 1. Navigation & Mobile Menu Logic
 const navbar = document.querySelector("[data-navbar]");
@@ -38,40 +31,9 @@ searchInput?.addEventListener("input", (e) => {
     });
 });
 
-// 3 & 4. Selection Toggle & Local Storage Logic
+// 3. Selection Toggle & Local Storage Memory
 let selectedServices = JSON.parse(localStorage.getItem('safetay_cart')) || [];
 let selectedCount = selectedServices.length;
-
-// On page load, highlight any cards that were already in the cart
-cards.forEach(card => {
-    const serviceName = card.dataset.service;
-    
-    // If it's in local storage, visually select it immediately
-    if (selectedServices.includes(serviceName)) {
-        card.classList.add("selected");
-        card.querySelector(".add-btn").innerHTML = "✓ ADDED";
-    }
-
-    card.addEventListener("click", () => {
-        card.classList.toggle("selected");
-        const btn = card.querySelector(".add-btn");
-        
-        if (card.classList.contains("selected")) {
-            btn.innerHTML = "✓ ADDED";
-            if (!selectedServices.includes(serviceName)) {
-                selectedServices.push(serviceName); // Add to memory array
-            }
-        } else {
-            btn.innerHTML = "+ ADD";
-            selectedServices = selectedServices.filter(s => s !== serviceName); // Remove from memory array
-        }
-
-        // Save the new array to the browser's memory
-        selectedCount = selectedServices.length;
-        localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
-        updateHeaderCart();
-    });
-});
 
 function updateHeaderCart() {
     const cartCountBadge = document.getElementById("cart-count");
@@ -80,21 +42,56 @@ function updateHeaderCart() {
         cartCountBadge.classList.add("pop");
         setTimeout(() => cartCountBadge.classList.remove("pop"), 200);
     }
+
+    // Add the glowing pulse effect if items are in cart
+    if (headerBookingBtn) {
+        if (selectedCount > 0) {
+            headerBookingBtn.classList.add("ready-to-click");
+        } else {
+            headerBookingBtn.classList.remove("ready-to-click");
+        }
+    }
 }
 
-// Run immediately on load to update the badge number
-updateHeaderCart();
+// 4. Card Click Logic
+cards.forEach(card => {
+    const serviceName = card.dataset.service;
+    const btn = card.querySelector(".add-btn");
+    
+    // On page load, if it's in local storage, visually select it immediately
+    if (selectedServices.includes(serviceName)) {
+        card.classList.add("selected");
+        if (btn) btn.innerHTML = "✓ ADDED";
+    }
+
+    card.addEventListener("click", () => {
+        card.classList.toggle("selected");
+        
+        if (card.classList.contains("selected")) {
+            if (btn) btn.innerHTML = "✓ ADDED";
+            if (!selectedServices.includes(serviceName)) {
+                selectedServices.push(serviceName); // Save to memory
+            }
+        } else {
+            if (btn) btn.innerHTML = "+ ADD";
+            selectedServices = selectedServices.filter(s => s !== serviceName); // Remove from memory
+        }
+
+        // Save to browser memory and update the UI
+        selectedCount = selectedServices.length;
+        localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
+        updateHeaderCart();
+    });
+});
 
 // 5. Header Booking Button Click
 headerBookingBtn?.addEventListener("click", () => {
     if (selectedCount > 0) {
-        const selectedServices = Array.from(document.querySelectorAll('.card-item.selected'))
-                                      .map(card => card.dataset.service);
         console.log("Services to book:", selectedServices);
-        // window.location.href = "/quote.html";
+        // window.location.href = "/quote.html"; // Ready for your actual quote page!
     } else {
-        // If empty, smoothly scroll them to the grid
-        document.getElementById("services-grid-section").scrollIntoView({ behavior: "smooth" });
+        // If empty, smoothly scroll them down to the grid
+        document.getElementById("services-grid-section")?.scrollIntoView({ behavior: "smooth" });
     }
 });
 
@@ -104,3 +101,6 @@ window.addEventListener("load", () => {
     setTimeout(() => { history.replaceState(null, null, window.location.pathname); }, 10);
   }
 });
+
+// Run immediately on load to update the badge
+updateHeaderCart();
