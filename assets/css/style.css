@@ -1686,8 +1686,8 @@ body {
 }
 
 .find-out-more-text {
-  font-size: 0.95rem !important; /* Shrunk down so it acts as a secondary label */
-  color: var(--international-orange-engineering);
+  font-size: 0.95rem !important; 
+  color: var(--light-gray) !important;
   font-family: var(--ff-mulish);
   text-transform: uppercase;
   font-weight: 700;
