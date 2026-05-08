@@ -38,50 +38,52 @@ searchInput?.addEventListener("input", (e) => {
     });
 });
 
-// 3. Selection Toggle Logic
+// 3 & 4. Selection Toggle & Local Storage Logic
+let selectedServices = JSON.parse(localStorage.getItem('safetay_cart')) || [];
+let selectedCount = selectedServices.length;
+
+// On page load, highlight any cards that were already in the cart
 cards.forEach(card => {
+    const serviceName = card.dataset.service;
+    
+    // If it's in local storage, visually select it immediately
+    if (selectedServices.includes(serviceName)) {
+        card.classList.add("selected");
+        card.querySelector(".add-btn").innerHTML = "✓ ADDED";
+    }
+
     card.addEventListener("click", () => {
         card.classList.toggle("selected");
         const btn = card.querySelector(".add-btn");
         
-        // Count Tracker & Button Text
         if (card.classList.contains("selected")) {
-            selectedCount++;
             btn.innerHTML = "✓ ADDED";
+            if (!selectedServices.includes(serviceName)) {
+                selectedServices.push(serviceName); // Add to memory array
+            }
         } else {
-            selectedCount--;
             btn.innerHTML = "+ ADD";
+            selectedServices = selectedServices.filter(s => s !== serviceName); // Remove from memory array
         }
 
+        // Save the new array to the browser's memory
+        selectedCount = selectedServices.length;
+        localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
         updateHeaderCart();
     });
 });
 
-// 4. Update Header Cart Logic
 function updateHeaderCart() {
     const cartCountBadge = document.getElementById("cart-count");
-    
-    // Update the number inside the badge
     if (cartCountBadge) {
         cartCountBadge.innerText = selectedCount;
-        
-        // Add a quick 'pop' animation
         cartCountBadge.classList.add("pop");
-        setTimeout(() => {
-            cartCountBadge.classList.remove("pop");
-        }, 200);
-    }
-
-    if (selectedCount > 0) {
-        // Active State
-        headerBookingBtn.classList.add("ready-to-click");
-        headerBtnText.innerText = "CONTINUE";
-    } else {
-        // Empty State
-        headerBookingBtn.classList.remove("ready-to-click");
-        headerBtnText.innerText = "SERVICES";
+        setTimeout(() => cartCountBadge.classList.remove("pop"), 200);
     }
 }
+
+// Run immediately on load to update the badge number
+updateHeaderCart();
 
 // 5. Header Booking Button Click
 headerBookingBtn?.addEventListener("click", () => {
