@@ -78,3 +78,16 @@ window.addEventListener("load", () => {
     }, 10);
   }
 });
+
+
+/**
+ * GLOBAL CART SYNC (Reads from Local Storage)
+ */
+window.addEventListener('DOMContentLoaded', () => {
+  const cartBadge = document.getElementById('cart-count');
+  if (cartBadge) {
+      // Look in the browser memory for the cart, or use an empty array if nothing is there
+      const savedCart = JSON.parse(localStorage.getItem('safetay_cart')) || [];
+      cartBadge.innerText = savedCart.length; // Update the number!
+  }
+});
