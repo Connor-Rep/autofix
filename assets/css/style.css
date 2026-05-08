@@ -1519,26 +1519,28 @@ body {
   }
 }
 
-/* --- OPTION 1: THE APP-STYLE VERTICAL STACK --- */
+/* --- APP-STYLE VERTICAL STACK (FIXED ARROW & ALIGNMENT) --- */
 @media (max-width: 575px) {
   .hero-btn-group {
     display: flex !important;
-    flex-direction: column !important; /* Stacks them straight down */
+    flex-direction: column !important; 
     width: 100% !important;
     gap: 12px !important;
   }
 
   .btn.btn-outline {
     width: 100% !important;
-    justify-content: space-between !important; /* Pushes text left and arrow right */
-    padding: 16px 24px !important; /* Nice thick touch area */
+    justify-content: space-between !important; /* Pushes text left, arrow right */
+    text-align: left !important; /* Forces text to the left */
+    padding: 16px 24px !important; 
     font-size: 1.4rem !important;
   }
 
-  /* Automatically adds a neat arrow to the end of each button on mobile */
+  /* Uses the actual Material Design Arrow */
   .btn.btn-outline::after {
-    content: "→";
-    font-weight: bold;
+    content: "arrow_forward" !important; 
+    font-family: 'Material Symbols Rounded' !important;
+    font-weight: 600;
     font-size: 1.6rem;
   }
 }
@@ -1724,5 +1726,32 @@ body {
 @media (min-width: 992px) {
   .about.section {
     padding-block-start: 90px !important; /* Pushes the section down further */
+  }
+}
+
+/* --- MOBILE FLOATING ACTION BASKET (FAB) --- */
+@media (max-width: 768px) {
+  .header-booking-btn {
+    position: fixed !important;
+    bottom: 25px;
+    right: 25px;
+    border-radius: 50% !important; /* Makes it a perfect circle */
+    width: 65px !important;
+    height: 65px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6) !important; /* Deep floating shadow */
+    z-index: 100;
+  }
+  
+  /* Hides the word "Quote" and the arrow on mobile, leaving just the basket */
+  .header-booking-btn #header-btn-text,
+  .header-booking-btn > .material-symbols-rounded:last-child {
+    display: none !important; 
+  }
+
+  /* Centers the basket inside the circle */
+  .cart-icon-wrapper {
+    margin: 0 !important;
   }
 }
