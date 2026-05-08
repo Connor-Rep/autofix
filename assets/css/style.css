@@ -383,6 +383,8 @@ body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/hero-bg.jpg');
 }
 
+.hero .btn { margin-inline: auto; }
+
 .hero .container {
   display: grid;
   gap: 30px;
