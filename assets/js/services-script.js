@@ -85,12 +85,12 @@ cards.forEach(card => {
 });
 
 // 5. Header Booking Button Click
-headerBookingBtn?.addEventListener("click", () => {
+headerBookingBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
     if (selectedCount > 0) {
-        console.log("Services to book:", selectedServices);
-        // window.location.href = "/quote.html"; // Ready for your actual quote page!
+        // Boom! This is the magic line that takes them to the new page
+        window.location.href = "/quote.html"; 
     } else {
-        // If empty, smoothly scroll them down to the grid
         document.getElementById("services-grid-section")?.scrollIntoView({ behavior: "smooth" });
     }
 });
