@@ -178,3 +178,21 @@
     padding: 25px 15px;
   }
 }
+
+/* --- ADD MORE SERVICES BUTTON --- */
+.add-more-services-btn {
+  background-color: transparent !important;
+  border: 2px dashed rgba(255, 255, 255, 0.2) !important;
+  color: var(--light-gray) !important;
+  justify-content: center !important;
+  margin-bottom: 20px;
+  padding: 12px !important;
+  box-shadow: none !important;
+}
+
+.add-more-services-btn:hover {
+  border-color: var(--international-orange-engineering) !important;
+  color: var(--international-orange-engineering) !important;
+  background-color: rgba(234, 40, 6, 0.05) !important; /* Very subtle red tint */
+  transform: translateY(-2px);
+}
