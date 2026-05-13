@@ -242,7 +242,9 @@ body {
 .card-item.highlight {
     border: 2px solid var(--international-orange-engineering);
     animation: flash 1s infinite alternate;
+    order: -1 !important; /* Magically forces the card to the front of the grid! */
 }
+
 @keyframes flash {
     from { box-shadow: 0 0 5px var(--international-orange-engineering); }
     to { box-shadow: 0 0 20px var(--international-orange-engineering); }
