@@ -36,9 +36,15 @@ function renderSummary() {
     if (quoteCart.length === 0) {
         emptyState.style.display = "block";
         submitBtn.style.opacity = "0.5";
-        submitBtn.style.pointerEvents = "none"; // Disables submit if empty
+        submitBtn.style.pointerEvents = "none"; 
         submitBtn.innerHTML = "Basket Empty";
+        if (addMoreBtn) addMoreBtn.style.display = "none"; // Hides the button
         return;
+    }
+
+    emptyState.style.display = "none";
+    if (addMoreBtn) addMoreBtn.style.display = "flex"; // Shows the button
+    submitBtn.style.opacity = "1";
     }
 
     emptyState.style.display = "none";
@@ -94,6 +100,12 @@ quoteForm?.addEventListener("submit", (e) => {
         // Send them back home
         window.location.href = "/";
     }, 1500);
+});
+
+// 5. Add More Services Click
+addMoreBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.href = "/services.html"; // Takes them back to shop!
 });
 
 // Run immediately
