@@ -85,7 +85,15 @@
             <input type="email" name="email" placeholder="Email Address" class="input-field" required>
             
             <input type="tel" name="phone" placeholder="Phone Number" class="input-field">
-            <input type="text" name="subject" placeholder="Subject / Enquiry Type" class="input-field">
+            
+            <select name="subject" class="input-field" required>
+              <option value="" disabled selected>Subject / Enquiry Type</option>
+              <option value="General Enquiry">General Enquiry</option>
+              <option value="Service Booking">Book a Service</option>
+              <option value="Quote Request">Quote / Estimate Request</option>
+              <option value="Classic Restoration">Classic Restoration</option>
+              <option value="Other">Other</option>
+            </select>
 
             <textarea name="message" placeholder="Your Message / Details" class="input-field textarea" rows="6" required></textarea>
             
