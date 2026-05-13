@@ -93,18 +93,12 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * GLOBAL HEADER QUOTE BUTTON (Home Page Routing)
+ * GLOBAL HEADER QUOTE BUTTON
  */
 const headerBookingBtn = document.getElementById("header-booking-btn");
 
 headerBookingBtn?.addEventListener("click", (e) => {
     e.preventDefault();
-    // Check the memory to see if they have items
-    const savedCart = JSON.parse(localStorage.getItem('safetay_cart')) || [];
-    
-    if (savedCart.length > 0) {
-        window.location.href = "/quote.html"; // Basket full? Go to checkout!
-    } else {
-        window.location.href = "/services.html"; // Basket empty? Go to services!
-    }
+    // No matter what is in the basket, go straight to the checkout page!
+    window.location.href = "/quote.html"; 
 });
