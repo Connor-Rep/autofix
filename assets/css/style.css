@@ -1563,6 +1563,7 @@ body {
   width: 100%; /* Stretches the button to fill the bottom of the card */
   margin-top: auto; 
   text-decoration: none !important;
+  display: block !important;
 }
 
 .service-read-more:hover {
