@@ -106,5 +106,50 @@ document.querySelectorAll('.card-details-link').forEach(link => {
     });
 });
 
+// 7. SMART MODAL LOGIC
+const modal = document.getElementById("config-modal");
+const closeModalBtn = document.getElementById("close-modal-btn");
+const modalSubmitBtn = document.getElementById("modal-submit-btn");
+
+// Find any button with the 'config-btn' class
+document.querySelectorAll(".config-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Stop normal card click
+        e.preventDefault();
+        modal.classList.add("active"); // Open the modal
+    });
+});
+
+// Close Modal Logic
+closeModalBtn?.addEventListener("click", () => modal.classList.remove("active"));
+modal?.addEventListener("click", (e) => {
+    if(e.target === modal) modal.classList.remove("active"); // Close if clicking outside the box
+});
+
+// Submit from Modal
+modalSubmitBtn?.addEventListener("click", () => {
+    // 1. Find which radio button is checked
+    const selectedOption = document.querySelector('input[name="brake_option"]:checked').value;
+    
+    // 2. Add it to memory if it's not already there
+    if (!selectedServices.includes(selectedOption)) {
+        selectedServices.push(selectedOption);
+        localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
+        selectedCount = selectedServices.length;
+        updateHeaderCart();
+    }
+
+    // 3. Update the UI on the base Brakes card to look active
+    const brakesCard = document.querySelector('[data-service="Brakes"]');
+    if (brakesCard) {
+        brakesCard.classList.add("selected");
+        const baseBtn = brakesCard.querySelector(".add-btn");
+        if (baseBtn) baseBtn.innerHTML = "✓ CONFIGURED";
+    }
+
+    // 4. Close the modal
+    modal.classList.remove("active");
+});
+
 // Run immediately on load to update the badge
 updateHeaderCart();
