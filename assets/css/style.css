@@ -1546,15 +1546,32 @@ body {
 }
 
 
-/* --- POPULAR SERVICES HOVER GLOW --- */
+/* --- POPULAR SERVICES BUTTON UPGRADE --- */
 .service-read-more {
+  background-color: var(--eerie-black) !important;
+  color: var(--white) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important; /* Very subtle edge so it doesn't vanish into the black card */
+  padding: 12px 24px !important;
+  border-radius: 6px !important;
+  font-family: var(--ff-chakra-petch);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 700;
   transition: all 0.3s ease;
   cursor: pointer;
+  text-align: center;
+  width: 100%; /* Stretches the button to fill the bottom of the card */
+  margin-top: auto; 
+  text-decoration: none !important;
 }
 
 .service-read-more:hover {
-  color: var(--international-orange-engineering) !important;
-  text-shadow: 0 0 15px rgba(234, 40, 6, 0.8);
+  background-color: var(--eerie-black) !important;
+  border-color: var(--international-orange-engineering) !important;
+  color: var(--white) !important;
+  box-shadow: 0 5px 15px rgba(234, 40, 6, 0.4) !important; /* The glowing red highlight */
+  transform: translateY(-2px); /* Slight lift effect */
+  text-shadow: none !important; /* Removes the old text glow */
 }
 
 /* =========================================
