@@ -84,15 +84,11 @@ cards.forEach(card => {
     });
 });
 
-// 5. Header Booking Button Click
+// 5. Header Booking Button Click (Always go to Quote Page)
 headerBookingBtn?.addEventListener("click", (e) => {
     e.preventDefault();
-    if (selectedCount > 0) {
-        // Boom! This is the magic line that takes them to the new page
-        window.location.href = "/quote.html"; 
-    } else {
-        document.getElementById("services-grid-section")?.scrollIntoView({ behavior: "smooth" });
-    }
+    // No matter what is in the basket, go straight to the checkout page!
+    window.location.href = "/quote.html"; 
 });
 
 // Clean URLs
