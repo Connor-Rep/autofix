@@ -495,3 +495,14 @@ body { background-color: #000000 !important; color: var(--white); }
         padding: 15px; 
     }
 }
+
+/* --- DROPDOWN MENU DARK THEME FIX --- */
+select.input-field {
+    cursor: pointer;
+}
+
+select.input-field option {
+    background-color: var(--eerie-black);
+    color: var(--white);
+    padding: 10px;
+}
