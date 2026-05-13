@@ -98,5 +98,13 @@ window.addEventListener("load", () => {
   }
 });
 
+// 6. Stop links from triggering the card selection
+document.querySelectorAll('.card-details-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        // This physically stops the click from "bubbling up" to the card underneath
+        e.stopPropagation(); 
+    });
+});
+
 // Run immediately on load to update the badge
 updateHeaderCart();
