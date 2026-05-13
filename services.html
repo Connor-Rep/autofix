@@ -105,9 +105,10 @@
                 <div class="card-icon"><img src="./assets/images/services-2.png" alt="Brakes"></div>
                 <h3 class="h3 card-title">BRAKES</h3>
               </div>
-              <button class="add-btn">+ ADD</button>
-
-              <a href="/services/brake.html" class="card-details-link">View Details</a>
+              
+              <button class="add-btn config-btn">ADD & CONFIGURE</button>
+              
+              <a href="/services/brakes.html" class="card-details-link">View Details</a>
             </li>
 
             <li class="card-item grid-card" data-service="Engine Repair">
@@ -169,6 +170,44 @@
       </section>
     </article>
   </main>
+
+  <div id="config-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button id="close-modal-btn" class="close-modal-btn"><span class="material-symbols-rounded">close</span></button>
+      
+      <h3 class="h3 modal-title" style="color: var(--white); margin-bottom: 10px;">Configure Brakes</h3>
+      <p class="modal-subtitle">Select the area that needs attention, or choose an inspection if you aren't sure.</p>
+
+      <div class="config-options">
+        <label class="config-option">
+          <input type="radio" name="brake_option" value="Brakes: Front Axle">
+          <div class="option-pill">Front Brakes</div>
+        </label>
+        
+        <label class="config-option">
+          <input type="radio" name="brake_option" value="Brakes: Rear Axle">
+          <div class="option-pill">Rear Brakes</div>
+        </label>
+        
+        <label class="config-option">
+          <input type="radio" name="brake_option" value="Brakes: Front & Rear">
+          <div class="option-pill">Front & Rear (Both)</div>
+        </label>
+        
+        <label class="config-option recommended">
+          <input type="radio" name="brake_option" value="Brakes: Inspection / Not Sure" checked>
+          <div class="option-pill" style="border-style: dashed;">I'm Not Sure - Inspect First <span class="badge">Recommended</span></div>
+        </label>
+      </div>
+
+      <button id="modal-submit-btn" class="btn w-100" style="justify-content: center; margin-bottom: 20px;">
+          <span class="span">Add to Quote</span>
+          <span class="material-symbols-rounded">add_circle</span>
+      </button>
+
+      <a href="/services/brakes.html" class="card-details-link" style="margin-bottom: 0;">Read Full Brake Service Details</a>
+    </div>
+  </div>
 
   <!-- ORIGINAL FOOTER -->
   <footer class="footer" id="contact">
