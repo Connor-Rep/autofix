@@ -71,7 +71,7 @@ body {
 
 .card-item:hover { border-color: rgba(255, 255, 255, 0.3); }
 
-/* --- SUCCESS GREEN SELECTED STATE (RESTORED) --- */
+/* --- BRIGHT GREEN SELECTED STATE --- */
 .card-item.selected { 
     border: 2px solid #00E676 !important; 
 }
@@ -93,34 +93,31 @@ body {
     z-index: 5;
     transition: opacity 0.2s;
 }
-
 .card-item.selected .check-indicator { 
     opacity: 1; 
-    background-color: #00E676 !important; /* Back to bright green */
+    background-color: #00E676; 
+}
+.check-indicator span { font-size: 18px; font-weight: bold; color: #000; }
+
+/* ADD BUTTONS */
+.add-btn {
+    background-color: #444444;
+    color: var(--white);
+    width: 100%;
+    padding: 16px;
+    border: none;
+    font-family: var(--ff-chakra-petch);
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border-radius: 8px; 
 }
 
-.check-indicator span { 
-    font-size: 18px; 
-    font-weight: bold; 
-    color: #000000 !important; /* Black checkmark pops best on green */
-}
-
-/* Button turns green with black text when selected */
+/* Button turns green with dark text when selected */
 .card-item.selected .add-btn { 
     background-color: #00E676 !important; 
-    color: #000000 !important;
-}
-
-/* Base Add button hover effect (Red on hover, until clicked) */
-.add-btn:hover {
-    background-color: var(--international-orange-engineering);
-    color: var(--white);
-    transform: translateY(-2px);
-}
-
-/* Stop the selected button from turning red when you hover over it again */
-.card-item.selected .add-btn:hover {
-    background-color: #00C853 !important; /* A slightly darker green on hover */
     color: #000000 !important;
 }
 
@@ -304,10 +301,10 @@ body {
 .option-pill {
     padding: 15px 20px; border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px; color: var(--white); font-family: var(--ff-chakra-petch);
-    font-size: 1.7rem; /* BUMPED UP FROM 1.4rem */
-    font-weight: 600; cursor: pointer; transition: all 0.2s;
+    font-size: 1.4rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
     display: flex; justify-content: space-between; align-items: center;
 }
+
 .config-option input:checked + .option-pill {
     border-color: var(--international-orange-engineering);
     background-color: rgba(234, 40, 6, 0.1);
@@ -322,9 +319,7 @@ body {
 }
 
 .card-details-link {
-    display: block; /* This forces the link to take up the full width, allowing it to center! */
-    width: 100%;
-    color: var(--light-gray); /* Light grey as requested */
+    color: var(--light-gray);
     font-family: var(--ff-mulish);
     font-size: 1.2rem;
     text-align: center;
@@ -334,7 +329,7 @@ body {
     margin-bottom: 16px;
     transition: var(--transition);
     position: relative;
-    z-index: 10;
+    z-index: 10; /* Ensures it is clickable over the card */
 }
 
 .card-details-link:hover {
