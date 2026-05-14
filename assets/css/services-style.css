@@ -304,12 +304,12 @@ body {
 
 .option-pill {
     padding: 12px 24px !important;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important; /* Brighter grey border */
-    border-radius: 50px !important; /* The absolute override for the pill shape */
-    background-color: #000000 !important; /* Jet black background */
+    border: 2px solid rgba(255, 255, 255, 0.2) !important; 
+    border-radius: 50px !important; /* Perfect pill shape */
+    background-color: transparent !important; /* NO MORE JET BLACK! */
     color: #ffffff !important; /* Forces pure white text */
     font-family: var(--ff-chakra-petch) !important;
-    font-size: 1.6rem !important; 
+    font-size: 1.8rem !important; /* Bigger text, as you requested earlier */
     font-weight: 600 !important; 
     cursor: pointer !important; 
     transition: all 0.2s ease !important;
