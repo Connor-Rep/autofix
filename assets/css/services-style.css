@@ -301,31 +301,16 @@ body {
 /* Custom Radio Button Pills */
 .config-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
 .config-option input { display: none; }
-
 .option-pill {
-    padding: 12px 24px !important;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important; 
-    border-radius: 50px !important; /* Perfect pill shape */
-    background-color: transparent !important; /* NO MORE JET BLACK! */
-    color: #ffffff !important; /* Forces pure white text */
-    font-family: var(--ff-chakra-petch) !important;
-    font-size: 1.8rem !important; /* Bigger text, as you requested earlier */
-    font-weight: 600 !important; 
-    cursor: pointer !important; 
-    transition: all 0.2s ease !important;
-    display: flex !important; 
-    justify-content: space-between !important; 
-    align-items: center !important;
+    padding: 15px 20px; border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px; color: var(--white); font-family: var(--ff-chakra-petch);
+    font-size: 1.7rem; /* BUMPED UP FROM 1.4rem */
+    font-weight: 600; cursor: pointer; transition: all 0.2s;
+    display: flex; justify-content: space-between; align-items: center;
 }
-
-/* Adds a subtle white glow when hovering before they click */
-.option-pill:hover {
-    border-color: rgba(255, 255, 255, 0.6) !important;
-}
-
 .config-option input:checked + .option-pill {
-    border-color: var(--international-orange-engineering) !important;
-    background-color: rgba(234, 40, 6, 0.15) !important;
+    border-color: var(--international-orange-engineering);
+    background-color: rgba(234, 40, 6, 0.1);
 }
 
 .badge { background: var(--international-orange-engineering); font-size: 1rem; padding: 4px 8px; border-radius: 4px; color: #fff;}
