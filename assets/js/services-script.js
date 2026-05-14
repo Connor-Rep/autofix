@@ -53,35 +53,45 @@ function updateHeaderCart() {
     }
 }
 
-// 4. Card Click Logic
+// 4. Card Button Click Logic (Restricted to Buttons Only)
 cards.forEach(card => {
     const serviceName = card.dataset.service;
-    const btn = card.querySelector(".add-btn");
+    
+    // Find the standard add button (but NOT the config button)
+    const addBtn = card.querySelector(".add-btn:not(.config-btn)");
     
     // On page load, if it's in local storage, visually select it immediately
     if (selectedServices.includes(serviceName)) {
         card.classList.add("selected");
-        if (btn) btn.innerHTML = "✓ ADDED";
+        const anyBtn = card.querySelector(".add-btn"); // Could be standard or config
+        if (anyBtn) {
+            anyBtn.innerHTML = anyBtn.classList.contains("config-btn") ? "✓ CONFIGURED" : "✓ ADDED";
+        }
     }
 
-    card.addEventListener("click", () => {
-        card.classList.toggle("selected");
-        
-        if (card.classList.contains("selected")) {
-            if (btn) btn.innerHTML = "✓ ADDED";
-            if (!selectedServices.includes(serviceName)) {
-                selectedServices.push(serviceName); // Save to memory
-            }
-        } else {
-            if (btn) btn.innerHTML = "+ ADD";
-            selectedServices = selectedServices.filter(s => s !== serviceName); // Remove from memory
-        }
+    if (addBtn) {
+        addBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Stops any other click events
+            e.preventDefault();
 
-        // Save to browser memory and update the UI
-        selectedCount = selectedServices.length;
-        localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
-        updateHeaderCart();
-    });
+            card.classList.toggle("selected");
+            
+            if (card.classList.contains("selected")) {
+                addBtn.innerHTML = "✓ ADDED";
+                if (!selectedServices.includes(serviceName)) {
+                    selectedServices.push(serviceName); // Save to memory
+                }
+            } else {
+                addBtn.innerHTML = "+ ADD";
+                selectedServices = selectedServices.filter(s => s !== serviceName); // Remove from memory
+            }
+
+            // Save to browser memory and update the UI
+            selectedCount = selectedServices.length;
+            localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
+            updateHeaderCart();
+        });
+    }
 });
 
 // 5. Header Booking Button Click (Always go to Quote Page)
