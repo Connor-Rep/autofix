@@ -303,27 +303,29 @@ body {
 .config-option input { display: none; }
 
 .option-pill {
-    padding: 12px 24px; /* Adjusted padding to look better on a rounded shape */
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 100px !important; /* THE MAGIC FIX: Forces the perfect rounded pill shape */
-    background-color: #000000; /* Pure black so it pops off the dark grey modal background */
-    color: var(--white); 
-    font-family: var(--ff-chakra-petch);
-    font-size: 1.6rem; 
-    font-weight: 600; 
-    cursor: pointer; 
-    transition: all 0.2s ease;
-    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important; /* Brighter grey border */
+    border-radius: 50px !important; /* The absolute override for the pill shape */
+    background-color: #000000 !important; /* Jet black background */
+    color: #ffffff !important; /* Forces pure white text */
+    font-family: var(--ff-chakra-petch) !important;
+    font-size: 1.6rem !important; 
+    font-weight: 600 !important; 
+    cursor: pointer !important; 
+    transition: all 0.2s ease !important;
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important;
 }
 
 /* Adds a subtle white glow when hovering before they click */
 .option-pill:hover {
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .config-option input:checked + .option-pill {
-    border-color: var(--international-orange-engineering);
-    background-color: rgba(234, 40, 6, 0.1);
+    border-color: var(--international-orange-engineering) !important;
+    background-color: rgba(234, 40, 6, 0.15) !important;
 }
 
 .badge { background: var(--international-orange-engineering); font-size: 1rem; padding: 4px 8px; border-radius: 4px; color: #fff;}
