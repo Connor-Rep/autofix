@@ -301,13 +301,26 @@ body {
 /* Custom Radio Button Pills */
 .config-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
 .config-option input { display: none; }
+
 .option-pill {
-    padding: 15px 20px; border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px; color: var(--white); font-family: var(--ff-chakra-petch);
-    font-size: 1.7rem; /* BUMPED UP FROM 1.4rem */
-    font-weight: 600; cursor: pointer; transition: all 0.2s;
+    padding: 12px 24px; /* Adjusted padding to look better on a rounded shape */
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px !important; /* THE MAGIC FIX: Forces the perfect rounded pill shape */
+    background-color: #000000; /* Pure black so it pops off the dark grey modal background */
+    color: var(--white); 
+    font-family: var(--ff-chakra-petch);
+    font-size: 1.6rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: all 0.2s ease;
     display: flex; justify-content: space-between; align-items: center;
 }
+
+/* Adds a subtle white glow when hovering before they click */
+.option-pill:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
 .config-option input:checked + .option-pill {
     border-color: var(--international-orange-engineering);
     background-color: rgba(234, 40, 6, 0.1);
