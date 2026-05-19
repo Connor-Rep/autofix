@@ -24,6 +24,8 @@ const summaryList = document.getElementById("summary-list");
 const emptyState = document.getElementById("summary-empty-state");
 const cartBadge = document.getElementById("cart-count");
 const submitBtn = document.querySelector(".submit-btn");
+// NEW: Actually defining the Add More button so it doesn't crash!
+const addMoreBtn = document.getElementById("add-more-services-btn"); 
 
 // 3. Render the Summary List
 function renderSummary() {
@@ -42,12 +44,10 @@ function renderSummary() {
         return;
     }
 
+    // --- ROGUE BRACKET REMOVED FROM HERE ---
+    
     emptyState.style.display = "none";
     if (addMoreBtn) addMoreBtn.style.display = "flex"; // Shows the button
-    submitBtn.style.opacity = "1";
-    }
-
-    emptyState.style.display = "none";
     submitBtn.style.opacity = "1";
     submitBtn.style.pointerEvents = "all";
     submitBtn.innerHTML = `<span class="span">Submit Request</span><span class="material-symbols-rounded">send</span>`;
@@ -88,8 +88,6 @@ quoteForm?.addEventListener("submit", (e) => {
     // Check if cart is empty just in case
     if (quoteCart.length === 0) return;
 
-    // (In the future, this is where you'd send the data to your email or database!)
-    
     // Simulate success
     submitBtn.innerHTML = "Sending...";
     
