@@ -409,3 +409,9 @@ body {
     box-shadow: 0 5px 15px rgba(234, 40, 6, 0.4) !important; /* Red highlight glow */
     transform: translateY(-2px) !important;
 }
+
+/* --- MODAL BADGE SELECTED STATE --- */
+.config-option input:checked + .option-pill .badge {
+    background-color: var(--eerie-black) !important;
+    color: var(--white) !important;
+}
