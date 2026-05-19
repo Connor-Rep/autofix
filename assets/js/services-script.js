@@ -210,9 +210,10 @@ filterBtns.forEach(btn => {
             if (filterValue === 'all' || item.classList.contains(filterValue)) {
                 item.classList.remove('hide');
                 
-                // Optional: Adds a tiny animation so they pop back in smoothly
-                item.style.animation = 'flash 0.5s';
-                setTimeout(() => item.style.animation = '', 500);
+                // THE FIX: Reset and apply the smooth Pop-In animation
+                item.style.animation = 'none'; 
+                void item.offsetWidth; // Forces the browser to reset the animation frame
+                item.style.animation = 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             } else {
                 item.classList.add('hide');
             }
