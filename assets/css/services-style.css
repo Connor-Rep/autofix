@@ -379,3 +379,33 @@ body {
   /* Changed 'infinite' to '1', so it only pulses exactly once for 1.5 seconds */
   animation: gentle-pulse 1.5s 1 !important; 
 }
+
+/* --- MODAL OPTION HOVER (Highlights when mouse is over it) --- */
+.option-pill:hover {
+    border-color: var(--white) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important; /* Fills with a slight white highlight */
+}
+
+/* --- MODAL OPTION SELECTED (Makes it incredibly obvious!) --- */
+.config-option input:checked + .option-pill {
+    border-color: var(--international-orange-engineering) !important;
+    background-color: var(--international-orange-engineering) !important; /* Solid Red */
+    color: var(--white) !important;
+    box-shadow: 0 5px 15px rgba(234, 40, 6, 0.4) !important; /* Premium red glow */
+}
+
+/* --- MODAL SUBMIT BUTTON FIXES --- */
+#modal-submit-btn {
+    border-radius: 8px !important; /* Squares it off to match the base Add buttons */
+    border: 1px solid transparent !important;
+    background-color: var(--international-orange-engineering) !important; /* Base red */
+    transition: all 0.3s ease !important;
+}
+
+#modal-submit-btn:hover {
+    background-color: var(--eerie-black) !important; /* Snaps to dark grey */
+    border-color: var(--international-orange-engineering) !important; /* Red outline */
+    color: var(--white) !important;
+    box-shadow: 0 5px 15px rgba(234, 40, 6, 0.4) !important; /* Red highlight glow */
+    transform: translateY(-2px) !important;
+}
