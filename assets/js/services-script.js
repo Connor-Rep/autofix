@@ -211,21 +211,20 @@ filterBtns.forEach(btn => {
 
         filterItems.forEach(item => {
             if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                // Unhide the card
                 item.classList.remove('hide');
                 
                 // Reset the animation completely
                 item.style.animation = 'none';
-                item.style.opacity = '0'; // Keep it invisible until its turn to pop
-                void item.offsetWidth; // Magically forces the browser to restart the animation frame
+                // DELETED the opacity = 0 line from here!
+                void item.offsetWidth; 
                 
-                // Apply the pop-up animation with a rapid 50ms staggered delay
-                item.style.animation = `staggerPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards`;
+                // THE FIX: Changed 'forwards' to 'both'. 
+                // 'both' tells the browser to keep the card invisible during the delay automatically!
+                item.style.animation = `staggerPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both`;
                 item.style.animationDelay = `${visibleIndex * 0.05}s`; 
                 
-                visibleIndex++; // Increase the counter for the next card!
+                visibleIndex++; 
             } else {
-                // Hide cards that don't match
                 item.classList.add('hide');
                 item.style.animation = 'none'; 
             }
