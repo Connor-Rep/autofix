@@ -1843,19 +1843,6 @@ a:focus, button:focus {
   transform: translateY(-2px); /* Tiny premium lift effect */
 }
 
-/* --- 1. MOBILE MENU UPGRADE (MOBILE ONLY) --- */
-@media (max-width: 991px) {
-  .navbar {
-    background-color: var(--eerie-black) !important; /* Replaces the solid red */
-    border: 1px solid transparent !important; 
-    border-radius: 8px !important;
-  }
-
-  .navbar:hover, .navbar.active {
-    border-color: var(--international-orange-engineering) !important; /* Red outline on hover/active */
-  }
-}
-
 /* --- 2. HOME PAGE REPAIRS GRID BREAK LINE --- */
 .repair-card .card-title {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
