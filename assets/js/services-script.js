@@ -43,9 +43,11 @@ function updateHeaderCart() {
         setTimeout(() => cartCountBadge.classList.remove("pop"), 200);
     }
 
-    // Add the glowing pulse effect if items are in cart
+    // Pulse effect (Fixed to trigger exactly ONCE per addition or page load)
     if (headerBookingBtn) {
         if (selectedCount > 0) {
+            headerBookingBtn.classList.remove("ready-to-click");
+            void headerBookingBtn.offsetWidth; // This forces the browser to restart the animation
             headerBookingBtn.classList.add("ready-to-click");
         } else {
             headerBookingBtn.classList.remove("ready-to-click");
@@ -56,22 +58,23 @@ function updateHeaderCart() {
 // 4. Card Button Click Logic (Restricted to Buttons Only)
 cards.forEach(card => {
     const serviceName = card.dataset.service;
-    
-    // Find the standard add button (but NOT the config button)
     const addBtn = card.querySelector(".add-btn:not(.config-btn)");
     
-    // On page load, if it's in local storage, visually select it immediately
-    if (selectedServices.includes(serviceName)) {
+    // NEW FIX: Check memory for base name OR configured versions (e.g., "Brakes" OR "Brakes: Front Axle")
+    const isSelected = selectedServices.some(s => s === serviceName || s.startsWith(serviceName + ":"));
+    
+    if (isSelected) {
         card.classList.add("selected");
-        const anyBtn = card.querySelector(".add-btn"); // Could be standard or config
+        const anyBtn = card.querySelector(".add-btn"); 
         if (anyBtn) {
             anyBtn.innerHTML = anyBtn.classList.contains("config-btn") ? "✓ CONFIGURED" : "✓ ADDED";
         }
     }
 
+    // ONLY listen for clicks on the standard Add button
     if (addBtn) {
         addBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); // Stops any other click events
+            e.stopPropagation(); 
             e.preventDefault();
 
             card.classList.toggle("selected");
@@ -79,14 +82,13 @@ cards.forEach(card => {
             if (card.classList.contains("selected")) {
                 addBtn.innerHTML = "✓ ADDED";
                 if (!selectedServices.includes(serviceName)) {
-                    selectedServices.push(serviceName); // Save to memory
+                    selectedServices.push(serviceName); 
                 }
             } else {
                 addBtn.innerHTML = "+ ADD";
-                selectedServices = selectedServices.filter(s => s !== serviceName); // Remove from memory
+                selectedServices = selectedServices.filter(s => s !== serviceName); 
             }
 
-            // Save to browser memory and update the UI
             selectedCount = selectedServices.length;
             localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
             updateHeaderCart();
@@ -97,7 +99,6 @@ cards.forEach(card => {
 // 5. Header Booking Button Click (Always go to Quote Page)
 headerBookingBtn?.addEventListener("click", (e) => {
     e.preventDefault();
-    // No matter what is in the basket, go straight to the checkout page!
     window.location.href = "/quote.html"; 
 });
 
@@ -111,7 +112,6 @@ window.addEventListener("load", () => {
 // 6. Stop links from triggering the card selection
 document.querySelectorAll('.card-details-link').forEach(link => {
     link.addEventListener('click', (e) => {
-        // This physically stops the click from "bubbling up" to the card underneath
         e.stopPropagation(); 
     });
 });
@@ -124,24 +124,40 @@ const modalSubmitBtn = document.getElementById("modal-submit-btn");
 // Find any button with the 'config-btn' class
 document.querySelectorAll(".config-btn").forEach(btn => {
     btn.addEventListener("click", (e) => {
-        e.stopPropagation(); // Stop normal card click
+        e.stopPropagation(); 
         e.preventDefault();
-        modal.classList.add("active"); // Open the modal
+        
+        const card = btn.closest(".card-item");
+        const serviceName = card.dataset.service;
+
+        // NEW FIX: If it is already selected, REMOVE it!
+        if (card.classList.contains("selected")) {
+            card.classList.remove("selected");
+            btn.innerHTML = "ADD & CONFIGURE"; // Resets the button text
+            
+            // Remove any string that starts with "Brakes" from memory
+            selectedServices = selectedServices.filter(s => s !== serviceName && !s.startsWith(serviceName + ":"));
+            
+            selectedCount = selectedServices.length;
+            localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
+            updateHeaderCart();
+        } else {
+            // Not selected yet? Open the modal!
+            modal.classList.add("active"); 
+        }
     });
 });
 
 // Close Modal Logic
 closeModalBtn?.addEventListener("click", () => modal.classList.remove("active"));
 modal?.addEventListener("click", (e) => {
-    if(e.target === modal) modal.classList.remove("active"); // Close if clicking outside the box
+    if(e.target === modal) modal.classList.remove("active"); 
 });
 
 // Submit from Modal
 modalSubmitBtn?.addEventListener("click", () => {
-    // 1. Find which radio button is checked
     const selectedOption = document.querySelector('input[name="brake_option"]:checked').value;
     
-    // 2. Add it to memory if it's not already there
     if (!selectedServices.includes(selectedOption)) {
         selectedServices.push(selectedOption);
         localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
@@ -149,7 +165,6 @@ modalSubmitBtn?.addEventListener("click", () => {
         updateHeaderCart();
     }
 
-    // 3. Update the UI on the base Brakes card to look active
     const brakesCard = document.querySelector('[data-service="Brakes"]');
     if (brakesCard) {
         brakesCard.classList.add("selected");
@@ -157,9 +172,8 @@ modalSubmitBtn?.addEventListener("click", () => {
         if (baseBtn) baseBtn.innerHTML = "✓ CONFIGURED";
     }
 
-    // 4. Close the modal
     modal.classList.remove("active");
 });
 
-// Run immediately on load to update the badge
+// Run immediately on load to update the badge and trigger the 1-time pulse
 updateHeaderCart();
