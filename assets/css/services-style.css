@@ -456,16 +456,19 @@ body {
     display: none !important;
 }
 
-/* --- PREMIUM GRID CROSSFADE --- */
-.services-grid {
-    transition: opacity 0.3s ease-in-out !important; /* Controls the smooth fade */
-}
-
-/* Hides cards smoothly when filtered out */
-.filter-item {
-    transition: all 0.3s ease;
-}
-
+/* --- STAGGERED CASCADE ANIMATION --- */
+/* (Removed the grid opacity transition so we can animate individual cards) */
 .filter-item.hide {
     display: none !important;
+}
+
+@keyframes staggerPop {
+    0% { 
+        opacity: 0; 
+        transform: translateY(40px) scale(0.95); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
 }
