@@ -415,3 +415,42 @@ body {
     background-color: var(--eerie-black) !important;
     color: var(--white) !important;
 }
+
+/* --- CATEGORY FILTER MENU --- */
+.filter-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: var(--eerie-black);
+    color: var(--light-gray);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 28px;
+    border-radius: 50px; /* Perfect pill shape */
+    font-family: var(--ff-chakra-petch);
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Lights up your signature red when active or hovered */
+.filter-btn:hover, .filter-btn.active {
+    background: var(--international-orange-engineering);
+    color: var(--white);
+    border-color: var(--international-orange-engineering);
+    box-shadow: 0 4px 10px rgba(234, 40, 6, 0.3);
+}
+
+/* Hides cards smoothly when filtered out */
+.filter-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.filter-item.hide {
+    display: none !important;
+}
