@@ -193,31 +193,41 @@ modalSubmitBtn?.addEventListener("click", () => {
 // 8. CATEGORY FILTER LOGIC
 const filterBtns = document.querySelectorAll('.filter-btn');
 const filterItems = document.querySelectorAll('.filter-item');
+const servicesGrid = document.getElementById('services-grid'); // Target the whole grid container
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        // 1. Remove active class from all buttons
+        // Stop it from re-loading if they click the button they are already on
+        if (btn.classList.contains('active')) return;
+
+        // 1. Swap button colors
         filterBtns.forEach(b => b.classList.remove('active'));
-        
-        // 2. Add active class to the clicked button
         btn.classList.add('active');
 
-        // 3. Get the category we want to show
+        // 2. Get the category we want to show
         const filterValue = btn.dataset.filter;
 
-        // 4. Loop through all cards and show/hide them
-        filterItems.forEach(item => {
-            if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                item.classList.remove('hide');
+        // 3. THE PREMIUM CROSSFADE
+        // Fade the entire grid out
+        servicesGrid.style.opacity = '0';
+        
+        // Wait 300ms for the fade to finish, THEN swap the cards
+        setTimeout(() => {
+            filterItems.forEach(item => {
+                // Clear out the old bouncy animation just in case
+                item.style.animation = ''; 
                 
-                // THE FIX: Reset and apply the smooth Pop-In animation
-                item.style.animation = 'none'; 
-                void item.offsetWidth; // Forces the browser to reset the animation frame
-                item.style.animation = 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            } else {
-                item.classList.add('hide');
-            }
-        });
+                if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                    item.classList.remove('hide');
+                } else {
+                    item.classList.add('hide');
+                }
+            });
+
+            // Fade the beautifully reorganized grid back in!
+            servicesGrid.style.opacity = '1';
+            
+        }, 300); // 300ms matches the CSS transition time
     });
 });
 
