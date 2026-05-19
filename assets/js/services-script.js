@@ -130,19 +130,16 @@ document.querySelectorAll(".config-btn").forEach(btn => {
         const card = btn.closest(".card-item");
         const serviceName = card.dataset.service;
 
-        // NEW FIX: If it is already selected, REMOVE it!
+        // If it is already selected on the main grid, REMOVE it!
         if (card.classList.contains("selected")) {
             card.classList.remove("selected");
-            btn.innerHTML = "ADD & CONFIGURE"; // Resets the button text
+            btn.innerHTML = "ADD & CONFIGURE"; 
             
-            // Remove any string that starts with "Brakes" from memory
             selectedServices = selectedServices.filter(s => s !== serviceName && !s.startsWith(serviceName + ":"));
-            
             selectedCount = selectedServices.length;
             localStorage.setItem('safetay_cart', JSON.stringify(selectedServices));
             updateHeaderCart();
         } else {
-            // Not selected yet? Open the modal!
             modal.classList.add("active"); 
         }
     });
@@ -154,9 +151,45 @@ modal?.addEventListener("click", (e) => {
     if(e.target === modal) modal.classList.remove("active"); 
 });
 
+// --- NEW FIX: TOGGLE DESELECTION LOGIC ---
+// Remembers what was clicked last so we can un-click it
+let lastSelectedBrakeOption = document.querySelector('input[name="brake_option"]:checked');
+
+document.querySelectorAll('input[name="brake_option"]').forEach(radio => {
+    radio.addEventListener('click', function(e) {
+        if (lastSelectedBrakeOption === this) {
+            // If they clicked the already-selected option, turn it off
+            this.checked = false;
+            lastSelectedBrakeOption = null;
+        } else {
+            // Otherwise, make this the new active option
+            lastSelectedBrakeOption = this;
+        }
+    });
+});
+
+// --- NEW FIX: DOUBLE CLICK TO QUICK-ADD ---
+document.querySelectorAll('.option-pill').forEach(pill => {
+    pill.addEventListener('dblclick', (e) => {
+        // Find the hidden radio button behind this pill
+        const radio = pill.previousElementSibling;
+        
+        // Force it to be checked
+        radio.checked = true;
+        lastSelectedBrakeOption = radio;
+        
+        // Magically click the Submit button for the user!
+        modalSubmitBtn?.click();
+    });
+});
+
 // Submit from Modal
 modalSubmitBtn?.addEventListener("click", () => {
-    const selectedOption = document.querySelector('input[name="brake_option"]:checked').value;
+    // Safety Check: If they deselected everything, don't try to add nothing!
+    const checkedRadio = document.querySelector('input[name="brake_option"]:checked');
+    if (!checkedRadio) return; 
+
+    const selectedOption = checkedRadio.value;
     
     if (!selectedServices.includes(selectedOption)) {
         selectedServices.push(selectedOption);
