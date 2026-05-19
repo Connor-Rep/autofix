@@ -207,26 +207,38 @@ filterBtns.forEach(btn => {
         const filterValue = btn.dataset.filter;
 
         // 3. THE STAGGERED CASCADE
-        let visibleIndex = 0; // Keeps track of how many cards are showing
+        let visibleIndex = 0; 
 
         filterItems.forEach(item => {
+            // Cancel any old cleanup timers if the user clicks really fast
+            clearTimeout(item.dataset.cleanupTimer);
+
             if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                // Unhide the card
                 item.classList.remove('hide');
                 
                 // Reset the animation completely
                 item.style.animation = 'none';
-                // DELETED the opacity = 0 line from here!
                 void item.offsetWidth; 
                 
-                // THE FIX: Changed 'forwards' to 'both'. 
-                // 'both' tells the browser to keep the card invisible during the delay automatically!
+                // Apply the pop-up animation with the staggered delay
                 item.style.animation = `staggerPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both`;
                 item.style.animationDelay = `${visibleIndex * 0.05}s`; 
                 
+                // THE FIX: Clean up the animation after it finishes (400ms duration + delay)
+                // This removes the "Ghost Animation" landmine!
+                const cleanupTime = 400 + (visibleIndex * 50);
+                item.dataset.cleanupTimer = setTimeout(() => {
+                    item.style.animation = '';
+                    item.style.animationDelay = '';
+                }, cleanupTime + 50); // Added a tiny 50ms buffer for safety
+
                 visibleIndex++; 
             } else {
+                // Hide cards that don't match and wipe their animations
                 item.classList.add('hide');
-                item.style.animation = 'none'; 
+                item.style.animation = ''; 
+                item.style.animationDelay = '';
             }
         });
     });
