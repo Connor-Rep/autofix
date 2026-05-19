@@ -74,9 +74,11 @@ body {
 /* --- BRIGHT GREEN SELECTED STATE --- */
 .card-item.selected { 
     border: 2px solid #00E676 !important; 
-    animation: none !important; /* THE FIX: Kills the red search flash instantly! */
-    box-shadow: 0 5px 20px rgba(0, 230, 118, 0.2) !important; /* Adds a nice subtle green glow instead */
+    animation: none !important; /* Kills the red search flash */
+    opacity: 1 !important; /* THE FIX: Guarantees the card stays perfectly visible! */
+    box-shadow: 0 5px 20px rgba(0, 230, 118, 0.2) !important; 
 }
+
 /* CHECKMARK */
 .check-indicator {
     position: absolute;
