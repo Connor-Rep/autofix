@@ -190,5 +190,35 @@ modalSubmitBtn?.addEventListener("click", () => {
     modal.classList.remove("active");
 });
 
+// 8. CATEGORY FILTER LOGIC
+const filterBtns = document.querySelectorAll('.filter-btn');
+const filterItems = document.querySelectorAll('.filter-item');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // 1. Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        
+        // 2. Add active class to the clicked button
+        btn.classList.add('active');
+
+        // 3. Get the category we want to show
+        const filterValue = btn.dataset.filter;
+
+        // 4. Loop through all cards and show/hide them
+        filterItems.forEach(item => {
+            if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                item.classList.remove('hide');
+                
+                // Optional: Adds a tiny animation so they pop back in smoothly
+                item.style.animation = 'flash 0.5s';
+                setTimeout(() => item.style.animation = '', 500);
+            } else {
+                item.classList.add('hide');
+            }
+        });
+    });
+});
+
 // Run immediately on load to update the badge and trigger the 1-time pulse
 updateHeaderCart();
