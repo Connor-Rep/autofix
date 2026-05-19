@@ -193,7 +193,6 @@ modalSubmitBtn?.addEventListener("click", () => {
 // 8. CATEGORY FILTER LOGIC
 const filterBtns = document.querySelectorAll('.filter-btn');
 const filterItems = document.querySelectorAll('.filter-item');
-const servicesGrid = document.getElementById('services-grid'); // Target the whole grid container
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -207,27 +206,30 @@ filterBtns.forEach(btn => {
         // 2. Get the category we want to show
         const filterValue = btn.dataset.filter;
 
-        // 3. THE PREMIUM CROSSFADE
-        // Fade the entire grid out
-        servicesGrid.style.opacity = '0';
-        
-        // Wait 300ms for the fade to finish, THEN swap the cards
-        setTimeout(() => {
-            filterItems.forEach(item => {
-                // Clear out the old bouncy animation just in case
-                item.style.animation = ''; 
-                
-                if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                    item.classList.remove('hide');
-                } else {
-                    item.classList.add('hide');
-                }
-            });
+        // 3. THE STAGGERED CASCADE
+        let visibleIndex = 0; // Keeps track of how many cards are showing
 
-            // Fade the beautifully reorganized grid back in!
-            servicesGrid.style.opacity = '1';
-            
-        }, 300); // 300ms matches the CSS transition time
+        filterItems.forEach(item => {
+            if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                // Unhide the card
+                item.classList.remove('hide');
+                
+                // Reset the animation completely
+                item.style.animation = 'none';
+                item.style.opacity = '0'; // Keep it invisible until its turn to pop
+                void item.offsetWidth; // Magically forces the browser to restart the animation frame
+                
+                // Apply the pop-up animation with a rapid 50ms staggered delay
+                item.style.animation = `staggerPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards`;
+                item.style.animationDelay = `${visibleIndex * 0.05}s`; 
+                
+                visibleIndex++; // Increase the counter for the next card!
+            } else {
+                // Hide cards that don't match
+                item.classList.add('hide');
+                item.style.animation = 'none'; 
+            }
+        });
     });
 });
 
