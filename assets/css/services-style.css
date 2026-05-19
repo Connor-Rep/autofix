@@ -276,12 +276,14 @@ body {
     .grid-card .add-btn { width: calc(100% - 20px); margin: 0 auto 15px auto; } 
 }
 
-/* --- SMART CONFIGURATION MODAL --- */
+/* --- SMART CONFIGURATION MODAL (PERFORMANCE UPGRADE) --- */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.92); /* Nuked the blur. Using a sleek 92% dark shadow instead */
     z-index: 1000; display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    opacity: 0; pointer-events: none; 
+    transition: opacity 0.25s ease; /* Slightly faster snap */
+    will-change: opacity; /* Forces the GPU to Hardware Accelerate the fade */
 }
 
 .modal-overlay.active {
@@ -294,7 +296,10 @@ body {
     border-radius: 16px; padding: 40px 30px;
     width: 90%; max-width: 450px;
     position: relative; text-align: center;
-    transform: translateY(30px); transition: transform 0.3s ease;
+    transform: translateY(30px); 
+    /* Upgraded to a custom spring animation so it "pops" smoothly */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    will-change: transform; /* Hardware Acceleration */
 }
 
 .modal-overlay.active .modal-content { transform: translateY(0); }
@@ -311,14 +316,30 @@ body {
     margin-bottom: 25px; line-height: 1.4;
 }
 
+
+
 /* Custom Radio Button Pills */
 .config-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+
 .config-option input { display: none; }
+
 .option-pill {
-    padding: 15px 20px; border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px; color: var(--white); font-family: var(--ff-chakra-petch);
-    font-size: 1.4rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
-    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important; 
+    border-radius: 50px !important; 
+    background-color: transparent !important; 
+    color: #ffffff !important; 
+    font-family: var(--ff-chakra-petch) !important;
+    font-size: 1.8rem !important; 
+    font-weight: 600 !important; 
+    cursor: pointer !important; 
+    
+    /* THE MAGIC FIX: Only animate the colors, not the whole layout! */
+    transition: background-color 0.15s ease, border-color 0.15s ease !important; 
+    
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important;
 }
 
 .config-option input:checked + .option-pill {
