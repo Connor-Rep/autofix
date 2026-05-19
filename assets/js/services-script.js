@@ -151,23 +151,6 @@ modal?.addEventListener("click", (e) => {
     if(e.target === modal) modal.classList.remove("active"); 
 });
 
-// --- NEW FIX: TOGGLE DESELECTION LOGIC ---
-// Remembers what was clicked last so we can un-click it
-let lastSelectedBrakeOption = document.querySelector('input[name="brake_option"]:checked');
-
-document.querySelectorAll('input[name="brake_option"]').forEach(radio => {
-    radio.addEventListener('click', function(e) {
-        if (lastSelectedBrakeOption === this) {
-            // If they clicked the already-selected option, turn it off
-            this.checked = false;
-            lastSelectedBrakeOption = null;
-        } else {
-            // Otherwise, make this the new active option
-            lastSelectedBrakeOption = this;
-        }
-    });
-});
-
 // --- NEW FIX: DOUBLE CLICK TO QUICK-ADD ---
 document.querySelectorAll('.option-pill').forEach(pill => {
     pill.addEventListener('dblclick', (e) => {
@@ -176,7 +159,6 @@ document.querySelectorAll('.option-pill').forEach(pill => {
         
         // Force it to be checked
         radio.checked = true;
-        lastSelectedBrakeOption = radio;
         
         // Magically click the Submit button for the user!
         modalSubmitBtn?.click();
