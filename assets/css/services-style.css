@@ -374,14 +374,7 @@ body {
     text-decoration: underline;
 }
 
-/* --- 3. SERVICES PAGE BREAK LINE --- */
-.card-top {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
-  padding-bottom: 20px !important;
-  margin-bottom: 15px !important;
-}
-
-/* --- 4. FLASH ONCE ANIMATION --- */
+/*  FLASH ONCE ANIMATION */
 .header-booking-btn.ready-to-click {
   /* Changed 'infinite' to '1', so it only pulses exactly once for 1.5 seconds */
   animation: gentle-pulse 1.5s 1 !important; 
